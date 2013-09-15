@@ -35,7 +35,6 @@ import org.slf4j.LoggerFactory;
 public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEvent, HttpRequestEvent._Fields>, java.io.Serializable, Cloneable, Comparable<HttpRequestEvent> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("HttpRequestEvent");
 
-  private static final org.apache.thrift.protocol.TField STAGE_FIELD_DESC = new org.apache.thrift.protocol.TField("stage", org.apache.thrift.protocol.TType.STRING, (short)1);
   private static final org.apache.thrift.protocol.TField HTTP_METHOD_FIELD_DESC = new org.apache.thrift.protocol.TField("httpMethod", org.apache.thrift.protocol.TType.STRING, (short)3);
   private static final org.apache.thrift.protocol.TField LOCAL_HOST_FIELD_DESC = new org.apache.thrift.protocol.TField("localHost", org.apache.thrift.protocol.TType.STRING, (short)5);
   private static final org.apache.thrift.protocol.TField LOCAL_PORT_FIELD_DESC = new org.apache.thrift.protocol.TField("localPort", org.apache.thrift.protocol.TType.STRING, (short)7);
@@ -50,7 +49,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     schemes.put(TupleScheme.class, new HttpRequestEventTupleSchemeFactory());
   }
 
-  public String stage; // required
   public String httpMethod; // optional
   public String localHost; // required
   public String localPort; // optional
@@ -61,7 +59,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    STAGE((short)1, "stage"),
     HTTP_METHOD((short)3, "httpMethod"),
     LOCAL_HOST((short)5, "localHost"),
     LOCAL_PORT((short)7, "localPort"),
@@ -83,8 +80,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // STAGE
-          return STAGE;
         case 3: // HTTP_METHOD
           return HTTP_METHOD;
         case 5: // LOCAL_HOST
@@ -145,8 +140,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.STAGE, new org.apache.thrift.meta_data.FieldMetaData("stage", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.HTTP_METHOD, new org.apache.thrift.meta_data.FieldMetaData("httpMethod", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.LOCAL_HOST, new org.apache.thrift.meta_data.FieldMetaData("localHost", org.apache.thrift.TFieldRequirementType.REQUIRED, 
@@ -169,7 +162,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
   }
 
   public HttpRequestEvent(
-    String stage,
     String localHost,
     String contextPath,
     String servletPath,
@@ -177,7 +169,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     long timestamp)
   {
     this();
-    this.stage = stage;
     this.localHost = localHost;
     this.contextPath = contextPath;
     this.servletPath = servletPath;
@@ -191,9 +182,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
    */
   public HttpRequestEvent(HttpRequestEvent other) {
     __isset_bitfield = other.__isset_bitfield;
-    if (other.isSetStage()) {
-      this.stage = other.stage;
-    }
     if (other.isSetHttpMethod()) {
       this.httpMethod = other.httpMethod;
     }
@@ -221,7 +209,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
 
   @Override
   public void clear() {
-    this.stage = null;
     this.httpMethod = null;
     this.localHost = null;
     this.localPort = null;
@@ -230,30 +217,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     this.frestoUUID = null;
     setTimestampIsSet(false);
     this.timestamp = 0;
-  }
-
-  public String getStage() {
-    return this.stage;
-  }
-
-  public HttpRequestEvent setStage(String stage) {
-    this.stage = stage;
-    return this;
-  }
-
-  public void unsetStage() {
-    this.stage = null;
-  }
-
-  /** Returns true if field stage is set (has been assigned a value) and false otherwise */
-  public boolean isSetStage() {
-    return this.stage != null;
-  }
-
-  public void setStageIsSet(boolean value) {
-    if (!value) {
-      this.stage = null;
-    }
   }
 
   public String getHttpMethod() {
@@ -425,14 +388,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case STAGE:
-      if (value == null) {
-        unsetStage();
-      } else {
-        setStage((String)value);
-      }
-      break;
-
     case HTTP_METHOD:
       if (value == null) {
         unsetHttpMethod();
@@ -494,9 +449,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case STAGE:
-      return getStage();
-
     case HTTP_METHOD:
       return getHttpMethod();
 
@@ -529,8 +481,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     }
 
     switch (field) {
-    case STAGE:
-      return isSetStage();
     case HTTP_METHOD:
       return isSetHttpMethod();
     case LOCAL_HOST:
@@ -561,15 +511,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
   public boolean equals(HttpRequestEvent that) {
     if (that == null)
       return false;
-
-    boolean this_present_stage = true && this.isSetStage();
-    boolean that_present_stage = true && that.isSetStage();
-    if (this_present_stage || that_present_stage) {
-      if (!(this_present_stage && that_present_stage))
-        return false;
-      if (!this.stage.equals(that.stage))
-        return false;
-    }
 
     boolean this_present_httpMethod = true && this.isSetHttpMethod();
     boolean that_present_httpMethod = true && that.isSetHttpMethod();
@@ -650,16 +591,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetStage()).compareTo(other.isSetStage());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetStage()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.stage, other.stage);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
     lastComparison = Boolean.valueOf(isSetHttpMethod()).compareTo(other.isSetHttpMethod());
     if (lastComparison != 0) {
       return lastComparison;
@@ -750,15 +681,7 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     StringBuilder sb = new StringBuilder("HttpRequestEvent(");
     boolean first = true;
 
-    sb.append("stage:");
-    if (this.stage == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.stage);
-    }
-    first = false;
     if (isSetHttpMethod()) {
-      if (!first) sb.append(", ");
       sb.append("httpMethod:");
       if (this.httpMethod == null) {
         sb.append("null");
@@ -819,9 +742,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
-    if (stage == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'stage' was not present! Struct: " + toString());
-    }
     if (localHost == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'localHost' was not present! Struct: " + toString());
     }
@@ -874,14 +794,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
           break;
         }
         switch (schemeField.id) {
-          case 1: // STAGE
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.stage = iprot.readString();
-              struct.setStageIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
           case 3: // HTTP_METHOD
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.httpMethod = iprot.readString();
@@ -956,11 +868,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.stage != null) {
-        oprot.writeFieldBegin(STAGE_FIELD_DESC);
-        oprot.writeString(struct.stage);
-        oprot.writeFieldEnd();
-      }
       if (struct.httpMethod != null) {
         if (struct.isSetHttpMethod()) {
           oprot.writeFieldBegin(HTTP_METHOD_FIELD_DESC);
@@ -1015,7 +922,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     @Override
     public void write(org.apache.thrift.protocol.TProtocol prot, HttpRequestEvent struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
-      oprot.writeString(struct.stage);
       oprot.writeString(struct.localHost);
       oprot.writeString(struct.contextPath);
       oprot.writeString(struct.servletPath);
@@ -1040,8 +946,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, HttpRequestEvent struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      struct.stage = iprot.readString();
-      struct.setStageIsSet(true);
       struct.localHost = iprot.readString();
       struct.setLocalHostIsSet(true);
       struct.contextPath = iprot.readString();
