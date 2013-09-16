@@ -9,5 +9,5 @@ struct UIEvent {
 8: optional string httpStatus;
 9: required i64 timestamp;
 11: optional i64 elapsedTime;
-33: optional i64 receivedTime;
+#33: optional i64 receivedTime;
 }

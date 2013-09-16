@@ -10,5 +10,5 @@ struct HttpRequestEvent {
 15: required string typeName;
 17: required string signatureName;
 31: required i64 timestamp;
-33: required i64 receivedTime;
+#33: required i64 receivedTime;
 }
