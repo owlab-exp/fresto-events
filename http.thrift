@@ -9,6 +9,17 @@ struct HttpRequestEvent {
 13: required string frestoUUID;
 15: required string typeName;
 17: required string signatureName;
+19: required i32 depth;
 31: required i64 timestamp;
-#33: required i64 receivedTime;
+33: optional i64 receivedTime;
 }
+
+struct HttpResponseEvent {
+3: required string frestoUUID;
+5: required string typeName;
+7: required string signatureName;
+19: required i32 depth;
+31: required i64 timestamp;
+33: optional i64 receivedTime;
+}
+

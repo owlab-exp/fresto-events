@@ -32,32 +32,22 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEvent, HttpRequestEvent._Fields>, java.io.Serializable, Cloneable, Comparable<HttpRequestEvent> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("HttpRequestEvent");
+public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEvent, HttpResponseEvent._Fields>, java.io.Serializable, Cloneable, Comparable<HttpResponseEvent> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("HttpResponseEvent");
 
-  private static final org.apache.thrift.protocol.TField HTTP_METHOD_FIELD_DESC = new org.apache.thrift.protocol.TField("httpMethod", org.apache.thrift.protocol.TType.STRING, (short)3);
-  private static final org.apache.thrift.protocol.TField LOCAL_HOST_FIELD_DESC = new org.apache.thrift.protocol.TField("localHost", org.apache.thrift.protocol.TType.STRING, (short)5);
-  private static final org.apache.thrift.protocol.TField LOCAL_PORT_FIELD_DESC = new org.apache.thrift.protocol.TField("localPort", org.apache.thrift.protocol.TType.I32, (short)7);
-  private static final org.apache.thrift.protocol.TField CONTEXT_PATH_FIELD_DESC = new org.apache.thrift.protocol.TField("contextPath", org.apache.thrift.protocol.TType.STRING, (short)9);
-  private static final org.apache.thrift.protocol.TField SERVLET_PATH_FIELD_DESC = new org.apache.thrift.protocol.TField("servletPath", org.apache.thrift.protocol.TType.STRING, (short)11);
-  private static final org.apache.thrift.protocol.TField FRESTO_UUID_FIELD_DESC = new org.apache.thrift.protocol.TField("frestoUUID", org.apache.thrift.protocol.TType.STRING, (short)13);
-  private static final org.apache.thrift.protocol.TField TYPE_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("typeName", org.apache.thrift.protocol.TType.STRING, (short)15);
-  private static final org.apache.thrift.protocol.TField SIGNATURE_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("signatureName", org.apache.thrift.protocol.TType.STRING, (short)17);
+  private static final org.apache.thrift.protocol.TField FRESTO_UUID_FIELD_DESC = new org.apache.thrift.protocol.TField("frestoUUID", org.apache.thrift.protocol.TType.STRING, (short)3);
+  private static final org.apache.thrift.protocol.TField TYPE_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("typeName", org.apache.thrift.protocol.TType.STRING, (short)5);
+  private static final org.apache.thrift.protocol.TField SIGNATURE_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("signatureName", org.apache.thrift.protocol.TType.STRING, (short)7);
   private static final org.apache.thrift.protocol.TField DEPTH_FIELD_DESC = new org.apache.thrift.protocol.TField("depth", org.apache.thrift.protocol.TType.I32, (short)19);
   private static final org.apache.thrift.protocol.TField TIMESTAMP_FIELD_DESC = new org.apache.thrift.protocol.TField("timestamp", org.apache.thrift.protocol.TType.I64, (short)31);
   private static final org.apache.thrift.protocol.TField RECEIVED_TIME_FIELD_DESC = new org.apache.thrift.protocol.TField("receivedTime", org.apache.thrift.protocol.TType.I64, (short)33);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
-    schemes.put(StandardScheme.class, new HttpRequestEventStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new HttpRequestEventTupleSchemeFactory());
+    schemes.put(StandardScheme.class, new HttpResponseEventStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new HttpResponseEventTupleSchemeFactory());
   }
 
-  public String httpMethod; // required
-  public String localHost; // required
-  public int localPort; // required
-  public String contextPath; // required
-  public String servletPath; // required
   public String frestoUUID; // required
   public String typeName; // required
   public String signatureName; // required
@@ -67,14 +57,9 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    HTTP_METHOD((short)3, "httpMethod"),
-    LOCAL_HOST((short)5, "localHost"),
-    LOCAL_PORT((short)7, "localPort"),
-    CONTEXT_PATH((short)9, "contextPath"),
-    SERVLET_PATH((short)11, "servletPath"),
-    FRESTO_UUID((short)13, "frestoUUID"),
-    TYPE_NAME((short)15, "typeName"),
-    SIGNATURE_NAME((short)17, "signatureName"),
+    FRESTO_UUID((short)3, "frestoUUID"),
+    TYPE_NAME((short)5, "typeName"),
+    SIGNATURE_NAME((short)7, "signatureName"),
     DEPTH((short)19, "depth"),
     TIMESTAMP((short)31, "timestamp"),
     RECEIVED_TIME((short)33, "receivedTime");
@@ -92,21 +77,11 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 3: // HTTP_METHOD
-          return HTTP_METHOD;
-        case 5: // LOCAL_HOST
-          return LOCAL_HOST;
-        case 7: // LOCAL_PORT
-          return LOCAL_PORT;
-        case 9: // CONTEXT_PATH
-          return CONTEXT_PATH;
-        case 11: // SERVLET_PATH
-          return SERVLET_PATH;
-        case 13: // FRESTO_UUID
+        case 3: // FRESTO_UUID
           return FRESTO_UUID;
-        case 15: // TYPE_NAME
+        case 5: // TYPE_NAME
           return TYPE_NAME;
-        case 17: // SIGNATURE_NAME
+        case 7: // SIGNATURE_NAME
           return SIGNATURE_NAME;
         case 19: // DEPTH
           return DEPTH;
@@ -154,25 +129,14 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
   }
 
   // isset id assignments
-  private static final int __LOCALPORT_ISSET_ID = 0;
-  private static final int __DEPTH_ISSET_ID = 1;
-  private static final int __TIMESTAMP_ISSET_ID = 2;
-  private static final int __RECEIVEDTIME_ISSET_ID = 3;
+  private static final int __DEPTH_ISSET_ID = 0;
+  private static final int __TIMESTAMP_ISSET_ID = 1;
+  private static final int __RECEIVEDTIME_ISSET_ID = 2;
   private byte __isset_bitfield = 0;
   private _Fields optionals[] = {_Fields.RECEIVED_TIME};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.HTTP_METHOD, new org.apache.thrift.meta_data.FieldMetaData("httpMethod", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.LOCAL_HOST, new org.apache.thrift.meta_data.FieldMetaData("localHost", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.LOCAL_PORT, new org.apache.thrift.meta_data.FieldMetaData("localPort", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
-    tmpMap.put(_Fields.CONTEXT_PATH, new org.apache.thrift.meta_data.FieldMetaData("contextPath", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.SERVLET_PATH, new org.apache.thrift.meta_data.FieldMetaData("servletPath", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.FRESTO_UUID, new org.apache.thrift.meta_data.FieldMetaData("frestoUUID", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.TYPE_NAME, new org.apache.thrift.meta_data.FieldMetaData("typeName", org.apache.thrift.TFieldRequirementType.REQUIRED, 
@@ -186,18 +150,13 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     tmpMap.put(_Fields.RECEIVED_TIME, new org.apache.thrift.meta_data.FieldMetaData("receivedTime", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(HttpRequestEvent.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(HttpResponseEvent.class, metaDataMap);
   }
 
-  public HttpRequestEvent() {
+  public HttpResponseEvent() {
   }
 
-  public HttpRequestEvent(
-    String httpMethod,
-    String localHost,
-    int localPort,
-    String contextPath,
-    String servletPath,
+  public HttpResponseEvent(
     String frestoUUID,
     String typeName,
     String signatureName,
@@ -205,12 +164,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     long timestamp)
   {
     this();
-    this.httpMethod = httpMethod;
-    this.localHost = localHost;
-    this.localPort = localPort;
-    setLocalPortIsSet(true);
-    this.contextPath = contextPath;
-    this.servletPath = servletPath;
     this.frestoUUID = frestoUUID;
     this.typeName = typeName;
     this.signatureName = signatureName;
@@ -223,21 +176,8 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public HttpRequestEvent(HttpRequestEvent other) {
+  public HttpResponseEvent(HttpResponseEvent other) {
     __isset_bitfield = other.__isset_bitfield;
-    if (other.isSetHttpMethod()) {
-      this.httpMethod = other.httpMethod;
-    }
-    if (other.isSetLocalHost()) {
-      this.localHost = other.localHost;
-    }
-    this.localPort = other.localPort;
-    if (other.isSetContextPath()) {
-      this.contextPath = other.contextPath;
-    }
-    if (other.isSetServletPath()) {
-      this.servletPath = other.servletPath;
-    }
     if (other.isSetFrestoUUID()) {
       this.frestoUUID = other.frestoUUID;
     }
@@ -252,18 +192,12 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     this.receivedTime = other.receivedTime;
   }
 
-  public HttpRequestEvent deepCopy() {
-    return new HttpRequestEvent(this);
+  public HttpResponseEvent deepCopy() {
+    return new HttpResponseEvent(this);
   }
 
   @Override
   public void clear() {
-    this.httpMethod = null;
-    this.localHost = null;
-    setLocalPortIsSet(false);
-    this.localPort = 0;
-    this.contextPath = null;
-    this.servletPath = null;
     this.frestoUUID = null;
     this.typeName = null;
     this.signatureName = null;
@@ -275,130 +209,11 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     this.receivedTime = 0;
   }
 
-  public String getHttpMethod() {
-    return this.httpMethod;
-  }
-
-  public HttpRequestEvent setHttpMethod(String httpMethod) {
-    this.httpMethod = httpMethod;
-    return this;
-  }
-
-  public void unsetHttpMethod() {
-    this.httpMethod = null;
-  }
-
-  /** Returns true if field httpMethod is set (has been assigned a value) and false otherwise */
-  public boolean isSetHttpMethod() {
-    return this.httpMethod != null;
-  }
-
-  public void setHttpMethodIsSet(boolean value) {
-    if (!value) {
-      this.httpMethod = null;
-    }
-  }
-
-  public String getLocalHost() {
-    return this.localHost;
-  }
-
-  public HttpRequestEvent setLocalHost(String localHost) {
-    this.localHost = localHost;
-    return this;
-  }
-
-  public void unsetLocalHost() {
-    this.localHost = null;
-  }
-
-  /** Returns true if field localHost is set (has been assigned a value) and false otherwise */
-  public boolean isSetLocalHost() {
-    return this.localHost != null;
-  }
-
-  public void setLocalHostIsSet(boolean value) {
-    if (!value) {
-      this.localHost = null;
-    }
-  }
-
-  public int getLocalPort() {
-    return this.localPort;
-  }
-
-  public HttpRequestEvent setLocalPort(int localPort) {
-    this.localPort = localPort;
-    setLocalPortIsSet(true);
-    return this;
-  }
-
-  public void unsetLocalPort() {
-    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __LOCALPORT_ISSET_ID);
-  }
-
-  /** Returns true if field localPort is set (has been assigned a value) and false otherwise */
-  public boolean isSetLocalPort() {
-    return EncodingUtils.testBit(__isset_bitfield, __LOCALPORT_ISSET_ID);
-  }
-
-  public void setLocalPortIsSet(boolean value) {
-    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __LOCALPORT_ISSET_ID, value);
-  }
-
-  public String getContextPath() {
-    return this.contextPath;
-  }
-
-  public HttpRequestEvent setContextPath(String contextPath) {
-    this.contextPath = contextPath;
-    return this;
-  }
-
-  public void unsetContextPath() {
-    this.contextPath = null;
-  }
-
-  /** Returns true if field contextPath is set (has been assigned a value) and false otherwise */
-  public boolean isSetContextPath() {
-    return this.contextPath != null;
-  }
-
-  public void setContextPathIsSet(boolean value) {
-    if (!value) {
-      this.contextPath = null;
-    }
-  }
-
-  public String getServletPath() {
-    return this.servletPath;
-  }
-
-  public HttpRequestEvent setServletPath(String servletPath) {
-    this.servletPath = servletPath;
-    return this;
-  }
-
-  public void unsetServletPath() {
-    this.servletPath = null;
-  }
-
-  /** Returns true if field servletPath is set (has been assigned a value) and false otherwise */
-  public boolean isSetServletPath() {
-    return this.servletPath != null;
-  }
-
-  public void setServletPathIsSet(boolean value) {
-    if (!value) {
-      this.servletPath = null;
-    }
-  }
-
   public String getFrestoUUID() {
     return this.frestoUUID;
   }
 
-  public HttpRequestEvent setFrestoUUID(String frestoUUID) {
+  public HttpResponseEvent setFrestoUUID(String frestoUUID) {
     this.frestoUUID = frestoUUID;
     return this;
   }
@@ -422,7 +237,7 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     return this.typeName;
   }
 
-  public HttpRequestEvent setTypeName(String typeName) {
+  public HttpResponseEvent setTypeName(String typeName) {
     this.typeName = typeName;
     return this;
   }
@@ -446,7 +261,7 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     return this.signatureName;
   }
 
-  public HttpRequestEvent setSignatureName(String signatureName) {
+  public HttpResponseEvent setSignatureName(String signatureName) {
     this.signatureName = signatureName;
     return this;
   }
@@ -470,7 +285,7 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     return this.depth;
   }
 
-  public HttpRequestEvent setDepth(int depth) {
+  public HttpResponseEvent setDepth(int depth) {
     this.depth = depth;
     setDepthIsSet(true);
     return this;
@@ -493,7 +308,7 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     return this.timestamp;
   }
 
-  public HttpRequestEvent setTimestamp(long timestamp) {
+  public HttpResponseEvent setTimestamp(long timestamp) {
     this.timestamp = timestamp;
     setTimestampIsSet(true);
     return this;
@@ -516,7 +331,7 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     return this.receivedTime;
   }
 
-  public HttpRequestEvent setReceivedTime(long receivedTime) {
+  public HttpResponseEvent setReceivedTime(long receivedTime) {
     this.receivedTime = receivedTime;
     setReceivedTimeIsSet(true);
     return this;
@@ -537,46 +352,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case HTTP_METHOD:
-      if (value == null) {
-        unsetHttpMethod();
-      } else {
-        setHttpMethod((String)value);
-      }
-      break;
-
-    case LOCAL_HOST:
-      if (value == null) {
-        unsetLocalHost();
-      } else {
-        setLocalHost((String)value);
-      }
-      break;
-
-    case LOCAL_PORT:
-      if (value == null) {
-        unsetLocalPort();
-      } else {
-        setLocalPort((Integer)value);
-      }
-      break;
-
-    case CONTEXT_PATH:
-      if (value == null) {
-        unsetContextPath();
-      } else {
-        setContextPath((String)value);
-      }
-      break;
-
-    case SERVLET_PATH:
-      if (value == null) {
-        unsetServletPath();
-      } else {
-        setServletPath((String)value);
-      }
-      break;
-
     case FRESTO_UUID:
       if (value == null) {
         unsetFrestoUUID();
@@ -630,21 +405,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case HTTP_METHOD:
-      return getHttpMethod();
-
-    case LOCAL_HOST:
-      return getLocalHost();
-
-    case LOCAL_PORT:
-      return Integer.valueOf(getLocalPort());
-
-    case CONTEXT_PATH:
-      return getContextPath();
-
-    case SERVLET_PATH:
-      return getServletPath();
-
     case FRESTO_UUID:
       return getFrestoUUID();
 
@@ -674,16 +434,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     }
 
     switch (field) {
-    case HTTP_METHOD:
-      return isSetHttpMethod();
-    case LOCAL_HOST:
-      return isSetLocalHost();
-    case LOCAL_PORT:
-      return isSetLocalPort();
-    case CONTEXT_PATH:
-      return isSetContextPath();
-    case SERVLET_PATH:
-      return isSetServletPath();
     case FRESTO_UUID:
       return isSetFrestoUUID();
     case TYPE_NAME:
@@ -704,59 +454,14 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof HttpRequestEvent)
-      return this.equals((HttpRequestEvent)that);
+    if (that instanceof HttpResponseEvent)
+      return this.equals((HttpResponseEvent)that);
     return false;
   }
 
-  public boolean equals(HttpRequestEvent that) {
+  public boolean equals(HttpResponseEvent that) {
     if (that == null)
       return false;
-
-    boolean this_present_httpMethod = true && this.isSetHttpMethod();
-    boolean that_present_httpMethod = true && that.isSetHttpMethod();
-    if (this_present_httpMethod || that_present_httpMethod) {
-      if (!(this_present_httpMethod && that_present_httpMethod))
-        return false;
-      if (!this.httpMethod.equals(that.httpMethod))
-        return false;
-    }
-
-    boolean this_present_localHost = true && this.isSetLocalHost();
-    boolean that_present_localHost = true && that.isSetLocalHost();
-    if (this_present_localHost || that_present_localHost) {
-      if (!(this_present_localHost && that_present_localHost))
-        return false;
-      if (!this.localHost.equals(that.localHost))
-        return false;
-    }
-
-    boolean this_present_localPort = true;
-    boolean that_present_localPort = true;
-    if (this_present_localPort || that_present_localPort) {
-      if (!(this_present_localPort && that_present_localPort))
-        return false;
-      if (this.localPort != that.localPort)
-        return false;
-    }
-
-    boolean this_present_contextPath = true && this.isSetContextPath();
-    boolean that_present_contextPath = true && that.isSetContextPath();
-    if (this_present_contextPath || that_present_contextPath) {
-      if (!(this_present_contextPath && that_present_contextPath))
-        return false;
-      if (!this.contextPath.equals(that.contextPath))
-        return false;
-    }
-
-    boolean this_present_servletPath = true && this.isSetServletPath();
-    boolean that_present_servletPath = true && that.isSetServletPath();
-    if (this_present_servletPath || that_present_servletPath) {
-      if (!(this_present_servletPath && that_present_servletPath))
-        return false;
-      if (!this.servletPath.equals(that.servletPath))
-        return false;
-    }
 
     boolean this_present_frestoUUID = true && this.isSetFrestoUUID();
     boolean that_present_frestoUUID = true && that.isSetFrestoUUID();
@@ -821,63 +526,13 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
   }
 
   @Override
-  public int compareTo(HttpRequestEvent other) {
+  public int compareTo(HttpResponseEvent other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetHttpMethod()).compareTo(other.isSetHttpMethod());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetHttpMethod()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.httpMethod, other.httpMethod);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetLocalHost()).compareTo(other.isSetLocalHost());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetLocalHost()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.localHost, other.localHost);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetLocalPort()).compareTo(other.isSetLocalPort());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetLocalPort()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.localPort, other.localPort);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetContextPath()).compareTo(other.isSetContextPath());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetContextPath()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.contextPath, other.contextPath);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetServletPath()).compareTo(other.isSetServletPath());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetServletPath()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.servletPath, other.servletPath);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
     lastComparison = Boolean.valueOf(isSetFrestoUUID()).compareTo(other.isSetFrestoUUID());
     if (lastComparison != 0) {
       return lastComparison;
@@ -955,45 +610,9 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("HttpRequestEvent(");
+    StringBuilder sb = new StringBuilder("HttpResponseEvent(");
     boolean first = true;
 
-    sb.append("httpMethod:");
-    if (this.httpMethod == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.httpMethod);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("localHost:");
-    if (this.localHost == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.localHost);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("localPort:");
-    sb.append(this.localPort);
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("contextPath:");
-    if (this.contextPath == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.contextPath);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("servletPath:");
-    if (this.servletPath == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.servletPath);
-    }
-    first = false;
-    if (!first) sb.append(", ");
     sb.append("frestoUUID:");
     if (this.frestoUUID == null) {
       sb.append("null");
@@ -1037,19 +656,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
-    if (httpMethod == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'httpMethod' was not present! Struct: " + toString());
-    }
-    if (localHost == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'localHost' was not present! Struct: " + toString());
-    }
-    // alas, we cannot check 'localPort' because it's a primitive and you chose the non-beans generator.
-    if (contextPath == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'contextPath' was not present! Struct: " + toString());
-    }
-    if (servletPath == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'servletPath' was not present! Struct: " + toString());
-    }
     if (frestoUUID == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'frestoUUID' was not present! Struct: " + toString());
     }
@@ -1082,15 +688,15 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     }
   }
 
-  private static class HttpRequestEventStandardSchemeFactory implements SchemeFactory {
-    public HttpRequestEventStandardScheme getScheme() {
-      return new HttpRequestEventStandardScheme();
+  private static class HttpResponseEventStandardSchemeFactory implements SchemeFactory {
+    public HttpResponseEventStandardScheme getScheme() {
+      return new HttpResponseEventStandardScheme();
     }
   }
 
-  private static class HttpRequestEventStandardScheme extends StandardScheme<HttpRequestEvent> {
+  private static class HttpResponseEventStandardScheme extends StandardScheme<HttpResponseEvent> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, HttpRequestEvent struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, HttpResponseEvent struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -1100,47 +706,7 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
           break;
         }
         switch (schemeField.id) {
-          case 3: // HTTP_METHOD
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.httpMethod = iprot.readString();
-              struct.setHttpMethodIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 5: // LOCAL_HOST
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.localHost = iprot.readString();
-              struct.setLocalHostIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 7: // LOCAL_PORT
-            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-              struct.localPort = iprot.readI32();
-              struct.setLocalPortIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 9: // CONTEXT_PATH
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.contextPath = iprot.readString();
-              struct.setContextPathIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 11: // SERVLET_PATH
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.servletPath = iprot.readString();
-              struct.setServletPathIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 13: // FRESTO_UUID
+          case 3: // FRESTO_UUID
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.frestoUUID = iprot.readString();
               struct.setFrestoUUIDIsSet(true);
@@ -1148,7 +714,7 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 15: // TYPE_NAME
+          case 5: // TYPE_NAME
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.typeName = iprot.readString();
               struct.setTypeNameIsSet(true);
@@ -1156,7 +722,7 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 17: // SIGNATURE_NAME
+          case 7: // SIGNATURE_NAME
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.signatureName = iprot.readString();
               struct.setSignatureNameIsSet(true);
@@ -1196,9 +762,6 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
       iprot.readStructEnd();
 
       // check for required fields of primitive type, which can't be checked in the validate method
-      if (!struct.isSetLocalPort()) {
-        throw new org.apache.thrift.protocol.TProtocolException("Required field 'localPort' was not found in serialized data! Struct: " + toString());
-      }
       if (!struct.isSetDepth()) {
         throw new org.apache.thrift.protocol.TProtocolException("Required field 'depth' was not found in serialized data! Struct: " + toString());
       }
@@ -1208,33 +771,10 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, HttpRequestEvent struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, HttpResponseEvent struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.httpMethod != null) {
-        oprot.writeFieldBegin(HTTP_METHOD_FIELD_DESC);
-        oprot.writeString(struct.httpMethod);
-        oprot.writeFieldEnd();
-      }
-      if (struct.localHost != null) {
-        oprot.writeFieldBegin(LOCAL_HOST_FIELD_DESC);
-        oprot.writeString(struct.localHost);
-        oprot.writeFieldEnd();
-      }
-      oprot.writeFieldBegin(LOCAL_PORT_FIELD_DESC);
-      oprot.writeI32(struct.localPort);
-      oprot.writeFieldEnd();
-      if (struct.contextPath != null) {
-        oprot.writeFieldBegin(CONTEXT_PATH_FIELD_DESC);
-        oprot.writeString(struct.contextPath);
-        oprot.writeFieldEnd();
-      }
-      if (struct.servletPath != null) {
-        oprot.writeFieldBegin(SERVLET_PATH_FIELD_DESC);
-        oprot.writeString(struct.servletPath);
-        oprot.writeFieldEnd();
-      }
       if (struct.frestoUUID != null) {
         oprot.writeFieldBegin(FRESTO_UUID_FIELD_DESC);
         oprot.writeString(struct.frestoUUID);
@@ -1267,22 +807,17 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
 
   }
 
-  private static class HttpRequestEventTupleSchemeFactory implements SchemeFactory {
-    public HttpRequestEventTupleScheme getScheme() {
-      return new HttpRequestEventTupleScheme();
+  private static class HttpResponseEventTupleSchemeFactory implements SchemeFactory {
+    public HttpResponseEventTupleScheme getScheme() {
+      return new HttpResponseEventTupleScheme();
     }
   }
 
-  private static class HttpRequestEventTupleScheme extends TupleScheme<HttpRequestEvent> {
+  private static class HttpResponseEventTupleScheme extends TupleScheme<HttpResponseEvent> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, HttpRequestEvent struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, HttpResponseEvent struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
-      oprot.writeString(struct.httpMethod);
-      oprot.writeString(struct.localHost);
-      oprot.writeI32(struct.localPort);
-      oprot.writeString(struct.contextPath);
-      oprot.writeString(struct.servletPath);
       oprot.writeString(struct.frestoUUID);
       oprot.writeString(struct.typeName);
       oprot.writeString(struct.signatureName);
@@ -1299,18 +834,8 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, HttpRequestEvent struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, HttpResponseEvent struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      struct.httpMethod = iprot.readString();
-      struct.setHttpMethodIsSet(true);
-      struct.localHost = iprot.readString();
-      struct.setLocalHostIsSet(true);
-      struct.localPort = iprot.readI32();
-      struct.setLocalPortIsSet(true);
-      struct.contextPath = iprot.readString();
-      struct.setContextPathIsSet(true);
-      struct.servletPath = iprot.readString();
-      struct.setServletPathIsSet(true);
       struct.frestoUUID = iprot.readString();
       struct.setFrestoUUIDIsSet(true);
       struct.typeName = iprot.readString();
