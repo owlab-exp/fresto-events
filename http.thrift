@@ -7,5 +7,7 @@ struct HttpRequestEvent {
 9: required string contextPath;
 11: required string servletPath;
 13: required string frestoUUID;
-15: required i64 timestamp;
+15: required string typeName;
+17: required string signatureName;
+31: required i64 timestamp;
 }

@@ -41,7 +41,9 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
   private static final org.apache.thrift.protocol.TField CONTEXT_PATH_FIELD_DESC = new org.apache.thrift.protocol.TField("contextPath", org.apache.thrift.protocol.TType.STRING, (short)9);
   private static final org.apache.thrift.protocol.TField SERVLET_PATH_FIELD_DESC = new org.apache.thrift.protocol.TField("servletPath", org.apache.thrift.protocol.TType.STRING, (short)11);
   private static final org.apache.thrift.protocol.TField FRESTO_UUID_FIELD_DESC = new org.apache.thrift.protocol.TField("frestoUUID", org.apache.thrift.protocol.TType.STRING, (short)13);
-  private static final org.apache.thrift.protocol.TField TIMESTAMP_FIELD_DESC = new org.apache.thrift.protocol.TField("timestamp", org.apache.thrift.protocol.TType.I64, (short)15);
+  private static final org.apache.thrift.protocol.TField TYPE_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("typeName", org.apache.thrift.protocol.TType.STRING, (short)15);
+  private static final org.apache.thrift.protocol.TField SIGNATURE_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("signatureName", org.apache.thrift.protocol.TType.STRING, (short)17);
+  private static final org.apache.thrift.protocol.TField TIMESTAMP_FIELD_DESC = new org.apache.thrift.protocol.TField("timestamp", org.apache.thrift.protocol.TType.I64, (short)31);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -55,6 +57,8 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
   public String contextPath; // required
   public String servletPath; // required
   public String frestoUUID; // required
+  public String typeName; // required
+  public String signatureName; // required
   public long timestamp; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
@@ -65,7 +69,9 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     CONTEXT_PATH((short)9, "contextPath"),
     SERVLET_PATH((short)11, "servletPath"),
     FRESTO_UUID((short)13, "frestoUUID"),
-    TIMESTAMP((short)15, "timestamp");
+    TYPE_NAME((short)15, "typeName"),
+    SIGNATURE_NAME((short)17, "signatureName"),
+    TIMESTAMP((short)31, "timestamp");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -92,7 +98,11 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
           return SERVLET_PATH;
         case 13: // FRESTO_UUID
           return FRESTO_UUID;
-        case 15: // TIMESTAMP
+        case 15: // TYPE_NAME
+          return TYPE_NAME;
+        case 17: // SIGNATURE_NAME
+          return SIGNATURE_NAME;
+        case 31: // TIMESTAMP
           return TIMESTAMP;
         default:
           return null;
@@ -152,6 +162,10 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.FRESTO_UUID, new org.apache.thrift.meta_data.FieldMetaData("frestoUUID", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+    tmpMap.put(_Fields.TYPE_NAME, new org.apache.thrift.meta_data.FieldMetaData("typeName", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+    tmpMap.put(_Fields.SIGNATURE_NAME, new org.apache.thrift.meta_data.FieldMetaData("signatureName", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.TIMESTAMP, new org.apache.thrift.meta_data.FieldMetaData("timestamp", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
@@ -168,6 +182,8 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     String contextPath,
     String servletPath,
     String frestoUUID,
+    String typeName,
+    String signatureName,
     long timestamp)
   {
     this();
@@ -178,6 +194,8 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     this.contextPath = contextPath;
     this.servletPath = servletPath;
     this.frestoUUID = frestoUUID;
+    this.typeName = typeName;
+    this.signatureName = signatureName;
     this.timestamp = timestamp;
     setTimestampIsSet(true);
   }
@@ -203,6 +221,12 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     if (other.isSetFrestoUUID()) {
       this.frestoUUID = other.frestoUUID;
     }
+    if (other.isSetTypeName()) {
+      this.typeName = other.typeName;
+    }
+    if (other.isSetSignatureName()) {
+      this.signatureName = other.signatureName;
+    }
     this.timestamp = other.timestamp;
   }
 
@@ -219,6 +243,8 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     this.contextPath = null;
     this.servletPath = null;
     this.frestoUUID = null;
+    this.typeName = null;
+    this.signatureName = null;
     setTimestampIsSet(false);
     this.timestamp = 0;
   }
@@ -366,6 +392,54 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     }
   }
 
+  public String getTypeName() {
+    return this.typeName;
+  }
+
+  public HttpRequestEvent setTypeName(String typeName) {
+    this.typeName = typeName;
+    return this;
+  }
+
+  public void unsetTypeName() {
+    this.typeName = null;
+  }
+
+  /** Returns true if field typeName is set (has been assigned a value) and false otherwise */
+  public boolean isSetTypeName() {
+    return this.typeName != null;
+  }
+
+  public void setTypeNameIsSet(boolean value) {
+    if (!value) {
+      this.typeName = null;
+    }
+  }
+
+  public String getSignatureName() {
+    return this.signatureName;
+  }
+
+  public HttpRequestEvent setSignatureName(String signatureName) {
+    this.signatureName = signatureName;
+    return this;
+  }
+
+  public void unsetSignatureName() {
+    this.signatureName = null;
+  }
+
+  /** Returns true if field signatureName is set (has been assigned a value) and false otherwise */
+  public boolean isSetSignatureName() {
+    return this.signatureName != null;
+  }
+
+  public void setSignatureNameIsSet(boolean value) {
+    if (!value) {
+      this.signatureName = null;
+    }
+  }
+
   public long getTimestamp() {
     return this.timestamp;
   }
@@ -439,6 +513,22 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
       }
       break;
 
+    case TYPE_NAME:
+      if (value == null) {
+        unsetTypeName();
+      } else {
+        setTypeName((String)value);
+      }
+      break;
+
+    case SIGNATURE_NAME:
+      if (value == null) {
+        unsetSignatureName();
+      } else {
+        setSignatureName((String)value);
+      }
+      break;
+
     case TIMESTAMP:
       if (value == null) {
         unsetTimestamp();
@@ -470,6 +560,12 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     case FRESTO_UUID:
       return getFrestoUUID();
 
+    case TYPE_NAME:
+      return getTypeName();
+
+    case SIGNATURE_NAME:
+      return getSignatureName();
+
     case TIMESTAMP:
       return Long.valueOf(getTimestamp());
 
@@ -496,6 +592,10 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
       return isSetServletPath();
     case FRESTO_UUID:
       return isSetFrestoUUID();
+    case TYPE_NAME:
+      return isSetTypeName();
+    case SIGNATURE_NAME:
+      return isSetSignatureName();
     case TIMESTAMP:
       return isSetTimestamp();
     }
@@ -566,6 +666,24 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
       if (!(this_present_frestoUUID && that_present_frestoUUID))
         return false;
       if (!this.frestoUUID.equals(that.frestoUUID))
+        return false;
+    }
+
+    boolean this_present_typeName = true && this.isSetTypeName();
+    boolean that_present_typeName = true && that.isSetTypeName();
+    if (this_present_typeName || that_present_typeName) {
+      if (!(this_present_typeName && that_present_typeName))
+        return false;
+      if (!this.typeName.equals(that.typeName))
+        return false;
+    }
+
+    boolean this_present_signatureName = true && this.isSetSignatureName();
+    boolean that_present_signatureName = true && that.isSetSignatureName();
+    if (this_present_signatureName || that_present_signatureName) {
+      if (!(this_present_signatureName && that_present_signatureName))
+        return false;
+      if (!this.signatureName.equals(that.signatureName))
         return false;
     }
 
@@ -654,6 +772,26 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
         return lastComparison;
       }
     }
+    lastComparison = Boolean.valueOf(isSetTypeName()).compareTo(other.isSetTypeName());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetTypeName()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.typeName, other.typeName);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetSignatureName()).compareTo(other.isSetSignatureName());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetSignatureName()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.signatureName, other.signatureName);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
     lastComparison = Boolean.valueOf(isSetTimestamp()).compareTo(other.isSetTimestamp());
     if (lastComparison != 0) {
       return lastComparison;
@@ -728,6 +866,22 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     }
     first = false;
     if (!first) sb.append(", ");
+    sb.append("typeName:");
+    if (this.typeName == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.typeName);
+    }
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("signatureName:");
+    if (this.signatureName == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.signatureName);
+    }
+    first = false;
+    if (!first) sb.append(", ");
     sb.append("timestamp:");
     sb.append(this.timestamp);
     first = false;
@@ -752,6 +906,12 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
     }
     if (frestoUUID == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'frestoUUID' was not present! Struct: " + toString());
+    }
+    if (typeName == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'typeName' was not present! Struct: " + toString());
+    }
+    if (signatureName == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'signatureName' was not present! Struct: " + toString());
     }
     // alas, we cannot check 'timestamp' because it's a primitive and you chose the non-beans generator.
     // check for sub-struct validity
@@ -841,7 +1001,23 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 15: // TIMESTAMP
+          case 15: // TYPE_NAME
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.typeName = iprot.readString();
+              struct.setTypeNameIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 17: // SIGNATURE_NAME
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.signatureName = iprot.readString();
+              struct.setSignatureNameIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 31: // TIMESTAMP
             if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
               struct.timestamp = iprot.readI64();
               struct.setTimestampIsSet(true);
@@ -898,6 +1074,16 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
         oprot.writeString(struct.frestoUUID);
         oprot.writeFieldEnd();
       }
+      if (struct.typeName != null) {
+        oprot.writeFieldBegin(TYPE_NAME_FIELD_DESC);
+        oprot.writeString(struct.typeName);
+        oprot.writeFieldEnd();
+      }
+      if (struct.signatureName != null) {
+        oprot.writeFieldBegin(SIGNATURE_NAME_FIELD_DESC);
+        oprot.writeString(struct.signatureName);
+        oprot.writeFieldEnd();
+      }
       oprot.writeFieldBegin(TIMESTAMP_FIELD_DESC);
       oprot.writeI64(struct.timestamp);
       oprot.writeFieldEnd();
@@ -924,6 +1110,8 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
       oprot.writeString(struct.contextPath);
       oprot.writeString(struct.servletPath);
       oprot.writeString(struct.frestoUUID);
+      oprot.writeString(struct.typeName);
+      oprot.writeString(struct.signatureName);
       oprot.writeI64(struct.timestamp);
     }
 
@@ -942,6 +1130,10 @@ public class HttpRequestEvent implements org.apache.thrift.TBase<HttpRequestEven
       struct.setServletPathIsSet(true);
       struct.frestoUUID = iprot.readString();
       struct.setFrestoUUIDIsSet(true);
+      struct.typeName = iprot.readString();
+      struct.setTypeNameIsSet(true);
+      struct.signatureName = iprot.readString();
+      struct.setSignatureNameIsSet(true);
       struct.timestamp = iprot.readI64();
       struct.setTimestampIsSet(true);
     }
