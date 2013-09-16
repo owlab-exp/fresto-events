@@ -43,6 +43,7 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
   private static final org.apache.thrift.protocol.TField HTTP_STATUS_FIELD_DESC = new org.apache.thrift.protocol.TField("httpStatus", org.apache.thrift.protocol.TType.STRING, (short)8);
   private static final org.apache.thrift.protocol.TField TIMESTAMP_FIELD_DESC = new org.apache.thrift.protocol.TField("timestamp", org.apache.thrift.protocol.TType.I64, (short)9);
   private static final org.apache.thrift.protocol.TField ELAPSED_TIME_FIELD_DESC = new org.apache.thrift.protocol.TField("elapsedTime", org.apache.thrift.protocol.TType.I64, (short)11);
+  private static final org.apache.thrift.protocol.TField RECEIVED_TIME_FIELD_DESC = new org.apache.thrift.protocol.TField("receivedTime", org.apache.thrift.protocol.TType.I64, (short)33);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -58,6 +59,7 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
   public String httpStatus; // optional
   public long timestamp; // required
   public long elapsedTime; // optional
+  public long receivedTime; // optional
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -68,7 +70,8 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
     URL((short)7, "url"),
     HTTP_STATUS((short)8, "httpStatus"),
     TIMESTAMP((short)9, "timestamp"),
-    ELAPSED_TIME((short)11, "elapsedTime");
+    ELAPSED_TIME((short)11, "elapsedTime"),
+    RECEIVED_TIME((short)33, "receivedTime");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -99,6 +102,8 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
           return TIMESTAMP;
         case 11: // ELAPSED_TIME
           return ELAPSED_TIME;
+        case 33: // RECEIVED_TIME
+          return RECEIVED_TIME;
         default:
           return null;
       }
@@ -141,8 +146,9 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
   // isset id assignments
   private static final int __TIMESTAMP_ISSET_ID = 0;
   private static final int __ELAPSEDTIME_ISSET_ID = 1;
+  private static final int __RECEIVEDTIME_ISSET_ID = 2;
   private byte __isset_bitfield = 0;
-  private _Fields optionals[] = {_Fields.CURRENT_PLACE,_Fields.HTTP_STATUS,_Fields.ELAPSED_TIME};
+  private _Fields optionals[] = {_Fields.CURRENT_PLACE,_Fields.HTTP_STATUS,_Fields.ELAPSED_TIME,_Fields.RECEIVED_TIME};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
@@ -161,6 +167,8 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
     tmpMap.put(_Fields.TIMESTAMP, new org.apache.thrift.meta_data.FieldMetaData("timestamp", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
     tmpMap.put(_Fields.ELAPSED_TIME, new org.apache.thrift.meta_data.FieldMetaData("elapsedTime", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
+    tmpMap.put(_Fields.RECEIVED_TIME, new org.apache.thrift.meta_data.FieldMetaData("receivedTime", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(UIEvent.class, metaDataMap);
@@ -210,6 +218,7 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
     }
     this.timestamp = other.timestamp;
     this.elapsedTime = other.elapsedTime;
+    this.receivedTime = other.receivedTime;
   }
 
   public UIEvent deepCopy() {
@@ -228,6 +237,8 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
     this.timestamp = 0;
     setElapsedTimeIsSet(false);
     this.elapsedTime = 0;
+    setReceivedTimeIsSet(false);
+    this.receivedTime = 0;
   }
 
   public String getStage() {
@@ -420,6 +431,29 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
     __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __ELAPSEDTIME_ISSET_ID, value);
   }
 
+  public long getReceivedTime() {
+    return this.receivedTime;
+  }
+
+  public UIEvent setReceivedTime(long receivedTime) {
+    this.receivedTime = receivedTime;
+    setReceivedTimeIsSet(true);
+    return this;
+  }
+
+  public void unsetReceivedTime() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __RECEIVEDTIME_ISSET_ID);
+  }
+
+  /** Returns true if field receivedTime is set (has been assigned a value) and false otherwise */
+  public boolean isSetReceivedTime() {
+    return EncodingUtils.testBit(__isset_bitfield, __RECEIVEDTIME_ISSET_ID);
+  }
+
+  public void setReceivedTimeIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __RECEIVEDTIME_ISSET_ID, value);
+  }
+
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
     case STAGE:
@@ -486,6 +520,14 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
       }
       break;
 
+    case RECEIVED_TIME:
+      if (value == null) {
+        unsetReceivedTime();
+      } else {
+        setReceivedTime((Long)value);
+      }
+      break;
+
     }
   }
 
@@ -515,6 +557,9 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
     case ELAPSED_TIME:
       return Long.valueOf(getElapsedTime());
 
+    case RECEIVED_TIME:
+      return Long.valueOf(getReceivedTime());
+
     }
     throw new IllegalStateException();
   }
@@ -542,6 +587,8 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
       return isSetTimestamp();
     case ELAPSED_TIME:
       return isSetElapsedTime();
+    case RECEIVED_TIME:
+      return isSetReceivedTime();
     }
     throw new IllegalStateException();
   }
@@ -628,6 +675,15 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
       if (!(this_present_elapsedTime && that_present_elapsedTime))
         return false;
       if (this.elapsedTime != that.elapsedTime)
+        return false;
+    }
+
+    boolean this_present_receivedTime = true && this.isSetReceivedTime();
+    boolean that_present_receivedTime = true && that.isSetReceivedTime();
+    if (this_present_receivedTime || that_present_receivedTime) {
+      if (!(this_present_receivedTime && that_present_receivedTime))
+        return false;
+      if (this.receivedTime != that.receivedTime)
         return false;
     }
 
@@ -727,6 +783,16 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
         return lastComparison;
       }
     }
+    lastComparison = Boolean.valueOf(isSetReceivedTime()).compareTo(other.isSetReceivedTime());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetReceivedTime()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.receivedTime, other.receivedTime);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
     return 0;
   }
 
@@ -806,6 +872,12 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
       if (!first) sb.append(", ");
       sb.append("elapsedTime:");
       sb.append(this.elapsedTime);
+      first = false;
+    }
+    if (isSetReceivedTime()) {
+      if (!first) sb.append(", ");
+      sb.append("receivedTime:");
+      sb.append(this.receivedTime);
       first = false;
     }
     sb.append(")");
@@ -930,6 +1002,14 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
+          case 33: // RECEIVED_TIME
+            if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
+              struct.receivedTime = iprot.readI64();
+              struct.setReceivedTimeIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
           default:
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
         }
@@ -990,6 +1070,11 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
         oprot.writeI64(struct.elapsedTime);
         oprot.writeFieldEnd();
       }
+      if (struct.isSetReceivedTime()) {
+        oprot.writeFieldBegin(RECEIVED_TIME_FIELD_DESC);
+        oprot.writeI64(struct.receivedTime);
+        oprot.writeFieldEnd();
+      }
       oprot.writeFieldStop();
       oprot.writeStructEnd();
     }
@@ -1022,7 +1107,10 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
       if (struct.isSetElapsedTime()) {
         optionals.set(2);
       }
-      oprot.writeBitSet(optionals, 3);
+      if (struct.isSetReceivedTime()) {
+        optionals.set(3);
+      }
+      oprot.writeBitSet(optionals, 4);
       if (struct.isSetCurrentPlace()) {
         oprot.writeString(struct.currentPlace);
       }
@@ -1031,6 +1119,9 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
       }
       if (struct.isSetElapsedTime()) {
         oprot.writeI64(struct.elapsedTime);
+      }
+      if (struct.isSetReceivedTime()) {
+        oprot.writeI64(struct.receivedTime);
       }
     }
 
@@ -1047,7 +1138,7 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
       struct.setUrlIsSet(true);
       struct.timestamp = iprot.readI64();
       struct.setTimestampIsSet(true);
-      BitSet incoming = iprot.readBitSet(3);
+      BitSet incoming = iprot.readBitSet(4);
       if (incoming.get(0)) {
         struct.currentPlace = iprot.readString();
         struct.setCurrentPlaceIsSet(true);
@@ -1059,6 +1150,10 @@ public class UIEvent implements org.apache.thrift.TBase<UIEvent, UIEvent._Fields
       if (incoming.get(2)) {
         struct.elapsedTime = iprot.readI64();
         struct.setElapsedTimeIsSet(true);
+      }
+      if (incoming.get(3)) {
+        struct.receivedTime = iprot.readI64();
+        struct.setReceivedTimeIsSet(true);
       }
     }
   }
