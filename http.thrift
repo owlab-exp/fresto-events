@@ -15,6 +15,7 @@ struct HttpRequestEvent {
 }
 
 struct HttpResponseEvent {
+1: required i32 responseCode;
 3: required string frestoUUID;
 5: required string typeName;
 7: required string signatureName;

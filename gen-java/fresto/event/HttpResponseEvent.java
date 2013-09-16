@@ -35,6 +35,7 @@ import org.slf4j.LoggerFactory;
 public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEvent, HttpResponseEvent._Fields>, java.io.Serializable, Cloneable, Comparable<HttpResponseEvent> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("HttpResponseEvent");
 
+  private static final org.apache.thrift.protocol.TField RESPONSE_CODE_FIELD_DESC = new org.apache.thrift.protocol.TField("responseCode", org.apache.thrift.protocol.TType.I32, (short)1);
   private static final org.apache.thrift.protocol.TField FRESTO_UUID_FIELD_DESC = new org.apache.thrift.protocol.TField("frestoUUID", org.apache.thrift.protocol.TType.STRING, (short)3);
   private static final org.apache.thrift.protocol.TField TYPE_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("typeName", org.apache.thrift.protocol.TType.STRING, (short)5);
   private static final org.apache.thrift.protocol.TField SIGNATURE_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("signatureName", org.apache.thrift.protocol.TType.STRING, (short)7);
@@ -48,6 +49,7 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
     schemes.put(TupleScheme.class, new HttpResponseEventTupleSchemeFactory());
   }
 
+  public int responseCode; // required
   public String frestoUUID; // required
   public String typeName; // required
   public String signatureName; // required
@@ -57,6 +59,7 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
+    RESPONSE_CODE((short)1, "responseCode"),
     FRESTO_UUID((short)3, "frestoUUID"),
     TYPE_NAME((short)5, "typeName"),
     SIGNATURE_NAME((short)7, "signatureName"),
@@ -77,6 +80,8 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
+        case 1: // RESPONSE_CODE
+          return RESPONSE_CODE;
         case 3: // FRESTO_UUID
           return FRESTO_UUID;
         case 5: // TYPE_NAME
@@ -129,14 +134,17 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
   }
 
   // isset id assignments
-  private static final int __DEPTH_ISSET_ID = 0;
-  private static final int __TIMESTAMP_ISSET_ID = 1;
-  private static final int __RECEIVEDTIME_ISSET_ID = 2;
+  private static final int __RESPONSECODE_ISSET_ID = 0;
+  private static final int __DEPTH_ISSET_ID = 1;
+  private static final int __TIMESTAMP_ISSET_ID = 2;
+  private static final int __RECEIVEDTIME_ISSET_ID = 3;
   private byte __isset_bitfield = 0;
   private _Fields optionals[] = {_Fields.RECEIVED_TIME};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+    tmpMap.put(_Fields.RESPONSE_CODE, new org.apache.thrift.meta_data.FieldMetaData("responseCode", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
     tmpMap.put(_Fields.FRESTO_UUID, new org.apache.thrift.meta_data.FieldMetaData("frestoUUID", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.TYPE_NAME, new org.apache.thrift.meta_data.FieldMetaData("typeName", org.apache.thrift.TFieldRequirementType.REQUIRED, 
@@ -157,6 +165,7 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
   }
 
   public HttpResponseEvent(
+    int responseCode,
     String frestoUUID,
     String typeName,
     String signatureName,
@@ -164,6 +173,8 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
     long timestamp)
   {
     this();
+    this.responseCode = responseCode;
+    setResponseCodeIsSet(true);
     this.frestoUUID = frestoUUID;
     this.typeName = typeName;
     this.signatureName = signatureName;
@@ -178,6 +189,7 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
    */
   public HttpResponseEvent(HttpResponseEvent other) {
     __isset_bitfield = other.__isset_bitfield;
+    this.responseCode = other.responseCode;
     if (other.isSetFrestoUUID()) {
       this.frestoUUID = other.frestoUUID;
     }
@@ -198,6 +210,8 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
 
   @Override
   public void clear() {
+    setResponseCodeIsSet(false);
+    this.responseCode = 0;
     this.frestoUUID = null;
     this.typeName = null;
     this.signatureName = null;
@@ -207,6 +221,29 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
     this.timestamp = 0;
     setReceivedTimeIsSet(false);
     this.receivedTime = 0;
+  }
+
+  public int getResponseCode() {
+    return this.responseCode;
+  }
+
+  public HttpResponseEvent setResponseCode(int responseCode) {
+    this.responseCode = responseCode;
+    setResponseCodeIsSet(true);
+    return this;
+  }
+
+  public void unsetResponseCode() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __RESPONSECODE_ISSET_ID);
+  }
+
+  /** Returns true if field responseCode is set (has been assigned a value) and false otherwise */
+  public boolean isSetResponseCode() {
+    return EncodingUtils.testBit(__isset_bitfield, __RESPONSECODE_ISSET_ID);
+  }
+
+  public void setResponseCodeIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __RESPONSECODE_ISSET_ID, value);
   }
 
   public String getFrestoUUID() {
@@ -352,6 +389,14 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
+    case RESPONSE_CODE:
+      if (value == null) {
+        unsetResponseCode();
+      } else {
+        setResponseCode((Integer)value);
+      }
+      break;
+
     case FRESTO_UUID:
       if (value == null) {
         unsetFrestoUUID();
@@ -405,6 +450,9 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
+    case RESPONSE_CODE:
+      return Integer.valueOf(getResponseCode());
+
     case FRESTO_UUID:
       return getFrestoUUID();
 
@@ -434,6 +482,8 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
     }
 
     switch (field) {
+    case RESPONSE_CODE:
+      return isSetResponseCode();
     case FRESTO_UUID:
       return isSetFrestoUUID();
     case TYPE_NAME:
@@ -462,6 +512,15 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
   public boolean equals(HttpResponseEvent that) {
     if (that == null)
       return false;
+
+    boolean this_present_responseCode = true;
+    boolean that_present_responseCode = true;
+    if (this_present_responseCode || that_present_responseCode) {
+      if (!(this_present_responseCode && that_present_responseCode))
+        return false;
+      if (this.responseCode != that.responseCode)
+        return false;
+    }
 
     boolean this_present_frestoUUID = true && this.isSetFrestoUUID();
     boolean that_present_frestoUUID = true && that.isSetFrestoUUID();
@@ -533,6 +592,16 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
 
     int lastComparison = 0;
 
+    lastComparison = Boolean.valueOf(isSetResponseCode()).compareTo(other.isSetResponseCode());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetResponseCode()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.responseCode, other.responseCode);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
     lastComparison = Boolean.valueOf(isSetFrestoUUID()).compareTo(other.isSetFrestoUUID());
     if (lastComparison != 0) {
       return lastComparison;
@@ -613,6 +682,10 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
     StringBuilder sb = new StringBuilder("HttpResponseEvent(");
     boolean first = true;
 
+    sb.append("responseCode:");
+    sb.append(this.responseCode);
+    first = false;
+    if (!first) sb.append(", ");
     sb.append("frestoUUID:");
     if (this.frestoUUID == null) {
       sb.append("null");
@@ -656,6 +729,7 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
+    // alas, we cannot check 'responseCode' because it's a primitive and you chose the non-beans generator.
     if (frestoUUID == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'frestoUUID' was not present! Struct: " + toString());
     }
@@ -706,6 +780,14 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
           break;
         }
         switch (schemeField.id) {
+          case 1: // RESPONSE_CODE
+            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+              struct.responseCode = iprot.readI32();
+              struct.setResponseCodeIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
           case 3: // FRESTO_UUID
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.frestoUUID = iprot.readString();
@@ -762,6 +844,9 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
       iprot.readStructEnd();
 
       // check for required fields of primitive type, which can't be checked in the validate method
+      if (!struct.isSetResponseCode()) {
+        throw new org.apache.thrift.protocol.TProtocolException("Required field 'responseCode' was not found in serialized data! Struct: " + toString());
+      }
       if (!struct.isSetDepth()) {
         throw new org.apache.thrift.protocol.TProtocolException("Required field 'depth' was not found in serialized data! Struct: " + toString());
       }
@@ -775,6 +860,9 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
+      oprot.writeFieldBegin(RESPONSE_CODE_FIELD_DESC);
+      oprot.writeI32(struct.responseCode);
+      oprot.writeFieldEnd();
       if (struct.frestoUUID != null) {
         oprot.writeFieldBegin(FRESTO_UUID_FIELD_DESC);
         oprot.writeString(struct.frestoUUID);
@@ -818,6 +906,7 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
     @Override
     public void write(org.apache.thrift.protocol.TProtocol prot, HttpResponseEvent struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
+      oprot.writeI32(struct.responseCode);
       oprot.writeString(struct.frestoUUID);
       oprot.writeString(struct.typeName);
       oprot.writeString(struct.signatureName);
@@ -836,6 +925,8 @@ public class HttpResponseEvent implements org.apache.thrift.TBase<HttpResponseEv
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, HttpResponseEvent struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
+      struct.responseCode = iprot.readI32();
+      struct.setResponseCodeIsSet(true);
       struct.frestoUUID = iprot.readString();
       struct.setFrestoUUIDIsSet(true);
       struct.typeName = iprot.readString();
