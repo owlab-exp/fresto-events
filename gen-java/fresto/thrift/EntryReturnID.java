@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package fresto.event.client;
+package fresto.thrift;
 
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
@@ -32,8 +32,8 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ResponseID extends org.apache.thrift.TUnion<ResponseID, ResponseID._Fields> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("ResponseID");
+public class EntryReturnID extends org.apache.thrift.TUnion<EntryReturnID, EntryReturnID._Fields> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("EntryReturnID");
   private static final org.apache.thrift.protocol.TField UUID_FIELD_DESC = new org.apache.thrift.protocol.TField("uuid", org.apache.thrift.protocol.TType.STRING, (short)1);
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
@@ -100,26 +100,26 @@ public class ResponseID extends org.apache.thrift.TUnion<ResponseID, ResponseID.
     tmpMap.put(_Fields.UUID, new org.apache.thrift.meta_data.FieldMetaData("uuid", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(ResponseID.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(EntryReturnID.class, metaDataMap);
   }
 
-  public ResponseID() {
+  public EntryReturnID() {
     super();
   }
 
-  public ResponseID(_Fields setField, Object value) {
+  public EntryReturnID(_Fields setField, Object value) {
     super(setField, value);
   }
 
-  public ResponseID(ResponseID other) {
+  public EntryReturnID(EntryReturnID other) {
     super(other);
   }
-  public ResponseID deepCopy() {
-    return new ResponseID(this);
+  public EntryReturnID deepCopy() {
+    return new EntryReturnID(this);
   }
 
-  public static ResponseID uuid(String value) {
-    ResponseID x = new ResponseID();
+  public static EntryReturnID uuid(String value) {
+    EntryReturnID x = new EntryReturnID();
     x.setUuid(value);
     return x;
   }
@@ -247,19 +247,19 @@ public class ResponseID extends org.apache.thrift.TUnion<ResponseID, ResponseID.
 
 
   public boolean equals(Object other) {
-    if (other instanceof ResponseID) {
-      return equals((ResponseID)other);
+    if (other instanceof EntryReturnID) {
+      return equals((EntryReturnID)other);
     } else {
       return false;
     }
   }
 
-  public boolean equals(ResponseID other) {
+  public boolean equals(EntryReturnID other) {
     return other != null && getSetField() == other.getSetField() && getFieldValue().equals(other.getFieldValue());
   }
 
   @Override
-  public int compareTo(ResponseID other) {
+  public int compareTo(EntryReturnID other) {
     int lastComparison = org.apache.thrift.TBaseHelper.compareTo(getSetField(), other.getSetField());
     if (lastComparison == 0) {
       return org.apache.thrift.TBaseHelper.compareTo(getFieldValue(), other.getFieldValue());

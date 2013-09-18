@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package fresto.event.client;
+package fresto.thrift;
 
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
@@ -32,24 +32,24 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ResponseProperty implements org.apache.thrift.TBase<ResponseProperty, ResponseProperty._Fields>, java.io.Serializable, Cloneable, Comparable<ResponseProperty> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("ResponseProperty");
+public class EntryReturnProperty implements org.apache.thrift.TBase<EntryReturnProperty, EntryReturnProperty._Fields>, java.io.Serializable, Cloneable, Comparable<EntryReturnProperty> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("EntryReturnProperty");
 
-  private static final org.apache.thrift.protocol.TField RESPONSE_FIELD_DESC = new org.apache.thrift.protocol.TField("response", org.apache.thrift.protocol.TType.STRUCT, (short)1);
+  private static final org.apache.thrift.protocol.TField ENTRY_RETURN_FIELD_DESC = new org.apache.thrift.protocol.TField("entry_return", org.apache.thrift.protocol.TType.STRUCT, (short)1);
   private static final org.apache.thrift.protocol.TField PROPERTY_FIELD_DESC = new org.apache.thrift.protocol.TField("property", org.apache.thrift.protocol.TType.STRUCT, (short)2);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
-    schemes.put(StandardScheme.class, new ResponsePropertyStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new ResponsePropertyTupleSchemeFactory());
+    schemes.put(StandardScheme.class, new EntryReturnPropertyStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new EntryReturnPropertyTupleSchemeFactory());
   }
 
-  public ResponseID response; // required
-  public ResponsePropertyValue property; // required
+  public EntryReturnID entry_return; // required
+  public EntryReturnPropertyValue property; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    RESPONSE((short)1, "response"),
+    ENTRY_RETURN((short)1, "entry_return"),
     PROPERTY((short)2, "property");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
@@ -65,8 +65,8 @@ public class ResponseProperty implements org.apache.thrift.TBase<ResponsePropert
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // RESPONSE
-          return RESPONSE;
+        case 1: // ENTRY_RETURN
+          return ENTRY_RETURN;
         case 2: // PROPERTY
           return PROPERTY;
         default:
@@ -112,77 +112,77 @@ public class ResponseProperty implements org.apache.thrift.TBase<ResponsePropert
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.RESPONSE, new org.apache.thrift.meta_data.FieldMetaData("response", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ResponseID.class)));
-    tmpMap.put(_Fields.PROPERTY, new org.apache.thrift.meta_data.FieldMetaData("property", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ResponsePropertyValue.class)));
+    tmpMap.put(_Fields.ENTRY_RETURN, new org.apache.thrift.meta_data.FieldMetaData("entry_return", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, EntryReturnID.class)));
+    tmpMap.put(_Fields.PROPERTY, new org.apache.thrift.meta_data.FieldMetaData("property", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, EntryReturnPropertyValue.class)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(ResponseProperty.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(EntryReturnProperty.class, metaDataMap);
   }
 
-  public ResponseProperty() {
+  public EntryReturnProperty() {
   }
 
-  public ResponseProperty(
-    ResponseID response,
-    ResponsePropertyValue property)
+  public EntryReturnProperty(
+    EntryReturnID entry_return,
+    EntryReturnPropertyValue property)
   {
     this();
-    this.response = response;
+    this.entry_return = entry_return;
     this.property = property;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public ResponseProperty(ResponseProperty other) {
-    if (other.isSetResponse()) {
-      this.response = new ResponseID(other.response);
+  public EntryReturnProperty(EntryReturnProperty other) {
+    if (other.isSetEntry_return()) {
+      this.entry_return = new EntryReturnID(other.entry_return);
     }
     if (other.isSetProperty()) {
-      this.property = new ResponsePropertyValue(other.property);
+      this.property = new EntryReturnPropertyValue(other.property);
     }
   }
 
-  public ResponseProperty deepCopy() {
-    return new ResponseProperty(this);
+  public EntryReturnProperty deepCopy() {
+    return new EntryReturnProperty(this);
   }
 
   @Override
   public void clear() {
-    this.response = null;
+    this.entry_return = null;
     this.property = null;
   }
 
-  public ResponseID getResponse() {
-    return this.response;
+  public EntryReturnID getEntry_return() {
+    return this.entry_return;
   }
 
-  public ResponseProperty setResponse(ResponseID response) {
-    this.response = response;
+  public EntryReturnProperty setEntry_return(EntryReturnID entry_return) {
+    this.entry_return = entry_return;
     return this;
   }
 
-  public void unsetResponse() {
-    this.response = null;
+  public void unsetEntry_return() {
+    this.entry_return = null;
   }
 
-  /** Returns true if field response is set (has been assigned a value) and false otherwise */
-  public boolean isSetResponse() {
-    return this.response != null;
+  /** Returns true if field entry_return is set (has been assigned a value) and false otherwise */
+  public boolean isSetEntry_return() {
+    return this.entry_return != null;
   }
 
-  public void setResponseIsSet(boolean value) {
+  public void setEntry_returnIsSet(boolean value) {
     if (!value) {
-      this.response = null;
+      this.entry_return = null;
     }
   }
 
-  public ResponsePropertyValue getProperty() {
+  public EntryReturnPropertyValue getProperty() {
     return this.property;
   }
 
-  public ResponseProperty setProperty(ResponsePropertyValue property) {
+  public EntryReturnProperty setProperty(EntryReturnPropertyValue property) {
     this.property = property;
     return this;
   }
@@ -204,11 +204,11 @@ public class ResponseProperty implements org.apache.thrift.TBase<ResponsePropert
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case RESPONSE:
+    case ENTRY_RETURN:
       if (value == null) {
-        unsetResponse();
+        unsetEntry_return();
       } else {
-        setResponse((ResponseID)value);
+        setEntry_return((EntryReturnID)value);
       }
       break;
 
@@ -216,7 +216,7 @@ public class ResponseProperty implements org.apache.thrift.TBase<ResponsePropert
       if (value == null) {
         unsetProperty();
       } else {
-        setProperty((ResponsePropertyValue)value);
+        setProperty((EntryReturnPropertyValue)value);
       }
       break;
 
@@ -225,8 +225,8 @@ public class ResponseProperty implements org.apache.thrift.TBase<ResponsePropert
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case RESPONSE:
-      return getResponse();
+    case ENTRY_RETURN:
+      return getEntry_return();
 
     case PROPERTY:
       return getProperty();
@@ -242,8 +242,8 @@ public class ResponseProperty implements org.apache.thrift.TBase<ResponsePropert
     }
 
     switch (field) {
-    case RESPONSE:
-      return isSetResponse();
+    case ENTRY_RETURN:
+      return isSetEntry_return();
     case PROPERTY:
       return isSetProperty();
     }
@@ -254,21 +254,21 @@ public class ResponseProperty implements org.apache.thrift.TBase<ResponsePropert
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof ResponseProperty)
-      return this.equals((ResponseProperty)that);
+    if (that instanceof EntryReturnProperty)
+      return this.equals((EntryReturnProperty)that);
     return false;
   }
 
-  public boolean equals(ResponseProperty that) {
+  public boolean equals(EntryReturnProperty that) {
     if (that == null)
       return false;
 
-    boolean this_present_response = true && this.isSetResponse();
-    boolean that_present_response = true && that.isSetResponse();
-    if (this_present_response || that_present_response) {
-      if (!(this_present_response && that_present_response))
+    boolean this_present_entry_return = true && this.isSetEntry_return();
+    boolean that_present_entry_return = true && that.isSetEntry_return();
+    if (this_present_entry_return || that_present_entry_return) {
+      if (!(this_present_entry_return && that_present_entry_return))
         return false;
-      if (!this.response.equals(that.response))
+      if (!this.entry_return.equals(that.entry_return))
         return false;
     }
 
@@ -290,19 +290,19 @@ public class ResponseProperty implements org.apache.thrift.TBase<ResponsePropert
   }
 
   @Override
-  public int compareTo(ResponseProperty other) {
+  public int compareTo(EntryReturnProperty other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetResponse()).compareTo(other.isSetResponse());
+    lastComparison = Boolean.valueOf(isSetEntry_return()).compareTo(other.isSetEntry_return());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetResponse()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.response, other.response);
+    if (isSetEntry_return()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.entry_return, other.entry_return);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -334,14 +334,14 @@ public class ResponseProperty implements org.apache.thrift.TBase<ResponsePropert
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("ResponseProperty(");
+    StringBuilder sb = new StringBuilder("EntryReturnProperty(");
     boolean first = true;
 
-    sb.append("response:");
-    if (this.response == null) {
+    sb.append("entry_return:");
+    if (this.entry_return == null) {
       sb.append("null");
     } else {
-      sb.append(this.response);
+      sb.append(this.entry_return);
     }
     first = false;
     if (!first) sb.append(", ");
@@ -358,12 +358,6 @@ public class ResponseProperty implements org.apache.thrift.TBase<ResponsePropert
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
-    if (response == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'response' was not present! Struct: " + toString());
-    }
-    if (property == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'property' was not present! Struct: " + toString());
-    }
     // check for sub-struct validity
     if (property != null) {
       property.validate();
@@ -386,15 +380,15 @@ public class ResponseProperty implements org.apache.thrift.TBase<ResponsePropert
     }
   }
 
-  private static class ResponsePropertyStandardSchemeFactory implements SchemeFactory {
-    public ResponsePropertyStandardScheme getScheme() {
-      return new ResponsePropertyStandardScheme();
+  private static class EntryReturnPropertyStandardSchemeFactory implements SchemeFactory {
+    public EntryReturnPropertyStandardScheme getScheme() {
+      return new EntryReturnPropertyStandardScheme();
     }
   }
 
-  private static class ResponsePropertyStandardScheme extends StandardScheme<ResponseProperty> {
+  private static class EntryReturnPropertyStandardScheme extends StandardScheme<EntryReturnProperty> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, ResponseProperty struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, EntryReturnProperty struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -404,18 +398,18 @@ public class ResponseProperty implements org.apache.thrift.TBase<ResponsePropert
           break;
         }
         switch (schemeField.id) {
-          case 1: // RESPONSE
+          case 1: // ENTRY_RETURN
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.response = new ResponseID();
-              struct.response.read(iprot);
-              struct.setResponseIsSet(true);
+              struct.entry_return = new EntryReturnID();
+              struct.entry_return.read(iprot);
+              struct.setEntry_returnIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
           case 2: // PROPERTY
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.property = new ResponsePropertyValue();
+              struct.property = new EntryReturnPropertyValue();
               struct.property.read(iprot);
               struct.setPropertyIsSet(true);
             } else { 
@@ -433,13 +427,13 @@ public class ResponseProperty implements org.apache.thrift.TBase<ResponsePropert
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, ResponseProperty struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, EntryReturnProperty struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.response != null) {
-        oprot.writeFieldBegin(RESPONSE_FIELD_DESC);
-        struct.response.write(oprot);
+      if (struct.entry_return != null) {
+        oprot.writeFieldBegin(ENTRY_RETURN_FIELD_DESC);
+        struct.entry_return.write(oprot);
         oprot.writeFieldEnd();
       }
       if (struct.property != null) {
@@ -453,30 +447,47 @@ public class ResponseProperty implements org.apache.thrift.TBase<ResponsePropert
 
   }
 
-  private static class ResponsePropertyTupleSchemeFactory implements SchemeFactory {
-    public ResponsePropertyTupleScheme getScheme() {
-      return new ResponsePropertyTupleScheme();
+  private static class EntryReturnPropertyTupleSchemeFactory implements SchemeFactory {
+    public EntryReturnPropertyTupleScheme getScheme() {
+      return new EntryReturnPropertyTupleScheme();
     }
   }
 
-  private static class ResponsePropertyTupleScheme extends TupleScheme<ResponseProperty> {
+  private static class EntryReturnPropertyTupleScheme extends TupleScheme<EntryReturnProperty> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, ResponseProperty struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, EntryReturnProperty struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
-      struct.response.write(oprot);
-      struct.property.write(oprot);
+      BitSet optionals = new BitSet();
+      if (struct.isSetEntry_return()) {
+        optionals.set(0);
+      }
+      if (struct.isSetProperty()) {
+        optionals.set(1);
+      }
+      oprot.writeBitSet(optionals, 2);
+      if (struct.isSetEntry_return()) {
+        struct.entry_return.write(oprot);
+      }
+      if (struct.isSetProperty()) {
+        struct.property.write(oprot);
+      }
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, ResponseProperty struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, EntryReturnProperty struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      struct.response = new ResponseID();
-      struct.response.read(iprot);
-      struct.setResponseIsSet(true);
-      struct.property = new ResponsePropertyValue();
-      struct.property.read(iprot);
-      struct.setPropertyIsSet(true);
+      BitSet incoming = iprot.readBitSet(2);
+      if (incoming.get(0)) {
+        struct.entry_return = new EntryReturnID();
+        struct.entry_return.read(iprot);
+        struct.setEntry_returnIsSet(true);
+      }
+      if (incoming.get(1)) {
+        struct.property = new EntryReturnPropertyValue();
+        struct.property.read(iprot);
+        struct.setPropertyIsSet(true);
+      }
     }
   }
 

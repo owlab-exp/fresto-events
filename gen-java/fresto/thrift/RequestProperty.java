@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package fresto.event.client;
+package fresto.thrift;
 
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
@@ -32,28 +32,25 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestEdge, CreateRequestEdge._Fields>, java.io.Serializable, Cloneable, Comparable<CreateRequestEdge> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("CreateRequestEdge");
+public class RequestProperty implements org.apache.thrift.TBase<RequestProperty, RequestProperty._Fields>, java.io.Serializable, Cloneable, Comparable<RequestProperty> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("RequestProperty");
 
-  private static final org.apache.thrift.protocol.TField CLIENT_FIELD_DESC = new org.apache.thrift.protocol.TField("client", org.apache.thrift.protocol.TType.STRUCT, (short)1);
-  private static final org.apache.thrift.protocol.TField REQUEST_FIELD_DESC = new org.apache.thrift.protocol.TField("request", org.apache.thrift.protocol.TType.STRUCT, (short)2);
-  private static final org.apache.thrift.protocol.TField PAGE_FIELD_DESC = new org.apache.thrift.protocol.TField("page", org.apache.thrift.protocol.TType.STRUCT, (short)3);
+  private static final org.apache.thrift.protocol.TField REQUEST_FIELD_DESC = new org.apache.thrift.protocol.TField("request", org.apache.thrift.protocol.TType.STRUCT, (short)1);
+  private static final org.apache.thrift.protocol.TField PROPERTY_FIELD_DESC = new org.apache.thrift.protocol.TField("property", org.apache.thrift.protocol.TType.STRUCT, (short)2);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
-    schemes.put(StandardScheme.class, new CreateRequestEdgeStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new CreateRequestEdgeTupleSchemeFactory());
+    schemes.put(StandardScheme.class, new RequestPropertyStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new RequestPropertyTupleSchemeFactory());
   }
 
-  public ClientID client; // required
   public RequestID request; // required
-  public PageID page; // optional
+  public RequestPropertyValue property; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    CLIENT((short)1, "client"),
-    REQUEST((short)2, "request"),
-    PAGE((short)3, "page");
+    REQUEST((short)1, "request"),
+    PROPERTY((short)2, "property");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -68,12 +65,10 @@ public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestE
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // CLIENT
-          return CLIENT;
-        case 2: // REQUEST
+        case 1: // REQUEST
           return REQUEST;
-        case 3: // PAGE
-          return PAGE;
+        case 2: // PROPERTY
+          return PROPERTY;
         default:
           return null;
       }
@@ -114,87 +109,56 @@ public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestE
   }
 
   // isset id assignments
-  private _Fields optionals[] = {_Fields.PAGE};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.CLIENT, new org.apache.thrift.meta_data.FieldMetaData("client", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ClientID.class)));
     tmpMap.put(_Fields.REQUEST, new org.apache.thrift.meta_data.FieldMetaData("request", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, RequestID.class)));
-    tmpMap.put(_Fields.PAGE, new org.apache.thrift.meta_data.FieldMetaData("page", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, PageID.class)));
+    tmpMap.put(_Fields.PROPERTY, new org.apache.thrift.meta_data.FieldMetaData("property", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, RequestPropertyValue.class)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(CreateRequestEdge.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(RequestProperty.class, metaDataMap);
   }
 
-  public CreateRequestEdge() {
+  public RequestProperty() {
   }
 
-  public CreateRequestEdge(
-    ClientID client,
-    RequestID request)
+  public RequestProperty(
+    RequestID request,
+    RequestPropertyValue property)
   {
     this();
-    this.client = client;
     this.request = request;
+    this.property = property;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public CreateRequestEdge(CreateRequestEdge other) {
-    if (other.isSetClient()) {
-      this.client = new ClientID(other.client);
-    }
+  public RequestProperty(RequestProperty other) {
     if (other.isSetRequest()) {
       this.request = new RequestID(other.request);
     }
-    if (other.isSetPage()) {
-      this.page = new PageID(other.page);
+    if (other.isSetProperty()) {
+      this.property = new RequestPropertyValue(other.property);
     }
   }
 
-  public CreateRequestEdge deepCopy() {
-    return new CreateRequestEdge(this);
+  public RequestProperty deepCopy() {
+    return new RequestProperty(this);
   }
 
   @Override
   public void clear() {
-    this.client = null;
     this.request = null;
-    this.page = null;
-  }
-
-  public ClientID getClient() {
-    return this.client;
-  }
-
-  public CreateRequestEdge setClient(ClientID client) {
-    this.client = client;
-    return this;
-  }
-
-  public void unsetClient() {
-    this.client = null;
-  }
-
-  /** Returns true if field client is set (has been assigned a value) and false otherwise */
-  public boolean isSetClient() {
-    return this.client != null;
-  }
-
-  public void setClientIsSet(boolean value) {
-    if (!value) {
-      this.client = null;
-    }
+    this.property = null;
   }
 
   public RequestID getRequest() {
     return this.request;
   }
 
-  public CreateRequestEdge setRequest(RequestID request) {
+  public RequestProperty setRequest(RequestID request) {
     this.request = request;
     return this;
   }
@@ -214,40 +178,32 @@ public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestE
     }
   }
 
-  public PageID getPage() {
-    return this.page;
+  public RequestPropertyValue getProperty() {
+    return this.property;
   }
 
-  public CreateRequestEdge setPage(PageID page) {
-    this.page = page;
+  public RequestProperty setProperty(RequestPropertyValue property) {
+    this.property = property;
     return this;
   }
 
-  public void unsetPage() {
-    this.page = null;
+  public void unsetProperty() {
+    this.property = null;
   }
 
-  /** Returns true if field page is set (has been assigned a value) and false otherwise */
-  public boolean isSetPage() {
-    return this.page != null;
+  /** Returns true if field property is set (has been assigned a value) and false otherwise */
+  public boolean isSetProperty() {
+    return this.property != null;
   }
 
-  public void setPageIsSet(boolean value) {
+  public void setPropertyIsSet(boolean value) {
     if (!value) {
-      this.page = null;
+      this.property = null;
     }
   }
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case CLIENT:
-      if (value == null) {
-        unsetClient();
-      } else {
-        setClient((ClientID)value);
-      }
-      break;
-
     case REQUEST:
       if (value == null) {
         unsetRequest();
@@ -256,11 +212,11 @@ public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestE
       }
       break;
 
-    case PAGE:
+    case PROPERTY:
       if (value == null) {
-        unsetPage();
+        unsetProperty();
       } else {
-        setPage((PageID)value);
+        setProperty((RequestPropertyValue)value);
       }
       break;
 
@@ -269,14 +225,11 @@ public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestE
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case CLIENT:
-      return getClient();
-
     case REQUEST:
       return getRequest();
 
-    case PAGE:
-      return getPage();
+    case PROPERTY:
+      return getProperty();
 
     }
     throw new IllegalStateException();
@@ -289,12 +242,10 @@ public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestE
     }
 
     switch (field) {
-    case CLIENT:
-      return isSetClient();
     case REQUEST:
       return isSetRequest();
-    case PAGE:
-      return isSetPage();
+    case PROPERTY:
+      return isSetProperty();
     }
     throw new IllegalStateException();
   }
@@ -303,23 +254,14 @@ public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestE
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof CreateRequestEdge)
-      return this.equals((CreateRequestEdge)that);
+    if (that instanceof RequestProperty)
+      return this.equals((RequestProperty)that);
     return false;
   }
 
-  public boolean equals(CreateRequestEdge that) {
+  public boolean equals(RequestProperty that) {
     if (that == null)
       return false;
-
-    boolean this_present_client = true && this.isSetClient();
-    boolean that_present_client = true && that.isSetClient();
-    if (this_present_client || that_present_client) {
-      if (!(this_present_client && that_present_client))
-        return false;
-      if (!this.client.equals(that.client))
-        return false;
-    }
 
     boolean this_present_request = true && this.isSetRequest();
     boolean that_present_request = true && that.isSetRequest();
@@ -330,12 +272,12 @@ public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestE
         return false;
     }
 
-    boolean this_present_page = true && this.isSetPage();
-    boolean that_present_page = true && that.isSetPage();
-    if (this_present_page || that_present_page) {
-      if (!(this_present_page && that_present_page))
+    boolean this_present_property = true && this.isSetProperty();
+    boolean that_present_property = true && that.isSetProperty();
+    if (this_present_property || that_present_property) {
+      if (!(this_present_property && that_present_property))
         return false;
-      if (!this.page.equals(that.page))
+      if (!this.property.equals(that.property))
         return false;
     }
 
@@ -348,23 +290,13 @@ public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestE
   }
 
   @Override
-  public int compareTo(CreateRequestEdge other) {
+  public int compareTo(RequestProperty other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetClient()).compareTo(other.isSetClient());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetClient()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.client, other.client);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
     lastComparison = Boolean.valueOf(isSetRequest()).compareTo(other.isSetRequest());
     if (lastComparison != 0) {
       return lastComparison;
@@ -375,12 +307,12 @@ public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestE
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetPage()).compareTo(other.isSetPage());
+    lastComparison = Boolean.valueOf(isSetProperty()).compareTo(other.isSetProperty());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetPage()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.page, other.page);
+    if (isSetProperty()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.property, other.property);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -402,17 +334,9 @@ public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestE
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("CreateRequestEdge(");
+    StringBuilder sb = new StringBuilder("RequestProperty(");
     boolean first = true;
 
-    sb.append("client:");
-    if (this.client == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.client);
-    }
-    first = false;
-    if (!first) sb.append(", ");
     sb.append("request:");
     if (this.request == null) {
       sb.append("null");
@@ -420,29 +344,30 @@ public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestE
       sb.append(this.request);
     }
     first = false;
-    if (isSetPage()) {
-      if (!first) sb.append(", ");
-      sb.append("page:");
-      if (this.page == null) {
-        sb.append("null");
-      } else {
-        sb.append(this.page);
-      }
-      first = false;
+    if (!first) sb.append(", ");
+    sb.append("property:");
+    if (this.property == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.property);
     }
+    first = false;
     sb.append(")");
     return sb.toString();
   }
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
-    if (client == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'client' was not present! Struct: " + toString());
-    }
     if (request == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'request' was not present! Struct: " + toString());
     }
+    if (property == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'property' was not present! Struct: " + toString());
+    }
     // check for sub-struct validity
+    if (property != null) {
+      property.validate();
+    }
   }
 
   private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
@@ -461,15 +386,15 @@ public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestE
     }
   }
 
-  private static class CreateRequestEdgeStandardSchemeFactory implements SchemeFactory {
-    public CreateRequestEdgeStandardScheme getScheme() {
-      return new CreateRequestEdgeStandardScheme();
+  private static class RequestPropertyStandardSchemeFactory implements SchemeFactory {
+    public RequestPropertyStandardScheme getScheme() {
+      return new RequestPropertyStandardScheme();
     }
   }
 
-  private static class CreateRequestEdgeStandardScheme extends StandardScheme<CreateRequestEdge> {
+  private static class RequestPropertyStandardScheme extends StandardScheme<RequestProperty> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, CreateRequestEdge struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, RequestProperty struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -479,16 +404,7 @@ public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestE
           break;
         }
         switch (schemeField.id) {
-          case 1: // CLIENT
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.client = new ClientID();
-              struct.client.read(iprot);
-              struct.setClientIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 2: // REQUEST
+          case 1: // REQUEST
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
               struct.request = new RequestID();
               struct.request.read(iprot);
@@ -497,11 +413,11 @@ public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestE
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 3: // PAGE
+          case 2: // PROPERTY
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.page = new PageID();
-              struct.page.read(iprot);
-              struct.setPageIsSet(true);
+              struct.property = new RequestPropertyValue();
+              struct.property.read(iprot);
+              struct.setPropertyIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -517,26 +433,19 @@ public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestE
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, CreateRequestEdge struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, RequestProperty struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.client != null) {
-        oprot.writeFieldBegin(CLIENT_FIELD_DESC);
-        struct.client.write(oprot);
-        oprot.writeFieldEnd();
-      }
       if (struct.request != null) {
         oprot.writeFieldBegin(REQUEST_FIELD_DESC);
         struct.request.write(oprot);
         oprot.writeFieldEnd();
       }
-      if (struct.page != null) {
-        if (struct.isSetPage()) {
-          oprot.writeFieldBegin(PAGE_FIELD_DESC);
-          struct.page.write(oprot);
-          oprot.writeFieldEnd();
-        }
+      if (struct.property != null) {
+        oprot.writeFieldBegin(PROPERTY_FIELD_DESC);
+        struct.property.write(oprot);
+        oprot.writeFieldEnd();
       }
       oprot.writeFieldStop();
       oprot.writeStructEnd();
@@ -544,44 +453,30 @@ public class CreateRequestEdge implements org.apache.thrift.TBase<CreateRequestE
 
   }
 
-  private static class CreateRequestEdgeTupleSchemeFactory implements SchemeFactory {
-    public CreateRequestEdgeTupleScheme getScheme() {
-      return new CreateRequestEdgeTupleScheme();
+  private static class RequestPropertyTupleSchemeFactory implements SchemeFactory {
+    public RequestPropertyTupleScheme getScheme() {
+      return new RequestPropertyTupleScheme();
     }
   }
 
-  private static class CreateRequestEdgeTupleScheme extends TupleScheme<CreateRequestEdge> {
+  private static class RequestPropertyTupleScheme extends TupleScheme<RequestProperty> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, CreateRequestEdge struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, RequestProperty struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
-      struct.client.write(oprot);
       struct.request.write(oprot);
-      BitSet optionals = new BitSet();
-      if (struct.isSetPage()) {
-        optionals.set(0);
-      }
-      oprot.writeBitSet(optionals, 1);
-      if (struct.isSetPage()) {
-        struct.page.write(oprot);
-      }
+      struct.property.write(oprot);
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, CreateRequestEdge struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, RequestProperty struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      struct.client = new ClientID();
-      struct.client.read(iprot);
-      struct.setClientIsSet(true);
       struct.request = new RequestID();
       struct.request.read(iprot);
       struct.setRequestIsSet(true);
-      BitSet incoming = iprot.readBitSet(1);
-      if (incoming.get(0)) {
-        struct.page = new PageID();
-        struct.page.read(iprot);
-        struct.setPageIsSet(true);
-      }
+      struct.property = new RequestPropertyValue();
+      struct.property.read(iprot);
+      struct.setPropertyIsSet(true);
     }
   }
 

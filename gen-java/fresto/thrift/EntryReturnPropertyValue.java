@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package fresto.event.client;
+package fresto.thrift;
 
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
@@ -32,28 +32,28 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ResponsePropertyValue implements org.apache.thrift.TBase<ResponsePropertyValue, ResponsePropertyValue._Fields>, java.io.Serializable, Cloneable, Comparable<ResponsePropertyValue> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("ResponsePropertyValue");
+public class EntryReturnPropertyValue implements org.apache.thrift.TBase<EntryReturnPropertyValue, EntryReturnPropertyValue._Fields>, java.io.Serializable, Cloneable, Comparable<EntryReturnPropertyValue> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("EntryReturnPropertyValue");
 
-  private static final org.apache.thrift.protocol.TField STATUS_CODE_FIELD_DESC = new org.apache.thrift.protocol.TField("statusCode", org.apache.thrift.protocol.TType.I16, (short)1);
-  private static final org.apache.thrift.protocol.TField TIMESTAMP_FIELD_DESC = new org.apache.thrift.protocol.TField("timestamp", org.apache.thrift.protocol.TType.I64, (short)2);
-  private static final org.apache.thrift.protocol.TField LENGTH_FIELD_DESC = new org.apache.thrift.protocol.TField("length", org.apache.thrift.protocol.TType.I64, (short)3);
+  private static final org.apache.thrift.protocol.TField RESPONSE_CODE_FIELD_DESC = new org.apache.thrift.protocol.TField("response_code", org.apache.thrift.protocol.TType.I32, (short)1);
+  private static final org.apache.thrift.protocol.TField LENGTH_FIELD_DESC = new org.apache.thrift.protocol.TField("length", org.apache.thrift.protocol.TType.I64, (short)2);
+  private static final org.apache.thrift.protocol.TField TIMESTAMP_FIELD_DESC = new org.apache.thrift.protocol.TField("timestamp", org.apache.thrift.protocol.TType.I64, (short)3);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
-    schemes.put(StandardScheme.class, new ResponsePropertyValueStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new ResponsePropertyValueTupleSchemeFactory());
+    schemes.put(StandardScheme.class, new EntryReturnPropertyValueStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new EntryReturnPropertyValueTupleSchemeFactory());
   }
 
-  public short statusCode; // required
-  public long timestamp; // required
+  public int response_code; // required
   public long length; // required
+  public long timestamp; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    STATUS_CODE((short)1, "statusCode"),
-    TIMESTAMP((short)2, "timestamp"),
-    LENGTH((short)3, "length");
+    RESPONSE_CODE((short)1, "response_code"),
+    LENGTH((short)2, "length"),
+    TIMESTAMP((short)3, "timestamp");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -68,12 +68,12 @@ public class ResponsePropertyValue implements org.apache.thrift.TBase<ResponsePr
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // STATUS_CODE
-          return STATUS_CODE;
-        case 2: // TIMESTAMP
-          return TIMESTAMP;
-        case 3: // LENGTH
+        case 1: // RESPONSE_CODE
+          return RESPONSE_CODE;
+        case 2: // LENGTH
           return LENGTH;
+        case 3: // TIMESTAMP
+          return TIMESTAMP;
         default:
           return null;
       }
@@ -114,115 +114,92 @@ public class ResponsePropertyValue implements org.apache.thrift.TBase<ResponsePr
   }
 
   // isset id assignments
-  private static final int __STATUSCODE_ISSET_ID = 0;
-  private static final int __TIMESTAMP_ISSET_ID = 1;
-  private static final int __LENGTH_ISSET_ID = 2;
+  private static final int __RESPONSE_CODE_ISSET_ID = 0;
+  private static final int __LENGTH_ISSET_ID = 1;
+  private static final int __TIMESTAMP_ISSET_ID = 2;
   private byte __isset_bitfield = 0;
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.STATUS_CODE, new org.apache.thrift.meta_data.FieldMetaData("statusCode", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I16)));
-    tmpMap.put(_Fields.TIMESTAMP, new org.apache.thrift.meta_data.FieldMetaData("timestamp", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
+    tmpMap.put(_Fields.RESPONSE_CODE, new org.apache.thrift.meta_data.FieldMetaData("response_code", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
     tmpMap.put(_Fields.LENGTH, new org.apache.thrift.meta_data.FieldMetaData("length", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
+    tmpMap.put(_Fields.TIMESTAMP, new org.apache.thrift.meta_data.FieldMetaData("timestamp", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(ResponsePropertyValue.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(EntryReturnPropertyValue.class, metaDataMap);
   }
 
-  public ResponsePropertyValue() {
+  public EntryReturnPropertyValue() {
   }
 
-  public ResponsePropertyValue(
-    short statusCode,
-    long timestamp,
-    long length)
+  public EntryReturnPropertyValue(
+    int response_code,
+    long length,
+    long timestamp)
   {
     this();
-    this.statusCode = statusCode;
-    setStatusCodeIsSet(true);
-    this.timestamp = timestamp;
-    setTimestampIsSet(true);
+    this.response_code = response_code;
+    setResponse_codeIsSet(true);
     this.length = length;
     setLengthIsSet(true);
+    this.timestamp = timestamp;
+    setTimestampIsSet(true);
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public ResponsePropertyValue(ResponsePropertyValue other) {
+  public EntryReturnPropertyValue(EntryReturnPropertyValue other) {
     __isset_bitfield = other.__isset_bitfield;
-    this.statusCode = other.statusCode;
-    this.timestamp = other.timestamp;
+    this.response_code = other.response_code;
     this.length = other.length;
+    this.timestamp = other.timestamp;
   }
 
-  public ResponsePropertyValue deepCopy() {
-    return new ResponsePropertyValue(this);
+  public EntryReturnPropertyValue deepCopy() {
+    return new EntryReturnPropertyValue(this);
   }
 
   @Override
   public void clear() {
-    setStatusCodeIsSet(false);
-    this.statusCode = 0;
-    setTimestampIsSet(false);
-    this.timestamp = 0;
+    setResponse_codeIsSet(false);
+    this.response_code = 0;
     setLengthIsSet(false);
     this.length = 0;
+    setTimestampIsSet(false);
+    this.timestamp = 0;
   }
 
-  public short getStatusCode() {
-    return this.statusCode;
+  public int getResponse_code() {
+    return this.response_code;
   }
 
-  public ResponsePropertyValue setStatusCode(short statusCode) {
-    this.statusCode = statusCode;
-    setStatusCodeIsSet(true);
+  public EntryReturnPropertyValue setResponse_code(int response_code) {
+    this.response_code = response_code;
+    setResponse_codeIsSet(true);
     return this;
   }
 
-  public void unsetStatusCode() {
-    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __STATUSCODE_ISSET_ID);
+  public void unsetResponse_code() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __RESPONSE_CODE_ISSET_ID);
   }
 
-  /** Returns true if field statusCode is set (has been assigned a value) and false otherwise */
-  public boolean isSetStatusCode() {
-    return EncodingUtils.testBit(__isset_bitfield, __STATUSCODE_ISSET_ID);
+  /** Returns true if field response_code is set (has been assigned a value) and false otherwise */
+  public boolean isSetResponse_code() {
+    return EncodingUtils.testBit(__isset_bitfield, __RESPONSE_CODE_ISSET_ID);
   }
 
-  public void setStatusCodeIsSet(boolean value) {
-    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __STATUSCODE_ISSET_ID, value);
-  }
-
-  public long getTimestamp() {
-    return this.timestamp;
-  }
-
-  public ResponsePropertyValue setTimestamp(long timestamp) {
-    this.timestamp = timestamp;
-    setTimestampIsSet(true);
-    return this;
-  }
-
-  public void unsetTimestamp() {
-    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __TIMESTAMP_ISSET_ID);
-  }
-
-  /** Returns true if field timestamp is set (has been assigned a value) and false otherwise */
-  public boolean isSetTimestamp() {
-    return EncodingUtils.testBit(__isset_bitfield, __TIMESTAMP_ISSET_ID);
-  }
-
-  public void setTimestampIsSet(boolean value) {
-    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __TIMESTAMP_ISSET_ID, value);
+  public void setResponse_codeIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __RESPONSE_CODE_ISSET_ID, value);
   }
 
   public long getLength() {
     return this.length;
   }
 
-  public ResponsePropertyValue setLength(long length) {
+  public EntryReturnPropertyValue setLength(long length) {
     this.length = length;
     setLengthIsSet(true);
     return this;
@@ -241,21 +218,36 @@ public class ResponsePropertyValue implements org.apache.thrift.TBase<ResponsePr
     __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __LENGTH_ISSET_ID, value);
   }
 
+  public long getTimestamp() {
+    return this.timestamp;
+  }
+
+  public EntryReturnPropertyValue setTimestamp(long timestamp) {
+    this.timestamp = timestamp;
+    setTimestampIsSet(true);
+    return this;
+  }
+
+  public void unsetTimestamp() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __TIMESTAMP_ISSET_ID);
+  }
+
+  /** Returns true if field timestamp is set (has been assigned a value) and false otherwise */
+  public boolean isSetTimestamp() {
+    return EncodingUtils.testBit(__isset_bitfield, __TIMESTAMP_ISSET_ID);
+  }
+
+  public void setTimestampIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __TIMESTAMP_ISSET_ID, value);
+  }
+
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case STATUS_CODE:
+    case RESPONSE_CODE:
       if (value == null) {
-        unsetStatusCode();
+        unsetResponse_code();
       } else {
-        setStatusCode((Short)value);
-      }
-      break;
-
-    case TIMESTAMP:
-      if (value == null) {
-        unsetTimestamp();
-      } else {
-        setTimestamp((Long)value);
+        setResponse_code((Integer)value);
       }
       break;
 
@@ -267,19 +259,27 @@ public class ResponsePropertyValue implements org.apache.thrift.TBase<ResponsePr
       }
       break;
 
+    case TIMESTAMP:
+      if (value == null) {
+        unsetTimestamp();
+      } else {
+        setTimestamp((Long)value);
+      }
+      break;
+
     }
   }
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case STATUS_CODE:
-      return Short.valueOf(getStatusCode());
-
-    case TIMESTAMP:
-      return Long.valueOf(getTimestamp());
+    case RESPONSE_CODE:
+      return Integer.valueOf(getResponse_code());
 
     case LENGTH:
       return Long.valueOf(getLength());
+
+    case TIMESTAMP:
+      return Long.valueOf(getTimestamp());
 
     }
     throw new IllegalStateException();
@@ -292,12 +292,12 @@ public class ResponsePropertyValue implements org.apache.thrift.TBase<ResponsePr
     }
 
     switch (field) {
-    case STATUS_CODE:
-      return isSetStatusCode();
-    case TIMESTAMP:
-      return isSetTimestamp();
+    case RESPONSE_CODE:
+      return isSetResponse_code();
     case LENGTH:
       return isSetLength();
+    case TIMESTAMP:
+      return isSetTimestamp();
     }
     throw new IllegalStateException();
   }
@@ -306,30 +306,21 @@ public class ResponsePropertyValue implements org.apache.thrift.TBase<ResponsePr
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof ResponsePropertyValue)
-      return this.equals((ResponsePropertyValue)that);
+    if (that instanceof EntryReturnPropertyValue)
+      return this.equals((EntryReturnPropertyValue)that);
     return false;
   }
 
-  public boolean equals(ResponsePropertyValue that) {
+  public boolean equals(EntryReturnPropertyValue that) {
     if (that == null)
       return false;
 
-    boolean this_present_statusCode = true;
-    boolean that_present_statusCode = true;
-    if (this_present_statusCode || that_present_statusCode) {
-      if (!(this_present_statusCode && that_present_statusCode))
+    boolean this_present_response_code = true;
+    boolean that_present_response_code = true;
+    if (this_present_response_code || that_present_response_code) {
+      if (!(this_present_response_code && that_present_response_code))
         return false;
-      if (this.statusCode != that.statusCode)
-        return false;
-    }
-
-    boolean this_present_timestamp = true;
-    boolean that_present_timestamp = true;
-    if (this_present_timestamp || that_present_timestamp) {
-      if (!(this_present_timestamp && that_present_timestamp))
-        return false;
-      if (this.timestamp != that.timestamp)
+      if (this.response_code != that.response_code)
         return false;
     }
 
@@ -342,6 +333,15 @@ public class ResponsePropertyValue implements org.apache.thrift.TBase<ResponsePr
         return false;
     }
 
+    boolean this_present_timestamp = true;
+    boolean that_present_timestamp = true;
+    if (this_present_timestamp || that_present_timestamp) {
+      if (!(this_present_timestamp && that_present_timestamp))
+        return false;
+      if (this.timestamp != that.timestamp)
+        return false;
+    }
+
     return true;
   }
 
@@ -351,29 +351,19 @@ public class ResponsePropertyValue implements org.apache.thrift.TBase<ResponsePr
   }
 
   @Override
-  public int compareTo(ResponsePropertyValue other) {
+  public int compareTo(EntryReturnPropertyValue other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetStatusCode()).compareTo(other.isSetStatusCode());
+    lastComparison = Boolean.valueOf(isSetResponse_code()).compareTo(other.isSetResponse_code());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetStatusCode()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.statusCode, other.statusCode);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetTimestamp()).compareTo(other.isSetTimestamp());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetTimestamp()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.timestamp, other.timestamp);
+    if (isSetResponse_code()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.response_code, other.response_code);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -384,6 +374,16 @@ public class ResponsePropertyValue implements org.apache.thrift.TBase<ResponsePr
     }
     if (isSetLength()) {
       lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.length, other.length);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetTimestamp()).compareTo(other.isSetTimestamp());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetTimestamp()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.timestamp, other.timestamp);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -405,19 +405,19 @@ public class ResponsePropertyValue implements org.apache.thrift.TBase<ResponsePr
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("ResponsePropertyValue(");
+    StringBuilder sb = new StringBuilder("EntryReturnPropertyValue(");
     boolean first = true;
 
-    sb.append("statusCode:");
-    sb.append(this.statusCode);
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("timestamp:");
-    sb.append(this.timestamp);
+    sb.append("response_code:");
+    sb.append(this.response_code);
     first = false;
     if (!first) sb.append(", ");
     sb.append("length:");
     sb.append(this.length);
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("timestamp:");
+    sb.append(this.timestamp);
     first = false;
     sb.append(")");
     return sb.toString();
@@ -446,15 +446,15 @@ public class ResponsePropertyValue implements org.apache.thrift.TBase<ResponsePr
     }
   }
 
-  private static class ResponsePropertyValueStandardSchemeFactory implements SchemeFactory {
-    public ResponsePropertyValueStandardScheme getScheme() {
-      return new ResponsePropertyValueStandardScheme();
+  private static class EntryReturnPropertyValueStandardSchemeFactory implements SchemeFactory {
+    public EntryReturnPropertyValueStandardScheme getScheme() {
+      return new EntryReturnPropertyValueStandardScheme();
     }
   }
 
-  private static class ResponsePropertyValueStandardScheme extends StandardScheme<ResponsePropertyValue> {
+  private static class EntryReturnPropertyValueStandardScheme extends StandardScheme<EntryReturnPropertyValue> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, ResponsePropertyValue struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, EntryReturnPropertyValue struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -464,26 +464,26 @@ public class ResponsePropertyValue implements org.apache.thrift.TBase<ResponsePr
           break;
         }
         switch (schemeField.id) {
-          case 1: // STATUS_CODE
-            if (schemeField.type == org.apache.thrift.protocol.TType.I16) {
-              struct.statusCode = iprot.readI16();
-              struct.setStatusCodeIsSet(true);
+          case 1: // RESPONSE_CODE
+            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+              struct.response_code = iprot.readI32();
+              struct.setResponse_codeIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 2: // TIMESTAMP
-            if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
-              struct.timestamp = iprot.readI64();
-              struct.setTimestampIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 3: // LENGTH
+          case 2: // LENGTH
             if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
               struct.length = iprot.readI64();
               struct.setLengthIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 3: // TIMESTAMP
+            if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
+              struct.timestamp = iprot.readI64();
+              struct.setTimestampIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -499,18 +499,18 @@ public class ResponsePropertyValue implements org.apache.thrift.TBase<ResponsePr
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, ResponsePropertyValue struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, EntryReturnPropertyValue struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      oprot.writeFieldBegin(STATUS_CODE_FIELD_DESC);
-      oprot.writeI16(struct.statusCode);
-      oprot.writeFieldEnd();
-      oprot.writeFieldBegin(TIMESTAMP_FIELD_DESC);
-      oprot.writeI64(struct.timestamp);
+      oprot.writeFieldBegin(RESPONSE_CODE_FIELD_DESC);
+      oprot.writeI32(struct.response_code);
       oprot.writeFieldEnd();
       oprot.writeFieldBegin(LENGTH_FIELD_DESC);
       oprot.writeI64(struct.length);
+      oprot.writeFieldEnd();
+      oprot.writeFieldBegin(TIMESTAMP_FIELD_DESC);
+      oprot.writeI64(struct.timestamp);
       oprot.writeFieldEnd();
       oprot.writeFieldStop();
       oprot.writeStructEnd();
@@ -518,54 +518,54 @@ public class ResponsePropertyValue implements org.apache.thrift.TBase<ResponsePr
 
   }
 
-  private static class ResponsePropertyValueTupleSchemeFactory implements SchemeFactory {
-    public ResponsePropertyValueTupleScheme getScheme() {
-      return new ResponsePropertyValueTupleScheme();
+  private static class EntryReturnPropertyValueTupleSchemeFactory implements SchemeFactory {
+    public EntryReturnPropertyValueTupleScheme getScheme() {
+      return new EntryReturnPropertyValueTupleScheme();
     }
   }
 
-  private static class ResponsePropertyValueTupleScheme extends TupleScheme<ResponsePropertyValue> {
+  private static class EntryReturnPropertyValueTupleScheme extends TupleScheme<EntryReturnPropertyValue> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, ResponsePropertyValue struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, EntryReturnPropertyValue struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
       BitSet optionals = new BitSet();
-      if (struct.isSetStatusCode()) {
+      if (struct.isSetResponse_code()) {
         optionals.set(0);
       }
-      if (struct.isSetTimestamp()) {
+      if (struct.isSetLength()) {
         optionals.set(1);
       }
-      if (struct.isSetLength()) {
+      if (struct.isSetTimestamp()) {
         optionals.set(2);
       }
       oprot.writeBitSet(optionals, 3);
-      if (struct.isSetStatusCode()) {
-        oprot.writeI16(struct.statusCode);
-      }
-      if (struct.isSetTimestamp()) {
-        oprot.writeI64(struct.timestamp);
+      if (struct.isSetResponse_code()) {
+        oprot.writeI32(struct.response_code);
       }
       if (struct.isSetLength()) {
         oprot.writeI64(struct.length);
       }
+      if (struct.isSetTimestamp()) {
+        oprot.writeI64(struct.timestamp);
+      }
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, ResponsePropertyValue struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, EntryReturnPropertyValue struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
       BitSet incoming = iprot.readBitSet(3);
       if (incoming.get(0)) {
-        struct.statusCode = iprot.readI16();
-        struct.setStatusCodeIsSet(true);
+        struct.response_code = iprot.readI32();
+        struct.setResponse_codeIsSet(true);
       }
       if (incoming.get(1)) {
-        struct.timestamp = iprot.readI64();
-        struct.setTimestampIsSet(true);
-      }
-      if (incoming.get(2)) {
         struct.length = iprot.readI64();
         struct.setLengthIsSet(true);
+      }
+      if (incoming.get(2)) {
+        struct.timestamp = iprot.readI64();
+        struct.setTimestampIsSet(true);
       }
     }
   }

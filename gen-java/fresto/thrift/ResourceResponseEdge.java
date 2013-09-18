@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package fresto.event.client;
+package fresto.thrift;
 
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
@@ -32,25 +32,25 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Data implements org.apache.thrift.TBase<Data, Data._Fields>, java.io.Serializable, Cloneable, Comparable<Data> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("Data");
+public class ResourceResponseEdge implements org.apache.thrift.TBase<ResourceResponseEdge, ResourceResponseEdge._Fields>, java.io.Serializable, Cloneable, Comparable<ResourceResponseEdge> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("ResourceResponseEdge");
 
-  private static final org.apache.thrift.protocol.TField PEDIGREE_FIELD_DESC = new org.apache.thrift.protocol.TField("pedigree", org.apache.thrift.protocol.TType.STRUCT, (short)1);
-  private static final org.apache.thrift.protocol.TField DATA_UNIT_FIELD_DESC = new org.apache.thrift.protocol.TField("data_unit", org.apache.thrift.protocol.TType.STRUCT, (short)2);
+  private static final org.apache.thrift.protocol.TField RESOURCE_FIELD_DESC = new org.apache.thrift.protocol.TField("resource", org.apache.thrift.protocol.TType.STRUCT, (short)1);
+  private static final org.apache.thrift.protocol.TField RESPONSE_FIELD_DESC = new org.apache.thrift.protocol.TField("response", org.apache.thrift.protocol.TType.STRUCT, (short)2);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
-    schemes.put(StandardScheme.class, new DataStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new DataTupleSchemeFactory());
+    schemes.put(StandardScheme.class, new ResourceResponseEdgeStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new ResourceResponseEdgeTupleSchemeFactory());
   }
 
-  public Pedigree pedigree; // required
-  public DataUnit data_unit; // required
+  public ResourceID resource; // required
+  public ResponseID response; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    PEDIGREE((short)1, "pedigree"),
-    DATA_UNIT((short)2, "data_unit");
+    RESOURCE((short)1, "resource"),
+    RESPONSE((short)2, "response");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -65,10 +65,10 @@ public class Data implements org.apache.thrift.TBase<Data, Data._Fields>, java.i
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // PEDIGREE
-          return PEDIGREE;
-        case 2: // DATA_UNIT
-          return DATA_UNIT;
+        case 1: // RESOURCE
+          return RESOURCE;
+        case 2: // RESPONSE
+          return RESPONSE;
         default:
           return null;
       }
@@ -112,111 +112,111 @@ public class Data implements org.apache.thrift.TBase<Data, Data._Fields>, java.i
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.PEDIGREE, new org.apache.thrift.meta_data.FieldMetaData("pedigree", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Pedigree.class)));
-    tmpMap.put(_Fields.DATA_UNIT, new org.apache.thrift.meta_data.FieldMetaData("data_unit", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, DataUnit.class)));
+    tmpMap.put(_Fields.RESOURCE, new org.apache.thrift.meta_data.FieldMetaData("resource", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ResourceID.class)));
+    tmpMap.put(_Fields.RESPONSE, new org.apache.thrift.meta_data.FieldMetaData("response", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ResponseID.class)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(Data.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(ResourceResponseEdge.class, metaDataMap);
   }
 
-  public Data() {
+  public ResourceResponseEdge() {
   }
 
-  public Data(
-    Pedigree pedigree,
-    DataUnit data_unit)
+  public ResourceResponseEdge(
+    ResourceID resource,
+    ResponseID response)
   {
     this();
-    this.pedigree = pedigree;
-    this.data_unit = data_unit;
+    this.resource = resource;
+    this.response = response;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public Data(Data other) {
-    if (other.isSetPedigree()) {
-      this.pedigree = new Pedigree(other.pedigree);
+  public ResourceResponseEdge(ResourceResponseEdge other) {
+    if (other.isSetResource()) {
+      this.resource = new ResourceID(other.resource);
     }
-    if (other.isSetData_unit()) {
-      this.data_unit = new DataUnit(other.data_unit);
+    if (other.isSetResponse()) {
+      this.response = new ResponseID(other.response);
     }
   }
 
-  public Data deepCopy() {
-    return new Data(this);
+  public ResourceResponseEdge deepCopy() {
+    return new ResourceResponseEdge(this);
   }
 
   @Override
   public void clear() {
-    this.pedigree = null;
-    this.data_unit = null;
+    this.resource = null;
+    this.response = null;
   }
 
-  public Pedigree getPedigree() {
-    return this.pedigree;
+  public ResourceID getResource() {
+    return this.resource;
   }
 
-  public Data setPedigree(Pedigree pedigree) {
-    this.pedigree = pedigree;
+  public ResourceResponseEdge setResource(ResourceID resource) {
+    this.resource = resource;
     return this;
   }
 
-  public void unsetPedigree() {
-    this.pedigree = null;
+  public void unsetResource() {
+    this.resource = null;
   }
 
-  /** Returns true if field pedigree is set (has been assigned a value) and false otherwise */
-  public boolean isSetPedigree() {
-    return this.pedigree != null;
+  /** Returns true if field resource is set (has been assigned a value) and false otherwise */
+  public boolean isSetResource() {
+    return this.resource != null;
   }
 
-  public void setPedigreeIsSet(boolean value) {
+  public void setResourceIsSet(boolean value) {
     if (!value) {
-      this.pedigree = null;
+      this.resource = null;
     }
   }
 
-  public DataUnit getData_unit() {
-    return this.data_unit;
+  public ResponseID getResponse() {
+    return this.response;
   }
 
-  public Data setData_unit(DataUnit data_unit) {
-    this.data_unit = data_unit;
+  public ResourceResponseEdge setResponse(ResponseID response) {
+    this.response = response;
     return this;
   }
 
-  public void unsetData_unit() {
-    this.data_unit = null;
+  public void unsetResponse() {
+    this.response = null;
   }
 
-  /** Returns true if field data_unit is set (has been assigned a value) and false otherwise */
-  public boolean isSetData_unit() {
-    return this.data_unit != null;
+  /** Returns true if field response is set (has been assigned a value) and false otherwise */
+  public boolean isSetResponse() {
+    return this.response != null;
   }
 
-  public void setData_unitIsSet(boolean value) {
+  public void setResponseIsSet(boolean value) {
     if (!value) {
-      this.data_unit = null;
+      this.response = null;
     }
   }
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case PEDIGREE:
+    case RESOURCE:
       if (value == null) {
-        unsetPedigree();
+        unsetResource();
       } else {
-        setPedigree((Pedigree)value);
+        setResource((ResourceID)value);
       }
       break;
 
-    case DATA_UNIT:
+    case RESPONSE:
       if (value == null) {
-        unsetData_unit();
+        unsetResponse();
       } else {
-        setData_unit((DataUnit)value);
+        setResponse((ResponseID)value);
       }
       break;
 
@@ -225,11 +225,11 @@ public class Data implements org.apache.thrift.TBase<Data, Data._Fields>, java.i
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case PEDIGREE:
-      return getPedigree();
+    case RESOURCE:
+      return getResource();
 
-    case DATA_UNIT:
-      return getData_unit();
+    case RESPONSE:
+      return getResponse();
 
     }
     throw new IllegalStateException();
@@ -242,10 +242,10 @@ public class Data implements org.apache.thrift.TBase<Data, Data._Fields>, java.i
     }
 
     switch (field) {
-    case PEDIGREE:
-      return isSetPedigree();
-    case DATA_UNIT:
-      return isSetData_unit();
+    case RESOURCE:
+      return isSetResource();
+    case RESPONSE:
+      return isSetResponse();
     }
     throw new IllegalStateException();
   }
@@ -254,30 +254,30 @@ public class Data implements org.apache.thrift.TBase<Data, Data._Fields>, java.i
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof Data)
-      return this.equals((Data)that);
+    if (that instanceof ResourceResponseEdge)
+      return this.equals((ResourceResponseEdge)that);
     return false;
   }
 
-  public boolean equals(Data that) {
+  public boolean equals(ResourceResponseEdge that) {
     if (that == null)
       return false;
 
-    boolean this_present_pedigree = true && this.isSetPedigree();
-    boolean that_present_pedigree = true && that.isSetPedigree();
-    if (this_present_pedigree || that_present_pedigree) {
-      if (!(this_present_pedigree && that_present_pedigree))
+    boolean this_present_resource = true && this.isSetResource();
+    boolean that_present_resource = true && that.isSetResource();
+    if (this_present_resource || that_present_resource) {
+      if (!(this_present_resource && that_present_resource))
         return false;
-      if (!this.pedigree.equals(that.pedigree))
+      if (!this.resource.equals(that.resource))
         return false;
     }
 
-    boolean this_present_data_unit = true && this.isSetData_unit();
-    boolean that_present_data_unit = true && that.isSetData_unit();
-    if (this_present_data_unit || that_present_data_unit) {
-      if (!(this_present_data_unit && that_present_data_unit))
+    boolean this_present_response = true && this.isSetResponse();
+    boolean that_present_response = true && that.isSetResponse();
+    if (this_present_response || that_present_response) {
+      if (!(this_present_response && that_present_response))
         return false;
-      if (!this.data_unit.equals(that.data_unit))
+      if (!this.response.equals(that.response))
         return false;
     }
 
@@ -290,29 +290,29 @@ public class Data implements org.apache.thrift.TBase<Data, Data._Fields>, java.i
   }
 
   @Override
-  public int compareTo(Data other) {
+  public int compareTo(ResourceResponseEdge other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetPedigree()).compareTo(other.isSetPedigree());
+    lastComparison = Boolean.valueOf(isSetResource()).compareTo(other.isSetResource());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetPedigree()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.pedigree, other.pedigree);
+    if (isSetResource()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.resource, other.resource);
       if (lastComparison != 0) {
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetData_unit()).compareTo(other.isSetData_unit());
+    lastComparison = Boolean.valueOf(isSetResponse()).compareTo(other.isSetResponse());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetData_unit()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.data_unit, other.data_unit);
+    if (isSetResponse()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.response, other.response);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -334,22 +334,22 @@ public class Data implements org.apache.thrift.TBase<Data, Data._Fields>, java.i
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("Data(");
+    StringBuilder sb = new StringBuilder("ResourceResponseEdge(");
     boolean first = true;
 
-    sb.append("pedigree:");
-    if (this.pedigree == null) {
+    sb.append("resource:");
+    if (this.resource == null) {
       sb.append("null");
     } else {
-      sb.append(this.pedigree);
+      sb.append(this.resource);
     }
     first = false;
     if (!first) sb.append(", ");
-    sb.append("data_unit:");
-    if (this.data_unit == null) {
+    sb.append("response:");
+    if (this.response == null) {
       sb.append("null");
     } else {
-      sb.append(this.data_unit);
+      sb.append(this.response);
     }
     first = false;
     sb.append(")");
@@ -358,16 +358,13 @@ public class Data implements org.apache.thrift.TBase<Data, Data._Fields>, java.i
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
-    if (pedigree == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'pedigree' was not present! Struct: " + toString());
+    if (resource == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'resource' was not present! Struct: " + toString());
     }
-    if (data_unit == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'data_unit' was not present! Struct: " + toString());
+    if (response == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'response' was not present! Struct: " + toString());
     }
     // check for sub-struct validity
-    if (pedigree != null) {
-      pedigree.validate();
-    }
   }
 
   private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
@@ -386,15 +383,15 @@ public class Data implements org.apache.thrift.TBase<Data, Data._Fields>, java.i
     }
   }
 
-  private static class DataStandardSchemeFactory implements SchemeFactory {
-    public DataStandardScheme getScheme() {
-      return new DataStandardScheme();
+  private static class ResourceResponseEdgeStandardSchemeFactory implements SchemeFactory {
+    public ResourceResponseEdgeStandardScheme getScheme() {
+      return new ResourceResponseEdgeStandardScheme();
     }
   }
 
-  private static class DataStandardScheme extends StandardScheme<Data> {
+  private static class ResourceResponseEdgeStandardScheme extends StandardScheme<ResourceResponseEdge> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, Data struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, ResourceResponseEdge struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -404,20 +401,20 @@ public class Data implements org.apache.thrift.TBase<Data, Data._Fields>, java.i
           break;
         }
         switch (schemeField.id) {
-          case 1: // PEDIGREE
+          case 1: // RESOURCE
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.pedigree = new Pedigree();
-              struct.pedigree.read(iprot);
-              struct.setPedigreeIsSet(true);
+              struct.resource = new ResourceID();
+              struct.resource.read(iprot);
+              struct.setResourceIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 2: // DATA_UNIT
+          case 2: // RESPONSE
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.data_unit = new DataUnit();
-              struct.data_unit.read(iprot);
-              struct.setData_unitIsSet(true);
+              struct.response = new ResponseID();
+              struct.response.read(iprot);
+              struct.setResponseIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -433,18 +430,18 @@ public class Data implements org.apache.thrift.TBase<Data, Data._Fields>, java.i
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, Data struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, ResourceResponseEdge struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.pedigree != null) {
-        oprot.writeFieldBegin(PEDIGREE_FIELD_DESC);
-        struct.pedigree.write(oprot);
+      if (struct.resource != null) {
+        oprot.writeFieldBegin(RESOURCE_FIELD_DESC);
+        struct.resource.write(oprot);
         oprot.writeFieldEnd();
       }
-      if (struct.data_unit != null) {
-        oprot.writeFieldBegin(DATA_UNIT_FIELD_DESC);
-        struct.data_unit.write(oprot);
+      if (struct.response != null) {
+        oprot.writeFieldBegin(RESPONSE_FIELD_DESC);
+        struct.response.write(oprot);
         oprot.writeFieldEnd();
       }
       oprot.writeFieldStop();
@@ -453,30 +450,30 @@ public class Data implements org.apache.thrift.TBase<Data, Data._Fields>, java.i
 
   }
 
-  private static class DataTupleSchemeFactory implements SchemeFactory {
-    public DataTupleScheme getScheme() {
-      return new DataTupleScheme();
+  private static class ResourceResponseEdgeTupleSchemeFactory implements SchemeFactory {
+    public ResourceResponseEdgeTupleScheme getScheme() {
+      return new ResourceResponseEdgeTupleScheme();
     }
   }
 
-  private static class DataTupleScheme extends TupleScheme<Data> {
+  private static class ResourceResponseEdgeTupleScheme extends TupleScheme<ResourceResponseEdge> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, Data struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, ResourceResponseEdge struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
-      struct.pedigree.write(oprot);
-      struct.data_unit.write(oprot);
+      struct.resource.write(oprot);
+      struct.response.write(oprot);
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, Data struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, ResourceResponseEdge struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      struct.pedigree = new Pedigree();
-      struct.pedigree.read(iprot);
-      struct.setPedigreeIsSet(true);
-      struct.data_unit = new DataUnit();
-      struct.data_unit.read(iprot);
-      struct.setData_unitIsSet(true);
+      struct.resource = new ResourceID();
+      struct.resource.read(iprot);
+      struct.setResourceIsSet(true);
+      struct.response = new ResponseID();
+      struct.response.read(iprot);
+      struct.setResponseIsSet(true);
     }
   }
 

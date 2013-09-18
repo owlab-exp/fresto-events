@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package fresto.event.client;
+package fresto.thrift;
 
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
@@ -32,13 +32,13 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class PageID extends org.apache.thrift.TUnion<PageID, PageID._Fields> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("PageID");
-  private static final org.apache.thrift.protocol.TField URL_FIELD_DESC = new org.apache.thrift.protocol.TField("url", org.apache.thrift.protocol.TType.STRING, (short)1);
+public class EndPointResourceID extends org.apache.thrift.TUnion<EndPointResourceID, EndPointResourceID._Fields> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("EndPointResourceID");
+  private static final org.apache.thrift.protocol.TField SERVLET_PATH_FIELD_DESC = new org.apache.thrift.protocol.TField("servlet_path", org.apache.thrift.protocol.TType.STRING, (short)1);
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    URL((short)1, "url");
+    SERVLET_PATH((short)1, "servlet_path");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -53,8 +53,8 @@ public class PageID extends org.apache.thrift.TUnion<PageID, PageID._Fields> {
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // URL
-          return URL;
+        case 1: // SERVLET_PATH
+          return SERVLET_PATH;
         default:
           return null;
       }
@@ -97,30 +97,30 @@ public class PageID extends org.apache.thrift.TUnion<PageID, PageID._Fields> {
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.URL, new org.apache.thrift.meta_data.FieldMetaData("url", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.SERVLET_PATH, new org.apache.thrift.meta_data.FieldMetaData("servlet_path", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(PageID.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(EndPointResourceID.class, metaDataMap);
   }
 
-  public PageID() {
+  public EndPointResourceID() {
     super();
   }
 
-  public PageID(_Fields setField, Object value) {
+  public EndPointResourceID(_Fields setField, Object value) {
     super(setField, value);
   }
 
-  public PageID(PageID other) {
+  public EndPointResourceID(EndPointResourceID other) {
     super(other);
   }
-  public PageID deepCopy() {
-    return new PageID(this);
+  public EndPointResourceID deepCopy() {
+    return new EndPointResourceID(this);
   }
 
-  public static PageID url(String value) {
-    PageID x = new PageID();
-    x.setUrl(value);
+  public static EndPointResourceID servlet_path(String value) {
+    EndPointResourceID x = new EndPointResourceID();
+    x.setServlet_path(value);
     return x;
   }
 
@@ -128,11 +128,11 @@ public class PageID extends org.apache.thrift.TUnion<PageID, PageID._Fields> {
   @Override
   protected void checkType(_Fields setField, Object value) throws ClassCastException {
     switch (setField) {
-      case URL:
+      case SERVLET_PATH:
         if (value instanceof String) {
           break;
         }
-        throw new ClassCastException("Was expecting value of type String for field 'url', but got " + value.getClass().getSimpleName());
+        throw new ClassCastException("Was expecting value of type String for field 'servlet_path', but got " + value.getClass().getSimpleName());
       default:
         throw new IllegalArgumentException("Unknown field id " + setField);
     }
@@ -143,11 +143,11 @@ public class PageID extends org.apache.thrift.TUnion<PageID, PageID._Fields> {
     _Fields setField = _Fields.findByThriftId(field.id);
     if (setField != null) {
       switch (setField) {
-        case URL:
-          if (field.type == URL_FIELD_DESC.type) {
-            String url;
-            url = iprot.readString();
-            return url;
+        case SERVLET_PATH:
+          if (field.type == SERVLET_PATH_FIELD_DESC.type) {
+            String servlet_path;
+            servlet_path = iprot.readString();
+            return servlet_path;
           } else {
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
             return null;
@@ -164,9 +164,9 @@ public class PageID extends org.apache.thrift.TUnion<PageID, PageID._Fields> {
   @Override
   protected void standardSchemeWriteValue(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
     switch (setField_) {
-      case URL:
-        String url = (String)value_;
-        oprot.writeString(url);
+      case SERVLET_PATH:
+        String servlet_path = (String)value_;
+        oprot.writeString(servlet_path);
         return;
       default:
         throw new IllegalStateException("Cannot write union with unknown field " + setField_);
@@ -178,10 +178,10 @@ public class PageID extends org.apache.thrift.TUnion<PageID, PageID._Fields> {
     _Fields setField = _Fields.findByThriftId(fieldID);
     if (setField != null) {
       switch (setField) {
-        case URL:
-          String url;
-          url = iprot.readString();
-          return url;
+        case SERVLET_PATH:
+          String servlet_path;
+          servlet_path = iprot.readString();
+          return servlet_path;
         default:
           throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
       }
@@ -193,9 +193,9 @@ public class PageID extends org.apache.thrift.TUnion<PageID, PageID._Fields> {
   @Override
   protected void tupleSchemeWriteValue(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
     switch (setField_) {
-      case URL:
-        String url = (String)value_;
-        oprot.writeString(url);
+      case SERVLET_PATH:
+        String servlet_path = (String)value_;
+        oprot.writeString(servlet_path);
         return;
       default:
         throw new IllegalStateException("Cannot write union with unknown field " + setField_);
@@ -205,8 +205,8 @@ public class PageID extends org.apache.thrift.TUnion<PageID, PageID._Fields> {
   @Override
   protected org.apache.thrift.protocol.TField getFieldDesc(_Fields setField) {
     switch (setField) {
-      case URL:
-        return URL_FIELD_DESC;
+      case SERVLET_PATH:
+        return SERVLET_PATH_FIELD_DESC;
       default:
         throw new IllegalArgumentException("Unknown field id " + setField);
     }
@@ -227,39 +227,39 @@ public class PageID extends org.apache.thrift.TUnion<PageID, PageID._Fields> {
   }
 
 
-  public String getUrl() {
-    if (getSetField() == _Fields.URL) {
+  public String getServlet_path() {
+    if (getSetField() == _Fields.SERVLET_PATH) {
       return (String)getFieldValue();
     } else {
-      throw new RuntimeException("Cannot get field 'url' because union is currently set to " + getFieldDesc(getSetField()).name);
+      throw new RuntimeException("Cannot get field 'servlet_path' because union is currently set to " + getFieldDesc(getSetField()).name);
     }
   }
 
-  public void setUrl(String value) {
+  public void setServlet_path(String value) {
     if (value == null) throw new NullPointerException();
-    setField_ = _Fields.URL;
+    setField_ = _Fields.SERVLET_PATH;
     value_ = value;
   }
 
-  public boolean isSetUrl() {
-    return setField_ == _Fields.URL;
+  public boolean isSetServlet_path() {
+    return setField_ == _Fields.SERVLET_PATH;
   }
 
 
   public boolean equals(Object other) {
-    if (other instanceof PageID) {
-      return equals((PageID)other);
+    if (other instanceof EndPointResourceID) {
+      return equals((EndPointResourceID)other);
     } else {
       return false;
     }
   }
 
-  public boolean equals(PageID other) {
+  public boolean equals(EndPointResourceID other) {
     return other != null && getSetField() == other.getSetField() && getFieldValue().equals(other.getFieldValue());
   }
 
   @Override
-  public int compareTo(PageID other) {
+  public int compareTo(EndPointResourceID other) {
     int lastComparison = org.apache.thrift.TBaseHelper.compareTo(getSetField(), other.getSetField());
     if (lastComparison == 0) {
       return org.apache.thrift.TBaseHelper.compareTo(getFieldValue(), other.getFieldValue());

@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package fresto.event.client;
+package fresto.thrift;
 
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
@@ -32,25 +32,25 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ResourceResponseEdge implements org.apache.thrift.TBase<ResourceResponseEdge, ResourceResponseEdge._Fields>, java.io.Serializable, Cloneable, Comparable<ResourceResponseEdge> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("ResourceResponseEdge");
+public class AppResourceEdge implements org.apache.thrift.TBase<AppResourceEdge, AppResourceEdge._Fields>, java.io.Serializable, Cloneable, Comparable<AppResourceEdge> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("AppResourceEdge");
 
-  private static final org.apache.thrift.protocol.TField RESOURCE_FIELD_DESC = new org.apache.thrift.protocol.TField("resource", org.apache.thrift.protocol.TType.STRUCT, (short)1);
-  private static final org.apache.thrift.protocol.TField RESPONSE_FIELD_DESC = new org.apache.thrift.protocol.TField("response", org.apache.thrift.protocol.TType.STRUCT, (short)2);
+  private static final org.apache.thrift.protocol.TField APP_CONTEXT_FIELD_DESC = new org.apache.thrift.protocol.TField("app_context", org.apache.thrift.protocol.TType.STRUCT, (short)1);
+  private static final org.apache.thrift.protocol.TField RESOURE_FIELD_DESC = new org.apache.thrift.protocol.TField("resoure", org.apache.thrift.protocol.TType.STRUCT, (short)2);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
-    schemes.put(StandardScheme.class, new ResourceResponseEdgeStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new ResourceResponseEdgeTupleSchemeFactory());
+    schemes.put(StandardScheme.class, new AppResourceEdgeStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new AppResourceEdgeTupleSchemeFactory());
   }
 
-  public ResourceID resource; // required
-  public ResponseID response; // required
+  public AppContextID app_context; // required
+  public EndPointResourceID resoure; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    RESOURCE((short)1, "resource"),
-    RESPONSE((short)2, "response");
+    APP_CONTEXT((short)1, "app_context"),
+    RESOURE((short)2, "resoure");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -65,10 +65,10 @@ public class ResourceResponseEdge implements org.apache.thrift.TBase<ResourceRes
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // RESOURCE
-          return RESOURCE;
-        case 2: // RESPONSE
-          return RESPONSE;
+        case 1: // APP_CONTEXT
+          return APP_CONTEXT;
+        case 2: // RESOURE
+          return RESOURE;
         default:
           return null;
       }
@@ -112,111 +112,111 @@ public class ResourceResponseEdge implements org.apache.thrift.TBase<ResourceRes
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.RESOURCE, new org.apache.thrift.meta_data.FieldMetaData("resource", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ResourceID.class)));
-    tmpMap.put(_Fields.RESPONSE, new org.apache.thrift.meta_data.FieldMetaData("response", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ResponseID.class)));
+    tmpMap.put(_Fields.APP_CONTEXT, new org.apache.thrift.meta_data.FieldMetaData("app_context", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, AppContextID.class)));
+    tmpMap.put(_Fields.RESOURE, new org.apache.thrift.meta_data.FieldMetaData("resoure", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, EndPointResourceID.class)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(ResourceResponseEdge.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(AppResourceEdge.class, metaDataMap);
   }
 
-  public ResourceResponseEdge() {
+  public AppResourceEdge() {
   }
 
-  public ResourceResponseEdge(
-    ResourceID resource,
-    ResponseID response)
+  public AppResourceEdge(
+    AppContextID app_context,
+    EndPointResourceID resoure)
   {
     this();
-    this.resource = resource;
-    this.response = response;
+    this.app_context = app_context;
+    this.resoure = resoure;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public ResourceResponseEdge(ResourceResponseEdge other) {
-    if (other.isSetResource()) {
-      this.resource = new ResourceID(other.resource);
+  public AppResourceEdge(AppResourceEdge other) {
+    if (other.isSetApp_context()) {
+      this.app_context = new AppContextID(other.app_context);
     }
-    if (other.isSetResponse()) {
-      this.response = new ResponseID(other.response);
+    if (other.isSetResoure()) {
+      this.resoure = new EndPointResourceID(other.resoure);
     }
   }
 
-  public ResourceResponseEdge deepCopy() {
-    return new ResourceResponseEdge(this);
+  public AppResourceEdge deepCopy() {
+    return new AppResourceEdge(this);
   }
 
   @Override
   public void clear() {
-    this.resource = null;
-    this.response = null;
+    this.app_context = null;
+    this.resoure = null;
   }
 
-  public ResourceID getResource() {
-    return this.resource;
+  public AppContextID getApp_context() {
+    return this.app_context;
   }
 
-  public ResourceResponseEdge setResource(ResourceID resource) {
-    this.resource = resource;
+  public AppResourceEdge setApp_context(AppContextID app_context) {
+    this.app_context = app_context;
     return this;
   }
 
-  public void unsetResource() {
-    this.resource = null;
+  public void unsetApp_context() {
+    this.app_context = null;
   }
 
-  /** Returns true if field resource is set (has been assigned a value) and false otherwise */
-  public boolean isSetResource() {
-    return this.resource != null;
+  /** Returns true if field app_context is set (has been assigned a value) and false otherwise */
+  public boolean isSetApp_context() {
+    return this.app_context != null;
   }
 
-  public void setResourceIsSet(boolean value) {
+  public void setApp_contextIsSet(boolean value) {
     if (!value) {
-      this.resource = null;
+      this.app_context = null;
     }
   }
 
-  public ResponseID getResponse() {
-    return this.response;
+  public EndPointResourceID getResoure() {
+    return this.resoure;
   }
 
-  public ResourceResponseEdge setResponse(ResponseID response) {
-    this.response = response;
+  public AppResourceEdge setResoure(EndPointResourceID resoure) {
+    this.resoure = resoure;
     return this;
   }
 
-  public void unsetResponse() {
-    this.response = null;
+  public void unsetResoure() {
+    this.resoure = null;
   }
 
-  /** Returns true if field response is set (has been assigned a value) and false otherwise */
-  public boolean isSetResponse() {
-    return this.response != null;
+  /** Returns true if field resoure is set (has been assigned a value) and false otherwise */
+  public boolean isSetResoure() {
+    return this.resoure != null;
   }
 
-  public void setResponseIsSet(boolean value) {
+  public void setResoureIsSet(boolean value) {
     if (!value) {
-      this.response = null;
+      this.resoure = null;
     }
   }
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case RESOURCE:
+    case APP_CONTEXT:
       if (value == null) {
-        unsetResource();
+        unsetApp_context();
       } else {
-        setResource((ResourceID)value);
+        setApp_context((AppContextID)value);
       }
       break;
 
-    case RESPONSE:
+    case RESOURE:
       if (value == null) {
-        unsetResponse();
+        unsetResoure();
       } else {
-        setResponse((ResponseID)value);
+        setResoure((EndPointResourceID)value);
       }
       break;
 
@@ -225,11 +225,11 @@ public class ResourceResponseEdge implements org.apache.thrift.TBase<ResourceRes
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case RESOURCE:
-      return getResource();
+    case APP_CONTEXT:
+      return getApp_context();
 
-    case RESPONSE:
-      return getResponse();
+    case RESOURE:
+      return getResoure();
 
     }
     throw new IllegalStateException();
@@ -242,10 +242,10 @@ public class ResourceResponseEdge implements org.apache.thrift.TBase<ResourceRes
     }
 
     switch (field) {
-    case RESOURCE:
-      return isSetResource();
-    case RESPONSE:
-      return isSetResponse();
+    case APP_CONTEXT:
+      return isSetApp_context();
+    case RESOURE:
+      return isSetResoure();
     }
     throw new IllegalStateException();
   }
@@ -254,30 +254,30 @@ public class ResourceResponseEdge implements org.apache.thrift.TBase<ResourceRes
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof ResourceResponseEdge)
-      return this.equals((ResourceResponseEdge)that);
+    if (that instanceof AppResourceEdge)
+      return this.equals((AppResourceEdge)that);
     return false;
   }
 
-  public boolean equals(ResourceResponseEdge that) {
+  public boolean equals(AppResourceEdge that) {
     if (that == null)
       return false;
 
-    boolean this_present_resource = true && this.isSetResource();
-    boolean that_present_resource = true && that.isSetResource();
-    if (this_present_resource || that_present_resource) {
-      if (!(this_present_resource && that_present_resource))
+    boolean this_present_app_context = true && this.isSetApp_context();
+    boolean that_present_app_context = true && that.isSetApp_context();
+    if (this_present_app_context || that_present_app_context) {
+      if (!(this_present_app_context && that_present_app_context))
         return false;
-      if (!this.resource.equals(that.resource))
+      if (!this.app_context.equals(that.app_context))
         return false;
     }
 
-    boolean this_present_response = true && this.isSetResponse();
-    boolean that_present_response = true && that.isSetResponse();
-    if (this_present_response || that_present_response) {
-      if (!(this_present_response && that_present_response))
+    boolean this_present_resoure = true && this.isSetResoure();
+    boolean that_present_resoure = true && that.isSetResoure();
+    if (this_present_resoure || that_present_resoure) {
+      if (!(this_present_resoure && that_present_resoure))
         return false;
-      if (!this.response.equals(that.response))
+      if (!this.resoure.equals(that.resoure))
         return false;
     }
 
@@ -290,29 +290,29 @@ public class ResourceResponseEdge implements org.apache.thrift.TBase<ResourceRes
   }
 
   @Override
-  public int compareTo(ResourceResponseEdge other) {
+  public int compareTo(AppResourceEdge other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetResource()).compareTo(other.isSetResource());
+    lastComparison = Boolean.valueOf(isSetApp_context()).compareTo(other.isSetApp_context());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetResource()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.resource, other.resource);
+    if (isSetApp_context()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.app_context, other.app_context);
       if (lastComparison != 0) {
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetResponse()).compareTo(other.isSetResponse());
+    lastComparison = Boolean.valueOf(isSetResoure()).compareTo(other.isSetResoure());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetResponse()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.response, other.response);
+    if (isSetResoure()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.resoure, other.resoure);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -334,22 +334,22 @@ public class ResourceResponseEdge implements org.apache.thrift.TBase<ResourceRes
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("ResourceResponseEdge(");
+    StringBuilder sb = new StringBuilder("AppResourceEdge(");
     boolean first = true;
 
-    sb.append("resource:");
-    if (this.resource == null) {
+    sb.append("app_context:");
+    if (this.app_context == null) {
       sb.append("null");
     } else {
-      sb.append(this.resource);
+      sb.append(this.app_context);
     }
     first = false;
     if (!first) sb.append(", ");
-    sb.append("response:");
-    if (this.response == null) {
+    sb.append("resoure:");
+    if (this.resoure == null) {
       sb.append("null");
     } else {
-      sb.append(this.response);
+      sb.append(this.resoure);
     }
     first = false;
     sb.append(")");
@@ -358,11 +358,11 @@ public class ResourceResponseEdge implements org.apache.thrift.TBase<ResourceRes
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
-    if (resource == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'resource' was not present! Struct: " + toString());
+    if (app_context == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'app_context' was not present! Struct: " + toString());
     }
-    if (response == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'response' was not present! Struct: " + toString());
+    if (resoure == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'resoure' was not present! Struct: " + toString());
     }
     // check for sub-struct validity
   }
@@ -383,15 +383,15 @@ public class ResourceResponseEdge implements org.apache.thrift.TBase<ResourceRes
     }
   }
 
-  private static class ResourceResponseEdgeStandardSchemeFactory implements SchemeFactory {
-    public ResourceResponseEdgeStandardScheme getScheme() {
-      return new ResourceResponseEdgeStandardScheme();
+  private static class AppResourceEdgeStandardSchemeFactory implements SchemeFactory {
+    public AppResourceEdgeStandardScheme getScheme() {
+      return new AppResourceEdgeStandardScheme();
     }
   }
 
-  private static class ResourceResponseEdgeStandardScheme extends StandardScheme<ResourceResponseEdge> {
+  private static class AppResourceEdgeStandardScheme extends StandardScheme<AppResourceEdge> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, ResourceResponseEdge struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, AppResourceEdge struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -401,20 +401,20 @@ public class ResourceResponseEdge implements org.apache.thrift.TBase<ResourceRes
           break;
         }
         switch (schemeField.id) {
-          case 1: // RESOURCE
+          case 1: // APP_CONTEXT
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.resource = new ResourceID();
-              struct.resource.read(iprot);
-              struct.setResourceIsSet(true);
+              struct.app_context = new AppContextID();
+              struct.app_context.read(iprot);
+              struct.setApp_contextIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 2: // RESPONSE
+          case 2: // RESOURE
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.response = new ResponseID();
-              struct.response.read(iprot);
-              struct.setResponseIsSet(true);
+              struct.resoure = new EndPointResourceID();
+              struct.resoure.read(iprot);
+              struct.setResoureIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -430,18 +430,18 @@ public class ResourceResponseEdge implements org.apache.thrift.TBase<ResourceRes
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, ResourceResponseEdge struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, AppResourceEdge struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.resource != null) {
-        oprot.writeFieldBegin(RESOURCE_FIELD_DESC);
-        struct.resource.write(oprot);
+      if (struct.app_context != null) {
+        oprot.writeFieldBegin(APP_CONTEXT_FIELD_DESC);
+        struct.app_context.write(oprot);
         oprot.writeFieldEnd();
       }
-      if (struct.response != null) {
-        oprot.writeFieldBegin(RESPONSE_FIELD_DESC);
-        struct.response.write(oprot);
+      if (struct.resoure != null) {
+        oprot.writeFieldBegin(RESOURE_FIELD_DESC);
+        struct.resoure.write(oprot);
         oprot.writeFieldEnd();
       }
       oprot.writeFieldStop();
@@ -450,30 +450,30 @@ public class ResourceResponseEdge implements org.apache.thrift.TBase<ResourceRes
 
   }
 
-  private static class ResourceResponseEdgeTupleSchemeFactory implements SchemeFactory {
-    public ResourceResponseEdgeTupleScheme getScheme() {
-      return new ResourceResponseEdgeTupleScheme();
+  private static class AppResourceEdgeTupleSchemeFactory implements SchemeFactory {
+    public AppResourceEdgeTupleScheme getScheme() {
+      return new AppResourceEdgeTupleScheme();
     }
   }
 
-  private static class ResourceResponseEdgeTupleScheme extends TupleScheme<ResourceResponseEdge> {
+  private static class AppResourceEdgeTupleScheme extends TupleScheme<AppResourceEdge> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, ResourceResponseEdge struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, AppResourceEdge struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
-      struct.resource.write(oprot);
-      struct.response.write(oprot);
+      struct.app_context.write(oprot);
+      struct.resoure.write(oprot);
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, ResourceResponseEdge struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, AppResourceEdge struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      struct.resource = new ResourceID();
-      struct.resource.read(iprot);
-      struct.setResourceIsSet(true);
-      struct.response = new ResponseID();
-      struct.response.read(iprot);
-      struct.setResponseIsSet(true);
+      struct.app_context = new AppContextID();
+      struct.app_context.read(iprot);
+      struct.setApp_contextIsSet(true);
+      struct.resoure = new EndPointResourceID();
+      struct.resoure.read(iprot);
+      struct.setResoureIsSet(true);
     }
   }
 

@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package fresto.event.client;
+package fresto.thrift;
 
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
@@ -32,13 +32,13 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Fields> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("ClientID");
-  private static final org.apache.thrift.protocol.TField CLIENT_IP_FIELD_DESC = new org.apache.thrift.protocol.TField("client_ip", org.apache.thrift.protocol.TType.STRING, (short)1);
+public class MethodReturnID extends org.apache.thrift.TUnion<MethodReturnID, MethodReturnID._Fields> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("MethodReturnID");
+  private static final org.apache.thrift.protocol.TField UUID_FIELD_DESC = new org.apache.thrift.protocol.TField("uuid", org.apache.thrift.protocol.TType.STRING, (short)1);
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    CLIENT_IP((short)1, "client_ip");
+    UUID((short)1, "uuid");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -53,8 +53,8 @@ public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Field
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // CLIENT_IP
-          return CLIENT_IP;
+        case 1: // UUID
+          return UUID;
         default:
           return null;
       }
@@ -97,30 +97,30 @@ public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Field
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.CLIENT_IP, new org.apache.thrift.meta_data.FieldMetaData("client_ip", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.UUID, new org.apache.thrift.meta_data.FieldMetaData("uuid", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(ClientID.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(MethodReturnID.class, metaDataMap);
   }
 
-  public ClientID() {
+  public MethodReturnID() {
     super();
   }
 
-  public ClientID(_Fields setField, Object value) {
+  public MethodReturnID(_Fields setField, Object value) {
     super(setField, value);
   }
 
-  public ClientID(ClientID other) {
+  public MethodReturnID(MethodReturnID other) {
     super(other);
   }
-  public ClientID deepCopy() {
-    return new ClientID(this);
+  public MethodReturnID deepCopy() {
+    return new MethodReturnID(this);
   }
 
-  public static ClientID client_ip(String value) {
-    ClientID x = new ClientID();
-    x.setClient_ip(value);
+  public static MethodReturnID uuid(String value) {
+    MethodReturnID x = new MethodReturnID();
+    x.setUuid(value);
     return x;
   }
 
@@ -128,11 +128,11 @@ public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Field
   @Override
   protected void checkType(_Fields setField, Object value) throws ClassCastException {
     switch (setField) {
-      case CLIENT_IP:
+      case UUID:
         if (value instanceof String) {
           break;
         }
-        throw new ClassCastException("Was expecting value of type String for field 'client_ip', but got " + value.getClass().getSimpleName());
+        throw new ClassCastException("Was expecting value of type String for field 'uuid', but got " + value.getClass().getSimpleName());
       default:
         throw new IllegalArgumentException("Unknown field id " + setField);
     }
@@ -143,11 +143,11 @@ public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Field
     _Fields setField = _Fields.findByThriftId(field.id);
     if (setField != null) {
       switch (setField) {
-        case CLIENT_IP:
-          if (field.type == CLIENT_IP_FIELD_DESC.type) {
-            String client_ip;
-            client_ip = iprot.readString();
-            return client_ip;
+        case UUID:
+          if (field.type == UUID_FIELD_DESC.type) {
+            String uuid;
+            uuid = iprot.readString();
+            return uuid;
           } else {
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
             return null;
@@ -164,9 +164,9 @@ public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Field
   @Override
   protected void standardSchemeWriteValue(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
     switch (setField_) {
-      case CLIENT_IP:
-        String client_ip = (String)value_;
-        oprot.writeString(client_ip);
+      case UUID:
+        String uuid = (String)value_;
+        oprot.writeString(uuid);
         return;
       default:
         throw new IllegalStateException("Cannot write union with unknown field " + setField_);
@@ -178,10 +178,10 @@ public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Field
     _Fields setField = _Fields.findByThriftId(fieldID);
     if (setField != null) {
       switch (setField) {
-        case CLIENT_IP:
-          String client_ip;
-          client_ip = iprot.readString();
-          return client_ip;
+        case UUID:
+          String uuid;
+          uuid = iprot.readString();
+          return uuid;
         default:
           throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
       }
@@ -193,9 +193,9 @@ public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Field
   @Override
   protected void tupleSchemeWriteValue(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
     switch (setField_) {
-      case CLIENT_IP:
-        String client_ip = (String)value_;
-        oprot.writeString(client_ip);
+      case UUID:
+        String uuid = (String)value_;
+        oprot.writeString(uuid);
         return;
       default:
         throw new IllegalStateException("Cannot write union with unknown field " + setField_);
@@ -205,8 +205,8 @@ public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Field
   @Override
   protected org.apache.thrift.protocol.TField getFieldDesc(_Fields setField) {
     switch (setField) {
-      case CLIENT_IP:
-        return CLIENT_IP_FIELD_DESC;
+      case UUID:
+        return UUID_FIELD_DESC;
       default:
         throw new IllegalArgumentException("Unknown field id " + setField);
     }
@@ -227,39 +227,39 @@ public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Field
   }
 
 
-  public String getClient_ip() {
-    if (getSetField() == _Fields.CLIENT_IP) {
+  public String getUuid() {
+    if (getSetField() == _Fields.UUID) {
       return (String)getFieldValue();
     } else {
-      throw new RuntimeException("Cannot get field 'client_ip' because union is currently set to " + getFieldDesc(getSetField()).name);
+      throw new RuntimeException("Cannot get field 'uuid' because union is currently set to " + getFieldDesc(getSetField()).name);
     }
   }
 
-  public void setClient_ip(String value) {
+  public void setUuid(String value) {
     if (value == null) throw new NullPointerException();
-    setField_ = _Fields.CLIENT_IP;
+    setField_ = _Fields.UUID;
     value_ = value;
   }
 
-  public boolean isSetClient_ip() {
-    return setField_ == _Fields.CLIENT_IP;
+  public boolean isSetUuid() {
+    return setField_ == _Fields.UUID;
   }
 
 
   public boolean equals(Object other) {
-    if (other instanceof ClientID) {
-      return equals((ClientID)other);
+    if (other instanceof MethodReturnID) {
+      return equals((MethodReturnID)other);
     } else {
       return false;
     }
   }
 
-  public boolean equals(ClientID other) {
+  public boolean equals(MethodReturnID other) {
     return other != null && getSetField() == other.getSetField() && getFieldValue().equals(other.getFieldValue());
   }
 
   @Override
-  public int compareTo(ClientID other) {
+  public int compareTo(MethodReturnID other) {
     int lastComparison = org.apache.thrift.TBaseHelper.compareTo(getSetField(), other.getSetField());
     if (lastComparison == 0) {
       return org.apache.thrift.TBaseHelper.compareTo(getFieldValue(), other.getFieldValue());

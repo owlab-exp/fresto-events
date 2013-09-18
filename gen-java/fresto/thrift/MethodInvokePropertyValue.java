@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package fresto.event.client;
+package fresto.thrift;
 
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
@@ -32,27 +32,27 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RequestPropertyValue implements org.apache.thrift.TBase<RequestPropertyValue, RequestPropertyValue._Fields>, java.io.Serializable, Cloneable, Comparable<RequestPropertyValue> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("RequestPropertyValue");
+public class MethodInvokePropertyValue implements org.apache.thrift.TBase<MethodInvokePropertyValue, MethodInvokePropertyValue._Fields>, java.io.Serializable, Cloneable, Comparable<MethodInvokePropertyValue> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("MethodInvokePropertyValue");
 
-  private static final org.apache.thrift.protocol.TField METHOD_FIELD_DESC = new org.apache.thrift.protocol.TField("method", org.apache.thrift.protocol.TType.STRING, (short)1);
-  private static final org.apache.thrift.protocol.TField QUERY_FIELD_DESC = new org.apache.thrift.protocol.TField("query", org.apache.thrift.protocol.TType.STRING, (short)2);
+  private static final org.apache.thrift.protocol.TField TYPE_SIGNATURE_FIELD_DESC = new org.apache.thrift.protocol.TField("type_signature", org.apache.thrift.protocol.TType.STRUCT, (short)1);
+  private static final org.apache.thrift.protocol.TField DEPTH_FIELD_DESC = new org.apache.thrift.protocol.TField("depth", org.apache.thrift.protocol.TType.I32, (short)2);
   private static final org.apache.thrift.protocol.TField TIMESTAMP_FIELD_DESC = new org.apache.thrift.protocol.TField("timestamp", org.apache.thrift.protocol.TType.I64, (short)3);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
-    schemes.put(StandardScheme.class, new RequestPropertyValueStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new RequestPropertyValueTupleSchemeFactory());
+    schemes.put(StandardScheme.class, new MethodInvokePropertyValueStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new MethodInvokePropertyValueTupleSchemeFactory());
   }
 
-  public String method; // required
-  public String query; // required
+  public TypeSignatureID type_signature; // required
+  public int depth; // required
   public long timestamp; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    METHOD((short)1, "method"),
-    QUERY((short)2, "query"),
+    TYPE_SIGNATURE((short)1, "type_signature"),
+    DEPTH((short)2, "depth"),
     TIMESTAMP((short)3, "timestamp");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
@@ -68,10 +68,10 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // METHOD
-          return METHOD;
-        case 2: // QUERY
-          return QUERY;
+        case 1: // TYPE_SIGNATURE
+          return TYPE_SIGNATURE;
+        case 2: // DEPTH
+          return DEPTH;
         case 3: // TIMESTAMP
           return TIMESTAMP;
         default:
@@ -114,32 +114,34 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
   }
 
   // isset id assignments
-  private static final int __TIMESTAMP_ISSET_ID = 0;
+  private static final int __DEPTH_ISSET_ID = 0;
+  private static final int __TIMESTAMP_ISSET_ID = 1;
   private byte __isset_bitfield = 0;
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.METHOD, new org.apache.thrift.meta_data.FieldMetaData("method", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.QUERY, new org.apache.thrift.meta_data.FieldMetaData("query", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+    tmpMap.put(_Fields.TYPE_SIGNATURE, new org.apache.thrift.meta_data.FieldMetaData("type_signature", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, TypeSignatureID.class)));
+    tmpMap.put(_Fields.DEPTH, new org.apache.thrift.meta_data.FieldMetaData("depth", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
     tmpMap.put(_Fields.TIMESTAMP, new org.apache.thrift.meta_data.FieldMetaData("timestamp", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(RequestPropertyValue.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(MethodInvokePropertyValue.class, metaDataMap);
   }
 
-  public RequestPropertyValue() {
+  public MethodInvokePropertyValue() {
   }
 
-  public RequestPropertyValue(
-    String method,
-    String query,
+  public MethodInvokePropertyValue(
+    TypeSignatureID type_signature,
+    int depth,
     long timestamp)
   {
     this();
-    this.method = method;
-    this.query = query;
+    this.type_signature = type_signature;
+    this.depth = depth;
+    setDepthIsSet(true);
     this.timestamp = timestamp;
     setTimestampIsSet(true);
   }
@@ -147,82 +149,80 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public RequestPropertyValue(RequestPropertyValue other) {
+  public MethodInvokePropertyValue(MethodInvokePropertyValue other) {
     __isset_bitfield = other.__isset_bitfield;
-    if (other.isSetMethod()) {
-      this.method = other.method;
+    if (other.isSetType_signature()) {
+      this.type_signature = new TypeSignatureID(other.type_signature);
     }
-    if (other.isSetQuery()) {
-      this.query = other.query;
-    }
+    this.depth = other.depth;
     this.timestamp = other.timestamp;
   }
 
-  public RequestPropertyValue deepCopy() {
-    return new RequestPropertyValue(this);
+  public MethodInvokePropertyValue deepCopy() {
+    return new MethodInvokePropertyValue(this);
   }
 
   @Override
   public void clear() {
-    this.method = null;
-    this.query = null;
+    this.type_signature = null;
+    setDepthIsSet(false);
+    this.depth = 0;
     setTimestampIsSet(false);
     this.timestamp = 0;
   }
 
-  public String getMethod() {
-    return this.method;
+  public TypeSignatureID getType_signature() {
+    return this.type_signature;
   }
 
-  public RequestPropertyValue setMethod(String method) {
-    this.method = method;
+  public MethodInvokePropertyValue setType_signature(TypeSignatureID type_signature) {
+    this.type_signature = type_signature;
     return this;
   }
 
-  public void unsetMethod() {
-    this.method = null;
+  public void unsetType_signature() {
+    this.type_signature = null;
   }
 
-  /** Returns true if field method is set (has been assigned a value) and false otherwise */
-  public boolean isSetMethod() {
-    return this.method != null;
+  /** Returns true if field type_signature is set (has been assigned a value) and false otherwise */
+  public boolean isSetType_signature() {
+    return this.type_signature != null;
   }
 
-  public void setMethodIsSet(boolean value) {
+  public void setType_signatureIsSet(boolean value) {
     if (!value) {
-      this.method = null;
+      this.type_signature = null;
     }
   }
 
-  public String getQuery() {
-    return this.query;
+  public int getDepth() {
+    return this.depth;
   }
 
-  public RequestPropertyValue setQuery(String query) {
-    this.query = query;
+  public MethodInvokePropertyValue setDepth(int depth) {
+    this.depth = depth;
+    setDepthIsSet(true);
     return this;
   }
 
-  public void unsetQuery() {
-    this.query = null;
+  public void unsetDepth() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __DEPTH_ISSET_ID);
   }
 
-  /** Returns true if field query is set (has been assigned a value) and false otherwise */
-  public boolean isSetQuery() {
-    return this.query != null;
+  /** Returns true if field depth is set (has been assigned a value) and false otherwise */
+  public boolean isSetDepth() {
+    return EncodingUtils.testBit(__isset_bitfield, __DEPTH_ISSET_ID);
   }
 
-  public void setQueryIsSet(boolean value) {
-    if (!value) {
-      this.query = null;
-    }
+  public void setDepthIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __DEPTH_ISSET_ID, value);
   }
 
   public long getTimestamp() {
     return this.timestamp;
   }
 
-  public RequestPropertyValue setTimestamp(long timestamp) {
+  public MethodInvokePropertyValue setTimestamp(long timestamp) {
     this.timestamp = timestamp;
     setTimestampIsSet(true);
     return this;
@@ -243,19 +243,19 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case METHOD:
+    case TYPE_SIGNATURE:
       if (value == null) {
-        unsetMethod();
+        unsetType_signature();
       } else {
-        setMethod((String)value);
+        setType_signature((TypeSignatureID)value);
       }
       break;
 
-    case QUERY:
+    case DEPTH:
       if (value == null) {
-        unsetQuery();
+        unsetDepth();
       } else {
-        setQuery((String)value);
+        setDepth((Integer)value);
       }
       break;
 
@@ -272,11 +272,11 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case METHOD:
-      return getMethod();
+    case TYPE_SIGNATURE:
+      return getType_signature();
 
-    case QUERY:
-      return getQuery();
+    case DEPTH:
+      return Integer.valueOf(getDepth());
 
     case TIMESTAMP:
       return Long.valueOf(getTimestamp());
@@ -292,10 +292,10 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
     }
 
     switch (field) {
-    case METHOD:
-      return isSetMethod();
-    case QUERY:
-      return isSetQuery();
+    case TYPE_SIGNATURE:
+      return isSetType_signature();
+    case DEPTH:
+      return isSetDepth();
     case TIMESTAMP:
       return isSetTimestamp();
     }
@@ -306,30 +306,30 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof RequestPropertyValue)
-      return this.equals((RequestPropertyValue)that);
+    if (that instanceof MethodInvokePropertyValue)
+      return this.equals((MethodInvokePropertyValue)that);
     return false;
   }
 
-  public boolean equals(RequestPropertyValue that) {
+  public boolean equals(MethodInvokePropertyValue that) {
     if (that == null)
       return false;
 
-    boolean this_present_method = true && this.isSetMethod();
-    boolean that_present_method = true && that.isSetMethod();
-    if (this_present_method || that_present_method) {
-      if (!(this_present_method && that_present_method))
+    boolean this_present_type_signature = true && this.isSetType_signature();
+    boolean that_present_type_signature = true && that.isSetType_signature();
+    if (this_present_type_signature || that_present_type_signature) {
+      if (!(this_present_type_signature && that_present_type_signature))
         return false;
-      if (!this.method.equals(that.method))
+      if (!this.type_signature.equals(that.type_signature))
         return false;
     }
 
-    boolean this_present_query = true && this.isSetQuery();
-    boolean that_present_query = true && that.isSetQuery();
-    if (this_present_query || that_present_query) {
-      if (!(this_present_query && that_present_query))
+    boolean this_present_depth = true;
+    boolean that_present_depth = true;
+    if (this_present_depth || that_present_depth) {
+      if (!(this_present_depth && that_present_depth))
         return false;
-      if (!this.query.equals(that.query))
+      if (this.depth != that.depth)
         return false;
     }
 
@@ -351,29 +351,29 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
   }
 
   @Override
-  public int compareTo(RequestPropertyValue other) {
+  public int compareTo(MethodInvokePropertyValue other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetMethod()).compareTo(other.isSetMethod());
+    lastComparison = Boolean.valueOf(isSetType_signature()).compareTo(other.isSetType_signature());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetMethod()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.method, other.method);
+    if (isSetType_signature()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.type_signature, other.type_signature);
       if (lastComparison != 0) {
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetQuery()).compareTo(other.isSetQuery());
+    lastComparison = Boolean.valueOf(isSetDepth()).compareTo(other.isSetDepth());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetQuery()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.query, other.query);
+    if (isSetDepth()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.depth, other.depth);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -405,23 +405,19 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("RequestPropertyValue(");
+    StringBuilder sb = new StringBuilder("MethodInvokePropertyValue(");
     boolean first = true;
 
-    sb.append("method:");
-    if (this.method == null) {
+    sb.append("type_signature:");
+    if (this.type_signature == null) {
       sb.append("null");
     } else {
-      sb.append(this.method);
+      sb.append(this.type_signature);
     }
     first = false;
     if (!first) sb.append(", ");
-    sb.append("query:");
-    if (this.query == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.query);
-    }
+    sb.append("depth:");
+    sb.append(this.depth);
     first = false;
     if (!first) sb.append(", ");
     sb.append("timestamp:");
@@ -454,15 +450,15 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
     }
   }
 
-  private static class RequestPropertyValueStandardSchemeFactory implements SchemeFactory {
-    public RequestPropertyValueStandardScheme getScheme() {
-      return new RequestPropertyValueStandardScheme();
+  private static class MethodInvokePropertyValueStandardSchemeFactory implements SchemeFactory {
+    public MethodInvokePropertyValueStandardScheme getScheme() {
+      return new MethodInvokePropertyValueStandardScheme();
     }
   }
 
-  private static class RequestPropertyValueStandardScheme extends StandardScheme<RequestPropertyValue> {
+  private static class MethodInvokePropertyValueStandardScheme extends StandardScheme<MethodInvokePropertyValue> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, RequestPropertyValue struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, MethodInvokePropertyValue struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -472,18 +468,19 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
           break;
         }
         switch (schemeField.id) {
-          case 1: // METHOD
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.method = iprot.readString();
-              struct.setMethodIsSet(true);
+          case 1: // TYPE_SIGNATURE
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+              struct.type_signature = new TypeSignatureID();
+              struct.type_signature.read(iprot);
+              struct.setType_signatureIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 2: // QUERY
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.query = iprot.readString();
-              struct.setQueryIsSet(true);
+          case 2: // DEPTH
+            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+              struct.depth = iprot.readI32();
+              struct.setDepthIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -507,20 +504,18 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, RequestPropertyValue struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, MethodInvokePropertyValue struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.method != null) {
-        oprot.writeFieldBegin(METHOD_FIELD_DESC);
-        oprot.writeString(struct.method);
+      if (struct.type_signature != null) {
+        oprot.writeFieldBegin(TYPE_SIGNATURE_FIELD_DESC);
+        struct.type_signature.write(oprot);
         oprot.writeFieldEnd();
       }
-      if (struct.query != null) {
-        oprot.writeFieldBegin(QUERY_FIELD_DESC);
-        oprot.writeString(struct.query);
-        oprot.writeFieldEnd();
-      }
+      oprot.writeFieldBegin(DEPTH_FIELD_DESC);
+      oprot.writeI32(struct.depth);
+      oprot.writeFieldEnd();
       oprot.writeFieldBegin(TIMESTAMP_FIELD_DESC);
       oprot.writeI64(struct.timestamp);
       oprot.writeFieldEnd();
@@ -530,33 +525,33 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
 
   }
 
-  private static class RequestPropertyValueTupleSchemeFactory implements SchemeFactory {
-    public RequestPropertyValueTupleScheme getScheme() {
-      return new RequestPropertyValueTupleScheme();
+  private static class MethodInvokePropertyValueTupleSchemeFactory implements SchemeFactory {
+    public MethodInvokePropertyValueTupleScheme getScheme() {
+      return new MethodInvokePropertyValueTupleScheme();
     }
   }
 
-  private static class RequestPropertyValueTupleScheme extends TupleScheme<RequestPropertyValue> {
+  private static class MethodInvokePropertyValueTupleScheme extends TupleScheme<MethodInvokePropertyValue> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, RequestPropertyValue struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, MethodInvokePropertyValue struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
       BitSet optionals = new BitSet();
-      if (struct.isSetMethod()) {
+      if (struct.isSetType_signature()) {
         optionals.set(0);
       }
-      if (struct.isSetQuery()) {
+      if (struct.isSetDepth()) {
         optionals.set(1);
       }
       if (struct.isSetTimestamp()) {
         optionals.set(2);
       }
       oprot.writeBitSet(optionals, 3);
-      if (struct.isSetMethod()) {
-        oprot.writeString(struct.method);
+      if (struct.isSetType_signature()) {
+        struct.type_signature.write(oprot);
       }
-      if (struct.isSetQuery()) {
-        oprot.writeString(struct.query);
+      if (struct.isSetDepth()) {
+        oprot.writeI32(struct.depth);
       }
       if (struct.isSetTimestamp()) {
         oprot.writeI64(struct.timestamp);
@@ -564,16 +559,17 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, RequestPropertyValue struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, MethodInvokePropertyValue struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
       BitSet incoming = iprot.readBitSet(3);
       if (incoming.get(0)) {
-        struct.method = iprot.readString();
-        struct.setMethodIsSet(true);
+        struct.type_signature = new TypeSignatureID();
+        struct.type_signature.read(iprot);
+        struct.setType_signatureIsSet(true);
       }
       if (incoming.get(1)) {
-        struct.query = iprot.readString();
-        struct.setQueryIsSet(true);
+        struct.depth = iprot.readI32();
+        struct.setDepthIsSet(true);
       }
       if (incoming.get(2)) {
         struct.timestamp = iprot.readI64();

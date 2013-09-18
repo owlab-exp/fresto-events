@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package fresto.event.client;
+package fresto.thrift;
 
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
@@ -32,24 +32,24 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RequestProperty implements org.apache.thrift.TBase<RequestProperty, RequestProperty._Fields>, java.io.Serializable, Cloneable, Comparable<RequestProperty> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("RequestProperty");
+public class MethodReturnProperty implements org.apache.thrift.TBase<MethodReturnProperty, MethodReturnProperty._Fields>, java.io.Serializable, Cloneable, Comparable<MethodReturnProperty> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("MethodReturnProperty");
 
-  private static final org.apache.thrift.protocol.TField REQUEST_FIELD_DESC = new org.apache.thrift.protocol.TField("request", org.apache.thrift.protocol.TType.STRUCT, (short)1);
+  private static final org.apache.thrift.protocol.TField METHOD_RETURN_FIELD_DESC = new org.apache.thrift.protocol.TField("method_return", org.apache.thrift.protocol.TType.STRUCT, (short)1);
   private static final org.apache.thrift.protocol.TField PROPERTY_FIELD_DESC = new org.apache.thrift.protocol.TField("property", org.apache.thrift.protocol.TType.STRUCT, (short)2);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
-    schemes.put(StandardScheme.class, new RequestPropertyStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new RequestPropertyTupleSchemeFactory());
+    schemes.put(StandardScheme.class, new MethodReturnPropertyStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new MethodReturnPropertyTupleSchemeFactory());
   }
 
-  public RequestID request; // required
-  public RequestPropertyValue property; // required
+  public MethodReturnID method_return; // required
+  public MethodReturnPropertyValue property; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    REQUEST((short)1, "request"),
+    METHOD_RETURN((short)1, "method_return"),
     PROPERTY((short)2, "property");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
@@ -65,8 +65,8 @@ public class RequestProperty implements org.apache.thrift.TBase<RequestProperty,
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // REQUEST
-          return REQUEST;
+        case 1: // METHOD_RETURN
+          return METHOD_RETURN;
         case 2: // PROPERTY
           return PROPERTY;
         default:
@@ -112,77 +112,77 @@ public class RequestProperty implements org.apache.thrift.TBase<RequestProperty,
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.REQUEST, new org.apache.thrift.meta_data.FieldMetaData("request", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, RequestID.class)));
-    tmpMap.put(_Fields.PROPERTY, new org.apache.thrift.meta_data.FieldMetaData("property", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, RequestPropertyValue.class)));
+    tmpMap.put(_Fields.METHOD_RETURN, new org.apache.thrift.meta_data.FieldMetaData("method_return", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, MethodReturnID.class)));
+    tmpMap.put(_Fields.PROPERTY, new org.apache.thrift.meta_data.FieldMetaData("property", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, MethodReturnPropertyValue.class)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(RequestProperty.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(MethodReturnProperty.class, metaDataMap);
   }
 
-  public RequestProperty() {
+  public MethodReturnProperty() {
   }
 
-  public RequestProperty(
-    RequestID request,
-    RequestPropertyValue property)
+  public MethodReturnProperty(
+    MethodReturnID method_return,
+    MethodReturnPropertyValue property)
   {
     this();
-    this.request = request;
+    this.method_return = method_return;
     this.property = property;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public RequestProperty(RequestProperty other) {
-    if (other.isSetRequest()) {
-      this.request = new RequestID(other.request);
+  public MethodReturnProperty(MethodReturnProperty other) {
+    if (other.isSetMethod_return()) {
+      this.method_return = new MethodReturnID(other.method_return);
     }
     if (other.isSetProperty()) {
-      this.property = new RequestPropertyValue(other.property);
+      this.property = new MethodReturnPropertyValue(other.property);
     }
   }
 
-  public RequestProperty deepCopy() {
-    return new RequestProperty(this);
+  public MethodReturnProperty deepCopy() {
+    return new MethodReturnProperty(this);
   }
 
   @Override
   public void clear() {
-    this.request = null;
+    this.method_return = null;
     this.property = null;
   }
 
-  public RequestID getRequest() {
-    return this.request;
+  public MethodReturnID getMethod_return() {
+    return this.method_return;
   }
 
-  public RequestProperty setRequest(RequestID request) {
-    this.request = request;
+  public MethodReturnProperty setMethod_return(MethodReturnID method_return) {
+    this.method_return = method_return;
     return this;
   }
 
-  public void unsetRequest() {
-    this.request = null;
+  public void unsetMethod_return() {
+    this.method_return = null;
   }
 
-  /** Returns true if field request is set (has been assigned a value) and false otherwise */
-  public boolean isSetRequest() {
-    return this.request != null;
+  /** Returns true if field method_return is set (has been assigned a value) and false otherwise */
+  public boolean isSetMethod_return() {
+    return this.method_return != null;
   }
 
-  public void setRequestIsSet(boolean value) {
+  public void setMethod_returnIsSet(boolean value) {
     if (!value) {
-      this.request = null;
+      this.method_return = null;
     }
   }
 
-  public RequestPropertyValue getProperty() {
+  public MethodReturnPropertyValue getProperty() {
     return this.property;
   }
 
-  public RequestProperty setProperty(RequestPropertyValue property) {
+  public MethodReturnProperty setProperty(MethodReturnPropertyValue property) {
     this.property = property;
     return this;
   }
@@ -204,11 +204,11 @@ public class RequestProperty implements org.apache.thrift.TBase<RequestProperty,
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case REQUEST:
+    case METHOD_RETURN:
       if (value == null) {
-        unsetRequest();
+        unsetMethod_return();
       } else {
-        setRequest((RequestID)value);
+        setMethod_return((MethodReturnID)value);
       }
       break;
 
@@ -216,7 +216,7 @@ public class RequestProperty implements org.apache.thrift.TBase<RequestProperty,
       if (value == null) {
         unsetProperty();
       } else {
-        setProperty((RequestPropertyValue)value);
+        setProperty((MethodReturnPropertyValue)value);
       }
       break;
 
@@ -225,8 +225,8 @@ public class RequestProperty implements org.apache.thrift.TBase<RequestProperty,
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case REQUEST:
-      return getRequest();
+    case METHOD_RETURN:
+      return getMethod_return();
 
     case PROPERTY:
       return getProperty();
@@ -242,8 +242,8 @@ public class RequestProperty implements org.apache.thrift.TBase<RequestProperty,
     }
 
     switch (field) {
-    case REQUEST:
-      return isSetRequest();
+    case METHOD_RETURN:
+      return isSetMethod_return();
     case PROPERTY:
       return isSetProperty();
     }
@@ -254,21 +254,21 @@ public class RequestProperty implements org.apache.thrift.TBase<RequestProperty,
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof RequestProperty)
-      return this.equals((RequestProperty)that);
+    if (that instanceof MethodReturnProperty)
+      return this.equals((MethodReturnProperty)that);
     return false;
   }
 
-  public boolean equals(RequestProperty that) {
+  public boolean equals(MethodReturnProperty that) {
     if (that == null)
       return false;
 
-    boolean this_present_request = true && this.isSetRequest();
-    boolean that_present_request = true && that.isSetRequest();
-    if (this_present_request || that_present_request) {
-      if (!(this_present_request && that_present_request))
+    boolean this_present_method_return = true && this.isSetMethod_return();
+    boolean that_present_method_return = true && that.isSetMethod_return();
+    if (this_present_method_return || that_present_method_return) {
+      if (!(this_present_method_return && that_present_method_return))
         return false;
-      if (!this.request.equals(that.request))
+      if (!this.method_return.equals(that.method_return))
         return false;
     }
 
@@ -290,19 +290,19 @@ public class RequestProperty implements org.apache.thrift.TBase<RequestProperty,
   }
 
   @Override
-  public int compareTo(RequestProperty other) {
+  public int compareTo(MethodReturnProperty other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetRequest()).compareTo(other.isSetRequest());
+    lastComparison = Boolean.valueOf(isSetMethod_return()).compareTo(other.isSetMethod_return());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetRequest()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.request, other.request);
+    if (isSetMethod_return()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.method_return, other.method_return);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -334,14 +334,14 @@ public class RequestProperty implements org.apache.thrift.TBase<RequestProperty,
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("RequestProperty(");
+    StringBuilder sb = new StringBuilder("MethodReturnProperty(");
     boolean first = true;
 
-    sb.append("request:");
-    if (this.request == null) {
+    sb.append("method_return:");
+    if (this.method_return == null) {
       sb.append("null");
     } else {
-      sb.append(this.request);
+      sb.append(this.method_return);
     }
     first = false;
     if (!first) sb.append(", ");
@@ -358,12 +358,6 @@ public class RequestProperty implements org.apache.thrift.TBase<RequestProperty,
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
-    if (request == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'request' was not present! Struct: " + toString());
-    }
-    if (property == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'property' was not present! Struct: " + toString());
-    }
     // check for sub-struct validity
     if (property != null) {
       property.validate();
@@ -386,15 +380,15 @@ public class RequestProperty implements org.apache.thrift.TBase<RequestProperty,
     }
   }
 
-  private static class RequestPropertyStandardSchemeFactory implements SchemeFactory {
-    public RequestPropertyStandardScheme getScheme() {
-      return new RequestPropertyStandardScheme();
+  private static class MethodReturnPropertyStandardSchemeFactory implements SchemeFactory {
+    public MethodReturnPropertyStandardScheme getScheme() {
+      return new MethodReturnPropertyStandardScheme();
     }
   }
 
-  private static class RequestPropertyStandardScheme extends StandardScheme<RequestProperty> {
+  private static class MethodReturnPropertyStandardScheme extends StandardScheme<MethodReturnProperty> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, RequestProperty struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, MethodReturnProperty struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -404,18 +398,18 @@ public class RequestProperty implements org.apache.thrift.TBase<RequestProperty,
           break;
         }
         switch (schemeField.id) {
-          case 1: // REQUEST
+          case 1: // METHOD_RETURN
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.request = new RequestID();
-              struct.request.read(iprot);
-              struct.setRequestIsSet(true);
+              struct.method_return = new MethodReturnID();
+              struct.method_return.read(iprot);
+              struct.setMethod_returnIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
           case 2: // PROPERTY
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.property = new RequestPropertyValue();
+              struct.property = new MethodReturnPropertyValue();
               struct.property.read(iprot);
               struct.setPropertyIsSet(true);
             } else { 
@@ -433,13 +427,13 @@ public class RequestProperty implements org.apache.thrift.TBase<RequestProperty,
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, RequestProperty struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, MethodReturnProperty struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.request != null) {
-        oprot.writeFieldBegin(REQUEST_FIELD_DESC);
-        struct.request.write(oprot);
+      if (struct.method_return != null) {
+        oprot.writeFieldBegin(METHOD_RETURN_FIELD_DESC);
+        struct.method_return.write(oprot);
         oprot.writeFieldEnd();
       }
       if (struct.property != null) {
@@ -453,30 +447,47 @@ public class RequestProperty implements org.apache.thrift.TBase<RequestProperty,
 
   }
 
-  private static class RequestPropertyTupleSchemeFactory implements SchemeFactory {
-    public RequestPropertyTupleScheme getScheme() {
-      return new RequestPropertyTupleScheme();
+  private static class MethodReturnPropertyTupleSchemeFactory implements SchemeFactory {
+    public MethodReturnPropertyTupleScheme getScheme() {
+      return new MethodReturnPropertyTupleScheme();
     }
   }
 
-  private static class RequestPropertyTupleScheme extends TupleScheme<RequestProperty> {
+  private static class MethodReturnPropertyTupleScheme extends TupleScheme<MethodReturnProperty> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, RequestProperty struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, MethodReturnProperty struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
-      struct.request.write(oprot);
-      struct.property.write(oprot);
+      BitSet optionals = new BitSet();
+      if (struct.isSetMethod_return()) {
+        optionals.set(0);
+      }
+      if (struct.isSetProperty()) {
+        optionals.set(1);
+      }
+      oprot.writeBitSet(optionals, 2);
+      if (struct.isSetMethod_return()) {
+        struct.method_return.write(oprot);
+      }
+      if (struct.isSetProperty()) {
+        struct.property.write(oprot);
+      }
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, RequestProperty struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, MethodReturnProperty struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      struct.request = new RequestID();
-      struct.request.read(iprot);
-      struct.setRequestIsSet(true);
-      struct.property = new RequestPropertyValue();
-      struct.property.read(iprot);
-      struct.setPropertyIsSet(true);
+      BitSet incoming = iprot.readBitSet(2);
+      if (incoming.get(0)) {
+        struct.method_return = new MethodReturnID();
+        struct.method_return.read(iprot);
+        struct.setMethod_returnIsSet(true);
+      }
+      if (incoming.get(1)) {
+        struct.property = new MethodReturnPropertyValue();
+        struct.property.read(iprot);
+        struct.setPropertyIsSet(true);
+      }
     }
   }
 

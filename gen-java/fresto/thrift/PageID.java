@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package fresto.event.client;
+package fresto.thrift;
 
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
@@ -32,13 +32,13 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RequestID extends org.apache.thrift.TUnion<RequestID, RequestID._Fields> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("RequestID");
-  private static final org.apache.thrift.protocol.TField UUID_FIELD_DESC = new org.apache.thrift.protocol.TField("uuid", org.apache.thrift.protocol.TType.STRING, (short)1);
+public class PageID extends org.apache.thrift.TUnion<PageID, PageID._Fields> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("PageID");
+  private static final org.apache.thrift.protocol.TField URL_FIELD_DESC = new org.apache.thrift.protocol.TField("url", org.apache.thrift.protocol.TType.STRING, (short)1);
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    UUID((short)1, "uuid");
+    URL((short)1, "url");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -53,8 +53,8 @@ public class RequestID extends org.apache.thrift.TUnion<RequestID, RequestID._Fi
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // UUID
-          return UUID;
+        case 1: // URL
+          return URL;
         default:
           return null;
       }
@@ -97,30 +97,30 @@ public class RequestID extends org.apache.thrift.TUnion<RequestID, RequestID._Fi
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.UUID, new org.apache.thrift.meta_data.FieldMetaData("uuid", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.URL, new org.apache.thrift.meta_data.FieldMetaData("url", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(RequestID.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(PageID.class, metaDataMap);
   }
 
-  public RequestID() {
+  public PageID() {
     super();
   }
 
-  public RequestID(_Fields setField, Object value) {
+  public PageID(_Fields setField, Object value) {
     super(setField, value);
   }
 
-  public RequestID(RequestID other) {
+  public PageID(PageID other) {
     super(other);
   }
-  public RequestID deepCopy() {
-    return new RequestID(this);
+  public PageID deepCopy() {
+    return new PageID(this);
   }
 
-  public static RequestID uuid(String value) {
-    RequestID x = new RequestID();
-    x.setUuid(value);
+  public static PageID url(String value) {
+    PageID x = new PageID();
+    x.setUrl(value);
     return x;
   }
 
@@ -128,11 +128,11 @@ public class RequestID extends org.apache.thrift.TUnion<RequestID, RequestID._Fi
   @Override
   protected void checkType(_Fields setField, Object value) throws ClassCastException {
     switch (setField) {
-      case UUID:
+      case URL:
         if (value instanceof String) {
           break;
         }
-        throw new ClassCastException("Was expecting value of type String for field 'uuid', but got " + value.getClass().getSimpleName());
+        throw new ClassCastException("Was expecting value of type String for field 'url', but got " + value.getClass().getSimpleName());
       default:
         throw new IllegalArgumentException("Unknown field id " + setField);
     }
@@ -143,11 +143,11 @@ public class RequestID extends org.apache.thrift.TUnion<RequestID, RequestID._Fi
     _Fields setField = _Fields.findByThriftId(field.id);
     if (setField != null) {
       switch (setField) {
-        case UUID:
-          if (field.type == UUID_FIELD_DESC.type) {
-            String uuid;
-            uuid = iprot.readString();
-            return uuid;
+        case URL:
+          if (field.type == URL_FIELD_DESC.type) {
+            String url;
+            url = iprot.readString();
+            return url;
           } else {
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
             return null;
@@ -164,9 +164,9 @@ public class RequestID extends org.apache.thrift.TUnion<RequestID, RequestID._Fi
   @Override
   protected void standardSchemeWriteValue(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
     switch (setField_) {
-      case UUID:
-        String uuid = (String)value_;
-        oprot.writeString(uuid);
+      case URL:
+        String url = (String)value_;
+        oprot.writeString(url);
         return;
       default:
         throw new IllegalStateException("Cannot write union with unknown field " + setField_);
@@ -178,10 +178,10 @@ public class RequestID extends org.apache.thrift.TUnion<RequestID, RequestID._Fi
     _Fields setField = _Fields.findByThriftId(fieldID);
     if (setField != null) {
       switch (setField) {
-        case UUID:
-          String uuid;
-          uuid = iprot.readString();
-          return uuid;
+        case URL:
+          String url;
+          url = iprot.readString();
+          return url;
         default:
           throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
       }
@@ -193,9 +193,9 @@ public class RequestID extends org.apache.thrift.TUnion<RequestID, RequestID._Fi
   @Override
   protected void tupleSchemeWriteValue(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
     switch (setField_) {
-      case UUID:
-        String uuid = (String)value_;
-        oprot.writeString(uuid);
+      case URL:
+        String url = (String)value_;
+        oprot.writeString(url);
         return;
       default:
         throw new IllegalStateException("Cannot write union with unknown field " + setField_);
@@ -205,8 +205,8 @@ public class RequestID extends org.apache.thrift.TUnion<RequestID, RequestID._Fi
   @Override
   protected org.apache.thrift.protocol.TField getFieldDesc(_Fields setField) {
     switch (setField) {
-      case UUID:
-        return UUID_FIELD_DESC;
+      case URL:
+        return URL_FIELD_DESC;
       default:
         throw new IllegalArgumentException("Unknown field id " + setField);
     }
@@ -227,39 +227,39 @@ public class RequestID extends org.apache.thrift.TUnion<RequestID, RequestID._Fi
   }
 
 
-  public String getUuid() {
-    if (getSetField() == _Fields.UUID) {
+  public String getUrl() {
+    if (getSetField() == _Fields.URL) {
       return (String)getFieldValue();
     } else {
-      throw new RuntimeException("Cannot get field 'uuid' because union is currently set to " + getFieldDesc(getSetField()).name);
+      throw new RuntimeException("Cannot get field 'url' because union is currently set to " + getFieldDesc(getSetField()).name);
     }
   }
 
-  public void setUuid(String value) {
+  public void setUrl(String value) {
     if (value == null) throw new NullPointerException();
-    setField_ = _Fields.UUID;
+    setField_ = _Fields.URL;
     value_ = value;
   }
 
-  public boolean isSetUuid() {
-    return setField_ == _Fields.UUID;
+  public boolean isSetUrl() {
+    return setField_ == _Fields.URL;
   }
 
 
   public boolean equals(Object other) {
-    if (other instanceof RequestID) {
-      return equals((RequestID)other);
+    if (other instanceof PageID) {
+      return equals((PageID)other);
     } else {
       return false;
     }
   }
 
-  public boolean equals(RequestID other) {
+  public boolean equals(PageID other) {
     return other != null && getSetField() == other.getSetField() && getFieldValue().equals(other.getFieldValue());
   }
 
   @Override
-  public int compareTo(RequestID other) {
+  public int compareTo(PageID other) {
     int lastComparison = org.apache.thrift.TBaseHelper.compareTo(getSetField(), other.getSetField());
     if (lastComparison == 0) {
       return org.apache.thrift.TBaseHelper.compareTo(getFieldValue(), other.getFieldValue());
