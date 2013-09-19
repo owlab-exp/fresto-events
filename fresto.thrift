@@ -1,10 +1,13 @@
-namespace java fresto.thrift
+namespace java fresto.data
 
+##############################################
+# Client side event data
+##############################################
 union ClientID {
 	1: string client_ip;
 }
 
-union PageID {
+union ReferrerID {
 	1: string url;
 }
 
@@ -20,10 +23,9 @@ union ResponseID {
 	1: string uuid;
 }
 
-struct CreateRequestEdge {
+struct ClientRequestEdge {
 	1: required ClientID client;
 	2: required RequestID request;
-	3: optional PageID page;
 }
 
 struct RequestResourceEdge {
@@ -36,15 +38,33 @@ struct ResourceResponseEdge {
 	2: required ResponseID response;
 }
 
-struct ReceiveResponseEdge {
-	1: required ClientID client;
-	2: required ResponseID response;
+struct ResponseClientEdge {
+	1: required ResponseID response;
+	2: required ClientID client;
+}
+
+struct ClientPropertyValue {
+	1: string user_agent;
+}
+
+struct ClientProperty {
+	1: ClientID client;
+	2: ClientPropertyValue property;
+}
+
+struct ResourcePropertyValue {
+}
+
+struct ResourceProperty {
+	1: ResourceID resource;
+	2: ResourcePropertyValue property;
 }
 
 struct RequestPropertyValue {
-	1: string method;
-	2: string query;
-	3: i64 timestamp;
+	1: ReferrerID referrer;
+	2: string method;
+	3: string query;
+	4: i64 timestamp;
 }
 
 struct RequestProperty {
@@ -64,12 +84,16 @@ struct ResponseProperty {
 }
 
 union ClientDataUnit {
-	1: RequestProperty request_property;
-	2: ResponseProperty response_property;
-	3: CreateRequestEdge create_request;
-	4: RequestResourceEdge request_resource;
-	5: ResourceResponseEdge resource_response;
-	6: ReceiveResponseEdge receive_response;
+	# Properties
+	1: ClientProperty client_property;
+	2: ResourceProperty resource_property;
+	3: RequestProperty request_property;
+	4: ResponseProperty response_property;
+	# Edges
+	5: ClientRequestEdge client_request_edge;
+	6: RequestResourceEdge request_resource_edge;
+	7: ResourceResponseEdge resource_response_edge;
+	8: ResponseClientEdge response_client_edge;
 }
 
 
@@ -87,24 +111,29 @@ union ClientDataUnit {
 #	OPTIONS = 6,
 #	CONNECT =7
 #}
-#####################################################
 
+#####################################################
+# Server side performance event data
+#####################################################
 union HostID {
 	1: string host_name;
 	2: string ip_address;
 }
 
-union AppContextID {
+union ApplicationID {
 	1: string context_path;
 }
 
-union EndPointResourceID {
+union ManagedResourceID {
 	1: string servlet_path;
 }
 
-union TypeSignatureID {
-	1: string type_name; # Type (Class) & Method
-	2: string signature_name; # Type (Class) & Method
+union OperationID {
+	1: string operation_name;
+}
+
+union TypeID {
+	1: string type_name;
 }
 
 union EntryInvokeID {
@@ -114,37 +143,81 @@ union EntryReturnID {
 	1: string uuid;
 } 
 
-union MethodInvokeID {
+union OperationInvokeID {
 	1: string uuid;
 }
 
-union MethodReturnID {
+union OperationReturnID {
 	1: string uuid;
 } 
 
-struct HostAppContextEdge {
+struct ServeApplicationEdge {
 	1: required HostID host;
-	2: required AppContextID app_context;
+	2: required ApplicationID application;
 }
 
-struct AppResourceEdge {
-	1: required AppContextID app_context;
-	2: required EndPointResourceID resoure;
+struct ManageResourceEdge {
+	1: required ApplicationID application;
+	2: required ManagedResourceID managed_resource;
 }
 
-struct ResourceImplEdge {
-	1: required EndPointResourceID resource;
-	2: required TypeSignatureID type_signature;
+struct ImplementResourceEdge {
+	1: required ManagedResourceID managed_resource;
+	2: required OperationID operation;
+}
+
+struct EntryInvokeEdge {
+	1: required EntryInvokeID entry_invoke;
+	2: required OperationID operation;
+}
+
+struct EntryReturnEdge {
+	1: required EntryReturnID entry_return;
+	2: required OperationID operation;
+}
+
+struct CreateInvocationEdge {
+	1: required OperationID operation;
+	2: required OperationInvokeID operation_invoke;
+}
+
+struct MakeInvocationEdge {
+	1: required OperationInvokeID operation_invoke;
+	2: required OperationID operation;
+}
+
+struct CreateResultEdge {
+	1: required OperationID operation;
+	2: required OperationReturnID operation_return;
+}
+
+struct ReturnResultEdge {
+	1: required OperationReturnID operation_return;
+	2: required OperationID operation;
+}
+
+struct OperationPropertyValue {
+	1: TypeID type;
+}
+
+struct OperationProperty {
+	1: OperationID operation;
+	2: OperationPropertyValue property;
 }
 
 struct EntryInvokePropertyValue {
 	1: string http_method;
 	2: HostID host;
 	3: i32 port;
-	4: AppContextID app_context;
-	5: EndPointResourceID resource;
-	6: TypeSignatureID type_signature;
+	4: ApplicationID application;
+	5: ManagedResourceID managed_resource;
+	6: OperationID operation;
 	7: i64 timestamp;
+}
+
+struct EntryInvokeProperty {
+	1: EntryInvokeID entry_invoke;
+	2: EntryInvokePropertyValue property;
 }
 
 struct EntryReturnPropertyValue {
@@ -153,59 +226,63 @@ struct EntryReturnPropertyValue {
 	3: i64 timestamp;
 }
 
-struct EntryInvokeProperty {
-	1: EntryInvokeID entry_invoke;
-	2: EntryInvokePropertyValue property;
-}
-
 struct EntryReturnProperty {
 	1: EntryReturnID entry_return;
 	2: EntryReturnPropertyValue property;
 }
 
-struct MethodInvokePropertyValue {
-	1: TypeSignatureID type_signature;
-	2: i32 depth;
-	3: i64 timestamp;
+struct OperationInvokePropertyValue {
+	1: i32 depth;
+	2: i64 timestamp;
 }
 
-struct MethodReturnPropertyValue {
-	1: TypeSignatureID type_signature;
-	2: i32 depth;
-	3: i64 timestamp;
+struct OperationInvokeProperty {
+	1: OperationInvokeID operation_invoke;
+	2: OperationInvokePropertyValue property;
 }
 
-struct MethodInvokeProperty {
-	1: MethodInvokeID method_invoke;
-	2: MethodInvokePropertyValue property;
+struct OperationReturnPropertyValue {
+	1: i32 depth;
+	2: i64 timestamp;
 }
 
-struct MethodReturnProperty {
-	1: MethodReturnID method_return;
-	2: MethodReturnPropertyValue property;
+struct OperationReturnProperty {
+	1: OperationReturnID operation_return;
+	2: OperationReturnPropertyValue property;
 }
 
-struct ServerDataUnit {
-	1: HostAppContextEdge host_app_context;
-	2: AppResourceEdge app_resource;
-	3: ResourceImplEdge resource_implement;
-	4: EntryInvokeProperty entry_invoke;
-	5: EntryReturnProperty entry_return;
-	6: MethodInvokeProperty method_invoke;
-	7: MethodReturnProperty method_return;
+struct ApplicationDataUnit {
+	# Properties
+	1: EntryInvokeProperty entry_invoke_property;
+	2: EntryReturnProperty entry_return_property;
+	3: OperationProperty operation_property_property;
+	4: OperationInvokeProperty operation_invoke_property;
+	5: OperationReturnProperty operation_return_property;
+	# Edges
+	6: ServeApplicationEdge host_application_edge;
+	7: ManageResourceEdge app_resource_edge;
+	8: ImplementResourceEdge implement_resource_edge;
+	9: EntryInvokeEdge entry_invoke_edge;
+	10: EntryReturnEdge entry_return_edge;
+	11: CreateInvocationEdge create_invocation_edge;
+	12: MakeInvocationEdge make_invocation_edge;
+	13: CreateResultEdge create_result_edge;
+	14: ReturnResultEdge return_result_edge;
 }
 
 #####################################################
+# Unified data
+#####################################################
 union DataUnit {
 	1: ClientDataUnit client_data_unit;
-	2: ServerDataUnit server_data_unit;
+	2: ApplicationDataUnit application_data_unit;
 }
 
 struct Pedigree {
 	1: required i64 fresto_timstamp;
 }
 
-struct Data {
+struct FrestoData {
 	1: required Pedigree pedigree;
 	2: required DataUnit data_unit;
 }
