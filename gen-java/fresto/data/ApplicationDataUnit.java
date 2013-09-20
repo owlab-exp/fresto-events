@@ -32,9 +32,8 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ApplicationDataUnit implements org.apache.thrift.TBase<ApplicationDataUnit, ApplicationDataUnit._Fields>, java.io.Serializable, Cloneable, Comparable<ApplicationDataUnit> {
+public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDataUnit, ApplicationDataUnit._Fields> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("ApplicationDataUnit");
-
   private static final org.apache.thrift.protocol.TField ENTRY_INVOKE_PROPERTY_FIELD_DESC = new org.apache.thrift.protocol.TField("entry_invoke_property", org.apache.thrift.protocol.TType.STRUCT, (short)1);
   private static final org.apache.thrift.protocol.TField ENTRY_RETURN_PROPERTY_FIELD_DESC = new org.apache.thrift.protocol.TField("entry_return_property", org.apache.thrift.protocol.TType.STRUCT, (short)2);
   private static final org.apache.thrift.protocol.TField OPERATION_PROPERTY_PROPERTY_FIELD_DESC = new org.apache.thrift.protocol.TField("operation_property_property", org.apache.thrift.protocol.TType.STRUCT, (short)3);
@@ -49,27 +48,6 @@ public class ApplicationDataUnit implements org.apache.thrift.TBase<ApplicationD
   private static final org.apache.thrift.protocol.TField MAKE_INVOCATION_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("make_invocation_edge", org.apache.thrift.protocol.TType.STRUCT, (short)12);
   private static final org.apache.thrift.protocol.TField CREATE_RESULT_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("create_result_edge", org.apache.thrift.protocol.TType.STRUCT, (short)13);
   private static final org.apache.thrift.protocol.TField RETURN_RESULT_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("return_result_edge", org.apache.thrift.protocol.TType.STRUCT, (short)14);
-
-  private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
-  static {
-    schemes.put(StandardScheme.class, new ApplicationDataUnitStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new ApplicationDataUnitTupleSchemeFactory());
-  }
-
-  public EntryInvokeProperty entry_invoke_property; // required
-  public EntryReturnProperty entry_return_property; // required
-  public OperationProperty operation_property_property; // required
-  public OperationInvokeProperty operation_invoke_property; // required
-  public OperationReturnProperty operation_return_property; // required
-  public ServeApplicationEdge host_application_edge; // required
-  public ManageResourceEdge app_resource_edge; // required
-  public ImplementResourceEdge implement_resource_edge; // required
-  public EntryInvokeEdge entry_invoke_edge; // required
-  public EntryReturnEdge entry_return_edge; // required
-  public CreateInvocationEdge create_invocation_edge; // required
-  public MakeInvocationEdge make_invocation_edge; // required
-  public CreateResultEdge create_result_edge; // required
-  public ReturnResultEdge return_result_edge; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -168,7 +146,6 @@ public class ApplicationDataUnit implements org.apache.thrift.TBase<ApplicationD
     }
   }
 
-  // isset id assignments
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
@@ -205,1126 +182,893 @@ public class ApplicationDataUnit implements org.apache.thrift.TBase<ApplicationD
   }
 
   public ApplicationDataUnit() {
+    super();
   }
 
-  public ApplicationDataUnit(
-    EntryInvokeProperty entry_invoke_property,
-    EntryReturnProperty entry_return_property,
-    OperationProperty operation_property_property,
-    OperationInvokeProperty operation_invoke_property,
-    OperationReturnProperty operation_return_property,
-    ServeApplicationEdge host_application_edge,
-    ManageResourceEdge app_resource_edge,
-    ImplementResourceEdge implement_resource_edge,
-    EntryInvokeEdge entry_invoke_edge,
-    EntryReturnEdge entry_return_edge,
-    CreateInvocationEdge create_invocation_edge,
-    MakeInvocationEdge make_invocation_edge,
-    CreateResultEdge create_result_edge,
-    ReturnResultEdge return_result_edge)
-  {
-    this();
-    this.entry_invoke_property = entry_invoke_property;
-    this.entry_return_property = entry_return_property;
-    this.operation_property_property = operation_property_property;
-    this.operation_invoke_property = operation_invoke_property;
-    this.operation_return_property = operation_return_property;
-    this.host_application_edge = host_application_edge;
-    this.app_resource_edge = app_resource_edge;
-    this.implement_resource_edge = implement_resource_edge;
-    this.entry_invoke_edge = entry_invoke_edge;
-    this.entry_return_edge = entry_return_edge;
-    this.create_invocation_edge = create_invocation_edge;
-    this.make_invocation_edge = make_invocation_edge;
-    this.create_result_edge = create_result_edge;
-    this.return_result_edge = return_result_edge;
+  public ApplicationDataUnit(_Fields setField, Object value) {
+    super(setField, value);
   }
 
-  /**
-   * Performs a deep copy on <i>other</i>.
-   */
   public ApplicationDataUnit(ApplicationDataUnit other) {
-    if (other.isSetEntry_invoke_property()) {
-      this.entry_invoke_property = new EntryInvokeProperty(other.entry_invoke_property);
-    }
-    if (other.isSetEntry_return_property()) {
-      this.entry_return_property = new EntryReturnProperty(other.entry_return_property);
-    }
-    if (other.isSetOperation_property_property()) {
-      this.operation_property_property = new OperationProperty(other.operation_property_property);
-    }
-    if (other.isSetOperation_invoke_property()) {
-      this.operation_invoke_property = new OperationInvokeProperty(other.operation_invoke_property);
-    }
-    if (other.isSetOperation_return_property()) {
-      this.operation_return_property = new OperationReturnProperty(other.operation_return_property);
-    }
-    if (other.isSetHost_application_edge()) {
-      this.host_application_edge = new ServeApplicationEdge(other.host_application_edge);
-    }
-    if (other.isSetApp_resource_edge()) {
-      this.app_resource_edge = new ManageResourceEdge(other.app_resource_edge);
-    }
-    if (other.isSetImplement_resource_edge()) {
-      this.implement_resource_edge = new ImplementResourceEdge(other.implement_resource_edge);
-    }
-    if (other.isSetEntry_invoke_edge()) {
-      this.entry_invoke_edge = new EntryInvokeEdge(other.entry_invoke_edge);
-    }
-    if (other.isSetEntry_return_edge()) {
-      this.entry_return_edge = new EntryReturnEdge(other.entry_return_edge);
-    }
-    if (other.isSetCreate_invocation_edge()) {
-      this.create_invocation_edge = new CreateInvocationEdge(other.create_invocation_edge);
-    }
-    if (other.isSetMake_invocation_edge()) {
-      this.make_invocation_edge = new MakeInvocationEdge(other.make_invocation_edge);
-    }
-    if (other.isSetCreate_result_edge()) {
-      this.create_result_edge = new CreateResultEdge(other.create_result_edge);
-    }
-    if (other.isSetReturn_result_edge()) {
-      this.return_result_edge = new ReturnResultEdge(other.return_result_edge);
-    }
+    super(other);
   }
-
   public ApplicationDataUnit deepCopy() {
     return new ApplicationDataUnit(this);
   }
 
+  public static ApplicationDataUnit entry_invoke_property(EntryInvokeProperty value) {
+    ApplicationDataUnit x = new ApplicationDataUnit();
+    x.setEntry_invoke_property(value);
+    return x;
+  }
+
+  public static ApplicationDataUnit entry_return_property(EntryReturnProperty value) {
+    ApplicationDataUnit x = new ApplicationDataUnit();
+    x.setEntry_return_property(value);
+    return x;
+  }
+
+  public static ApplicationDataUnit operation_property_property(OperationProperty value) {
+    ApplicationDataUnit x = new ApplicationDataUnit();
+    x.setOperation_property_property(value);
+    return x;
+  }
+
+  public static ApplicationDataUnit operation_invoke_property(OperationInvokeProperty value) {
+    ApplicationDataUnit x = new ApplicationDataUnit();
+    x.setOperation_invoke_property(value);
+    return x;
+  }
+
+  public static ApplicationDataUnit operation_return_property(OperationReturnProperty value) {
+    ApplicationDataUnit x = new ApplicationDataUnit();
+    x.setOperation_return_property(value);
+    return x;
+  }
+
+  public static ApplicationDataUnit host_application_edge(ServeApplicationEdge value) {
+    ApplicationDataUnit x = new ApplicationDataUnit();
+    x.setHost_application_edge(value);
+    return x;
+  }
+
+  public static ApplicationDataUnit app_resource_edge(ManageResourceEdge value) {
+    ApplicationDataUnit x = new ApplicationDataUnit();
+    x.setApp_resource_edge(value);
+    return x;
+  }
+
+  public static ApplicationDataUnit implement_resource_edge(ImplementResourceEdge value) {
+    ApplicationDataUnit x = new ApplicationDataUnit();
+    x.setImplement_resource_edge(value);
+    return x;
+  }
+
+  public static ApplicationDataUnit entry_invoke_edge(EntryInvokeEdge value) {
+    ApplicationDataUnit x = new ApplicationDataUnit();
+    x.setEntry_invoke_edge(value);
+    return x;
+  }
+
+  public static ApplicationDataUnit entry_return_edge(EntryReturnEdge value) {
+    ApplicationDataUnit x = new ApplicationDataUnit();
+    x.setEntry_return_edge(value);
+    return x;
+  }
+
+  public static ApplicationDataUnit create_invocation_edge(CreateInvocationEdge value) {
+    ApplicationDataUnit x = new ApplicationDataUnit();
+    x.setCreate_invocation_edge(value);
+    return x;
+  }
+
+  public static ApplicationDataUnit make_invocation_edge(MakeInvocationEdge value) {
+    ApplicationDataUnit x = new ApplicationDataUnit();
+    x.setMake_invocation_edge(value);
+    return x;
+  }
+
+  public static ApplicationDataUnit create_result_edge(CreateResultEdge value) {
+    ApplicationDataUnit x = new ApplicationDataUnit();
+    x.setCreate_result_edge(value);
+    return x;
+  }
+
+  public static ApplicationDataUnit return_result_edge(ReturnResultEdge value) {
+    ApplicationDataUnit x = new ApplicationDataUnit();
+    x.setReturn_result_edge(value);
+    return x;
+  }
+
+
   @Override
-  public void clear() {
-    this.entry_invoke_property = null;
-    this.entry_return_property = null;
-    this.operation_property_property = null;
-    this.operation_invoke_property = null;
-    this.operation_return_property = null;
-    this.host_application_edge = null;
-    this.app_resource_edge = null;
-    this.implement_resource_edge = null;
-    this.entry_invoke_edge = null;
-    this.entry_return_edge = null;
-    this.create_invocation_edge = null;
-    this.make_invocation_edge = null;
-    this.create_result_edge = null;
-    this.return_result_edge = null;
-  }
-
-  public EntryInvokeProperty getEntry_invoke_property() {
-    return this.entry_invoke_property;
-  }
-
-  public ApplicationDataUnit setEntry_invoke_property(EntryInvokeProperty entry_invoke_property) {
-    this.entry_invoke_property = entry_invoke_property;
-    return this;
-  }
-
-  public void unsetEntry_invoke_property() {
-    this.entry_invoke_property = null;
-  }
-
-  /** Returns true if field entry_invoke_property is set (has been assigned a value) and false otherwise */
-  public boolean isSetEntry_invoke_property() {
-    return this.entry_invoke_property != null;
-  }
-
-  public void setEntry_invoke_propertyIsSet(boolean value) {
-    if (!value) {
-      this.entry_invoke_property = null;
+  protected void checkType(_Fields setField, Object value) throws ClassCastException {
+    switch (setField) {
+      case ENTRY_INVOKE_PROPERTY:
+        if (value instanceof EntryInvokeProperty) {
+          break;
+        }
+        throw new ClassCastException("Was expecting value of type EntryInvokeProperty for field 'entry_invoke_property', but got " + value.getClass().getSimpleName());
+      case ENTRY_RETURN_PROPERTY:
+        if (value instanceof EntryReturnProperty) {
+          break;
+        }
+        throw new ClassCastException("Was expecting value of type EntryReturnProperty for field 'entry_return_property', but got " + value.getClass().getSimpleName());
+      case OPERATION_PROPERTY_PROPERTY:
+        if (value instanceof OperationProperty) {
+          break;
+        }
+        throw new ClassCastException("Was expecting value of type OperationProperty for field 'operation_property_property', but got " + value.getClass().getSimpleName());
+      case OPERATION_INVOKE_PROPERTY:
+        if (value instanceof OperationInvokeProperty) {
+          break;
+        }
+        throw new ClassCastException("Was expecting value of type OperationInvokeProperty for field 'operation_invoke_property', but got " + value.getClass().getSimpleName());
+      case OPERATION_RETURN_PROPERTY:
+        if (value instanceof OperationReturnProperty) {
+          break;
+        }
+        throw new ClassCastException("Was expecting value of type OperationReturnProperty for field 'operation_return_property', but got " + value.getClass().getSimpleName());
+      case HOST_APPLICATION_EDGE:
+        if (value instanceof ServeApplicationEdge) {
+          break;
+        }
+        throw new ClassCastException("Was expecting value of type ServeApplicationEdge for field 'host_application_edge', but got " + value.getClass().getSimpleName());
+      case APP_RESOURCE_EDGE:
+        if (value instanceof ManageResourceEdge) {
+          break;
+        }
+        throw new ClassCastException("Was expecting value of type ManageResourceEdge for field 'app_resource_edge', but got " + value.getClass().getSimpleName());
+      case IMPLEMENT_RESOURCE_EDGE:
+        if (value instanceof ImplementResourceEdge) {
+          break;
+        }
+        throw new ClassCastException("Was expecting value of type ImplementResourceEdge for field 'implement_resource_edge', but got " + value.getClass().getSimpleName());
+      case ENTRY_INVOKE_EDGE:
+        if (value instanceof EntryInvokeEdge) {
+          break;
+        }
+        throw new ClassCastException("Was expecting value of type EntryInvokeEdge for field 'entry_invoke_edge', but got " + value.getClass().getSimpleName());
+      case ENTRY_RETURN_EDGE:
+        if (value instanceof EntryReturnEdge) {
+          break;
+        }
+        throw new ClassCastException("Was expecting value of type EntryReturnEdge for field 'entry_return_edge', but got " + value.getClass().getSimpleName());
+      case CREATE_INVOCATION_EDGE:
+        if (value instanceof CreateInvocationEdge) {
+          break;
+        }
+        throw new ClassCastException("Was expecting value of type CreateInvocationEdge for field 'create_invocation_edge', but got " + value.getClass().getSimpleName());
+      case MAKE_INVOCATION_EDGE:
+        if (value instanceof MakeInvocationEdge) {
+          break;
+        }
+        throw new ClassCastException("Was expecting value of type MakeInvocationEdge for field 'make_invocation_edge', but got " + value.getClass().getSimpleName());
+      case CREATE_RESULT_EDGE:
+        if (value instanceof CreateResultEdge) {
+          break;
+        }
+        throw new ClassCastException("Was expecting value of type CreateResultEdge for field 'create_result_edge', but got " + value.getClass().getSimpleName());
+      case RETURN_RESULT_EDGE:
+        if (value instanceof ReturnResultEdge) {
+          break;
+        }
+        throw new ClassCastException("Was expecting value of type ReturnResultEdge for field 'return_result_edge', but got " + value.getClass().getSimpleName());
+      default:
+        throw new IllegalArgumentException("Unknown field id " + setField);
     }
-  }
-
-  public EntryReturnProperty getEntry_return_property() {
-    return this.entry_return_property;
-  }
-
-  public ApplicationDataUnit setEntry_return_property(EntryReturnProperty entry_return_property) {
-    this.entry_return_property = entry_return_property;
-    return this;
-  }
-
-  public void unsetEntry_return_property() {
-    this.entry_return_property = null;
-  }
-
-  /** Returns true if field entry_return_property is set (has been assigned a value) and false otherwise */
-  public boolean isSetEntry_return_property() {
-    return this.entry_return_property != null;
-  }
-
-  public void setEntry_return_propertyIsSet(boolean value) {
-    if (!value) {
-      this.entry_return_property = null;
-    }
-  }
-
-  public OperationProperty getOperation_property_property() {
-    return this.operation_property_property;
-  }
-
-  public ApplicationDataUnit setOperation_property_property(OperationProperty operation_property_property) {
-    this.operation_property_property = operation_property_property;
-    return this;
-  }
-
-  public void unsetOperation_property_property() {
-    this.operation_property_property = null;
-  }
-
-  /** Returns true if field operation_property_property is set (has been assigned a value) and false otherwise */
-  public boolean isSetOperation_property_property() {
-    return this.operation_property_property != null;
-  }
-
-  public void setOperation_property_propertyIsSet(boolean value) {
-    if (!value) {
-      this.operation_property_property = null;
-    }
-  }
-
-  public OperationInvokeProperty getOperation_invoke_property() {
-    return this.operation_invoke_property;
-  }
-
-  public ApplicationDataUnit setOperation_invoke_property(OperationInvokeProperty operation_invoke_property) {
-    this.operation_invoke_property = operation_invoke_property;
-    return this;
-  }
-
-  public void unsetOperation_invoke_property() {
-    this.operation_invoke_property = null;
-  }
-
-  /** Returns true if field operation_invoke_property is set (has been assigned a value) and false otherwise */
-  public boolean isSetOperation_invoke_property() {
-    return this.operation_invoke_property != null;
-  }
-
-  public void setOperation_invoke_propertyIsSet(boolean value) {
-    if (!value) {
-      this.operation_invoke_property = null;
-    }
-  }
-
-  public OperationReturnProperty getOperation_return_property() {
-    return this.operation_return_property;
-  }
-
-  public ApplicationDataUnit setOperation_return_property(OperationReturnProperty operation_return_property) {
-    this.operation_return_property = operation_return_property;
-    return this;
-  }
-
-  public void unsetOperation_return_property() {
-    this.operation_return_property = null;
-  }
-
-  /** Returns true if field operation_return_property is set (has been assigned a value) and false otherwise */
-  public boolean isSetOperation_return_property() {
-    return this.operation_return_property != null;
-  }
-
-  public void setOperation_return_propertyIsSet(boolean value) {
-    if (!value) {
-      this.operation_return_property = null;
-    }
-  }
-
-  public ServeApplicationEdge getHost_application_edge() {
-    return this.host_application_edge;
-  }
-
-  public ApplicationDataUnit setHost_application_edge(ServeApplicationEdge host_application_edge) {
-    this.host_application_edge = host_application_edge;
-    return this;
-  }
-
-  public void unsetHost_application_edge() {
-    this.host_application_edge = null;
-  }
-
-  /** Returns true if field host_application_edge is set (has been assigned a value) and false otherwise */
-  public boolean isSetHost_application_edge() {
-    return this.host_application_edge != null;
-  }
-
-  public void setHost_application_edgeIsSet(boolean value) {
-    if (!value) {
-      this.host_application_edge = null;
-    }
-  }
-
-  public ManageResourceEdge getApp_resource_edge() {
-    return this.app_resource_edge;
-  }
-
-  public ApplicationDataUnit setApp_resource_edge(ManageResourceEdge app_resource_edge) {
-    this.app_resource_edge = app_resource_edge;
-    return this;
-  }
-
-  public void unsetApp_resource_edge() {
-    this.app_resource_edge = null;
-  }
-
-  /** Returns true if field app_resource_edge is set (has been assigned a value) and false otherwise */
-  public boolean isSetApp_resource_edge() {
-    return this.app_resource_edge != null;
-  }
-
-  public void setApp_resource_edgeIsSet(boolean value) {
-    if (!value) {
-      this.app_resource_edge = null;
-    }
-  }
-
-  public ImplementResourceEdge getImplement_resource_edge() {
-    return this.implement_resource_edge;
-  }
-
-  public ApplicationDataUnit setImplement_resource_edge(ImplementResourceEdge implement_resource_edge) {
-    this.implement_resource_edge = implement_resource_edge;
-    return this;
-  }
-
-  public void unsetImplement_resource_edge() {
-    this.implement_resource_edge = null;
-  }
-
-  /** Returns true if field implement_resource_edge is set (has been assigned a value) and false otherwise */
-  public boolean isSetImplement_resource_edge() {
-    return this.implement_resource_edge != null;
-  }
-
-  public void setImplement_resource_edgeIsSet(boolean value) {
-    if (!value) {
-      this.implement_resource_edge = null;
-    }
-  }
-
-  public EntryInvokeEdge getEntry_invoke_edge() {
-    return this.entry_invoke_edge;
-  }
-
-  public ApplicationDataUnit setEntry_invoke_edge(EntryInvokeEdge entry_invoke_edge) {
-    this.entry_invoke_edge = entry_invoke_edge;
-    return this;
-  }
-
-  public void unsetEntry_invoke_edge() {
-    this.entry_invoke_edge = null;
-  }
-
-  /** Returns true if field entry_invoke_edge is set (has been assigned a value) and false otherwise */
-  public boolean isSetEntry_invoke_edge() {
-    return this.entry_invoke_edge != null;
-  }
-
-  public void setEntry_invoke_edgeIsSet(boolean value) {
-    if (!value) {
-      this.entry_invoke_edge = null;
-    }
-  }
-
-  public EntryReturnEdge getEntry_return_edge() {
-    return this.entry_return_edge;
-  }
-
-  public ApplicationDataUnit setEntry_return_edge(EntryReturnEdge entry_return_edge) {
-    this.entry_return_edge = entry_return_edge;
-    return this;
-  }
-
-  public void unsetEntry_return_edge() {
-    this.entry_return_edge = null;
-  }
-
-  /** Returns true if field entry_return_edge is set (has been assigned a value) and false otherwise */
-  public boolean isSetEntry_return_edge() {
-    return this.entry_return_edge != null;
-  }
-
-  public void setEntry_return_edgeIsSet(boolean value) {
-    if (!value) {
-      this.entry_return_edge = null;
-    }
-  }
-
-  public CreateInvocationEdge getCreate_invocation_edge() {
-    return this.create_invocation_edge;
-  }
-
-  public ApplicationDataUnit setCreate_invocation_edge(CreateInvocationEdge create_invocation_edge) {
-    this.create_invocation_edge = create_invocation_edge;
-    return this;
-  }
-
-  public void unsetCreate_invocation_edge() {
-    this.create_invocation_edge = null;
-  }
-
-  /** Returns true if field create_invocation_edge is set (has been assigned a value) and false otherwise */
-  public boolean isSetCreate_invocation_edge() {
-    return this.create_invocation_edge != null;
-  }
-
-  public void setCreate_invocation_edgeIsSet(boolean value) {
-    if (!value) {
-      this.create_invocation_edge = null;
-    }
-  }
-
-  public MakeInvocationEdge getMake_invocation_edge() {
-    return this.make_invocation_edge;
-  }
-
-  public ApplicationDataUnit setMake_invocation_edge(MakeInvocationEdge make_invocation_edge) {
-    this.make_invocation_edge = make_invocation_edge;
-    return this;
-  }
-
-  public void unsetMake_invocation_edge() {
-    this.make_invocation_edge = null;
-  }
-
-  /** Returns true if field make_invocation_edge is set (has been assigned a value) and false otherwise */
-  public boolean isSetMake_invocation_edge() {
-    return this.make_invocation_edge != null;
-  }
-
-  public void setMake_invocation_edgeIsSet(boolean value) {
-    if (!value) {
-      this.make_invocation_edge = null;
-    }
-  }
-
-  public CreateResultEdge getCreate_result_edge() {
-    return this.create_result_edge;
-  }
-
-  public ApplicationDataUnit setCreate_result_edge(CreateResultEdge create_result_edge) {
-    this.create_result_edge = create_result_edge;
-    return this;
-  }
-
-  public void unsetCreate_result_edge() {
-    this.create_result_edge = null;
-  }
-
-  /** Returns true if field create_result_edge is set (has been assigned a value) and false otherwise */
-  public boolean isSetCreate_result_edge() {
-    return this.create_result_edge != null;
-  }
-
-  public void setCreate_result_edgeIsSet(boolean value) {
-    if (!value) {
-      this.create_result_edge = null;
-    }
-  }
-
-  public ReturnResultEdge getReturn_result_edge() {
-    return this.return_result_edge;
-  }
-
-  public ApplicationDataUnit setReturn_result_edge(ReturnResultEdge return_result_edge) {
-    this.return_result_edge = return_result_edge;
-    return this;
-  }
-
-  public void unsetReturn_result_edge() {
-    this.return_result_edge = null;
-  }
-
-  /** Returns true if field return_result_edge is set (has been assigned a value) and false otherwise */
-  public boolean isSetReturn_result_edge() {
-    return this.return_result_edge != null;
-  }
-
-  public void setReturn_result_edgeIsSet(boolean value) {
-    if (!value) {
-      this.return_result_edge = null;
-    }
-  }
-
-  public void setFieldValue(_Fields field, Object value) {
-    switch (field) {
-    case ENTRY_INVOKE_PROPERTY:
-      if (value == null) {
-        unsetEntry_invoke_property();
-      } else {
-        setEntry_invoke_property((EntryInvokeProperty)value);
-      }
-      break;
-
-    case ENTRY_RETURN_PROPERTY:
-      if (value == null) {
-        unsetEntry_return_property();
-      } else {
-        setEntry_return_property((EntryReturnProperty)value);
-      }
-      break;
-
-    case OPERATION_PROPERTY_PROPERTY:
-      if (value == null) {
-        unsetOperation_property_property();
-      } else {
-        setOperation_property_property((OperationProperty)value);
-      }
-      break;
-
-    case OPERATION_INVOKE_PROPERTY:
-      if (value == null) {
-        unsetOperation_invoke_property();
-      } else {
-        setOperation_invoke_property((OperationInvokeProperty)value);
-      }
-      break;
-
-    case OPERATION_RETURN_PROPERTY:
-      if (value == null) {
-        unsetOperation_return_property();
-      } else {
-        setOperation_return_property((OperationReturnProperty)value);
-      }
-      break;
-
-    case HOST_APPLICATION_EDGE:
-      if (value == null) {
-        unsetHost_application_edge();
-      } else {
-        setHost_application_edge((ServeApplicationEdge)value);
-      }
-      break;
-
-    case APP_RESOURCE_EDGE:
-      if (value == null) {
-        unsetApp_resource_edge();
-      } else {
-        setApp_resource_edge((ManageResourceEdge)value);
-      }
-      break;
-
-    case IMPLEMENT_RESOURCE_EDGE:
-      if (value == null) {
-        unsetImplement_resource_edge();
-      } else {
-        setImplement_resource_edge((ImplementResourceEdge)value);
-      }
-      break;
-
-    case ENTRY_INVOKE_EDGE:
-      if (value == null) {
-        unsetEntry_invoke_edge();
-      } else {
-        setEntry_invoke_edge((EntryInvokeEdge)value);
-      }
-      break;
-
-    case ENTRY_RETURN_EDGE:
-      if (value == null) {
-        unsetEntry_return_edge();
-      } else {
-        setEntry_return_edge((EntryReturnEdge)value);
-      }
-      break;
-
-    case CREATE_INVOCATION_EDGE:
-      if (value == null) {
-        unsetCreate_invocation_edge();
-      } else {
-        setCreate_invocation_edge((CreateInvocationEdge)value);
-      }
-      break;
-
-    case MAKE_INVOCATION_EDGE:
-      if (value == null) {
-        unsetMake_invocation_edge();
-      } else {
-        setMake_invocation_edge((MakeInvocationEdge)value);
-      }
-      break;
-
-    case CREATE_RESULT_EDGE:
-      if (value == null) {
-        unsetCreate_result_edge();
-      } else {
-        setCreate_result_edge((CreateResultEdge)value);
-      }
-      break;
-
-    case RETURN_RESULT_EDGE:
-      if (value == null) {
-        unsetReturn_result_edge();
-      } else {
-        setReturn_result_edge((ReturnResultEdge)value);
-      }
-      break;
-
-    }
-  }
-
-  public Object getFieldValue(_Fields field) {
-    switch (field) {
-    case ENTRY_INVOKE_PROPERTY:
-      return getEntry_invoke_property();
-
-    case ENTRY_RETURN_PROPERTY:
-      return getEntry_return_property();
-
-    case OPERATION_PROPERTY_PROPERTY:
-      return getOperation_property_property();
-
-    case OPERATION_INVOKE_PROPERTY:
-      return getOperation_invoke_property();
-
-    case OPERATION_RETURN_PROPERTY:
-      return getOperation_return_property();
-
-    case HOST_APPLICATION_EDGE:
-      return getHost_application_edge();
-
-    case APP_RESOURCE_EDGE:
-      return getApp_resource_edge();
-
-    case IMPLEMENT_RESOURCE_EDGE:
-      return getImplement_resource_edge();
-
-    case ENTRY_INVOKE_EDGE:
-      return getEntry_invoke_edge();
-
-    case ENTRY_RETURN_EDGE:
-      return getEntry_return_edge();
-
-    case CREATE_INVOCATION_EDGE:
-      return getCreate_invocation_edge();
-
-    case MAKE_INVOCATION_EDGE:
-      return getMake_invocation_edge();
-
-    case CREATE_RESULT_EDGE:
-      return getCreate_result_edge();
-
-    case RETURN_RESULT_EDGE:
-      return getReturn_result_edge();
-
-    }
-    throw new IllegalStateException();
-  }
-
-  /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
-  public boolean isSet(_Fields field) {
-    if (field == null) {
-      throw new IllegalArgumentException();
-    }
-
-    switch (field) {
-    case ENTRY_INVOKE_PROPERTY:
-      return isSetEntry_invoke_property();
-    case ENTRY_RETURN_PROPERTY:
-      return isSetEntry_return_property();
-    case OPERATION_PROPERTY_PROPERTY:
-      return isSetOperation_property_property();
-    case OPERATION_INVOKE_PROPERTY:
-      return isSetOperation_invoke_property();
-    case OPERATION_RETURN_PROPERTY:
-      return isSetOperation_return_property();
-    case HOST_APPLICATION_EDGE:
-      return isSetHost_application_edge();
-    case APP_RESOURCE_EDGE:
-      return isSetApp_resource_edge();
-    case IMPLEMENT_RESOURCE_EDGE:
-      return isSetImplement_resource_edge();
-    case ENTRY_INVOKE_EDGE:
-      return isSetEntry_invoke_edge();
-    case ENTRY_RETURN_EDGE:
-      return isSetEntry_return_edge();
-    case CREATE_INVOCATION_EDGE:
-      return isSetCreate_invocation_edge();
-    case MAKE_INVOCATION_EDGE:
-      return isSetMake_invocation_edge();
-    case CREATE_RESULT_EDGE:
-      return isSetCreate_result_edge();
-    case RETURN_RESULT_EDGE:
-      return isSetReturn_result_edge();
-    }
-    throw new IllegalStateException();
   }
 
   @Override
-  public boolean equals(Object that) {
-    if (that == null)
-      return false;
-    if (that instanceof ApplicationDataUnit)
-      return this.equals((ApplicationDataUnit)that);
-    return false;
-  }
-
-  public boolean equals(ApplicationDataUnit that) {
-    if (that == null)
-      return false;
-
-    boolean this_present_entry_invoke_property = true && this.isSetEntry_invoke_property();
-    boolean that_present_entry_invoke_property = true && that.isSetEntry_invoke_property();
-    if (this_present_entry_invoke_property || that_present_entry_invoke_property) {
-      if (!(this_present_entry_invoke_property && that_present_entry_invoke_property))
-        return false;
-      if (!this.entry_invoke_property.equals(that.entry_invoke_property))
-        return false;
+  protected Object standardSchemeReadValue(org.apache.thrift.protocol.TProtocol iprot, org.apache.thrift.protocol.TField field) throws org.apache.thrift.TException {
+    _Fields setField = _Fields.findByThriftId(field.id);
+    if (setField != null) {
+      switch (setField) {
+        case ENTRY_INVOKE_PROPERTY:
+          if (field.type == ENTRY_INVOKE_PROPERTY_FIELD_DESC.type) {
+            EntryInvokeProperty entry_invoke_property;
+            entry_invoke_property = new EntryInvokeProperty();
+            entry_invoke_property.read(iprot);
+            return entry_invoke_property;
+          } else {
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
+            return null;
+          }
+        case ENTRY_RETURN_PROPERTY:
+          if (field.type == ENTRY_RETURN_PROPERTY_FIELD_DESC.type) {
+            EntryReturnProperty entry_return_property;
+            entry_return_property = new EntryReturnProperty();
+            entry_return_property.read(iprot);
+            return entry_return_property;
+          } else {
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
+            return null;
+          }
+        case OPERATION_PROPERTY_PROPERTY:
+          if (field.type == OPERATION_PROPERTY_PROPERTY_FIELD_DESC.type) {
+            OperationProperty operation_property_property;
+            operation_property_property = new OperationProperty();
+            operation_property_property.read(iprot);
+            return operation_property_property;
+          } else {
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
+            return null;
+          }
+        case OPERATION_INVOKE_PROPERTY:
+          if (field.type == OPERATION_INVOKE_PROPERTY_FIELD_DESC.type) {
+            OperationInvokeProperty operation_invoke_property;
+            operation_invoke_property = new OperationInvokeProperty();
+            operation_invoke_property.read(iprot);
+            return operation_invoke_property;
+          } else {
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
+            return null;
+          }
+        case OPERATION_RETURN_PROPERTY:
+          if (field.type == OPERATION_RETURN_PROPERTY_FIELD_DESC.type) {
+            OperationReturnProperty operation_return_property;
+            operation_return_property = new OperationReturnProperty();
+            operation_return_property.read(iprot);
+            return operation_return_property;
+          } else {
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
+            return null;
+          }
+        case HOST_APPLICATION_EDGE:
+          if (field.type == HOST_APPLICATION_EDGE_FIELD_DESC.type) {
+            ServeApplicationEdge host_application_edge;
+            host_application_edge = new ServeApplicationEdge();
+            host_application_edge.read(iprot);
+            return host_application_edge;
+          } else {
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
+            return null;
+          }
+        case APP_RESOURCE_EDGE:
+          if (field.type == APP_RESOURCE_EDGE_FIELD_DESC.type) {
+            ManageResourceEdge app_resource_edge;
+            app_resource_edge = new ManageResourceEdge();
+            app_resource_edge.read(iprot);
+            return app_resource_edge;
+          } else {
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
+            return null;
+          }
+        case IMPLEMENT_RESOURCE_EDGE:
+          if (field.type == IMPLEMENT_RESOURCE_EDGE_FIELD_DESC.type) {
+            ImplementResourceEdge implement_resource_edge;
+            implement_resource_edge = new ImplementResourceEdge();
+            implement_resource_edge.read(iprot);
+            return implement_resource_edge;
+          } else {
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
+            return null;
+          }
+        case ENTRY_INVOKE_EDGE:
+          if (field.type == ENTRY_INVOKE_EDGE_FIELD_DESC.type) {
+            EntryInvokeEdge entry_invoke_edge;
+            entry_invoke_edge = new EntryInvokeEdge();
+            entry_invoke_edge.read(iprot);
+            return entry_invoke_edge;
+          } else {
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
+            return null;
+          }
+        case ENTRY_RETURN_EDGE:
+          if (field.type == ENTRY_RETURN_EDGE_FIELD_DESC.type) {
+            EntryReturnEdge entry_return_edge;
+            entry_return_edge = new EntryReturnEdge();
+            entry_return_edge.read(iprot);
+            return entry_return_edge;
+          } else {
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
+            return null;
+          }
+        case CREATE_INVOCATION_EDGE:
+          if (field.type == CREATE_INVOCATION_EDGE_FIELD_DESC.type) {
+            CreateInvocationEdge create_invocation_edge;
+            create_invocation_edge = new CreateInvocationEdge();
+            create_invocation_edge.read(iprot);
+            return create_invocation_edge;
+          } else {
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
+            return null;
+          }
+        case MAKE_INVOCATION_EDGE:
+          if (field.type == MAKE_INVOCATION_EDGE_FIELD_DESC.type) {
+            MakeInvocationEdge make_invocation_edge;
+            make_invocation_edge = new MakeInvocationEdge();
+            make_invocation_edge.read(iprot);
+            return make_invocation_edge;
+          } else {
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
+            return null;
+          }
+        case CREATE_RESULT_EDGE:
+          if (field.type == CREATE_RESULT_EDGE_FIELD_DESC.type) {
+            CreateResultEdge create_result_edge;
+            create_result_edge = new CreateResultEdge();
+            create_result_edge.read(iprot);
+            return create_result_edge;
+          } else {
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
+            return null;
+          }
+        case RETURN_RESULT_EDGE:
+          if (field.type == RETURN_RESULT_EDGE_FIELD_DESC.type) {
+            ReturnResultEdge return_result_edge;
+            return_result_edge = new ReturnResultEdge();
+            return_result_edge.read(iprot);
+            return return_result_edge;
+          } else {
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
+            return null;
+          }
+        default:
+          throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
+      }
+    } else {
+      org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
+      return null;
     }
-
-    boolean this_present_entry_return_property = true && this.isSetEntry_return_property();
-    boolean that_present_entry_return_property = true && that.isSetEntry_return_property();
-    if (this_present_entry_return_property || that_present_entry_return_property) {
-      if (!(this_present_entry_return_property && that_present_entry_return_property))
-        return false;
-      if (!this.entry_return_property.equals(that.entry_return_property))
-        return false;
-    }
-
-    boolean this_present_operation_property_property = true && this.isSetOperation_property_property();
-    boolean that_present_operation_property_property = true && that.isSetOperation_property_property();
-    if (this_present_operation_property_property || that_present_operation_property_property) {
-      if (!(this_present_operation_property_property && that_present_operation_property_property))
-        return false;
-      if (!this.operation_property_property.equals(that.operation_property_property))
-        return false;
-    }
-
-    boolean this_present_operation_invoke_property = true && this.isSetOperation_invoke_property();
-    boolean that_present_operation_invoke_property = true && that.isSetOperation_invoke_property();
-    if (this_present_operation_invoke_property || that_present_operation_invoke_property) {
-      if (!(this_present_operation_invoke_property && that_present_operation_invoke_property))
-        return false;
-      if (!this.operation_invoke_property.equals(that.operation_invoke_property))
-        return false;
-    }
-
-    boolean this_present_operation_return_property = true && this.isSetOperation_return_property();
-    boolean that_present_operation_return_property = true && that.isSetOperation_return_property();
-    if (this_present_operation_return_property || that_present_operation_return_property) {
-      if (!(this_present_operation_return_property && that_present_operation_return_property))
-        return false;
-      if (!this.operation_return_property.equals(that.operation_return_property))
-        return false;
-    }
-
-    boolean this_present_host_application_edge = true && this.isSetHost_application_edge();
-    boolean that_present_host_application_edge = true && that.isSetHost_application_edge();
-    if (this_present_host_application_edge || that_present_host_application_edge) {
-      if (!(this_present_host_application_edge && that_present_host_application_edge))
-        return false;
-      if (!this.host_application_edge.equals(that.host_application_edge))
-        return false;
-    }
-
-    boolean this_present_app_resource_edge = true && this.isSetApp_resource_edge();
-    boolean that_present_app_resource_edge = true && that.isSetApp_resource_edge();
-    if (this_present_app_resource_edge || that_present_app_resource_edge) {
-      if (!(this_present_app_resource_edge && that_present_app_resource_edge))
-        return false;
-      if (!this.app_resource_edge.equals(that.app_resource_edge))
-        return false;
-    }
-
-    boolean this_present_implement_resource_edge = true && this.isSetImplement_resource_edge();
-    boolean that_present_implement_resource_edge = true && that.isSetImplement_resource_edge();
-    if (this_present_implement_resource_edge || that_present_implement_resource_edge) {
-      if (!(this_present_implement_resource_edge && that_present_implement_resource_edge))
-        return false;
-      if (!this.implement_resource_edge.equals(that.implement_resource_edge))
-        return false;
-    }
-
-    boolean this_present_entry_invoke_edge = true && this.isSetEntry_invoke_edge();
-    boolean that_present_entry_invoke_edge = true && that.isSetEntry_invoke_edge();
-    if (this_present_entry_invoke_edge || that_present_entry_invoke_edge) {
-      if (!(this_present_entry_invoke_edge && that_present_entry_invoke_edge))
-        return false;
-      if (!this.entry_invoke_edge.equals(that.entry_invoke_edge))
-        return false;
-    }
-
-    boolean this_present_entry_return_edge = true && this.isSetEntry_return_edge();
-    boolean that_present_entry_return_edge = true && that.isSetEntry_return_edge();
-    if (this_present_entry_return_edge || that_present_entry_return_edge) {
-      if (!(this_present_entry_return_edge && that_present_entry_return_edge))
-        return false;
-      if (!this.entry_return_edge.equals(that.entry_return_edge))
-        return false;
-    }
-
-    boolean this_present_create_invocation_edge = true && this.isSetCreate_invocation_edge();
-    boolean that_present_create_invocation_edge = true && that.isSetCreate_invocation_edge();
-    if (this_present_create_invocation_edge || that_present_create_invocation_edge) {
-      if (!(this_present_create_invocation_edge && that_present_create_invocation_edge))
-        return false;
-      if (!this.create_invocation_edge.equals(that.create_invocation_edge))
-        return false;
-    }
-
-    boolean this_present_make_invocation_edge = true && this.isSetMake_invocation_edge();
-    boolean that_present_make_invocation_edge = true && that.isSetMake_invocation_edge();
-    if (this_present_make_invocation_edge || that_present_make_invocation_edge) {
-      if (!(this_present_make_invocation_edge && that_present_make_invocation_edge))
-        return false;
-      if (!this.make_invocation_edge.equals(that.make_invocation_edge))
-        return false;
-    }
-
-    boolean this_present_create_result_edge = true && this.isSetCreate_result_edge();
-    boolean that_present_create_result_edge = true && that.isSetCreate_result_edge();
-    if (this_present_create_result_edge || that_present_create_result_edge) {
-      if (!(this_present_create_result_edge && that_present_create_result_edge))
-        return false;
-      if (!this.create_result_edge.equals(that.create_result_edge))
-        return false;
-    }
-
-    boolean this_present_return_result_edge = true && this.isSetReturn_result_edge();
-    boolean that_present_return_result_edge = true && that.isSetReturn_result_edge();
-    if (this_present_return_result_edge || that_present_return_result_edge) {
-      if (!(this_present_return_result_edge && that_present_return_result_edge))
-        return false;
-      if (!this.return_result_edge.equals(that.return_result_edge))
-        return false;
-    }
-
-    return true;
   }
 
   @Override
-  public int hashCode() {
-    return 0;
+  protected void standardSchemeWriteValue(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    switch (setField_) {
+      case ENTRY_INVOKE_PROPERTY:
+        EntryInvokeProperty entry_invoke_property = (EntryInvokeProperty)value_;
+        entry_invoke_property.write(oprot);
+        return;
+      case ENTRY_RETURN_PROPERTY:
+        EntryReturnProperty entry_return_property = (EntryReturnProperty)value_;
+        entry_return_property.write(oprot);
+        return;
+      case OPERATION_PROPERTY_PROPERTY:
+        OperationProperty operation_property_property = (OperationProperty)value_;
+        operation_property_property.write(oprot);
+        return;
+      case OPERATION_INVOKE_PROPERTY:
+        OperationInvokeProperty operation_invoke_property = (OperationInvokeProperty)value_;
+        operation_invoke_property.write(oprot);
+        return;
+      case OPERATION_RETURN_PROPERTY:
+        OperationReturnProperty operation_return_property = (OperationReturnProperty)value_;
+        operation_return_property.write(oprot);
+        return;
+      case HOST_APPLICATION_EDGE:
+        ServeApplicationEdge host_application_edge = (ServeApplicationEdge)value_;
+        host_application_edge.write(oprot);
+        return;
+      case APP_RESOURCE_EDGE:
+        ManageResourceEdge app_resource_edge = (ManageResourceEdge)value_;
+        app_resource_edge.write(oprot);
+        return;
+      case IMPLEMENT_RESOURCE_EDGE:
+        ImplementResourceEdge implement_resource_edge = (ImplementResourceEdge)value_;
+        implement_resource_edge.write(oprot);
+        return;
+      case ENTRY_INVOKE_EDGE:
+        EntryInvokeEdge entry_invoke_edge = (EntryInvokeEdge)value_;
+        entry_invoke_edge.write(oprot);
+        return;
+      case ENTRY_RETURN_EDGE:
+        EntryReturnEdge entry_return_edge = (EntryReturnEdge)value_;
+        entry_return_edge.write(oprot);
+        return;
+      case CREATE_INVOCATION_EDGE:
+        CreateInvocationEdge create_invocation_edge = (CreateInvocationEdge)value_;
+        create_invocation_edge.write(oprot);
+        return;
+      case MAKE_INVOCATION_EDGE:
+        MakeInvocationEdge make_invocation_edge = (MakeInvocationEdge)value_;
+        make_invocation_edge.write(oprot);
+        return;
+      case CREATE_RESULT_EDGE:
+        CreateResultEdge create_result_edge = (CreateResultEdge)value_;
+        create_result_edge.write(oprot);
+        return;
+      case RETURN_RESULT_EDGE:
+        ReturnResultEdge return_result_edge = (ReturnResultEdge)value_;
+        return_result_edge.write(oprot);
+        return;
+      default:
+        throw new IllegalStateException("Cannot write union with unknown field " + setField_);
+    }
   }
 
   @Override
-  public int compareTo(ApplicationDataUnit other) {
-    if (!getClass().equals(other.getClass())) {
-      return getClass().getName().compareTo(other.getClass().getName());
+  protected Object tupleSchemeReadValue(org.apache.thrift.protocol.TProtocol iprot, short fieldID) throws org.apache.thrift.TException {
+    _Fields setField = _Fields.findByThriftId(fieldID);
+    if (setField != null) {
+      switch (setField) {
+        case ENTRY_INVOKE_PROPERTY:
+          EntryInvokeProperty entry_invoke_property;
+          entry_invoke_property = new EntryInvokeProperty();
+          entry_invoke_property.read(iprot);
+          return entry_invoke_property;
+        case ENTRY_RETURN_PROPERTY:
+          EntryReturnProperty entry_return_property;
+          entry_return_property = new EntryReturnProperty();
+          entry_return_property.read(iprot);
+          return entry_return_property;
+        case OPERATION_PROPERTY_PROPERTY:
+          OperationProperty operation_property_property;
+          operation_property_property = new OperationProperty();
+          operation_property_property.read(iprot);
+          return operation_property_property;
+        case OPERATION_INVOKE_PROPERTY:
+          OperationInvokeProperty operation_invoke_property;
+          operation_invoke_property = new OperationInvokeProperty();
+          operation_invoke_property.read(iprot);
+          return operation_invoke_property;
+        case OPERATION_RETURN_PROPERTY:
+          OperationReturnProperty operation_return_property;
+          operation_return_property = new OperationReturnProperty();
+          operation_return_property.read(iprot);
+          return operation_return_property;
+        case HOST_APPLICATION_EDGE:
+          ServeApplicationEdge host_application_edge;
+          host_application_edge = new ServeApplicationEdge();
+          host_application_edge.read(iprot);
+          return host_application_edge;
+        case APP_RESOURCE_EDGE:
+          ManageResourceEdge app_resource_edge;
+          app_resource_edge = new ManageResourceEdge();
+          app_resource_edge.read(iprot);
+          return app_resource_edge;
+        case IMPLEMENT_RESOURCE_EDGE:
+          ImplementResourceEdge implement_resource_edge;
+          implement_resource_edge = new ImplementResourceEdge();
+          implement_resource_edge.read(iprot);
+          return implement_resource_edge;
+        case ENTRY_INVOKE_EDGE:
+          EntryInvokeEdge entry_invoke_edge;
+          entry_invoke_edge = new EntryInvokeEdge();
+          entry_invoke_edge.read(iprot);
+          return entry_invoke_edge;
+        case ENTRY_RETURN_EDGE:
+          EntryReturnEdge entry_return_edge;
+          entry_return_edge = new EntryReturnEdge();
+          entry_return_edge.read(iprot);
+          return entry_return_edge;
+        case CREATE_INVOCATION_EDGE:
+          CreateInvocationEdge create_invocation_edge;
+          create_invocation_edge = new CreateInvocationEdge();
+          create_invocation_edge.read(iprot);
+          return create_invocation_edge;
+        case MAKE_INVOCATION_EDGE:
+          MakeInvocationEdge make_invocation_edge;
+          make_invocation_edge = new MakeInvocationEdge();
+          make_invocation_edge.read(iprot);
+          return make_invocation_edge;
+        case CREATE_RESULT_EDGE:
+          CreateResultEdge create_result_edge;
+          create_result_edge = new CreateResultEdge();
+          create_result_edge.read(iprot);
+          return create_result_edge;
+        case RETURN_RESULT_EDGE:
+          ReturnResultEdge return_result_edge;
+          return_result_edge = new ReturnResultEdge();
+          return_result_edge.read(iprot);
+          return return_result_edge;
+        default:
+          throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
+      }
+    } else {
+      throw new TProtocolException("Couldn't find a field with field id " + fieldID);
     }
+  }
 
-    int lastComparison = 0;
+  @Override
+  protected void tupleSchemeWriteValue(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    switch (setField_) {
+      case ENTRY_INVOKE_PROPERTY:
+        EntryInvokeProperty entry_invoke_property = (EntryInvokeProperty)value_;
+        entry_invoke_property.write(oprot);
+        return;
+      case ENTRY_RETURN_PROPERTY:
+        EntryReturnProperty entry_return_property = (EntryReturnProperty)value_;
+        entry_return_property.write(oprot);
+        return;
+      case OPERATION_PROPERTY_PROPERTY:
+        OperationProperty operation_property_property = (OperationProperty)value_;
+        operation_property_property.write(oprot);
+        return;
+      case OPERATION_INVOKE_PROPERTY:
+        OperationInvokeProperty operation_invoke_property = (OperationInvokeProperty)value_;
+        operation_invoke_property.write(oprot);
+        return;
+      case OPERATION_RETURN_PROPERTY:
+        OperationReturnProperty operation_return_property = (OperationReturnProperty)value_;
+        operation_return_property.write(oprot);
+        return;
+      case HOST_APPLICATION_EDGE:
+        ServeApplicationEdge host_application_edge = (ServeApplicationEdge)value_;
+        host_application_edge.write(oprot);
+        return;
+      case APP_RESOURCE_EDGE:
+        ManageResourceEdge app_resource_edge = (ManageResourceEdge)value_;
+        app_resource_edge.write(oprot);
+        return;
+      case IMPLEMENT_RESOURCE_EDGE:
+        ImplementResourceEdge implement_resource_edge = (ImplementResourceEdge)value_;
+        implement_resource_edge.write(oprot);
+        return;
+      case ENTRY_INVOKE_EDGE:
+        EntryInvokeEdge entry_invoke_edge = (EntryInvokeEdge)value_;
+        entry_invoke_edge.write(oprot);
+        return;
+      case ENTRY_RETURN_EDGE:
+        EntryReturnEdge entry_return_edge = (EntryReturnEdge)value_;
+        entry_return_edge.write(oprot);
+        return;
+      case CREATE_INVOCATION_EDGE:
+        CreateInvocationEdge create_invocation_edge = (CreateInvocationEdge)value_;
+        create_invocation_edge.write(oprot);
+        return;
+      case MAKE_INVOCATION_EDGE:
+        MakeInvocationEdge make_invocation_edge = (MakeInvocationEdge)value_;
+        make_invocation_edge.write(oprot);
+        return;
+      case CREATE_RESULT_EDGE:
+        CreateResultEdge create_result_edge = (CreateResultEdge)value_;
+        create_result_edge.write(oprot);
+        return;
+      case RETURN_RESULT_EDGE:
+        ReturnResultEdge return_result_edge = (ReturnResultEdge)value_;
+        return_result_edge.write(oprot);
+        return;
+      default:
+        throw new IllegalStateException("Cannot write union with unknown field " + setField_);
+    }
+  }
 
-    lastComparison = Boolean.valueOf(isSetEntry_invoke_property()).compareTo(other.isSetEntry_invoke_property());
-    if (lastComparison != 0) {
-      return lastComparison;
+  @Override
+  protected org.apache.thrift.protocol.TField getFieldDesc(_Fields setField) {
+    switch (setField) {
+      case ENTRY_INVOKE_PROPERTY:
+        return ENTRY_INVOKE_PROPERTY_FIELD_DESC;
+      case ENTRY_RETURN_PROPERTY:
+        return ENTRY_RETURN_PROPERTY_FIELD_DESC;
+      case OPERATION_PROPERTY_PROPERTY:
+        return OPERATION_PROPERTY_PROPERTY_FIELD_DESC;
+      case OPERATION_INVOKE_PROPERTY:
+        return OPERATION_INVOKE_PROPERTY_FIELD_DESC;
+      case OPERATION_RETURN_PROPERTY:
+        return OPERATION_RETURN_PROPERTY_FIELD_DESC;
+      case HOST_APPLICATION_EDGE:
+        return HOST_APPLICATION_EDGE_FIELD_DESC;
+      case APP_RESOURCE_EDGE:
+        return APP_RESOURCE_EDGE_FIELD_DESC;
+      case IMPLEMENT_RESOURCE_EDGE:
+        return IMPLEMENT_RESOURCE_EDGE_FIELD_DESC;
+      case ENTRY_INVOKE_EDGE:
+        return ENTRY_INVOKE_EDGE_FIELD_DESC;
+      case ENTRY_RETURN_EDGE:
+        return ENTRY_RETURN_EDGE_FIELD_DESC;
+      case CREATE_INVOCATION_EDGE:
+        return CREATE_INVOCATION_EDGE_FIELD_DESC;
+      case MAKE_INVOCATION_EDGE:
+        return MAKE_INVOCATION_EDGE_FIELD_DESC;
+      case CREATE_RESULT_EDGE:
+        return CREATE_RESULT_EDGE_FIELD_DESC;
+      case RETURN_RESULT_EDGE:
+        return RETURN_RESULT_EDGE_FIELD_DESC;
+      default:
+        throw new IllegalArgumentException("Unknown field id " + setField);
     }
-    if (isSetEntry_invoke_property()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.entry_invoke_property, other.entry_invoke_property);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetEntry_return_property()).compareTo(other.isSetEntry_return_property());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetEntry_return_property()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.entry_return_property, other.entry_return_property);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetOperation_property_property()).compareTo(other.isSetOperation_property_property());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetOperation_property_property()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.operation_property_property, other.operation_property_property);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetOperation_invoke_property()).compareTo(other.isSetOperation_invoke_property());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetOperation_invoke_property()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.operation_invoke_property, other.operation_invoke_property);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetOperation_return_property()).compareTo(other.isSetOperation_return_property());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetOperation_return_property()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.operation_return_property, other.operation_return_property);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetHost_application_edge()).compareTo(other.isSetHost_application_edge());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetHost_application_edge()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.host_application_edge, other.host_application_edge);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetApp_resource_edge()).compareTo(other.isSetApp_resource_edge());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetApp_resource_edge()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.app_resource_edge, other.app_resource_edge);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetImplement_resource_edge()).compareTo(other.isSetImplement_resource_edge());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetImplement_resource_edge()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.implement_resource_edge, other.implement_resource_edge);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetEntry_invoke_edge()).compareTo(other.isSetEntry_invoke_edge());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetEntry_invoke_edge()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.entry_invoke_edge, other.entry_invoke_edge);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetEntry_return_edge()).compareTo(other.isSetEntry_return_edge());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetEntry_return_edge()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.entry_return_edge, other.entry_return_edge);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetCreate_invocation_edge()).compareTo(other.isSetCreate_invocation_edge());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetCreate_invocation_edge()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.create_invocation_edge, other.create_invocation_edge);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetMake_invocation_edge()).compareTo(other.isSetMake_invocation_edge());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetMake_invocation_edge()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.make_invocation_edge, other.make_invocation_edge);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetCreate_result_edge()).compareTo(other.isSetCreate_result_edge());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetCreate_result_edge()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.create_result_edge, other.create_result_edge);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetReturn_result_edge()).compareTo(other.isSetReturn_result_edge());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetReturn_result_edge()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.return_result_edge, other.return_result_edge);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    return 0;
+  }
+
+  @Override
+  protected org.apache.thrift.protocol.TStruct getStructDesc() {
+    return STRUCT_DESC;
+  }
+
+  @Override
+  protected _Fields enumForId(short id) {
+    return _Fields.findByThriftIdOrThrow(id);
   }
 
   public _Fields fieldForId(int fieldId) {
     return _Fields.findByThriftId(fieldId);
   }
 
-  public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
-    schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
+
+  public EntryInvokeProperty getEntry_invoke_property() {
+    if (getSetField() == _Fields.ENTRY_INVOKE_PROPERTY) {
+      return (EntryInvokeProperty)getFieldValue();
+    } else {
+      throw new RuntimeException("Cannot get field 'entry_invoke_property' because union is currently set to " + getFieldDesc(getSetField()).name);
+    }
   }
 
-  public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
-    schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
+  public void setEntry_invoke_property(EntryInvokeProperty value) {
+    if (value == null) throw new NullPointerException();
+    setField_ = _Fields.ENTRY_INVOKE_PROPERTY;
+    value_ = value;
+  }
+
+  public EntryReturnProperty getEntry_return_property() {
+    if (getSetField() == _Fields.ENTRY_RETURN_PROPERTY) {
+      return (EntryReturnProperty)getFieldValue();
+    } else {
+      throw new RuntimeException("Cannot get field 'entry_return_property' because union is currently set to " + getFieldDesc(getSetField()).name);
+    }
+  }
+
+  public void setEntry_return_property(EntryReturnProperty value) {
+    if (value == null) throw new NullPointerException();
+    setField_ = _Fields.ENTRY_RETURN_PROPERTY;
+    value_ = value;
+  }
+
+  public OperationProperty getOperation_property_property() {
+    if (getSetField() == _Fields.OPERATION_PROPERTY_PROPERTY) {
+      return (OperationProperty)getFieldValue();
+    } else {
+      throw new RuntimeException("Cannot get field 'operation_property_property' because union is currently set to " + getFieldDesc(getSetField()).name);
+    }
+  }
+
+  public void setOperation_property_property(OperationProperty value) {
+    if (value == null) throw new NullPointerException();
+    setField_ = _Fields.OPERATION_PROPERTY_PROPERTY;
+    value_ = value;
+  }
+
+  public OperationInvokeProperty getOperation_invoke_property() {
+    if (getSetField() == _Fields.OPERATION_INVOKE_PROPERTY) {
+      return (OperationInvokeProperty)getFieldValue();
+    } else {
+      throw new RuntimeException("Cannot get field 'operation_invoke_property' because union is currently set to " + getFieldDesc(getSetField()).name);
+    }
+  }
+
+  public void setOperation_invoke_property(OperationInvokeProperty value) {
+    if (value == null) throw new NullPointerException();
+    setField_ = _Fields.OPERATION_INVOKE_PROPERTY;
+    value_ = value;
+  }
+
+  public OperationReturnProperty getOperation_return_property() {
+    if (getSetField() == _Fields.OPERATION_RETURN_PROPERTY) {
+      return (OperationReturnProperty)getFieldValue();
+    } else {
+      throw new RuntimeException("Cannot get field 'operation_return_property' because union is currently set to " + getFieldDesc(getSetField()).name);
+    }
+  }
+
+  public void setOperation_return_property(OperationReturnProperty value) {
+    if (value == null) throw new NullPointerException();
+    setField_ = _Fields.OPERATION_RETURN_PROPERTY;
+    value_ = value;
+  }
+
+  public ServeApplicationEdge getHost_application_edge() {
+    if (getSetField() == _Fields.HOST_APPLICATION_EDGE) {
+      return (ServeApplicationEdge)getFieldValue();
+    } else {
+      throw new RuntimeException("Cannot get field 'host_application_edge' because union is currently set to " + getFieldDesc(getSetField()).name);
+    }
+  }
+
+  public void setHost_application_edge(ServeApplicationEdge value) {
+    if (value == null) throw new NullPointerException();
+    setField_ = _Fields.HOST_APPLICATION_EDGE;
+    value_ = value;
+  }
+
+  public ManageResourceEdge getApp_resource_edge() {
+    if (getSetField() == _Fields.APP_RESOURCE_EDGE) {
+      return (ManageResourceEdge)getFieldValue();
+    } else {
+      throw new RuntimeException("Cannot get field 'app_resource_edge' because union is currently set to " + getFieldDesc(getSetField()).name);
+    }
+  }
+
+  public void setApp_resource_edge(ManageResourceEdge value) {
+    if (value == null) throw new NullPointerException();
+    setField_ = _Fields.APP_RESOURCE_EDGE;
+    value_ = value;
+  }
+
+  public ImplementResourceEdge getImplement_resource_edge() {
+    if (getSetField() == _Fields.IMPLEMENT_RESOURCE_EDGE) {
+      return (ImplementResourceEdge)getFieldValue();
+    } else {
+      throw new RuntimeException("Cannot get field 'implement_resource_edge' because union is currently set to " + getFieldDesc(getSetField()).name);
+    }
+  }
+
+  public void setImplement_resource_edge(ImplementResourceEdge value) {
+    if (value == null) throw new NullPointerException();
+    setField_ = _Fields.IMPLEMENT_RESOURCE_EDGE;
+    value_ = value;
+  }
+
+  public EntryInvokeEdge getEntry_invoke_edge() {
+    if (getSetField() == _Fields.ENTRY_INVOKE_EDGE) {
+      return (EntryInvokeEdge)getFieldValue();
+    } else {
+      throw new RuntimeException("Cannot get field 'entry_invoke_edge' because union is currently set to " + getFieldDesc(getSetField()).name);
+    }
+  }
+
+  public void setEntry_invoke_edge(EntryInvokeEdge value) {
+    if (value == null) throw new NullPointerException();
+    setField_ = _Fields.ENTRY_INVOKE_EDGE;
+    value_ = value;
+  }
+
+  public EntryReturnEdge getEntry_return_edge() {
+    if (getSetField() == _Fields.ENTRY_RETURN_EDGE) {
+      return (EntryReturnEdge)getFieldValue();
+    } else {
+      throw new RuntimeException("Cannot get field 'entry_return_edge' because union is currently set to " + getFieldDesc(getSetField()).name);
+    }
+  }
+
+  public void setEntry_return_edge(EntryReturnEdge value) {
+    if (value == null) throw new NullPointerException();
+    setField_ = _Fields.ENTRY_RETURN_EDGE;
+    value_ = value;
+  }
+
+  public CreateInvocationEdge getCreate_invocation_edge() {
+    if (getSetField() == _Fields.CREATE_INVOCATION_EDGE) {
+      return (CreateInvocationEdge)getFieldValue();
+    } else {
+      throw new RuntimeException("Cannot get field 'create_invocation_edge' because union is currently set to " + getFieldDesc(getSetField()).name);
+    }
+  }
+
+  public void setCreate_invocation_edge(CreateInvocationEdge value) {
+    if (value == null) throw new NullPointerException();
+    setField_ = _Fields.CREATE_INVOCATION_EDGE;
+    value_ = value;
+  }
+
+  public MakeInvocationEdge getMake_invocation_edge() {
+    if (getSetField() == _Fields.MAKE_INVOCATION_EDGE) {
+      return (MakeInvocationEdge)getFieldValue();
+    } else {
+      throw new RuntimeException("Cannot get field 'make_invocation_edge' because union is currently set to " + getFieldDesc(getSetField()).name);
+    }
+  }
+
+  public void setMake_invocation_edge(MakeInvocationEdge value) {
+    if (value == null) throw new NullPointerException();
+    setField_ = _Fields.MAKE_INVOCATION_EDGE;
+    value_ = value;
+  }
+
+  public CreateResultEdge getCreate_result_edge() {
+    if (getSetField() == _Fields.CREATE_RESULT_EDGE) {
+      return (CreateResultEdge)getFieldValue();
+    } else {
+      throw new RuntimeException("Cannot get field 'create_result_edge' because union is currently set to " + getFieldDesc(getSetField()).name);
+    }
+  }
+
+  public void setCreate_result_edge(CreateResultEdge value) {
+    if (value == null) throw new NullPointerException();
+    setField_ = _Fields.CREATE_RESULT_EDGE;
+    value_ = value;
+  }
+
+  public ReturnResultEdge getReturn_result_edge() {
+    if (getSetField() == _Fields.RETURN_RESULT_EDGE) {
+      return (ReturnResultEdge)getFieldValue();
+    } else {
+      throw new RuntimeException("Cannot get field 'return_result_edge' because union is currently set to " + getFieldDesc(getSetField()).name);
+    }
+  }
+
+  public void setReturn_result_edge(ReturnResultEdge value) {
+    if (value == null) throw new NullPointerException();
+    setField_ = _Fields.RETURN_RESULT_EDGE;
+    value_ = value;
+  }
+
+  public boolean isSetEntry_invoke_property() {
+    return setField_ == _Fields.ENTRY_INVOKE_PROPERTY;
+  }
+
+
+  public boolean isSetEntry_return_property() {
+    return setField_ == _Fields.ENTRY_RETURN_PROPERTY;
+  }
+
+
+  public boolean isSetOperation_property_property() {
+    return setField_ == _Fields.OPERATION_PROPERTY_PROPERTY;
+  }
+
+
+  public boolean isSetOperation_invoke_property() {
+    return setField_ == _Fields.OPERATION_INVOKE_PROPERTY;
+  }
+
+
+  public boolean isSetOperation_return_property() {
+    return setField_ == _Fields.OPERATION_RETURN_PROPERTY;
+  }
+
+
+  public boolean isSetHost_application_edge() {
+    return setField_ == _Fields.HOST_APPLICATION_EDGE;
+  }
+
+
+  public boolean isSetApp_resource_edge() {
+    return setField_ == _Fields.APP_RESOURCE_EDGE;
+  }
+
+
+  public boolean isSetImplement_resource_edge() {
+    return setField_ == _Fields.IMPLEMENT_RESOURCE_EDGE;
+  }
+
+
+  public boolean isSetEntry_invoke_edge() {
+    return setField_ == _Fields.ENTRY_INVOKE_EDGE;
+  }
+
+
+  public boolean isSetEntry_return_edge() {
+    return setField_ == _Fields.ENTRY_RETURN_EDGE;
+  }
+
+
+  public boolean isSetCreate_invocation_edge() {
+    return setField_ == _Fields.CREATE_INVOCATION_EDGE;
+  }
+
+
+  public boolean isSetMake_invocation_edge() {
+    return setField_ == _Fields.MAKE_INVOCATION_EDGE;
+  }
+
+
+  public boolean isSetCreate_result_edge() {
+    return setField_ == _Fields.CREATE_RESULT_EDGE;
+  }
+
+
+  public boolean isSetReturn_result_edge() {
+    return setField_ == _Fields.RETURN_RESULT_EDGE;
+  }
+
+
+  public boolean equals(Object other) {
+    if (other instanceof ApplicationDataUnit) {
+      return equals((ApplicationDataUnit)other);
+    } else {
+      return false;
+    }
+  }
+
+  public boolean equals(ApplicationDataUnit other) {
+    return other != null && getSetField() == other.getSetField() && getFieldValue().equals(other.getFieldValue());
   }
 
   @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder("ApplicationDataUnit(");
-    boolean first = true;
-
-    sb.append("entry_invoke_property:");
-    if (this.entry_invoke_property == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.entry_invoke_property);
+  public int compareTo(ApplicationDataUnit other) {
+    int lastComparison = org.apache.thrift.TBaseHelper.compareTo(getSetField(), other.getSetField());
+    if (lastComparison == 0) {
+      return org.apache.thrift.TBaseHelper.compareTo(getFieldValue(), other.getFieldValue());
     }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("entry_return_property:");
-    if (this.entry_return_property == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.entry_return_property);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("operation_property_property:");
-    if (this.operation_property_property == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.operation_property_property);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("operation_invoke_property:");
-    if (this.operation_invoke_property == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.operation_invoke_property);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("operation_return_property:");
-    if (this.operation_return_property == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.operation_return_property);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("host_application_edge:");
-    if (this.host_application_edge == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.host_application_edge);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("app_resource_edge:");
-    if (this.app_resource_edge == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.app_resource_edge);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("implement_resource_edge:");
-    if (this.implement_resource_edge == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.implement_resource_edge);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("entry_invoke_edge:");
-    if (this.entry_invoke_edge == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.entry_invoke_edge);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("entry_return_edge:");
-    if (this.entry_return_edge == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.entry_return_edge);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("create_invocation_edge:");
-    if (this.create_invocation_edge == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.create_invocation_edge);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("make_invocation_edge:");
-    if (this.make_invocation_edge == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.make_invocation_edge);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("create_result_edge:");
-    if (this.create_result_edge == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.create_result_edge);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("return_result_edge:");
-    if (this.return_result_edge == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.return_result_edge);
-    }
-    first = false;
-    sb.append(")");
-    return sb.toString();
+    return lastComparison;
   }
 
-  public void validate() throws org.apache.thrift.TException {
-    // check for required fields
-    // check for sub-struct validity
-    if (entry_invoke_property != null) {
-      entry_invoke_property.validate();
-    }
-    if (entry_return_property != null) {
-      entry_return_property.validate();
-    }
-    if (operation_property_property != null) {
-      operation_property_property.validate();
-    }
-    if (operation_invoke_property != null) {
-      operation_invoke_property.validate();
-    }
-    if (operation_return_property != null) {
-      operation_return_property.validate();
-    }
-    if (host_application_edge != null) {
-      host_application_edge.validate();
-    }
-    if (app_resource_edge != null) {
-      app_resource_edge.validate();
-    }
-    if (implement_resource_edge != null) {
-      implement_resource_edge.validate();
-    }
-    if (entry_invoke_edge != null) {
-      entry_invoke_edge.validate();
-    }
-    if (entry_return_edge != null) {
-      entry_return_edge.validate();
-    }
-    if (create_invocation_edge != null) {
-      create_invocation_edge.validate();
-    }
-    if (make_invocation_edge != null) {
-      make_invocation_edge.validate();
-    }
-    if (create_result_edge != null) {
-      create_result_edge.validate();
-    }
-    if (return_result_edge != null) {
-      return_result_edge.validate();
-    }
+
+  /**
+   * If you'd like this to perform more respectably, use the hashcode generator option.
+   */
+  @Override
+  public int hashCode() {
+    return 0;
   }
 
   private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
@@ -1335,6 +1079,7 @@ public class ApplicationDataUnit implements org.apache.thrift.TBase<ApplicationD
     }
   }
 
+
   private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
     try {
       read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
@@ -1343,416 +1088,5 @@ public class ApplicationDataUnit implements org.apache.thrift.TBase<ApplicationD
     }
   }
 
-  private static class ApplicationDataUnitStandardSchemeFactory implements SchemeFactory {
-    public ApplicationDataUnitStandardScheme getScheme() {
-      return new ApplicationDataUnitStandardScheme();
-    }
-  }
-
-  private static class ApplicationDataUnitStandardScheme extends StandardScheme<ApplicationDataUnit> {
-
-    public void read(org.apache.thrift.protocol.TProtocol iprot, ApplicationDataUnit struct) throws org.apache.thrift.TException {
-      org.apache.thrift.protocol.TField schemeField;
-      iprot.readStructBegin();
-      while (true)
-      {
-        schemeField = iprot.readFieldBegin();
-        if (schemeField.type == org.apache.thrift.protocol.TType.STOP) { 
-          break;
-        }
-        switch (schemeField.id) {
-          case 1: // ENTRY_INVOKE_PROPERTY
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.entry_invoke_property = new EntryInvokeProperty();
-              struct.entry_invoke_property.read(iprot);
-              struct.setEntry_invoke_propertyIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 2: // ENTRY_RETURN_PROPERTY
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.entry_return_property = new EntryReturnProperty();
-              struct.entry_return_property.read(iprot);
-              struct.setEntry_return_propertyIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 3: // OPERATION_PROPERTY_PROPERTY
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.operation_property_property = new OperationProperty();
-              struct.operation_property_property.read(iprot);
-              struct.setOperation_property_propertyIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 4: // OPERATION_INVOKE_PROPERTY
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.operation_invoke_property = new OperationInvokeProperty();
-              struct.operation_invoke_property.read(iprot);
-              struct.setOperation_invoke_propertyIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 5: // OPERATION_RETURN_PROPERTY
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.operation_return_property = new OperationReturnProperty();
-              struct.operation_return_property.read(iprot);
-              struct.setOperation_return_propertyIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 6: // HOST_APPLICATION_EDGE
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.host_application_edge = new ServeApplicationEdge();
-              struct.host_application_edge.read(iprot);
-              struct.setHost_application_edgeIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 7: // APP_RESOURCE_EDGE
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.app_resource_edge = new ManageResourceEdge();
-              struct.app_resource_edge.read(iprot);
-              struct.setApp_resource_edgeIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 8: // IMPLEMENT_RESOURCE_EDGE
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.implement_resource_edge = new ImplementResourceEdge();
-              struct.implement_resource_edge.read(iprot);
-              struct.setImplement_resource_edgeIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 9: // ENTRY_INVOKE_EDGE
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.entry_invoke_edge = new EntryInvokeEdge();
-              struct.entry_invoke_edge.read(iprot);
-              struct.setEntry_invoke_edgeIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 10: // ENTRY_RETURN_EDGE
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.entry_return_edge = new EntryReturnEdge();
-              struct.entry_return_edge.read(iprot);
-              struct.setEntry_return_edgeIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 11: // CREATE_INVOCATION_EDGE
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.create_invocation_edge = new CreateInvocationEdge();
-              struct.create_invocation_edge.read(iprot);
-              struct.setCreate_invocation_edgeIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 12: // MAKE_INVOCATION_EDGE
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.make_invocation_edge = new MakeInvocationEdge();
-              struct.make_invocation_edge.read(iprot);
-              struct.setMake_invocation_edgeIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 13: // CREATE_RESULT_EDGE
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.create_result_edge = new CreateResultEdge();
-              struct.create_result_edge.read(iprot);
-              struct.setCreate_result_edgeIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 14: // RETURN_RESULT_EDGE
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.return_result_edge = new ReturnResultEdge();
-              struct.return_result_edge.read(iprot);
-              struct.setReturn_result_edgeIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          default:
-            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-        }
-        iprot.readFieldEnd();
-      }
-      iprot.readStructEnd();
-
-      // check for required fields of primitive type, which can't be checked in the validate method
-      struct.validate();
-    }
-
-    public void write(org.apache.thrift.protocol.TProtocol oprot, ApplicationDataUnit struct) throws org.apache.thrift.TException {
-      struct.validate();
-
-      oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.entry_invoke_property != null) {
-        oprot.writeFieldBegin(ENTRY_INVOKE_PROPERTY_FIELD_DESC);
-        struct.entry_invoke_property.write(oprot);
-        oprot.writeFieldEnd();
-      }
-      if (struct.entry_return_property != null) {
-        oprot.writeFieldBegin(ENTRY_RETURN_PROPERTY_FIELD_DESC);
-        struct.entry_return_property.write(oprot);
-        oprot.writeFieldEnd();
-      }
-      if (struct.operation_property_property != null) {
-        oprot.writeFieldBegin(OPERATION_PROPERTY_PROPERTY_FIELD_DESC);
-        struct.operation_property_property.write(oprot);
-        oprot.writeFieldEnd();
-      }
-      if (struct.operation_invoke_property != null) {
-        oprot.writeFieldBegin(OPERATION_INVOKE_PROPERTY_FIELD_DESC);
-        struct.operation_invoke_property.write(oprot);
-        oprot.writeFieldEnd();
-      }
-      if (struct.operation_return_property != null) {
-        oprot.writeFieldBegin(OPERATION_RETURN_PROPERTY_FIELD_DESC);
-        struct.operation_return_property.write(oprot);
-        oprot.writeFieldEnd();
-      }
-      if (struct.host_application_edge != null) {
-        oprot.writeFieldBegin(HOST_APPLICATION_EDGE_FIELD_DESC);
-        struct.host_application_edge.write(oprot);
-        oprot.writeFieldEnd();
-      }
-      if (struct.app_resource_edge != null) {
-        oprot.writeFieldBegin(APP_RESOURCE_EDGE_FIELD_DESC);
-        struct.app_resource_edge.write(oprot);
-        oprot.writeFieldEnd();
-      }
-      if (struct.implement_resource_edge != null) {
-        oprot.writeFieldBegin(IMPLEMENT_RESOURCE_EDGE_FIELD_DESC);
-        struct.implement_resource_edge.write(oprot);
-        oprot.writeFieldEnd();
-      }
-      if (struct.entry_invoke_edge != null) {
-        oprot.writeFieldBegin(ENTRY_INVOKE_EDGE_FIELD_DESC);
-        struct.entry_invoke_edge.write(oprot);
-        oprot.writeFieldEnd();
-      }
-      if (struct.entry_return_edge != null) {
-        oprot.writeFieldBegin(ENTRY_RETURN_EDGE_FIELD_DESC);
-        struct.entry_return_edge.write(oprot);
-        oprot.writeFieldEnd();
-      }
-      if (struct.create_invocation_edge != null) {
-        oprot.writeFieldBegin(CREATE_INVOCATION_EDGE_FIELD_DESC);
-        struct.create_invocation_edge.write(oprot);
-        oprot.writeFieldEnd();
-      }
-      if (struct.make_invocation_edge != null) {
-        oprot.writeFieldBegin(MAKE_INVOCATION_EDGE_FIELD_DESC);
-        struct.make_invocation_edge.write(oprot);
-        oprot.writeFieldEnd();
-      }
-      if (struct.create_result_edge != null) {
-        oprot.writeFieldBegin(CREATE_RESULT_EDGE_FIELD_DESC);
-        struct.create_result_edge.write(oprot);
-        oprot.writeFieldEnd();
-      }
-      if (struct.return_result_edge != null) {
-        oprot.writeFieldBegin(RETURN_RESULT_EDGE_FIELD_DESC);
-        struct.return_result_edge.write(oprot);
-        oprot.writeFieldEnd();
-      }
-      oprot.writeFieldStop();
-      oprot.writeStructEnd();
-    }
-
-  }
-
-  private static class ApplicationDataUnitTupleSchemeFactory implements SchemeFactory {
-    public ApplicationDataUnitTupleScheme getScheme() {
-      return new ApplicationDataUnitTupleScheme();
-    }
-  }
-
-  private static class ApplicationDataUnitTupleScheme extends TupleScheme<ApplicationDataUnit> {
-
-    @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, ApplicationDataUnit struct) throws org.apache.thrift.TException {
-      TTupleProtocol oprot = (TTupleProtocol) prot;
-      BitSet optionals = new BitSet();
-      if (struct.isSetEntry_invoke_property()) {
-        optionals.set(0);
-      }
-      if (struct.isSetEntry_return_property()) {
-        optionals.set(1);
-      }
-      if (struct.isSetOperation_property_property()) {
-        optionals.set(2);
-      }
-      if (struct.isSetOperation_invoke_property()) {
-        optionals.set(3);
-      }
-      if (struct.isSetOperation_return_property()) {
-        optionals.set(4);
-      }
-      if (struct.isSetHost_application_edge()) {
-        optionals.set(5);
-      }
-      if (struct.isSetApp_resource_edge()) {
-        optionals.set(6);
-      }
-      if (struct.isSetImplement_resource_edge()) {
-        optionals.set(7);
-      }
-      if (struct.isSetEntry_invoke_edge()) {
-        optionals.set(8);
-      }
-      if (struct.isSetEntry_return_edge()) {
-        optionals.set(9);
-      }
-      if (struct.isSetCreate_invocation_edge()) {
-        optionals.set(10);
-      }
-      if (struct.isSetMake_invocation_edge()) {
-        optionals.set(11);
-      }
-      if (struct.isSetCreate_result_edge()) {
-        optionals.set(12);
-      }
-      if (struct.isSetReturn_result_edge()) {
-        optionals.set(13);
-      }
-      oprot.writeBitSet(optionals, 14);
-      if (struct.isSetEntry_invoke_property()) {
-        struct.entry_invoke_property.write(oprot);
-      }
-      if (struct.isSetEntry_return_property()) {
-        struct.entry_return_property.write(oprot);
-      }
-      if (struct.isSetOperation_property_property()) {
-        struct.operation_property_property.write(oprot);
-      }
-      if (struct.isSetOperation_invoke_property()) {
-        struct.operation_invoke_property.write(oprot);
-      }
-      if (struct.isSetOperation_return_property()) {
-        struct.operation_return_property.write(oprot);
-      }
-      if (struct.isSetHost_application_edge()) {
-        struct.host_application_edge.write(oprot);
-      }
-      if (struct.isSetApp_resource_edge()) {
-        struct.app_resource_edge.write(oprot);
-      }
-      if (struct.isSetImplement_resource_edge()) {
-        struct.implement_resource_edge.write(oprot);
-      }
-      if (struct.isSetEntry_invoke_edge()) {
-        struct.entry_invoke_edge.write(oprot);
-      }
-      if (struct.isSetEntry_return_edge()) {
-        struct.entry_return_edge.write(oprot);
-      }
-      if (struct.isSetCreate_invocation_edge()) {
-        struct.create_invocation_edge.write(oprot);
-      }
-      if (struct.isSetMake_invocation_edge()) {
-        struct.make_invocation_edge.write(oprot);
-      }
-      if (struct.isSetCreate_result_edge()) {
-        struct.create_result_edge.write(oprot);
-      }
-      if (struct.isSetReturn_result_edge()) {
-        struct.return_result_edge.write(oprot);
-      }
-    }
-
-    @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, ApplicationDataUnit struct) throws org.apache.thrift.TException {
-      TTupleProtocol iprot = (TTupleProtocol) prot;
-      BitSet incoming = iprot.readBitSet(14);
-      if (incoming.get(0)) {
-        struct.entry_invoke_property = new EntryInvokeProperty();
-        struct.entry_invoke_property.read(iprot);
-        struct.setEntry_invoke_propertyIsSet(true);
-      }
-      if (incoming.get(1)) {
-        struct.entry_return_property = new EntryReturnProperty();
-        struct.entry_return_property.read(iprot);
-        struct.setEntry_return_propertyIsSet(true);
-      }
-      if (incoming.get(2)) {
-        struct.operation_property_property = new OperationProperty();
-        struct.operation_property_property.read(iprot);
-        struct.setOperation_property_propertyIsSet(true);
-      }
-      if (incoming.get(3)) {
-        struct.operation_invoke_property = new OperationInvokeProperty();
-        struct.operation_invoke_property.read(iprot);
-        struct.setOperation_invoke_propertyIsSet(true);
-      }
-      if (incoming.get(4)) {
-        struct.operation_return_property = new OperationReturnProperty();
-        struct.operation_return_property.read(iprot);
-        struct.setOperation_return_propertyIsSet(true);
-      }
-      if (incoming.get(5)) {
-        struct.host_application_edge = new ServeApplicationEdge();
-        struct.host_application_edge.read(iprot);
-        struct.setHost_application_edgeIsSet(true);
-      }
-      if (incoming.get(6)) {
-        struct.app_resource_edge = new ManageResourceEdge();
-        struct.app_resource_edge.read(iprot);
-        struct.setApp_resource_edgeIsSet(true);
-      }
-      if (incoming.get(7)) {
-        struct.implement_resource_edge = new ImplementResourceEdge();
-        struct.implement_resource_edge.read(iprot);
-        struct.setImplement_resource_edgeIsSet(true);
-      }
-      if (incoming.get(8)) {
-        struct.entry_invoke_edge = new EntryInvokeEdge();
-        struct.entry_invoke_edge.read(iprot);
-        struct.setEntry_invoke_edgeIsSet(true);
-      }
-      if (incoming.get(9)) {
-        struct.entry_return_edge = new EntryReturnEdge();
-        struct.entry_return_edge.read(iprot);
-        struct.setEntry_return_edgeIsSet(true);
-      }
-      if (incoming.get(10)) {
-        struct.create_invocation_edge = new CreateInvocationEdge();
-        struct.create_invocation_edge.read(iprot);
-        struct.setCreate_invocation_edgeIsSet(true);
-      }
-      if (incoming.get(11)) {
-        struct.make_invocation_edge = new MakeInvocationEdge();
-        struct.make_invocation_edge.read(iprot);
-        struct.setMake_invocation_edgeIsSet(true);
-      }
-      if (incoming.get(12)) {
-        struct.create_result_edge = new CreateResultEdge();
-        struct.create_result_edge.read(iprot);
-        struct.setCreate_result_edgeIsSet(true);
-      }
-      if (incoming.get(13)) {
-        struct.return_result_edge = new ReturnResultEdge();
-        struct.return_result_edge.read(iprot);
-        struct.setReturn_result_edgeIsSet(true);
-      }
-    }
-  }
 
 }
-

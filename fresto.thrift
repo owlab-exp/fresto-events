@@ -251,7 +251,7 @@ struct OperationReturnProperty {
 	2: OperationReturnPropertyValue property;
 }
 
-struct ApplicationDataUnit {
+union ApplicationDataUnit {
 	# Properties
 	1: EntryInvokeProperty entry_invoke_property;
 	2: EntryReturnProperty entry_return_property;
