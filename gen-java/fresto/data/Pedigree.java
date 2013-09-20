@@ -35,7 +35,7 @@ import org.slf4j.LoggerFactory;
 public class Pedigree implements org.apache.thrift.TBase<Pedigree, Pedigree._Fields>, java.io.Serializable, Cloneable, Comparable<Pedigree> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("Pedigree");
 
-  private static final org.apache.thrift.protocol.TField FRESTO_TIMSTAMP_FIELD_DESC = new org.apache.thrift.protocol.TField("fresto_timstamp", org.apache.thrift.protocol.TType.I64, (short)1);
+  private static final org.apache.thrift.protocol.TField FRESTO_TIMESTAMP_FIELD_DESC = new org.apache.thrift.protocol.TField("fresto_timestamp", org.apache.thrift.protocol.TType.I64, (short)1);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -43,11 +43,11 @@ public class Pedigree implements org.apache.thrift.TBase<Pedigree, Pedigree._Fie
     schemes.put(TupleScheme.class, new PedigreeTupleSchemeFactory());
   }
 
-  public long fresto_timstamp; // required
+  public long fresto_timestamp; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    FRESTO_TIMSTAMP((short)1, "fresto_timstamp");
+    FRESTO_TIMESTAMP((short)1, "fresto_timestamp");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -62,8 +62,8 @@ public class Pedigree implements org.apache.thrift.TBase<Pedigree, Pedigree._Fie
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // FRESTO_TIMSTAMP
-          return FRESTO_TIMSTAMP;
+        case 1: // FRESTO_TIMESTAMP
+          return FRESTO_TIMESTAMP;
         default:
           return null;
       }
@@ -104,12 +104,12 @@ public class Pedigree implements org.apache.thrift.TBase<Pedigree, Pedigree._Fie
   }
 
   // isset id assignments
-  private static final int __FRESTO_TIMSTAMP_ISSET_ID = 0;
+  private static final int __FRESTO_TIMESTAMP_ISSET_ID = 0;
   private byte __isset_bitfield = 0;
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.FRESTO_TIMSTAMP, new org.apache.thrift.meta_data.FieldMetaData("fresto_timstamp", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+    tmpMap.put(_Fields.FRESTO_TIMESTAMP, new org.apache.thrift.meta_data.FieldMetaData("fresto_timestamp", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(Pedigree.class, metaDataMap);
@@ -119,11 +119,11 @@ public class Pedigree implements org.apache.thrift.TBase<Pedigree, Pedigree._Fie
   }
 
   public Pedigree(
-    long fresto_timstamp)
+    long fresto_timestamp)
   {
     this();
-    this.fresto_timstamp = fresto_timstamp;
-    setFresto_timstampIsSet(true);
+    this.fresto_timestamp = fresto_timestamp;
+    setFresto_timestampIsSet(true);
   }
 
   /**
@@ -131,7 +131,7 @@ public class Pedigree implements org.apache.thrift.TBase<Pedigree, Pedigree._Fie
    */
   public Pedigree(Pedigree other) {
     __isset_bitfield = other.__isset_bitfield;
-    this.fresto_timstamp = other.fresto_timstamp;
+    this.fresto_timestamp = other.fresto_timestamp;
   }
 
   public Pedigree deepCopy() {
@@ -140,40 +140,40 @@ public class Pedigree implements org.apache.thrift.TBase<Pedigree, Pedigree._Fie
 
   @Override
   public void clear() {
-    setFresto_timstampIsSet(false);
-    this.fresto_timstamp = 0;
+    setFresto_timestampIsSet(false);
+    this.fresto_timestamp = 0;
   }
 
-  public long getFresto_timstamp() {
-    return this.fresto_timstamp;
+  public long getFresto_timestamp() {
+    return this.fresto_timestamp;
   }
 
-  public Pedigree setFresto_timstamp(long fresto_timstamp) {
-    this.fresto_timstamp = fresto_timstamp;
-    setFresto_timstampIsSet(true);
+  public Pedigree setFresto_timestamp(long fresto_timestamp) {
+    this.fresto_timestamp = fresto_timestamp;
+    setFresto_timestampIsSet(true);
     return this;
   }
 
-  public void unsetFresto_timstamp() {
-    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __FRESTO_TIMSTAMP_ISSET_ID);
+  public void unsetFresto_timestamp() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __FRESTO_TIMESTAMP_ISSET_ID);
   }
 
-  /** Returns true if field fresto_timstamp is set (has been assigned a value) and false otherwise */
-  public boolean isSetFresto_timstamp() {
-    return EncodingUtils.testBit(__isset_bitfield, __FRESTO_TIMSTAMP_ISSET_ID);
+  /** Returns true if field fresto_timestamp is set (has been assigned a value) and false otherwise */
+  public boolean isSetFresto_timestamp() {
+    return EncodingUtils.testBit(__isset_bitfield, __FRESTO_TIMESTAMP_ISSET_ID);
   }
 
-  public void setFresto_timstampIsSet(boolean value) {
-    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __FRESTO_TIMSTAMP_ISSET_ID, value);
+  public void setFresto_timestampIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __FRESTO_TIMESTAMP_ISSET_ID, value);
   }
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case FRESTO_TIMSTAMP:
+    case FRESTO_TIMESTAMP:
       if (value == null) {
-        unsetFresto_timstamp();
+        unsetFresto_timestamp();
       } else {
-        setFresto_timstamp((Long)value);
+        setFresto_timestamp((Long)value);
       }
       break;
 
@@ -182,8 +182,8 @@ public class Pedigree implements org.apache.thrift.TBase<Pedigree, Pedigree._Fie
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case FRESTO_TIMSTAMP:
-      return Long.valueOf(getFresto_timstamp());
+    case FRESTO_TIMESTAMP:
+      return Long.valueOf(getFresto_timestamp());
 
     }
     throw new IllegalStateException();
@@ -196,8 +196,8 @@ public class Pedigree implements org.apache.thrift.TBase<Pedigree, Pedigree._Fie
     }
 
     switch (field) {
-    case FRESTO_TIMSTAMP:
-      return isSetFresto_timstamp();
+    case FRESTO_TIMESTAMP:
+      return isSetFresto_timestamp();
     }
     throw new IllegalStateException();
   }
@@ -215,12 +215,12 @@ public class Pedigree implements org.apache.thrift.TBase<Pedigree, Pedigree._Fie
     if (that == null)
       return false;
 
-    boolean this_present_fresto_timstamp = true;
-    boolean that_present_fresto_timstamp = true;
-    if (this_present_fresto_timstamp || that_present_fresto_timstamp) {
-      if (!(this_present_fresto_timstamp && that_present_fresto_timstamp))
+    boolean this_present_fresto_timestamp = true;
+    boolean that_present_fresto_timestamp = true;
+    if (this_present_fresto_timestamp || that_present_fresto_timestamp) {
+      if (!(this_present_fresto_timestamp && that_present_fresto_timestamp))
         return false;
-      if (this.fresto_timstamp != that.fresto_timstamp)
+      if (this.fresto_timestamp != that.fresto_timestamp)
         return false;
     }
 
@@ -240,12 +240,12 @@ public class Pedigree implements org.apache.thrift.TBase<Pedigree, Pedigree._Fie
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetFresto_timstamp()).compareTo(other.isSetFresto_timstamp());
+    lastComparison = Boolean.valueOf(isSetFresto_timestamp()).compareTo(other.isSetFresto_timestamp());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetFresto_timstamp()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.fresto_timstamp, other.fresto_timstamp);
+    if (isSetFresto_timestamp()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.fresto_timestamp, other.fresto_timestamp);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -270,8 +270,8 @@ public class Pedigree implements org.apache.thrift.TBase<Pedigree, Pedigree._Fie
     StringBuilder sb = new StringBuilder("Pedigree(");
     boolean first = true;
 
-    sb.append("fresto_timstamp:");
-    sb.append(this.fresto_timstamp);
+    sb.append("fresto_timestamp:");
+    sb.append(this.fresto_timestamp);
     first = false;
     sb.append(")");
     return sb.toString();
@@ -279,7 +279,7 @@ public class Pedigree implements org.apache.thrift.TBase<Pedigree, Pedigree._Fie
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
-    // alas, we cannot check 'fresto_timstamp' because it's a primitive and you chose the non-beans generator.
+    // alas, we cannot check 'fresto_timestamp' because it's a primitive and you chose the non-beans generator.
     // check for sub-struct validity
   }
 
@@ -319,10 +319,10 @@ public class Pedigree implements org.apache.thrift.TBase<Pedigree, Pedigree._Fie
           break;
         }
         switch (schemeField.id) {
-          case 1: // FRESTO_TIMSTAMP
+          case 1: // FRESTO_TIMESTAMP
             if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
-              struct.fresto_timstamp = iprot.readI64();
-              struct.setFresto_timstampIsSet(true);
+              struct.fresto_timestamp = iprot.readI64();
+              struct.setFresto_timestampIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -335,8 +335,8 @@ public class Pedigree implements org.apache.thrift.TBase<Pedigree, Pedigree._Fie
       iprot.readStructEnd();
 
       // check for required fields of primitive type, which can't be checked in the validate method
-      if (!struct.isSetFresto_timstamp()) {
-        throw new org.apache.thrift.protocol.TProtocolException("Required field 'fresto_timstamp' was not found in serialized data! Struct: " + toString());
+      if (!struct.isSetFresto_timestamp()) {
+        throw new org.apache.thrift.protocol.TProtocolException("Required field 'fresto_timestamp' was not found in serialized data! Struct: " + toString());
       }
       struct.validate();
     }
@@ -345,8 +345,8 @@ public class Pedigree implements org.apache.thrift.TBase<Pedigree, Pedigree._Fie
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      oprot.writeFieldBegin(FRESTO_TIMSTAMP_FIELD_DESC);
-      oprot.writeI64(struct.fresto_timstamp);
+      oprot.writeFieldBegin(FRESTO_TIMESTAMP_FIELD_DESC);
+      oprot.writeI64(struct.fresto_timestamp);
       oprot.writeFieldEnd();
       oprot.writeFieldStop();
       oprot.writeStructEnd();
@@ -365,14 +365,14 @@ public class Pedigree implements org.apache.thrift.TBase<Pedigree, Pedigree._Fie
     @Override
     public void write(org.apache.thrift.protocol.TProtocol prot, Pedigree struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
-      oprot.writeI64(struct.fresto_timstamp);
+      oprot.writeI64(struct.fresto_timestamp);
     }
 
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, Pedigree struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      struct.fresto_timstamp = iprot.readI64();
-      struct.setFresto_timstampIsSet(true);
+      struct.fresto_timestamp = iprot.readI64();
+      struct.setFresto_timestampIsSet(true);
     }
   }
 
