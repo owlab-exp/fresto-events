@@ -279,7 +279,7 @@ union DataUnit {
 }
 
 struct Pedigree {
-	1: required i64 fresto_timstamp;
+	1: required i64 fresto_timestamp;
 }
 
 struct FrestoData {
