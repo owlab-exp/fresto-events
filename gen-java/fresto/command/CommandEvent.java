@@ -35,8 +35,8 @@ import org.slf4j.LoggerFactory;
 public class CommandEvent implements org.apache.thrift.TBase<CommandEvent, CommandEvent._Fields>, java.io.Serializable, Cloneable, Comparable<CommandEvent> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("CommandEvent");
 
-  private static final org.apache.thrift.protocol.TField TARGET_MODULE_FIELD_DESC = new org.apache.thrift.protocol.TField("target_module", org.apache.thrift.protocol.TType.I32, (short)1);
-  private static final org.apache.thrift.protocol.TField COMMAND_FIELD_DESC = new org.apache.thrift.protocol.TField("command", org.apache.thrift.protocol.TType.I32, (short)2);
+  private static final org.apache.thrift.protocol.TField TARGET_MODULE_FIELD_DESC = new org.apache.thrift.protocol.TField("target_module", org.apache.thrift.protocol.TType.STRING, (short)1);
+  private static final org.apache.thrift.protocol.TField COMMAND_FIELD_DESC = new org.apache.thrift.protocol.TField("command", org.apache.thrift.protocol.TType.STRING, (short)2);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -44,28 +44,12 @@ public class CommandEvent implements org.apache.thrift.TBase<CommandEvent, Comma
     schemes.put(TupleScheme.class, new CommandEventTupleSchemeFactory());
   }
 
-  /**
-   * 
-   * @see TargetModule
-   */
-  public TargetModule target_module; // required
-  /**
-   * 
-   * @see Command
-   */
-  public Command command; // required
+  public String target_module; // required
+  public String command; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    /**
-     * 
-     * @see TargetModule
-     */
     TARGET_MODULE((short)1, "target_module"),
-    /**
-     * 
-     * @see Command
-     */
     COMMAND((short)2, "command");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
@@ -129,9 +113,9 @@ public class CommandEvent implements org.apache.thrift.TBase<CommandEvent, Comma
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
     tmpMap.put(_Fields.TARGET_MODULE, new org.apache.thrift.meta_data.FieldMetaData("target_module", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, TargetModule.class)));
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.COMMAND, new org.apache.thrift.meta_data.FieldMetaData("command", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, Command.class)));
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(CommandEvent.class, metaDataMap);
   }
@@ -140,8 +124,8 @@ public class CommandEvent implements org.apache.thrift.TBase<CommandEvent, Comma
   }
 
   public CommandEvent(
-    TargetModule target_module,
-    Command command)
+    String target_module,
+    String command)
   {
     this();
     this.target_module = target_module;
@@ -170,19 +154,11 @@ public class CommandEvent implements org.apache.thrift.TBase<CommandEvent, Comma
     this.command = null;
   }
 
-  /**
-   * 
-   * @see TargetModule
-   */
-  public TargetModule getTarget_module() {
+  public String getTarget_module() {
     return this.target_module;
   }
 
-  /**
-   * 
-   * @see TargetModule
-   */
-  public CommandEvent setTarget_module(TargetModule target_module) {
+  public CommandEvent setTarget_module(String target_module) {
     this.target_module = target_module;
     return this;
   }
@@ -202,19 +178,11 @@ public class CommandEvent implements org.apache.thrift.TBase<CommandEvent, Comma
     }
   }
 
-  /**
-   * 
-   * @see Command
-   */
-  public Command getCommand() {
+  public String getCommand() {
     return this.command;
   }
 
-  /**
-   * 
-   * @see Command
-   */
-  public CommandEvent setCommand(Command command) {
+  public CommandEvent setCommand(String command) {
     this.command = command;
     return this;
   }
@@ -240,7 +208,7 @@ public class CommandEvent implements org.apache.thrift.TBase<CommandEvent, Comma
       if (value == null) {
         unsetTarget_module();
       } else {
-        setTarget_module((TargetModule)value);
+        setTarget_module((String)value);
       }
       break;
 
@@ -248,7 +216,7 @@ public class CommandEvent implements org.apache.thrift.TBase<CommandEvent, Comma
       if (value == null) {
         unsetCommand();
       } else {
-        setCommand((Command)value);
+        setCommand((String)value);
       }
       break;
 
@@ -434,16 +402,16 @@ public class CommandEvent implements org.apache.thrift.TBase<CommandEvent, Comma
         }
         switch (schemeField.id) {
           case 1: // TARGET_MODULE
-            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-              struct.target_module = TargetModule.findByValue(iprot.readI32());
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.target_module = iprot.readString();
               struct.setTarget_moduleIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
           case 2: // COMMAND
-            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-              struct.command = Command.findByValue(iprot.readI32());
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.command = iprot.readString();
               struct.setCommandIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
@@ -466,12 +434,12 @@ public class CommandEvent implements org.apache.thrift.TBase<CommandEvent, Comma
       oprot.writeStructBegin(STRUCT_DESC);
       if (struct.target_module != null) {
         oprot.writeFieldBegin(TARGET_MODULE_FIELD_DESC);
-        oprot.writeI32(struct.target_module.getValue());
+        oprot.writeString(struct.target_module);
         oprot.writeFieldEnd();
       }
       if (struct.command != null) {
         oprot.writeFieldBegin(COMMAND_FIELD_DESC);
-        oprot.writeI32(struct.command.getValue());
+        oprot.writeString(struct.command);
         oprot.writeFieldEnd();
       }
       oprot.writeFieldStop();
@@ -491,16 +459,16 @@ public class CommandEvent implements org.apache.thrift.TBase<CommandEvent, Comma
     @Override
     public void write(org.apache.thrift.protocol.TProtocol prot, CommandEvent struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
-      oprot.writeI32(struct.target_module.getValue());
-      oprot.writeI32(struct.command.getValue());
+      oprot.writeString(struct.target_module);
+      oprot.writeString(struct.command);
     }
 
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, CommandEvent struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      struct.target_module = TargetModule.findByValue(iprot.readI32());
+      struct.target_module = iprot.readString();
       struct.setTarget_moduleIsSet(true);
-      struct.command = Command.findByValue(iprot.readI32());
+      struct.command = iprot.readString();
       struct.setCommandIsSet(true);
     }
   }
