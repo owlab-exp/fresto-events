@@ -151,12 +151,12 @@ union OperationReturnID {
 	1: string uuid;
 } 
 
-struct ServeApplicationEdge {
+struct HostApplicationEdge {
 	1: required HostID host;
 	2: required ApplicationID application;
 }
 
-struct ManageResourceEdge {
+struct ApplicationResourceEdge {
 	1: required ApplicationID application;
 	2: required ManagedResourceID managed_resource;
 }
@@ -255,12 +255,12 @@ union ApplicationDataUnit {
 	# Properties
 	1: EntryInvokeProperty entry_invoke_property;
 	2: EntryReturnProperty entry_return_property;
-	3: OperationProperty operation_property_property;
+	3: OperationProperty operation_property;
 	4: OperationInvokeProperty operation_invoke_property;
 	5: OperationReturnProperty operation_return_property;
 	# Edges
-	6: ServeApplicationEdge host_application_edge;
-	7: ManageResourceEdge app_resource_edge;
+	6: HostApplicationEdge host_application_edge;
+	7: ApplicationResourceEdge application_resource_edge;
 	8: ImplementResourceEdge implement_resource_edge;
 	9: EntryInvokeEdge entry_invoke_edge;
 	10: EntryReturnEdge entry_return_edge;

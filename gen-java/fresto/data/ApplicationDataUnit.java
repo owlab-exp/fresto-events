@@ -36,11 +36,11 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("ApplicationDataUnit");
   private static final org.apache.thrift.protocol.TField ENTRY_INVOKE_PROPERTY_FIELD_DESC = new org.apache.thrift.protocol.TField("entry_invoke_property", org.apache.thrift.protocol.TType.STRUCT, (short)1);
   private static final org.apache.thrift.protocol.TField ENTRY_RETURN_PROPERTY_FIELD_DESC = new org.apache.thrift.protocol.TField("entry_return_property", org.apache.thrift.protocol.TType.STRUCT, (short)2);
-  private static final org.apache.thrift.protocol.TField OPERATION_PROPERTY_PROPERTY_FIELD_DESC = new org.apache.thrift.protocol.TField("operation_property_property", org.apache.thrift.protocol.TType.STRUCT, (short)3);
+  private static final org.apache.thrift.protocol.TField OPERATION_PROPERTY_FIELD_DESC = new org.apache.thrift.protocol.TField("operation_property", org.apache.thrift.protocol.TType.STRUCT, (short)3);
   private static final org.apache.thrift.protocol.TField OPERATION_INVOKE_PROPERTY_FIELD_DESC = new org.apache.thrift.protocol.TField("operation_invoke_property", org.apache.thrift.protocol.TType.STRUCT, (short)4);
   private static final org.apache.thrift.protocol.TField OPERATION_RETURN_PROPERTY_FIELD_DESC = new org.apache.thrift.protocol.TField("operation_return_property", org.apache.thrift.protocol.TType.STRUCT, (short)5);
   private static final org.apache.thrift.protocol.TField HOST_APPLICATION_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("host_application_edge", org.apache.thrift.protocol.TType.STRUCT, (short)6);
-  private static final org.apache.thrift.protocol.TField APP_RESOURCE_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("app_resource_edge", org.apache.thrift.protocol.TType.STRUCT, (short)7);
+  private static final org.apache.thrift.protocol.TField APPLICATION_RESOURCE_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("application_resource_edge", org.apache.thrift.protocol.TType.STRUCT, (short)7);
   private static final org.apache.thrift.protocol.TField IMPLEMENT_RESOURCE_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("implement_resource_edge", org.apache.thrift.protocol.TType.STRUCT, (short)8);
   private static final org.apache.thrift.protocol.TField ENTRY_INVOKE_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("entry_invoke_edge", org.apache.thrift.protocol.TType.STRUCT, (short)9);
   private static final org.apache.thrift.protocol.TField ENTRY_RETURN_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("entry_return_edge", org.apache.thrift.protocol.TType.STRUCT, (short)10);
@@ -53,11 +53,11 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
     ENTRY_INVOKE_PROPERTY((short)1, "entry_invoke_property"),
     ENTRY_RETURN_PROPERTY((short)2, "entry_return_property"),
-    OPERATION_PROPERTY_PROPERTY((short)3, "operation_property_property"),
+    OPERATION_PROPERTY((short)3, "operation_property"),
     OPERATION_INVOKE_PROPERTY((short)4, "operation_invoke_property"),
     OPERATION_RETURN_PROPERTY((short)5, "operation_return_property"),
     HOST_APPLICATION_EDGE((short)6, "host_application_edge"),
-    APP_RESOURCE_EDGE((short)7, "app_resource_edge"),
+    APPLICATION_RESOURCE_EDGE((short)7, "application_resource_edge"),
     IMPLEMENT_RESOURCE_EDGE((short)8, "implement_resource_edge"),
     ENTRY_INVOKE_EDGE((short)9, "entry_invoke_edge"),
     ENTRY_RETURN_EDGE((short)10, "entry_return_edge"),
@@ -83,16 +83,16 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
           return ENTRY_INVOKE_PROPERTY;
         case 2: // ENTRY_RETURN_PROPERTY
           return ENTRY_RETURN_PROPERTY;
-        case 3: // OPERATION_PROPERTY_PROPERTY
-          return OPERATION_PROPERTY_PROPERTY;
+        case 3: // OPERATION_PROPERTY
+          return OPERATION_PROPERTY;
         case 4: // OPERATION_INVOKE_PROPERTY
           return OPERATION_INVOKE_PROPERTY;
         case 5: // OPERATION_RETURN_PROPERTY
           return OPERATION_RETURN_PROPERTY;
         case 6: // HOST_APPLICATION_EDGE
           return HOST_APPLICATION_EDGE;
-        case 7: // APP_RESOURCE_EDGE
-          return APP_RESOURCE_EDGE;
+        case 7: // APPLICATION_RESOURCE_EDGE
+          return APPLICATION_RESOURCE_EDGE;
         case 8: // IMPLEMENT_RESOURCE_EDGE
           return IMPLEMENT_RESOURCE_EDGE;
         case 9: // ENTRY_INVOKE_EDGE
@@ -153,16 +153,16 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, EntryInvokeProperty.class)));
     tmpMap.put(_Fields.ENTRY_RETURN_PROPERTY, new org.apache.thrift.meta_data.FieldMetaData("entry_return_property", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, EntryReturnProperty.class)));
-    tmpMap.put(_Fields.OPERATION_PROPERTY_PROPERTY, new org.apache.thrift.meta_data.FieldMetaData("operation_property_property", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.OPERATION_PROPERTY, new org.apache.thrift.meta_data.FieldMetaData("operation_property", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, OperationProperty.class)));
     tmpMap.put(_Fields.OPERATION_INVOKE_PROPERTY, new org.apache.thrift.meta_data.FieldMetaData("operation_invoke_property", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, OperationInvokeProperty.class)));
     tmpMap.put(_Fields.OPERATION_RETURN_PROPERTY, new org.apache.thrift.meta_data.FieldMetaData("operation_return_property", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, OperationReturnProperty.class)));
     tmpMap.put(_Fields.HOST_APPLICATION_EDGE, new org.apache.thrift.meta_data.FieldMetaData("host_application_edge", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ServeApplicationEdge.class)));
-    tmpMap.put(_Fields.APP_RESOURCE_EDGE, new org.apache.thrift.meta_data.FieldMetaData("app_resource_edge", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ManageResourceEdge.class)));
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, HostApplicationEdge.class)));
+    tmpMap.put(_Fields.APPLICATION_RESOURCE_EDGE, new org.apache.thrift.meta_data.FieldMetaData("application_resource_edge", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ApplicationResourceEdge.class)));
     tmpMap.put(_Fields.IMPLEMENT_RESOURCE_EDGE, new org.apache.thrift.meta_data.FieldMetaData("implement_resource_edge", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ImplementResourceEdge.class)));
     tmpMap.put(_Fields.ENTRY_INVOKE_EDGE, new org.apache.thrift.meta_data.FieldMetaData("entry_invoke_edge", org.apache.thrift.TFieldRequirementType.DEFAULT, 
@@ -208,9 +208,9 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
     return x;
   }
 
-  public static ApplicationDataUnit operation_property_property(OperationProperty value) {
+  public static ApplicationDataUnit operation_property(OperationProperty value) {
     ApplicationDataUnit x = new ApplicationDataUnit();
-    x.setOperation_property_property(value);
+    x.setOperation_property(value);
     return x;
   }
 
@@ -226,15 +226,15 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
     return x;
   }
 
-  public static ApplicationDataUnit host_application_edge(ServeApplicationEdge value) {
+  public static ApplicationDataUnit host_application_edge(HostApplicationEdge value) {
     ApplicationDataUnit x = new ApplicationDataUnit();
     x.setHost_application_edge(value);
     return x;
   }
 
-  public static ApplicationDataUnit app_resource_edge(ManageResourceEdge value) {
+  public static ApplicationDataUnit application_resource_edge(ApplicationResourceEdge value) {
     ApplicationDataUnit x = new ApplicationDataUnit();
-    x.setApp_resource_edge(value);
+    x.setApplication_resource_edge(value);
     return x;
   }
 
@@ -294,11 +294,11 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
           break;
         }
         throw new ClassCastException("Was expecting value of type EntryReturnProperty for field 'entry_return_property', but got " + value.getClass().getSimpleName());
-      case OPERATION_PROPERTY_PROPERTY:
+      case OPERATION_PROPERTY:
         if (value instanceof OperationProperty) {
           break;
         }
-        throw new ClassCastException("Was expecting value of type OperationProperty for field 'operation_property_property', but got " + value.getClass().getSimpleName());
+        throw new ClassCastException("Was expecting value of type OperationProperty for field 'operation_property', but got " + value.getClass().getSimpleName());
       case OPERATION_INVOKE_PROPERTY:
         if (value instanceof OperationInvokeProperty) {
           break;
@@ -310,15 +310,15 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
         }
         throw new ClassCastException("Was expecting value of type OperationReturnProperty for field 'operation_return_property', but got " + value.getClass().getSimpleName());
       case HOST_APPLICATION_EDGE:
-        if (value instanceof ServeApplicationEdge) {
+        if (value instanceof HostApplicationEdge) {
           break;
         }
-        throw new ClassCastException("Was expecting value of type ServeApplicationEdge for field 'host_application_edge', but got " + value.getClass().getSimpleName());
-      case APP_RESOURCE_EDGE:
-        if (value instanceof ManageResourceEdge) {
+        throw new ClassCastException("Was expecting value of type HostApplicationEdge for field 'host_application_edge', but got " + value.getClass().getSimpleName());
+      case APPLICATION_RESOURCE_EDGE:
+        if (value instanceof ApplicationResourceEdge) {
           break;
         }
-        throw new ClassCastException("Was expecting value of type ManageResourceEdge for field 'app_resource_edge', but got " + value.getClass().getSimpleName());
+        throw new ClassCastException("Was expecting value of type ApplicationResourceEdge for field 'application_resource_edge', but got " + value.getClass().getSimpleName());
       case IMPLEMENT_RESOURCE_EDGE:
         if (value instanceof ImplementResourceEdge) {
           break;
@@ -384,12 +384,12 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
             return null;
           }
-        case OPERATION_PROPERTY_PROPERTY:
-          if (field.type == OPERATION_PROPERTY_PROPERTY_FIELD_DESC.type) {
-            OperationProperty operation_property_property;
-            operation_property_property = new OperationProperty();
-            operation_property_property.read(iprot);
-            return operation_property_property;
+        case OPERATION_PROPERTY:
+          if (field.type == OPERATION_PROPERTY_FIELD_DESC.type) {
+            OperationProperty operation_property;
+            operation_property = new OperationProperty();
+            operation_property.read(iprot);
+            return operation_property;
           } else {
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
             return null;
@@ -416,20 +416,20 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
           }
         case HOST_APPLICATION_EDGE:
           if (field.type == HOST_APPLICATION_EDGE_FIELD_DESC.type) {
-            ServeApplicationEdge host_application_edge;
-            host_application_edge = new ServeApplicationEdge();
+            HostApplicationEdge host_application_edge;
+            host_application_edge = new HostApplicationEdge();
             host_application_edge.read(iprot);
             return host_application_edge;
           } else {
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
             return null;
           }
-        case APP_RESOURCE_EDGE:
-          if (field.type == APP_RESOURCE_EDGE_FIELD_DESC.type) {
-            ManageResourceEdge app_resource_edge;
-            app_resource_edge = new ManageResourceEdge();
-            app_resource_edge.read(iprot);
-            return app_resource_edge;
+        case APPLICATION_RESOURCE_EDGE:
+          if (field.type == APPLICATION_RESOURCE_EDGE_FIELD_DESC.type) {
+            ApplicationResourceEdge application_resource_edge;
+            application_resource_edge = new ApplicationResourceEdge();
+            application_resource_edge.read(iprot);
+            return application_resource_edge;
           } else {
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
             return null;
@@ -524,9 +524,9 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
         EntryReturnProperty entry_return_property = (EntryReturnProperty)value_;
         entry_return_property.write(oprot);
         return;
-      case OPERATION_PROPERTY_PROPERTY:
-        OperationProperty operation_property_property = (OperationProperty)value_;
-        operation_property_property.write(oprot);
+      case OPERATION_PROPERTY:
+        OperationProperty operation_property = (OperationProperty)value_;
+        operation_property.write(oprot);
         return;
       case OPERATION_INVOKE_PROPERTY:
         OperationInvokeProperty operation_invoke_property = (OperationInvokeProperty)value_;
@@ -537,12 +537,12 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
         operation_return_property.write(oprot);
         return;
       case HOST_APPLICATION_EDGE:
-        ServeApplicationEdge host_application_edge = (ServeApplicationEdge)value_;
+        HostApplicationEdge host_application_edge = (HostApplicationEdge)value_;
         host_application_edge.write(oprot);
         return;
-      case APP_RESOURCE_EDGE:
-        ManageResourceEdge app_resource_edge = (ManageResourceEdge)value_;
-        app_resource_edge.write(oprot);
+      case APPLICATION_RESOURCE_EDGE:
+        ApplicationResourceEdge application_resource_edge = (ApplicationResourceEdge)value_;
+        application_resource_edge.write(oprot);
         return;
       case IMPLEMENT_RESOURCE_EDGE:
         ImplementResourceEdge implement_resource_edge = (ImplementResourceEdge)value_;
@@ -592,11 +592,11 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
           entry_return_property = new EntryReturnProperty();
           entry_return_property.read(iprot);
           return entry_return_property;
-        case OPERATION_PROPERTY_PROPERTY:
-          OperationProperty operation_property_property;
-          operation_property_property = new OperationProperty();
-          operation_property_property.read(iprot);
-          return operation_property_property;
+        case OPERATION_PROPERTY:
+          OperationProperty operation_property;
+          operation_property = new OperationProperty();
+          operation_property.read(iprot);
+          return operation_property;
         case OPERATION_INVOKE_PROPERTY:
           OperationInvokeProperty operation_invoke_property;
           operation_invoke_property = new OperationInvokeProperty();
@@ -608,15 +608,15 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
           operation_return_property.read(iprot);
           return operation_return_property;
         case HOST_APPLICATION_EDGE:
-          ServeApplicationEdge host_application_edge;
-          host_application_edge = new ServeApplicationEdge();
+          HostApplicationEdge host_application_edge;
+          host_application_edge = new HostApplicationEdge();
           host_application_edge.read(iprot);
           return host_application_edge;
-        case APP_RESOURCE_EDGE:
-          ManageResourceEdge app_resource_edge;
-          app_resource_edge = new ManageResourceEdge();
-          app_resource_edge.read(iprot);
-          return app_resource_edge;
+        case APPLICATION_RESOURCE_EDGE:
+          ApplicationResourceEdge application_resource_edge;
+          application_resource_edge = new ApplicationResourceEdge();
+          application_resource_edge.read(iprot);
+          return application_resource_edge;
         case IMPLEMENT_RESOURCE_EDGE:
           ImplementResourceEdge implement_resource_edge;
           implement_resource_edge = new ImplementResourceEdge();
@@ -671,9 +671,9 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
         EntryReturnProperty entry_return_property = (EntryReturnProperty)value_;
         entry_return_property.write(oprot);
         return;
-      case OPERATION_PROPERTY_PROPERTY:
-        OperationProperty operation_property_property = (OperationProperty)value_;
-        operation_property_property.write(oprot);
+      case OPERATION_PROPERTY:
+        OperationProperty operation_property = (OperationProperty)value_;
+        operation_property.write(oprot);
         return;
       case OPERATION_INVOKE_PROPERTY:
         OperationInvokeProperty operation_invoke_property = (OperationInvokeProperty)value_;
@@ -684,12 +684,12 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
         operation_return_property.write(oprot);
         return;
       case HOST_APPLICATION_EDGE:
-        ServeApplicationEdge host_application_edge = (ServeApplicationEdge)value_;
+        HostApplicationEdge host_application_edge = (HostApplicationEdge)value_;
         host_application_edge.write(oprot);
         return;
-      case APP_RESOURCE_EDGE:
-        ManageResourceEdge app_resource_edge = (ManageResourceEdge)value_;
-        app_resource_edge.write(oprot);
+      case APPLICATION_RESOURCE_EDGE:
+        ApplicationResourceEdge application_resource_edge = (ApplicationResourceEdge)value_;
+        application_resource_edge.write(oprot);
         return;
       case IMPLEMENT_RESOURCE_EDGE:
         ImplementResourceEdge implement_resource_edge = (ImplementResourceEdge)value_;
@@ -731,16 +731,16 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
         return ENTRY_INVOKE_PROPERTY_FIELD_DESC;
       case ENTRY_RETURN_PROPERTY:
         return ENTRY_RETURN_PROPERTY_FIELD_DESC;
-      case OPERATION_PROPERTY_PROPERTY:
-        return OPERATION_PROPERTY_PROPERTY_FIELD_DESC;
+      case OPERATION_PROPERTY:
+        return OPERATION_PROPERTY_FIELD_DESC;
       case OPERATION_INVOKE_PROPERTY:
         return OPERATION_INVOKE_PROPERTY_FIELD_DESC;
       case OPERATION_RETURN_PROPERTY:
         return OPERATION_RETURN_PROPERTY_FIELD_DESC;
       case HOST_APPLICATION_EDGE:
         return HOST_APPLICATION_EDGE_FIELD_DESC;
-      case APP_RESOURCE_EDGE:
-        return APP_RESOURCE_EDGE_FIELD_DESC;
+      case APPLICATION_RESOURCE_EDGE:
+        return APPLICATION_RESOURCE_EDGE_FIELD_DESC;
       case IMPLEMENT_RESOURCE_EDGE:
         return IMPLEMENT_RESOURCE_EDGE_FIELD_DESC;
       case ENTRY_INVOKE_EDGE:
@@ -803,17 +803,17 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
     value_ = value;
   }
 
-  public OperationProperty getOperation_property_property() {
-    if (getSetField() == _Fields.OPERATION_PROPERTY_PROPERTY) {
+  public OperationProperty getOperation_property() {
+    if (getSetField() == _Fields.OPERATION_PROPERTY) {
       return (OperationProperty)getFieldValue();
     } else {
-      throw new RuntimeException("Cannot get field 'operation_property_property' because union is currently set to " + getFieldDesc(getSetField()).name);
+      throw new RuntimeException("Cannot get field 'operation_property' because union is currently set to " + getFieldDesc(getSetField()).name);
     }
   }
 
-  public void setOperation_property_property(OperationProperty value) {
+  public void setOperation_property(OperationProperty value) {
     if (value == null) throw new NullPointerException();
-    setField_ = _Fields.OPERATION_PROPERTY_PROPERTY;
+    setField_ = _Fields.OPERATION_PROPERTY;
     value_ = value;
   }
 
@@ -845,31 +845,31 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
     value_ = value;
   }
 
-  public ServeApplicationEdge getHost_application_edge() {
+  public HostApplicationEdge getHost_application_edge() {
     if (getSetField() == _Fields.HOST_APPLICATION_EDGE) {
-      return (ServeApplicationEdge)getFieldValue();
+      return (HostApplicationEdge)getFieldValue();
     } else {
       throw new RuntimeException("Cannot get field 'host_application_edge' because union is currently set to " + getFieldDesc(getSetField()).name);
     }
   }
 
-  public void setHost_application_edge(ServeApplicationEdge value) {
+  public void setHost_application_edge(HostApplicationEdge value) {
     if (value == null) throw new NullPointerException();
     setField_ = _Fields.HOST_APPLICATION_EDGE;
     value_ = value;
   }
 
-  public ManageResourceEdge getApp_resource_edge() {
-    if (getSetField() == _Fields.APP_RESOURCE_EDGE) {
-      return (ManageResourceEdge)getFieldValue();
+  public ApplicationResourceEdge getApplication_resource_edge() {
+    if (getSetField() == _Fields.APPLICATION_RESOURCE_EDGE) {
+      return (ApplicationResourceEdge)getFieldValue();
     } else {
-      throw new RuntimeException("Cannot get field 'app_resource_edge' because union is currently set to " + getFieldDesc(getSetField()).name);
+      throw new RuntimeException("Cannot get field 'application_resource_edge' because union is currently set to " + getFieldDesc(getSetField()).name);
     }
   }
 
-  public void setApp_resource_edge(ManageResourceEdge value) {
+  public void setApplication_resource_edge(ApplicationResourceEdge value) {
     if (value == null) throw new NullPointerException();
-    setField_ = _Fields.APP_RESOURCE_EDGE;
+    setField_ = _Fields.APPLICATION_RESOURCE_EDGE;
     value_ = value;
   }
 
@@ -981,8 +981,8 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
   }
 
 
-  public boolean isSetOperation_property_property() {
-    return setField_ == _Fields.OPERATION_PROPERTY_PROPERTY;
+  public boolean isSetOperation_property() {
+    return setField_ == _Fields.OPERATION_PROPERTY;
   }
 
 
@@ -1001,8 +1001,8 @@ public class ApplicationDataUnit extends org.apache.thrift.TUnion<ApplicationDat
   }
 
 
-  public boolean isSetApp_resource_edge() {
-    return setField_ == _Fields.APP_RESOURCE_EDGE;
+  public boolean isSetApplication_resource_edge() {
+    return setField_ == _Fields.APPLICATION_RESOURCE_EDGE;
   }
 
 

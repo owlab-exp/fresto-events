@@ -32,25 +32,25 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ManageResourceEdge implements org.apache.thrift.TBase<ManageResourceEdge, ManageResourceEdge._Fields>, java.io.Serializable, Cloneable, Comparable<ManageResourceEdge> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("ManageResourceEdge");
+public class HostApplicationEdge implements org.apache.thrift.TBase<HostApplicationEdge, HostApplicationEdge._Fields>, java.io.Serializable, Cloneable, Comparable<HostApplicationEdge> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("HostApplicationEdge");
 
-  private static final org.apache.thrift.protocol.TField APPLICATION_FIELD_DESC = new org.apache.thrift.protocol.TField("application", org.apache.thrift.protocol.TType.STRUCT, (short)1);
-  private static final org.apache.thrift.protocol.TField MANAGED_RESOURCE_FIELD_DESC = new org.apache.thrift.protocol.TField("managed_resource", org.apache.thrift.protocol.TType.STRUCT, (short)2);
+  private static final org.apache.thrift.protocol.TField HOST_FIELD_DESC = new org.apache.thrift.protocol.TField("host", org.apache.thrift.protocol.TType.STRUCT, (short)1);
+  private static final org.apache.thrift.protocol.TField APPLICATION_FIELD_DESC = new org.apache.thrift.protocol.TField("application", org.apache.thrift.protocol.TType.STRUCT, (short)2);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
-    schemes.put(StandardScheme.class, new ManageResourceEdgeStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new ManageResourceEdgeTupleSchemeFactory());
+    schemes.put(StandardScheme.class, new HostApplicationEdgeStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new HostApplicationEdgeTupleSchemeFactory());
   }
 
+  public HostID host; // required
   public ApplicationID application; // required
-  public ManagedResourceID managed_resource; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    APPLICATION((short)1, "application"),
-    MANAGED_RESOURCE((short)2, "managed_resource");
+    HOST((short)1, "host"),
+    APPLICATION((short)2, "application");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -65,10 +65,10 @@ public class ManageResourceEdge implements org.apache.thrift.TBase<ManageResourc
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // APPLICATION
+        case 1: // HOST
+          return HOST;
+        case 2: // APPLICATION
           return APPLICATION;
-        case 2: // MANAGED_RESOURCE
-          return MANAGED_RESOURCE;
         default:
           return null;
       }
@@ -112,53 +112,77 @@ public class ManageResourceEdge implements org.apache.thrift.TBase<ManageResourc
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+    tmpMap.put(_Fields.HOST, new org.apache.thrift.meta_data.FieldMetaData("host", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, HostID.class)));
     tmpMap.put(_Fields.APPLICATION, new org.apache.thrift.meta_data.FieldMetaData("application", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ApplicationID.class)));
-    tmpMap.put(_Fields.MANAGED_RESOURCE, new org.apache.thrift.meta_data.FieldMetaData("managed_resource", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ManagedResourceID.class)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(ManageResourceEdge.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(HostApplicationEdge.class, metaDataMap);
   }
 
-  public ManageResourceEdge() {
+  public HostApplicationEdge() {
   }
 
-  public ManageResourceEdge(
-    ApplicationID application,
-    ManagedResourceID managed_resource)
+  public HostApplicationEdge(
+    HostID host,
+    ApplicationID application)
   {
     this();
+    this.host = host;
     this.application = application;
-    this.managed_resource = managed_resource;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public ManageResourceEdge(ManageResourceEdge other) {
+  public HostApplicationEdge(HostApplicationEdge other) {
+    if (other.isSetHost()) {
+      this.host = new HostID(other.host);
+    }
     if (other.isSetApplication()) {
       this.application = new ApplicationID(other.application);
     }
-    if (other.isSetManaged_resource()) {
-      this.managed_resource = new ManagedResourceID(other.managed_resource);
-    }
   }
 
-  public ManageResourceEdge deepCopy() {
-    return new ManageResourceEdge(this);
+  public HostApplicationEdge deepCopy() {
+    return new HostApplicationEdge(this);
   }
 
   @Override
   public void clear() {
+    this.host = null;
     this.application = null;
-    this.managed_resource = null;
+  }
+
+  public HostID getHost() {
+    return this.host;
+  }
+
+  public HostApplicationEdge setHost(HostID host) {
+    this.host = host;
+    return this;
+  }
+
+  public void unsetHost() {
+    this.host = null;
+  }
+
+  /** Returns true if field host is set (has been assigned a value) and false otherwise */
+  public boolean isSetHost() {
+    return this.host != null;
+  }
+
+  public void setHostIsSet(boolean value) {
+    if (!value) {
+      this.host = null;
+    }
   }
 
   public ApplicationID getApplication() {
     return this.application;
   }
 
-  public ManageResourceEdge setApplication(ApplicationID application) {
+  public HostApplicationEdge setApplication(ApplicationID application) {
     this.application = application;
     return this;
   }
@@ -178,32 +202,16 @@ public class ManageResourceEdge implements org.apache.thrift.TBase<ManageResourc
     }
   }
 
-  public ManagedResourceID getManaged_resource() {
-    return this.managed_resource;
-  }
-
-  public ManageResourceEdge setManaged_resource(ManagedResourceID managed_resource) {
-    this.managed_resource = managed_resource;
-    return this;
-  }
-
-  public void unsetManaged_resource() {
-    this.managed_resource = null;
-  }
-
-  /** Returns true if field managed_resource is set (has been assigned a value) and false otherwise */
-  public boolean isSetManaged_resource() {
-    return this.managed_resource != null;
-  }
-
-  public void setManaged_resourceIsSet(boolean value) {
-    if (!value) {
-      this.managed_resource = null;
-    }
-  }
-
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
+    case HOST:
+      if (value == null) {
+        unsetHost();
+      } else {
+        setHost((HostID)value);
+      }
+      break;
+
     case APPLICATION:
       if (value == null) {
         unsetApplication();
@@ -212,24 +220,16 @@ public class ManageResourceEdge implements org.apache.thrift.TBase<ManageResourc
       }
       break;
 
-    case MANAGED_RESOURCE:
-      if (value == null) {
-        unsetManaged_resource();
-      } else {
-        setManaged_resource((ManagedResourceID)value);
-      }
-      break;
-
     }
   }
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
+    case HOST:
+      return getHost();
+
     case APPLICATION:
       return getApplication();
-
-    case MANAGED_RESOURCE:
-      return getManaged_resource();
 
     }
     throw new IllegalStateException();
@@ -242,10 +242,10 @@ public class ManageResourceEdge implements org.apache.thrift.TBase<ManageResourc
     }
 
     switch (field) {
+    case HOST:
+      return isSetHost();
     case APPLICATION:
       return isSetApplication();
-    case MANAGED_RESOURCE:
-      return isSetManaged_resource();
     }
     throw new IllegalStateException();
   }
@@ -254,14 +254,23 @@ public class ManageResourceEdge implements org.apache.thrift.TBase<ManageResourc
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof ManageResourceEdge)
-      return this.equals((ManageResourceEdge)that);
+    if (that instanceof HostApplicationEdge)
+      return this.equals((HostApplicationEdge)that);
     return false;
   }
 
-  public boolean equals(ManageResourceEdge that) {
+  public boolean equals(HostApplicationEdge that) {
     if (that == null)
       return false;
+
+    boolean this_present_host = true && this.isSetHost();
+    boolean that_present_host = true && that.isSetHost();
+    if (this_present_host || that_present_host) {
+      if (!(this_present_host && that_present_host))
+        return false;
+      if (!this.host.equals(that.host))
+        return false;
+    }
 
     boolean this_present_application = true && this.isSetApplication();
     boolean that_present_application = true && that.isSetApplication();
@@ -269,15 +278,6 @@ public class ManageResourceEdge implements org.apache.thrift.TBase<ManageResourc
       if (!(this_present_application && that_present_application))
         return false;
       if (!this.application.equals(that.application))
-        return false;
-    }
-
-    boolean this_present_managed_resource = true && this.isSetManaged_resource();
-    boolean that_present_managed_resource = true && that.isSetManaged_resource();
-    if (this_present_managed_resource || that_present_managed_resource) {
-      if (!(this_present_managed_resource && that_present_managed_resource))
-        return false;
-      if (!this.managed_resource.equals(that.managed_resource))
         return false;
     }
 
@@ -290,29 +290,29 @@ public class ManageResourceEdge implements org.apache.thrift.TBase<ManageResourc
   }
 
   @Override
-  public int compareTo(ManageResourceEdge other) {
+  public int compareTo(HostApplicationEdge other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
 
+    lastComparison = Boolean.valueOf(isSetHost()).compareTo(other.isSetHost());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetHost()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.host, other.host);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
     lastComparison = Boolean.valueOf(isSetApplication()).compareTo(other.isSetApplication());
     if (lastComparison != 0) {
       return lastComparison;
     }
     if (isSetApplication()) {
       lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.application, other.application);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetManaged_resource()).compareTo(other.isSetManaged_resource());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetManaged_resource()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.managed_resource, other.managed_resource);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -334,22 +334,22 @@ public class ManageResourceEdge implements org.apache.thrift.TBase<ManageResourc
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("ManageResourceEdge(");
+    StringBuilder sb = new StringBuilder("HostApplicationEdge(");
     boolean first = true;
 
+    sb.append("host:");
+    if (this.host == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.host);
+    }
+    first = false;
+    if (!first) sb.append(", ");
     sb.append("application:");
     if (this.application == null) {
       sb.append("null");
     } else {
       sb.append(this.application);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("managed_resource:");
-    if (this.managed_resource == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.managed_resource);
     }
     first = false;
     sb.append(")");
@@ -358,11 +358,11 @@ public class ManageResourceEdge implements org.apache.thrift.TBase<ManageResourc
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
+    if (host == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'host' was not present! Struct: " + toString());
+    }
     if (application == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'application' was not present! Struct: " + toString());
-    }
-    if (managed_resource == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'managed_resource' was not present! Struct: " + toString());
     }
     // check for sub-struct validity
   }
@@ -383,15 +383,15 @@ public class ManageResourceEdge implements org.apache.thrift.TBase<ManageResourc
     }
   }
 
-  private static class ManageResourceEdgeStandardSchemeFactory implements SchemeFactory {
-    public ManageResourceEdgeStandardScheme getScheme() {
-      return new ManageResourceEdgeStandardScheme();
+  private static class HostApplicationEdgeStandardSchemeFactory implements SchemeFactory {
+    public HostApplicationEdgeStandardScheme getScheme() {
+      return new HostApplicationEdgeStandardScheme();
     }
   }
 
-  private static class ManageResourceEdgeStandardScheme extends StandardScheme<ManageResourceEdge> {
+  private static class HostApplicationEdgeStandardScheme extends StandardScheme<HostApplicationEdge> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, ManageResourceEdge struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, HostApplicationEdge struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -401,20 +401,20 @@ public class ManageResourceEdge implements org.apache.thrift.TBase<ManageResourc
           break;
         }
         switch (schemeField.id) {
-          case 1: // APPLICATION
+          case 1: // HOST
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.application = new ApplicationID();
-              struct.application.read(iprot);
-              struct.setApplicationIsSet(true);
+              struct.host = new HostID();
+              struct.host.read(iprot);
+              struct.setHostIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 2: // MANAGED_RESOURCE
+          case 2: // APPLICATION
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.managed_resource = new ManagedResourceID();
-              struct.managed_resource.read(iprot);
-              struct.setManaged_resourceIsSet(true);
+              struct.application = new ApplicationID();
+              struct.application.read(iprot);
+              struct.setApplicationIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -430,18 +430,18 @@ public class ManageResourceEdge implements org.apache.thrift.TBase<ManageResourc
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, ManageResourceEdge struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, HostApplicationEdge struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
+      if (struct.host != null) {
+        oprot.writeFieldBegin(HOST_FIELD_DESC);
+        struct.host.write(oprot);
+        oprot.writeFieldEnd();
+      }
       if (struct.application != null) {
         oprot.writeFieldBegin(APPLICATION_FIELD_DESC);
         struct.application.write(oprot);
-        oprot.writeFieldEnd();
-      }
-      if (struct.managed_resource != null) {
-        oprot.writeFieldBegin(MANAGED_RESOURCE_FIELD_DESC);
-        struct.managed_resource.write(oprot);
         oprot.writeFieldEnd();
       }
       oprot.writeFieldStop();
@@ -450,30 +450,30 @@ public class ManageResourceEdge implements org.apache.thrift.TBase<ManageResourc
 
   }
 
-  private static class ManageResourceEdgeTupleSchemeFactory implements SchemeFactory {
-    public ManageResourceEdgeTupleScheme getScheme() {
-      return new ManageResourceEdgeTupleScheme();
+  private static class HostApplicationEdgeTupleSchemeFactory implements SchemeFactory {
+    public HostApplicationEdgeTupleScheme getScheme() {
+      return new HostApplicationEdgeTupleScheme();
     }
   }
 
-  private static class ManageResourceEdgeTupleScheme extends TupleScheme<ManageResourceEdge> {
+  private static class HostApplicationEdgeTupleScheme extends TupleScheme<HostApplicationEdge> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, ManageResourceEdge struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, HostApplicationEdge struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
+      struct.host.write(oprot);
       struct.application.write(oprot);
-      struct.managed_resource.write(oprot);
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, ManageResourceEdge struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, HostApplicationEdge struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
+      struct.host = new HostID();
+      struct.host.read(iprot);
+      struct.setHostIsSet(true);
       struct.application = new ApplicationID();
       struct.application.read(iprot);
       struct.setApplicationIsSet(true);
-      struct.managed_resource = new ManagedResourceID();
-      struct.managed_resource.read(iprot);
-      struct.setManaged_resourceIsSet(true);
     }
   }
 
