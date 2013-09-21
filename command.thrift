@@ -8,7 +8,7 @@ enum TargetModule {
 }
 
 enum Command {
-    TERMINATE = 1
+    TERMINATE = 0
 }
 
 struct CommandEvent {

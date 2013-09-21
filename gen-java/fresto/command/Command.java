@@ -12,7 +12,7 @@ import java.util.HashMap;
 import org.apache.thrift.TEnum;
 
 public enum Command implements org.apache.thrift.TEnum {
-  TERMINATE(1);
+  TERMINATE(0);
 
   private final int value;
 
@@ -33,7 +33,7 @@ public enum Command implements org.apache.thrift.TEnum {
    */
   public static Command findByValue(int value) { 
     switch (value) {
-      case 1:
+      case 0:
         return TERMINATE;
       default:
         return null;
