@@ -32,8 +32,9 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ClientDataUnit extends org.apache.thrift.TUnion<ClientDataUnit, ClientDataUnit._Fields> {
+public class ClientDataUnit implements org.apache.thrift.TBase<ClientDataUnit, ClientDataUnit._Fields>, java.io.Serializable, Cloneable, Comparable<ClientDataUnit> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("ClientDataUnit");
+
   private static final org.apache.thrift.protocol.TField CLIENT_PROPERTY_FIELD_DESC = new org.apache.thrift.protocol.TField("client_property", org.apache.thrift.protocol.TType.STRUCT, (short)1);
   private static final org.apache.thrift.protocol.TField RESOURCE_PROPERTY_FIELD_DESC = new org.apache.thrift.protocol.TField("resource_property", org.apache.thrift.protocol.TType.STRUCT, (short)2);
   private static final org.apache.thrift.protocol.TField REQUEST_PROPERTY_FIELD_DESC = new org.apache.thrift.protocol.TField("request_property", org.apache.thrift.protocol.TType.STRUCT, (short)3);
@@ -42,6 +43,21 @@ public class ClientDataUnit extends org.apache.thrift.TUnion<ClientDataUnit, Cli
   private static final org.apache.thrift.protocol.TField REQUEST_RESOURCE_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("request_resource_edge", org.apache.thrift.protocol.TType.STRUCT, (short)6);
   private static final org.apache.thrift.protocol.TField RESOURCE_RESPONSE_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("resource_response_edge", org.apache.thrift.protocol.TType.STRUCT, (short)7);
   private static final org.apache.thrift.protocol.TField RESPONSE_CLIENT_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("response_client_edge", org.apache.thrift.protocol.TType.STRUCT, (short)8);
+
+  private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
+  static {
+    schemes.put(StandardScheme.class, new ClientDataUnitStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new ClientDataUnitTupleSchemeFactory());
+  }
+
+  public ClientProperty client_property; // required
+  public ResourceProperty resource_property; // required
+  public RequestProperty request_property; // required
+  public ResponseProperty response_property; // required
+  public ClientRequestEdge client_request_edge; // required
+  public RequestResourceEdge request_resource_edge; // required
+  public ResourceResponseEdge resource_response_edge; // required
+  public ResponseClientEdge response_client_edge; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -122,6 +138,7 @@ public class ClientDataUnit extends org.apache.thrift.TUnion<ClientDataUnit, Cli
     }
   }
 
+  // isset id assignments
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
@@ -146,563 +163,688 @@ public class ClientDataUnit extends org.apache.thrift.TUnion<ClientDataUnit, Cli
   }
 
   public ClientDataUnit() {
-    super();
   }
 
-  public ClientDataUnit(_Fields setField, Object value) {
-    super(setField, value);
+  public ClientDataUnit(
+    ClientProperty client_property,
+    ResourceProperty resource_property,
+    RequestProperty request_property,
+    ResponseProperty response_property,
+    ClientRequestEdge client_request_edge,
+    RequestResourceEdge request_resource_edge,
+    ResourceResponseEdge resource_response_edge,
+    ResponseClientEdge response_client_edge)
+  {
+    this();
+    this.client_property = client_property;
+    this.resource_property = resource_property;
+    this.request_property = request_property;
+    this.response_property = response_property;
+    this.client_request_edge = client_request_edge;
+    this.request_resource_edge = request_resource_edge;
+    this.resource_response_edge = resource_response_edge;
+    this.response_client_edge = response_client_edge;
   }
 
+  /**
+   * Performs a deep copy on <i>other</i>.
+   */
   public ClientDataUnit(ClientDataUnit other) {
-    super(other);
+    if (other.isSetClient_property()) {
+      this.client_property = new ClientProperty(other.client_property);
+    }
+    if (other.isSetResource_property()) {
+      this.resource_property = new ResourceProperty(other.resource_property);
+    }
+    if (other.isSetRequest_property()) {
+      this.request_property = new RequestProperty(other.request_property);
+    }
+    if (other.isSetResponse_property()) {
+      this.response_property = new ResponseProperty(other.response_property);
+    }
+    if (other.isSetClient_request_edge()) {
+      this.client_request_edge = new ClientRequestEdge(other.client_request_edge);
+    }
+    if (other.isSetRequest_resource_edge()) {
+      this.request_resource_edge = new RequestResourceEdge(other.request_resource_edge);
+    }
+    if (other.isSetResource_response_edge()) {
+      this.resource_response_edge = new ResourceResponseEdge(other.resource_response_edge);
+    }
+    if (other.isSetResponse_client_edge()) {
+      this.response_client_edge = new ResponseClientEdge(other.response_client_edge);
+    }
   }
+
   public ClientDataUnit deepCopy() {
     return new ClientDataUnit(this);
   }
 
-  public static ClientDataUnit client_property(ClientProperty value) {
-    ClientDataUnit x = new ClientDataUnit();
-    x.setClient_property(value);
-    return x;
-  }
-
-  public static ClientDataUnit resource_property(ResourceProperty value) {
-    ClientDataUnit x = new ClientDataUnit();
-    x.setResource_property(value);
-    return x;
-  }
-
-  public static ClientDataUnit request_property(RequestProperty value) {
-    ClientDataUnit x = new ClientDataUnit();
-    x.setRequest_property(value);
-    return x;
-  }
-
-  public static ClientDataUnit response_property(ResponseProperty value) {
-    ClientDataUnit x = new ClientDataUnit();
-    x.setResponse_property(value);
-    return x;
-  }
-
-  public static ClientDataUnit client_request_edge(ClientRequestEdge value) {
-    ClientDataUnit x = new ClientDataUnit();
-    x.setClient_request_edge(value);
-    return x;
-  }
-
-  public static ClientDataUnit request_resource_edge(RequestResourceEdge value) {
-    ClientDataUnit x = new ClientDataUnit();
-    x.setRequest_resource_edge(value);
-    return x;
-  }
-
-  public static ClientDataUnit resource_response_edge(ResourceResponseEdge value) {
-    ClientDataUnit x = new ClientDataUnit();
-    x.setResource_response_edge(value);
-    return x;
-  }
-
-  public static ClientDataUnit response_client_edge(ResponseClientEdge value) {
-    ClientDataUnit x = new ClientDataUnit();
-    x.setResponse_client_edge(value);
-    return x;
-  }
-
-
   @Override
-  protected void checkType(_Fields setField, Object value) throws ClassCastException {
-    switch (setField) {
-      case CLIENT_PROPERTY:
-        if (value instanceof ClientProperty) {
-          break;
-        }
-        throw new ClassCastException("Was expecting value of type ClientProperty for field 'client_property', but got " + value.getClass().getSimpleName());
-      case RESOURCE_PROPERTY:
-        if (value instanceof ResourceProperty) {
-          break;
-        }
-        throw new ClassCastException("Was expecting value of type ResourceProperty for field 'resource_property', but got " + value.getClass().getSimpleName());
-      case REQUEST_PROPERTY:
-        if (value instanceof RequestProperty) {
-          break;
-        }
-        throw new ClassCastException("Was expecting value of type RequestProperty for field 'request_property', but got " + value.getClass().getSimpleName());
-      case RESPONSE_PROPERTY:
-        if (value instanceof ResponseProperty) {
-          break;
-        }
-        throw new ClassCastException("Was expecting value of type ResponseProperty for field 'response_property', but got " + value.getClass().getSimpleName());
-      case CLIENT_REQUEST_EDGE:
-        if (value instanceof ClientRequestEdge) {
-          break;
-        }
-        throw new ClassCastException("Was expecting value of type ClientRequestEdge for field 'client_request_edge', but got " + value.getClass().getSimpleName());
-      case REQUEST_RESOURCE_EDGE:
-        if (value instanceof RequestResourceEdge) {
-          break;
-        }
-        throw new ClassCastException("Was expecting value of type RequestResourceEdge for field 'request_resource_edge', but got " + value.getClass().getSimpleName());
-      case RESOURCE_RESPONSE_EDGE:
-        if (value instanceof ResourceResponseEdge) {
-          break;
-        }
-        throw new ClassCastException("Was expecting value of type ResourceResponseEdge for field 'resource_response_edge', but got " + value.getClass().getSimpleName());
-      case RESPONSE_CLIENT_EDGE:
-        if (value instanceof ResponseClientEdge) {
-          break;
-        }
-        throw new ClassCastException("Was expecting value of type ResponseClientEdge for field 'response_client_edge', but got " + value.getClass().getSimpleName());
-      default:
-        throw new IllegalArgumentException("Unknown field id " + setField);
+  public void clear() {
+    this.client_property = null;
+    this.resource_property = null;
+    this.request_property = null;
+    this.response_property = null;
+    this.client_request_edge = null;
+    this.request_resource_edge = null;
+    this.resource_response_edge = null;
+    this.response_client_edge = null;
+  }
+
+  public ClientProperty getClient_property() {
+    return this.client_property;
+  }
+
+  public ClientDataUnit setClient_property(ClientProperty client_property) {
+    this.client_property = client_property;
+    return this;
+  }
+
+  public void unsetClient_property() {
+    this.client_property = null;
+  }
+
+  /** Returns true if field client_property is set (has been assigned a value) and false otherwise */
+  public boolean isSetClient_property() {
+    return this.client_property != null;
+  }
+
+  public void setClient_propertyIsSet(boolean value) {
+    if (!value) {
+      this.client_property = null;
     }
   }
 
-  @Override
-  protected Object standardSchemeReadValue(org.apache.thrift.protocol.TProtocol iprot, org.apache.thrift.protocol.TField field) throws org.apache.thrift.TException {
-    _Fields setField = _Fields.findByThriftId(field.id);
-    if (setField != null) {
-      switch (setField) {
-        case CLIENT_PROPERTY:
-          if (field.type == CLIENT_PROPERTY_FIELD_DESC.type) {
-            ClientProperty client_property;
-            client_property = new ClientProperty();
-            client_property.read(iprot);
-            return client_property;
-          } else {
-            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
-            return null;
-          }
-        case RESOURCE_PROPERTY:
-          if (field.type == RESOURCE_PROPERTY_FIELD_DESC.type) {
-            ResourceProperty resource_property;
-            resource_property = new ResourceProperty();
-            resource_property.read(iprot);
-            return resource_property;
-          } else {
-            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
-            return null;
-          }
-        case REQUEST_PROPERTY:
-          if (field.type == REQUEST_PROPERTY_FIELD_DESC.type) {
-            RequestProperty request_property;
-            request_property = new RequestProperty();
-            request_property.read(iprot);
-            return request_property;
-          } else {
-            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
-            return null;
-          }
-        case RESPONSE_PROPERTY:
-          if (field.type == RESPONSE_PROPERTY_FIELD_DESC.type) {
-            ResponseProperty response_property;
-            response_property = new ResponseProperty();
-            response_property.read(iprot);
-            return response_property;
-          } else {
-            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
-            return null;
-          }
-        case CLIENT_REQUEST_EDGE:
-          if (field.type == CLIENT_REQUEST_EDGE_FIELD_DESC.type) {
-            ClientRequestEdge client_request_edge;
-            client_request_edge = new ClientRequestEdge();
-            client_request_edge.read(iprot);
-            return client_request_edge;
-          } else {
-            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
-            return null;
-          }
-        case REQUEST_RESOURCE_EDGE:
-          if (field.type == REQUEST_RESOURCE_EDGE_FIELD_DESC.type) {
-            RequestResourceEdge request_resource_edge;
-            request_resource_edge = new RequestResourceEdge();
-            request_resource_edge.read(iprot);
-            return request_resource_edge;
-          } else {
-            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
-            return null;
-          }
-        case RESOURCE_RESPONSE_EDGE:
-          if (field.type == RESOURCE_RESPONSE_EDGE_FIELD_DESC.type) {
-            ResourceResponseEdge resource_response_edge;
-            resource_response_edge = new ResourceResponseEdge();
-            resource_response_edge.read(iprot);
-            return resource_response_edge;
-          } else {
-            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
-            return null;
-          }
-        case RESPONSE_CLIENT_EDGE:
-          if (field.type == RESPONSE_CLIENT_EDGE_FIELD_DESC.type) {
-            ResponseClientEdge response_client_edge;
-            response_client_edge = new ResponseClientEdge();
-            response_client_edge.read(iprot);
-            return response_client_edge;
-          } else {
-            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
-            return null;
-          }
-        default:
-          throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
+  public ResourceProperty getResource_property() {
+    return this.resource_property;
+  }
+
+  public ClientDataUnit setResource_property(ResourceProperty resource_property) {
+    this.resource_property = resource_property;
+    return this;
+  }
+
+  public void unsetResource_property() {
+    this.resource_property = null;
+  }
+
+  /** Returns true if field resource_property is set (has been assigned a value) and false otherwise */
+  public boolean isSetResource_property() {
+    return this.resource_property != null;
+  }
+
+  public void setResource_propertyIsSet(boolean value) {
+    if (!value) {
+      this.resource_property = null;
+    }
+  }
+
+  public RequestProperty getRequest_property() {
+    return this.request_property;
+  }
+
+  public ClientDataUnit setRequest_property(RequestProperty request_property) {
+    this.request_property = request_property;
+    return this;
+  }
+
+  public void unsetRequest_property() {
+    this.request_property = null;
+  }
+
+  /** Returns true if field request_property is set (has been assigned a value) and false otherwise */
+  public boolean isSetRequest_property() {
+    return this.request_property != null;
+  }
+
+  public void setRequest_propertyIsSet(boolean value) {
+    if (!value) {
+      this.request_property = null;
+    }
+  }
+
+  public ResponseProperty getResponse_property() {
+    return this.response_property;
+  }
+
+  public ClientDataUnit setResponse_property(ResponseProperty response_property) {
+    this.response_property = response_property;
+    return this;
+  }
+
+  public void unsetResponse_property() {
+    this.response_property = null;
+  }
+
+  /** Returns true if field response_property is set (has been assigned a value) and false otherwise */
+  public boolean isSetResponse_property() {
+    return this.response_property != null;
+  }
+
+  public void setResponse_propertyIsSet(boolean value) {
+    if (!value) {
+      this.response_property = null;
+    }
+  }
+
+  public ClientRequestEdge getClient_request_edge() {
+    return this.client_request_edge;
+  }
+
+  public ClientDataUnit setClient_request_edge(ClientRequestEdge client_request_edge) {
+    this.client_request_edge = client_request_edge;
+    return this;
+  }
+
+  public void unsetClient_request_edge() {
+    this.client_request_edge = null;
+  }
+
+  /** Returns true if field client_request_edge is set (has been assigned a value) and false otherwise */
+  public boolean isSetClient_request_edge() {
+    return this.client_request_edge != null;
+  }
+
+  public void setClient_request_edgeIsSet(boolean value) {
+    if (!value) {
+      this.client_request_edge = null;
+    }
+  }
+
+  public RequestResourceEdge getRequest_resource_edge() {
+    return this.request_resource_edge;
+  }
+
+  public ClientDataUnit setRequest_resource_edge(RequestResourceEdge request_resource_edge) {
+    this.request_resource_edge = request_resource_edge;
+    return this;
+  }
+
+  public void unsetRequest_resource_edge() {
+    this.request_resource_edge = null;
+  }
+
+  /** Returns true if field request_resource_edge is set (has been assigned a value) and false otherwise */
+  public boolean isSetRequest_resource_edge() {
+    return this.request_resource_edge != null;
+  }
+
+  public void setRequest_resource_edgeIsSet(boolean value) {
+    if (!value) {
+      this.request_resource_edge = null;
+    }
+  }
+
+  public ResourceResponseEdge getResource_response_edge() {
+    return this.resource_response_edge;
+  }
+
+  public ClientDataUnit setResource_response_edge(ResourceResponseEdge resource_response_edge) {
+    this.resource_response_edge = resource_response_edge;
+    return this;
+  }
+
+  public void unsetResource_response_edge() {
+    this.resource_response_edge = null;
+  }
+
+  /** Returns true if field resource_response_edge is set (has been assigned a value) and false otherwise */
+  public boolean isSetResource_response_edge() {
+    return this.resource_response_edge != null;
+  }
+
+  public void setResource_response_edgeIsSet(boolean value) {
+    if (!value) {
+      this.resource_response_edge = null;
+    }
+  }
+
+  public ResponseClientEdge getResponse_client_edge() {
+    return this.response_client_edge;
+  }
+
+  public ClientDataUnit setResponse_client_edge(ResponseClientEdge response_client_edge) {
+    this.response_client_edge = response_client_edge;
+    return this;
+  }
+
+  public void unsetResponse_client_edge() {
+    this.response_client_edge = null;
+  }
+
+  /** Returns true if field response_client_edge is set (has been assigned a value) and false otherwise */
+  public boolean isSetResponse_client_edge() {
+    return this.response_client_edge != null;
+  }
+
+  public void setResponse_client_edgeIsSet(boolean value) {
+    if (!value) {
+      this.response_client_edge = null;
+    }
+  }
+
+  public void setFieldValue(_Fields field, Object value) {
+    switch (field) {
+    case CLIENT_PROPERTY:
+      if (value == null) {
+        unsetClient_property();
+      } else {
+        setClient_property((ClientProperty)value);
       }
-    } else {
-      org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
-      return null;
-    }
-  }
+      break;
 
-  @Override
-  protected void standardSchemeWriteValue(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
-    switch (setField_) {
-      case CLIENT_PROPERTY:
-        ClientProperty client_property = (ClientProperty)value_;
-        client_property.write(oprot);
-        return;
-      case RESOURCE_PROPERTY:
-        ResourceProperty resource_property = (ResourceProperty)value_;
-        resource_property.write(oprot);
-        return;
-      case REQUEST_PROPERTY:
-        RequestProperty request_property = (RequestProperty)value_;
-        request_property.write(oprot);
-        return;
-      case RESPONSE_PROPERTY:
-        ResponseProperty response_property = (ResponseProperty)value_;
-        response_property.write(oprot);
-        return;
-      case CLIENT_REQUEST_EDGE:
-        ClientRequestEdge client_request_edge = (ClientRequestEdge)value_;
-        client_request_edge.write(oprot);
-        return;
-      case REQUEST_RESOURCE_EDGE:
-        RequestResourceEdge request_resource_edge = (RequestResourceEdge)value_;
-        request_resource_edge.write(oprot);
-        return;
-      case RESOURCE_RESPONSE_EDGE:
-        ResourceResponseEdge resource_response_edge = (ResourceResponseEdge)value_;
-        resource_response_edge.write(oprot);
-        return;
-      case RESPONSE_CLIENT_EDGE:
-        ResponseClientEdge response_client_edge = (ResponseClientEdge)value_;
-        response_client_edge.write(oprot);
-        return;
-      default:
-        throw new IllegalStateException("Cannot write union with unknown field " + setField_);
-    }
-  }
-
-  @Override
-  protected Object tupleSchemeReadValue(org.apache.thrift.protocol.TProtocol iprot, short fieldID) throws org.apache.thrift.TException {
-    _Fields setField = _Fields.findByThriftId(fieldID);
-    if (setField != null) {
-      switch (setField) {
-        case CLIENT_PROPERTY:
-          ClientProperty client_property;
-          client_property = new ClientProperty();
-          client_property.read(iprot);
-          return client_property;
-        case RESOURCE_PROPERTY:
-          ResourceProperty resource_property;
-          resource_property = new ResourceProperty();
-          resource_property.read(iprot);
-          return resource_property;
-        case REQUEST_PROPERTY:
-          RequestProperty request_property;
-          request_property = new RequestProperty();
-          request_property.read(iprot);
-          return request_property;
-        case RESPONSE_PROPERTY:
-          ResponseProperty response_property;
-          response_property = new ResponseProperty();
-          response_property.read(iprot);
-          return response_property;
-        case CLIENT_REQUEST_EDGE:
-          ClientRequestEdge client_request_edge;
-          client_request_edge = new ClientRequestEdge();
-          client_request_edge.read(iprot);
-          return client_request_edge;
-        case REQUEST_RESOURCE_EDGE:
-          RequestResourceEdge request_resource_edge;
-          request_resource_edge = new RequestResourceEdge();
-          request_resource_edge.read(iprot);
-          return request_resource_edge;
-        case RESOURCE_RESPONSE_EDGE:
-          ResourceResponseEdge resource_response_edge;
-          resource_response_edge = new ResourceResponseEdge();
-          resource_response_edge.read(iprot);
-          return resource_response_edge;
-        case RESPONSE_CLIENT_EDGE:
-          ResponseClientEdge response_client_edge;
-          response_client_edge = new ResponseClientEdge();
-          response_client_edge.read(iprot);
-          return response_client_edge;
-        default:
-          throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
+    case RESOURCE_PROPERTY:
+      if (value == null) {
+        unsetResource_property();
+      } else {
+        setResource_property((ResourceProperty)value);
       }
-    } else {
-      throw new TProtocolException("Couldn't find a field with field id " + fieldID);
+      break;
+
+    case REQUEST_PROPERTY:
+      if (value == null) {
+        unsetRequest_property();
+      } else {
+        setRequest_property((RequestProperty)value);
+      }
+      break;
+
+    case RESPONSE_PROPERTY:
+      if (value == null) {
+        unsetResponse_property();
+      } else {
+        setResponse_property((ResponseProperty)value);
+      }
+      break;
+
+    case CLIENT_REQUEST_EDGE:
+      if (value == null) {
+        unsetClient_request_edge();
+      } else {
+        setClient_request_edge((ClientRequestEdge)value);
+      }
+      break;
+
+    case REQUEST_RESOURCE_EDGE:
+      if (value == null) {
+        unsetRequest_resource_edge();
+      } else {
+        setRequest_resource_edge((RequestResourceEdge)value);
+      }
+      break;
+
+    case RESOURCE_RESPONSE_EDGE:
+      if (value == null) {
+        unsetResource_response_edge();
+      } else {
+        setResource_response_edge((ResourceResponseEdge)value);
+      }
+      break;
+
+    case RESPONSE_CLIENT_EDGE:
+      if (value == null) {
+        unsetResponse_client_edge();
+      } else {
+        setResponse_client_edge((ResponseClientEdge)value);
+      }
+      break;
+
     }
   }
 
-  @Override
-  protected void tupleSchemeWriteValue(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
-    switch (setField_) {
-      case CLIENT_PROPERTY:
-        ClientProperty client_property = (ClientProperty)value_;
-        client_property.write(oprot);
-        return;
-      case RESOURCE_PROPERTY:
-        ResourceProperty resource_property = (ResourceProperty)value_;
-        resource_property.write(oprot);
-        return;
-      case REQUEST_PROPERTY:
-        RequestProperty request_property = (RequestProperty)value_;
-        request_property.write(oprot);
-        return;
-      case RESPONSE_PROPERTY:
-        ResponseProperty response_property = (ResponseProperty)value_;
-        response_property.write(oprot);
-        return;
-      case CLIENT_REQUEST_EDGE:
-        ClientRequestEdge client_request_edge = (ClientRequestEdge)value_;
-        client_request_edge.write(oprot);
-        return;
-      case REQUEST_RESOURCE_EDGE:
-        RequestResourceEdge request_resource_edge = (RequestResourceEdge)value_;
-        request_resource_edge.write(oprot);
-        return;
-      case RESOURCE_RESPONSE_EDGE:
-        ResourceResponseEdge resource_response_edge = (ResourceResponseEdge)value_;
-        resource_response_edge.write(oprot);
-        return;
-      case RESPONSE_CLIENT_EDGE:
-        ResponseClientEdge response_client_edge = (ResponseClientEdge)value_;
-        response_client_edge.write(oprot);
-        return;
-      default:
-        throw new IllegalStateException("Cannot write union with unknown field " + setField_);
+  public Object getFieldValue(_Fields field) {
+    switch (field) {
+    case CLIENT_PROPERTY:
+      return getClient_property();
+
+    case RESOURCE_PROPERTY:
+      return getResource_property();
+
+    case REQUEST_PROPERTY:
+      return getRequest_property();
+
+    case RESPONSE_PROPERTY:
+      return getResponse_property();
+
+    case CLIENT_REQUEST_EDGE:
+      return getClient_request_edge();
+
+    case REQUEST_RESOURCE_EDGE:
+      return getRequest_resource_edge();
+
+    case RESOURCE_RESPONSE_EDGE:
+      return getResource_response_edge();
+
+    case RESPONSE_CLIENT_EDGE:
+      return getResponse_client_edge();
+
     }
+    throw new IllegalStateException();
   }
 
-  @Override
-  protected org.apache.thrift.protocol.TField getFieldDesc(_Fields setField) {
-    switch (setField) {
-      case CLIENT_PROPERTY:
-        return CLIENT_PROPERTY_FIELD_DESC;
-      case RESOURCE_PROPERTY:
-        return RESOURCE_PROPERTY_FIELD_DESC;
-      case REQUEST_PROPERTY:
-        return REQUEST_PROPERTY_FIELD_DESC;
-      case RESPONSE_PROPERTY:
-        return RESPONSE_PROPERTY_FIELD_DESC;
-      case CLIENT_REQUEST_EDGE:
-        return CLIENT_REQUEST_EDGE_FIELD_DESC;
-      case REQUEST_RESOURCE_EDGE:
-        return REQUEST_RESOURCE_EDGE_FIELD_DESC;
-      case RESOURCE_RESPONSE_EDGE:
-        return RESOURCE_RESPONSE_EDGE_FIELD_DESC;
-      case RESPONSE_CLIENT_EDGE:
-        return RESPONSE_CLIENT_EDGE_FIELD_DESC;
-      default:
-        throw new IllegalArgumentException("Unknown field id " + setField);
+  /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+  public boolean isSet(_Fields field) {
+    if (field == null) {
+      throw new IllegalArgumentException();
     }
+
+    switch (field) {
+    case CLIENT_PROPERTY:
+      return isSetClient_property();
+    case RESOURCE_PROPERTY:
+      return isSetResource_property();
+    case REQUEST_PROPERTY:
+      return isSetRequest_property();
+    case RESPONSE_PROPERTY:
+      return isSetResponse_property();
+    case CLIENT_REQUEST_EDGE:
+      return isSetClient_request_edge();
+    case REQUEST_RESOURCE_EDGE:
+      return isSetRequest_resource_edge();
+    case RESOURCE_RESPONSE_EDGE:
+      return isSetResource_response_edge();
+    case RESPONSE_CLIENT_EDGE:
+      return isSetResponse_client_edge();
+    }
+    throw new IllegalStateException();
   }
 
   @Override
-  protected org.apache.thrift.protocol.TStruct getStructDesc() {
-    return STRUCT_DESC;
+  public boolean equals(Object that) {
+    if (that == null)
+      return false;
+    if (that instanceof ClientDataUnit)
+      return this.equals((ClientDataUnit)that);
+    return false;
+  }
+
+  public boolean equals(ClientDataUnit that) {
+    if (that == null)
+      return false;
+
+    boolean this_present_client_property = true && this.isSetClient_property();
+    boolean that_present_client_property = true && that.isSetClient_property();
+    if (this_present_client_property || that_present_client_property) {
+      if (!(this_present_client_property && that_present_client_property))
+        return false;
+      if (!this.client_property.equals(that.client_property))
+        return false;
+    }
+
+    boolean this_present_resource_property = true && this.isSetResource_property();
+    boolean that_present_resource_property = true && that.isSetResource_property();
+    if (this_present_resource_property || that_present_resource_property) {
+      if (!(this_present_resource_property && that_present_resource_property))
+        return false;
+      if (!this.resource_property.equals(that.resource_property))
+        return false;
+    }
+
+    boolean this_present_request_property = true && this.isSetRequest_property();
+    boolean that_present_request_property = true && that.isSetRequest_property();
+    if (this_present_request_property || that_present_request_property) {
+      if (!(this_present_request_property && that_present_request_property))
+        return false;
+      if (!this.request_property.equals(that.request_property))
+        return false;
+    }
+
+    boolean this_present_response_property = true && this.isSetResponse_property();
+    boolean that_present_response_property = true && that.isSetResponse_property();
+    if (this_present_response_property || that_present_response_property) {
+      if (!(this_present_response_property && that_present_response_property))
+        return false;
+      if (!this.response_property.equals(that.response_property))
+        return false;
+    }
+
+    boolean this_present_client_request_edge = true && this.isSetClient_request_edge();
+    boolean that_present_client_request_edge = true && that.isSetClient_request_edge();
+    if (this_present_client_request_edge || that_present_client_request_edge) {
+      if (!(this_present_client_request_edge && that_present_client_request_edge))
+        return false;
+      if (!this.client_request_edge.equals(that.client_request_edge))
+        return false;
+    }
+
+    boolean this_present_request_resource_edge = true && this.isSetRequest_resource_edge();
+    boolean that_present_request_resource_edge = true && that.isSetRequest_resource_edge();
+    if (this_present_request_resource_edge || that_present_request_resource_edge) {
+      if (!(this_present_request_resource_edge && that_present_request_resource_edge))
+        return false;
+      if (!this.request_resource_edge.equals(that.request_resource_edge))
+        return false;
+    }
+
+    boolean this_present_resource_response_edge = true && this.isSetResource_response_edge();
+    boolean that_present_resource_response_edge = true && that.isSetResource_response_edge();
+    if (this_present_resource_response_edge || that_present_resource_response_edge) {
+      if (!(this_present_resource_response_edge && that_present_resource_response_edge))
+        return false;
+      if (!this.resource_response_edge.equals(that.resource_response_edge))
+        return false;
+    }
+
+    boolean this_present_response_client_edge = true && this.isSetResponse_client_edge();
+    boolean that_present_response_client_edge = true && that.isSetResponse_client_edge();
+    if (this_present_response_client_edge || that_present_response_client_edge) {
+      if (!(this_present_response_client_edge && that_present_response_client_edge))
+        return false;
+      if (!this.response_client_edge.equals(that.response_client_edge))
+        return false;
+    }
+
+    return true;
   }
 
   @Override
-  protected _Fields enumForId(short id) {
-    return _Fields.findByThriftIdOrThrow(id);
+  public int hashCode() {
+    return 0;
+  }
+
+  @Override
+  public int compareTo(ClientDataUnit other) {
+    if (!getClass().equals(other.getClass())) {
+      return getClass().getName().compareTo(other.getClass().getName());
+    }
+
+    int lastComparison = 0;
+
+    lastComparison = Boolean.valueOf(isSetClient_property()).compareTo(other.isSetClient_property());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetClient_property()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.client_property, other.client_property);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetResource_property()).compareTo(other.isSetResource_property());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetResource_property()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.resource_property, other.resource_property);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetRequest_property()).compareTo(other.isSetRequest_property());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetRequest_property()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.request_property, other.request_property);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetResponse_property()).compareTo(other.isSetResponse_property());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetResponse_property()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.response_property, other.response_property);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetClient_request_edge()).compareTo(other.isSetClient_request_edge());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetClient_request_edge()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.client_request_edge, other.client_request_edge);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetRequest_resource_edge()).compareTo(other.isSetRequest_resource_edge());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetRequest_resource_edge()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.request_resource_edge, other.request_resource_edge);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetResource_response_edge()).compareTo(other.isSetResource_response_edge());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetResource_response_edge()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.resource_response_edge, other.resource_response_edge);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetResponse_client_edge()).compareTo(other.isSetResponse_client_edge());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetResponse_client_edge()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.response_client_edge, other.response_client_edge);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    return 0;
   }
 
   public _Fields fieldForId(int fieldId) {
     return _Fields.findByThriftId(fieldId);
   }
 
-
-  public ClientProperty getClient_property() {
-    if (getSetField() == _Fields.CLIENT_PROPERTY) {
-      return (ClientProperty)getFieldValue();
-    } else {
-      throw new RuntimeException("Cannot get field 'client_property' because union is currently set to " + getFieldDesc(getSetField()).name);
-    }
+  public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+    schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
   }
 
-  public void setClient_property(ClientProperty value) {
-    if (value == null) throw new NullPointerException();
-    setField_ = _Fields.CLIENT_PROPERTY;
-    value_ = value;
-  }
-
-  public ResourceProperty getResource_property() {
-    if (getSetField() == _Fields.RESOURCE_PROPERTY) {
-      return (ResourceProperty)getFieldValue();
-    } else {
-      throw new RuntimeException("Cannot get field 'resource_property' because union is currently set to " + getFieldDesc(getSetField()).name);
-    }
-  }
-
-  public void setResource_property(ResourceProperty value) {
-    if (value == null) throw new NullPointerException();
-    setField_ = _Fields.RESOURCE_PROPERTY;
-    value_ = value;
-  }
-
-  public RequestProperty getRequest_property() {
-    if (getSetField() == _Fields.REQUEST_PROPERTY) {
-      return (RequestProperty)getFieldValue();
-    } else {
-      throw new RuntimeException("Cannot get field 'request_property' because union is currently set to " + getFieldDesc(getSetField()).name);
-    }
-  }
-
-  public void setRequest_property(RequestProperty value) {
-    if (value == null) throw new NullPointerException();
-    setField_ = _Fields.REQUEST_PROPERTY;
-    value_ = value;
-  }
-
-  public ResponseProperty getResponse_property() {
-    if (getSetField() == _Fields.RESPONSE_PROPERTY) {
-      return (ResponseProperty)getFieldValue();
-    } else {
-      throw new RuntimeException("Cannot get field 'response_property' because union is currently set to " + getFieldDesc(getSetField()).name);
-    }
-  }
-
-  public void setResponse_property(ResponseProperty value) {
-    if (value == null) throw new NullPointerException();
-    setField_ = _Fields.RESPONSE_PROPERTY;
-    value_ = value;
-  }
-
-  public ClientRequestEdge getClient_request_edge() {
-    if (getSetField() == _Fields.CLIENT_REQUEST_EDGE) {
-      return (ClientRequestEdge)getFieldValue();
-    } else {
-      throw new RuntimeException("Cannot get field 'client_request_edge' because union is currently set to " + getFieldDesc(getSetField()).name);
-    }
-  }
-
-  public void setClient_request_edge(ClientRequestEdge value) {
-    if (value == null) throw new NullPointerException();
-    setField_ = _Fields.CLIENT_REQUEST_EDGE;
-    value_ = value;
-  }
-
-  public RequestResourceEdge getRequest_resource_edge() {
-    if (getSetField() == _Fields.REQUEST_RESOURCE_EDGE) {
-      return (RequestResourceEdge)getFieldValue();
-    } else {
-      throw new RuntimeException("Cannot get field 'request_resource_edge' because union is currently set to " + getFieldDesc(getSetField()).name);
-    }
-  }
-
-  public void setRequest_resource_edge(RequestResourceEdge value) {
-    if (value == null) throw new NullPointerException();
-    setField_ = _Fields.REQUEST_RESOURCE_EDGE;
-    value_ = value;
-  }
-
-  public ResourceResponseEdge getResource_response_edge() {
-    if (getSetField() == _Fields.RESOURCE_RESPONSE_EDGE) {
-      return (ResourceResponseEdge)getFieldValue();
-    } else {
-      throw new RuntimeException("Cannot get field 'resource_response_edge' because union is currently set to " + getFieldDesc(getSetField()).name);
-    }
-  }
-
-  public void setResource_response_edge(ResourceResponseEdge value) {
-    if (value == null) throw new NullPointerException();
-    setField_ = _Fields.RESOURCE_RESPONSE_EDGE;
-    value_ = value;
-  }
-
-  public ResponseClientEdge getResponse_client_edge() {
-    if (getSetField() == _Fields.RESPONSE_CLIENT_EDGE) {
-      return (ResponseClientEdge)getFieldValue();
-    } else {
-      throw new RuntimeException("Cannot get field 'response_client_edge' because union is currently set to " + getFieldDesc(getSetField()).name);
-    }
-  }
-
-  public void setResponse_client_edge(ResponseClientEdge value) {
-    if (value == null) throw new NullPointerException();
-    setField_ = _Fields.RESPONSE_CLIENT_EDGE;
-    value_ = value;
-  }
-
-  public boolean isSetClient_property() {
-    return setField_ == _Fields.CLIENT_PROPERTY;
-  }
-
-
-  public boolean isSetResource_property() {
-    return setField_ == _Fields.RESOURCE_PROPERTY;
-  }
-
-
-  public boolean isSetRequest_property() {
-    return setField_ == _Fields.REQUEST_PROPERTY;
-  }
-
-
-  public boolean isSetResponse_property() {
-    return setField_ == _Fields.RESPONSE_PROPERTY;
-  }
-
-
-  public boolean isSetClient_request_edge() {
-    return setField_ == _Fields.CLIENT_REQUEST_EDGE;
-  }
-
-
-  public boolean isSetRequest_resource_edge() {
-    return setField_ == _Fields.REQUEST_RESOURCE_EDGE;
-  }
-
-
-  public boolean isSetResource_response_edge() {
-    return setField_ == _Fields.RESOURCE_RESPONSE_EDGE;
-  }
-
-
-  public boolean isSetResponse_client_edge() {
-    return setField_ == _Fields.RESPONSE_CLIENT_EDGE;
-  }
-
-
-  public boolean equals(Object other) {
-    if (other instanceof ClientDataUnit) {
-      return equals((ClientDataUnit)other);
-    } else {
-      return false;
-    }
-  }
-
-  public boolean equals(ClientDataUnit other) {
-    return other != null && getSetField() == other.getSetField() && getFieldValue().equals(other.getFieldValue());
+  public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
   }
 
   @Override
-  public int compareTo(ClientDataUnit other) {
-    int lastComparison = org.apache.thrift.TBaseHelper.compareTo(getSetField(), other.getSetField());
-    if (lastComparison == 0) {
-      return org.apache.thrift.TBaseHelper.compareTo(getFieldValue(), other.getFieldValue());
+  public String toString() {
+    StringBuilder sb = new StringBuilder("ClientDataUnit(");
+    boolean first = true;
+
+    sb.append("client_property:");
+    if (this.client_property == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.client_property);
     }
-    return lastComparison;
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("resource_property:");
+    if (this.resource_property == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.resource_property);
+    }
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("request_property:");
+    if (this.request_property == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.request_property);
+    }
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("response_property:");
+    if (this.response_property == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.response_property);
+    }
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("client_request_edge:");
+    if (this.client_request_edge == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.client_request_edge);
+    }
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("request_resource_edge:");
+    if (this.request_resource_edge == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.request_resource_edge);
+    }
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("resource_response_edge:");
+    if (this.resource_response_edge == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.resource_response_edge);
+    }
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("response_client_edge:");
+    if (this.response_client_edge == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.response_client_edge);
+    }
+    first = false;
+    sb.append(")");
+    return sb.toString();
   }
 
-
-  /**
-   * If you'd like this to perform more respectably, use the hashcode generator option.
-   */
-  @Override
-  public int hashCode() {
-    return 0;
+  public void validate() throws org.apache.thrift.TException {
+    // check for required fields
+    // check for sub-struct validity
+    if (client_property != null) {
+      client_property.validate();
+    }
+    if (resource_property != null) {
+      resource_property.validate();
+    }
+    if (request_property != null) {
+      request_property.validate();
+    }
+    if (response_property != null) {
+      response_property.validate();
+    }
+    if (client_request_edge != null) {
+      client_request_edge.validate();
+    }
+    if (request_resource_edge != null) {
+      request_resource_edge.validate();
+    }
+    if (resource_response_edge != null) {
+      resource_response_edge.validate();
+    }
+    if (response_client_edge != null) {
+      response_client_edge.validate();
+    }
   }
 
   private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
@@ -713,7 +855,6 @@ public class ClientDataUnit extends org.apache.thrift.TUnion<ClientDataUnit, Cli
     }
   }
 
-
   private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
     try {
       read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
@@ -722,5 +863,266 @@ public class ClientDataUnit extends org.apache.thrift.TUnion<ClientDataUnit, Cli
     }
   }
 
+  private static class ClientDataUnitStandardSchemeFactory implements SchemeFactory {
+    public ClientDataUnitStandardScheme getScheme() {
+      return new ClientDataUnitStandardScheme();
+    }
+  }
+
+  private static class ClientDataUnitStandardScheme extends StandardScheme<ClientDataUnit> {
+
+    public void read(org.apache.thrift.protocol.TProtocol iprot, ClientDataUnit struct) throws org.apache.thrift.TException {
+      org.apache.thrift.protocol.TField schemeField;
+      iprot.readStructBegin();
+      while (true)
+      {
+        schemeField = iprot.readFieldBegin();
+        if (schemeField.type == org.apache.thrift.protocol.TType.STOP) { 
+          break;
+        }
+        switch (schemeField.id) {
+          case 1: // CLIENT_PROPERTY
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+              struct.client_property = new ClientProperty();
+              struct.client_property.read(iprot);
+              struct.setClient_propertyIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 2: // RESOURCE_PROPERTY
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+              struct.resource_property = new ResourceProperty();
+              struct.resource_property.read(iprot);
+              struct.setResource_propertyIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 3: // REQUEST_PROPERTY
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+              struct.request_property = new RequestProperty();
+              struct.request_property.read(iprot);
+              struct.setRequest_propertyIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 4: // RESPONSE_PROPERTY
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+              struct.response_property = new ResponseProperty();
+              struct.response_property.read(iprot);
+              struct.setResponse_propertyIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 5: // CLIENT_REQUEST_EDGE
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+              struct.client_request_edge = new ClientRequestEdge();
+              struct.client_request_edge.read(iprot);
+              struct.setClient_request_edgeIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 6: // REQUEST_RESOURCE_EDGE
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+              struct.request_resource_edge = new RequestResourceEdge();
+              struct.request_resource_edge.read(iprot);
+              struct.setRequest_resource_edgeIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 7: // RESOURCE_RESPONSE_EDGE
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+              struct.resource_response_edge = new ResourceResponseEdge();
+              struct.resource_response_edge.read(iprot);
+              struct.setResource_response_edgeIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 8: // RESPONSE_CLIENT_EDGE
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+              struct.response_client_edge = new ResponseClientEdge();
+              struct.response_client_edge.read(iprot);
+              struct.setResponse_client_edgeIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          default:
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+        }
+        iprot.readFieldEnd();
+      }
+      iprot.readStructEnd();
+
+      // check for required fields of primitive type, which can't be checked in the validate method
+      struct.validate();
+    }
+
+    public void write(org.apache.thrift.protocol.TProtocol oprot, ClientDataUnit struct) throws org.apache.thrift.TException {
+      struct.validate();
+
+      oprot.writeStructBegin(STRUCT_DESC);
+      if (struct.client_property != null) {
+        oprot.writeFieldBegin(CLIENT_PROPERTY_FIELD_DESC);
+        struct.client_property.write(oprot);
+        oprot.writeFieldEnd();
+      }
+      if (struct.resource_property != null) {
+        oprot.writeFieldBegin(RESOURCE_PROPERTY_FIELD_DESC);
+        struct.resource_property.write(oprot);
+        oprot.writeFieldEnd();
+      }
+      if (struct.request_property != null) {
+        oprot.writeFieldBegin(REQUEST_PROPERTY_FIELD_DESC);
+        struct.request_property.write(oprot);
+        oprot.writeFieldEnd();
+      }
+      if (struct.response_property != null) {
+        oprot.writeFieldBegin(RESPONSE_PROPERTY_FIELD_DESC);
+        struct.response_property.write(oprot);
+        oprot.writeFieldEnd();
+      }
+      if (struct.client_request_edge != null) {
+        oprot.writeFieldBegin(CLIENT_REQUEST_EDGE_FIELD_DESC);
+        struct.client_request_edge.write(oprot);
+        oprot.writeFieldEnd();
+      }
+      if (struct.request_resource_edge != null) {
+        oprot.writeFieldBegin(REQUEST_RESOURCE_EDGE_FIELD_DESC);
+        struct.request_resource_edge.write(oprot);
+        oprot.writeFieldEnd();
+      }
+      if (struct.resource_response_edge != null) {
+        oprot.writeFieldBegin(RESOURCE_RESPONSE_EDGE_FIELD_DESC);
+        struct.resource_response_edge.write(oprot);
+        oprot.writeFieldEnd();
+      }
+      if (struct.response_client_edge != null) {
+        oprot.writeFieldBegin(RESPONSE_CLIENT_EDGE_FIELD_DESC);
+        struct.response_client_edge.write(oprot);
+        oprot.writeFieldEnd();
+      }
+      oprot.writeFieldStop();
+      oprot.writeStructEnd();
+    }
+
+  }
+
+  private static class ClientDataUnitTupleSchemeFactory implements SchemeFactory {
+    public ClientDataUnitTupleScheme getScheme() {
+      return new ClientDataUnitTupleScheme();
+    }
+  }
+
+  private static class ClientDataUnitTupleScheme extends TupleScheme<ClientDataUnit> {
+
+    @Override
+    public void write(org.apache.thrift.protocol.TProtocol prot, ClientDataUnit struct) throws org.apache.thrift.TException {
+      TTupleProtocol oprot = (TTupleProtocol) prot;
+      BitSet optionals = new BitSet();
+      if (struct.isSetClient_property()) {
+        optionals.set(0);
+      }
+      if (struct.isSetResource_property()) {
+        optionals.set(1);
+      }
+      if (struct.isSetRequest_property()) {
+        optionals.set(2);
+      }
+      if (struct.isSetResponse_property()) {
+        optionals.set(3);
+      }
+      if (struct.isSetClient_request_edge()) {
+        optionals.set(4);
+      }
+      if (struct.isSetRequest_resource_edge()) {
+        optionals.set(5);
+      }
+      if (struct.isSetResource_response_edge()) {
+        optionals.set(6);
+      }
+      if (struct.isSetResponse_client_edge()) {
+        optionals.set(7);
+      }
+      oprot.writeBitSet(optionals, 8);
+      if (struct.isSetClient_property()) {
+        struct.client_property.write(oprot);
+      }
+      if (struct.isSetResource_property()) {
+        struct.resource_property.write(oprot);
+      }
+      if (struct.isSetRequest_property()) {
+        struct.request_property.write(oprot);
+      }
+      if (struct.isSetResponse_property()) {
+        struct.response_property.write(oprot);
+      }
+      if (struct.isSetClient_request_edge()) {
+        struct.client_request_edge.write(oprot);
+      }
+      if (struct.isSetRequest_resource_edge()) {
+        struct.request_resource_edge.write(oprot);
+      }
+      if (struct.isSetResource_response_edge()) {
+        struct.resource_response_edge.write(oprot);
+      }
+      if (struct.isSetResponse_client_edge()) {
+        struct.response_client_edge.write(oprot);
+      }
+    }
+
+    @Override
+    public void read(org.apache.thrift.protocol.TProtocol prot, ClientDataUnit struct) throws org.apache.thrift.TException {
+      TTupleProtocol iprot = (TTupleProtocol) prot;
+      BitSet incoming = iprot.readBitSet(8);
+      if (incoming.get(0)) {
+        struct.client_property = new ClientProperty();
+        struct.client_property.read(iprot);
+        struct.setClient_propertyIsSet(true);
+      }
+      if (incoming.get(1)) {
+        struct.resource_property = new ResourceProperty();
+        struct.resource_property.read(iprot);
+        struct.setResource_propertyIsSet(true);
+      }
+      if (incoming.get(2)) {
+        struct.request_property = new RequestProperty();
+        struct.request_property.read(iprot);
+        struct.setRequest_propertyIsSet(true);
+      }
+      if (incoming.get(3)) {
+        struct.response_property = new ResponseProperty();
+        struct.response_property.read(iprot);
+        struct.setResponse_propertyIsSet(true);
+      }
+      if (incoming.get(4)) {
+        struct.client_request_edge = new ClientRequestEdge();
+        struct.client_request_edge.read(iprot);
+        struct.setClient_request_edgeIsSet(true);
+      }
+      if (incoming.get(5)) {
+        struct.request_resource_edge = new RequestResourceEdge();
+        struct.request_resource_edge.read(iprot);
+        struct.setRequest_resource_edgeIsSet(true);
+      }
+      if (incoming.get(6)) {
+        struct.resource_response_edge = new ResourceResponseEdge();
+        struct.resource_response_edge.read(iprot);
+        struct.setResource_response_edgeIsSet(true);
+      }
+      if (incoming.get(7)) {
+        struct.response_client_edge = new ResponseClientEdge();
+        struct.response_client_edge.read(iprot);
+        struct.setResponse_client_edgeIsSet(true);
+      }
+    }
+  }
 
 }
+

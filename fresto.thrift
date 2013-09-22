@@ -83,7 +83,7 @@ struct ResponseProperty {
 	2: required ResponsePropertyValue property;
 }
 
-union ClientDataUnit {
+struct ClientDataUnit {
 	# Properties
 	1: ClientProperty client_property;
 	2: ResourceProperty resource_property;
@@ -251,7 +251,7 @@ struct OperationReturnProperty {
 	2: OperationReturnPropertyValue property;
 }
 
-union ApplicationDataUnit {
+struct ApplicationDataUnit {
 	# Properties
 	1: EntryInvokeProperty entry_invoke_property;
 	2: EntryReturnProperty entry_return_property;
