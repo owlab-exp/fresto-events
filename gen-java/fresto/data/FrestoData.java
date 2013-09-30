@@ -36,7 +36,7 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("FrestoData");
 
   private static final org.apache.thrift.protocol.TField PEDIGREE_FIELD_DESC = new org.apache.thrift.protocol.TField("pedigree", org.apache.thrift.protocol.TType.STRUCT, (short)1);
-  private static final org.apache.thrift.protocol.TField DATA_UNIT_FIELD_DESC = new org.apache.thrift.protocol.TField("data_unit", org.apache.thrift.protocol.TType.STRUCT, (short)2);
+  private static final org.apache.thrift.protocol.TField DATA_UNIT_FIELD_DESC = new org.apache.thrift.protocol.TField("dataUnit", org.apache.thrift.protocol.TType.STRUCT, (short)2);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -45,12 +45,12 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
   }
 
   public Pedigree pedigree; // required
-  public DataUnit data_unit; // required
+  public DataUnit dataUnit; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
     PEDIGREE((short)1, "pedigree"),
-    DATA_UNIT((short)2, "data_unit");
+    DATA_UNIT((short)2, "dataUnit");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -114,7 +114,7 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
     tmpMap.put(_Fields.PEDIGREE, new org.apache.thrift.meta_data.FieldMetaData("pedigree", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Pedigree.class)));
-    tmpMap.put(_Fields.DATA_UNIT, new org.apache.thrift.meta_data.FieldMetaData("data_unit", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+    tmpMap.put(_Fields.DATA_UNIT, new org.apache.thrift.meta_data.FieldMetaData("dataUnit", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, DataUnit.class)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(FrestoData.class, metaDataMap);
@@ -125,11 +125,11 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
 
   public FrestoData(
     Pedigree pedigree,
-    DataUnit data_unit)
+    DataUnit dataUnit)
   {
     this();
     this.pedigree = pedigree;
-    this.data_unit = data_unit;
+    this.dataUnit = dataUnit;
   }
 
   /**
@@ -139,8 +139,8 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
     if (other.isSetPedigree()) {
       this.pedigree = new Pedigree(other.pedigree);
     }
-    if (other.isSetData_unit()) {
-      this.data_unit = new DataUnit(other.data_unit);
+    if (other.isSetDataUnit()) {
+      this.dataUnit = new DataUnit(other.dataUnit);
     }
   }
 
@@ -151,7 +151,7 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
   @Override
   public void clear() {
     this.pedigree = null;
-    this.data_unit = null;
+    this.dataUnit = null;
   }
 
   public Pedigree getPedigree() {
@@ -178,27 +178,27 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
     }
   }
 
-  public DataUnit getData_unit() {
-    return this.data_unit;
+  public DataUnit getDataUnit() {
+    return this.dataUnit;
   }
 
-  public FrestoData setData_unit(DataUnit data_unit) {
-    this.data_unit = data_unit;
+  public FrestoData setDataUnit(DataUnit dataUnit) {
+    this.dataUnit = dataUnit;
     return this;
   }
 
-  public void unsetData_unit() {
-    this.data_unit = null;
+  public void unsetDataUnit() {
+    this.dataUnit = null;
   }
 
-  /** Returns true if field data_unit is set (has been assigned a value) and false otherwise */
-  public boolean isSetData_unit() {
-    return this.data_unit != null;
+  /** Returns true if field dataUnit is set (has been assigned a value) and false otherwise */
+  public boolean isSetDataUnit() {
+    return this.dataUnit != null;
   }
 
-  public void setData_unitIsSet(boolean value) {
+  public void setDataUnitIsSet(boolean value) {
     if (!value) {
-      this.data_unit = null;
+      this.dataUnit = null;
     }
   }
 
@@ -214,9 +214,9 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
 
     case DATA_UNIT:
       if (value == null) {
-        unsetData_unit();
+        unsetDataUnit();
       } else {
-        setData_unit((DataUnit)value);
+        setDataUnit((DataUnit)value);
       }
       break;
 
@@ -229,7 +229,7 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
       return getPedigree();
 
     case DATA_UNIT:
-      return getData_unit();
+      return getDataUnit();
 
     }
     throw new IllegalStateException();
@@ -245,7 +245,7 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
     case PEDIGREE:
       return isSetPedigree();
     case DATA_UNIT:
-      return isSetData_unit();
+      return isSetDataUnit();
     }
     throw new IllegalStateException();
   }
@@ -272,12 +272,12 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
         return false;
     }
 
-    boolean this_present_data_unit = true && this.isSetData_unit();
-    boolean that_present_data_unit = true && that.isSetData_unit();
-    if (this_present_data_unit || that_present_data_unit) {
-      if (!(this_present_data_unit && that_present_data_unit))
+    boolean this_present_dataUnit = true && this.isSetDataUnit();
+    boolean that_present_dataUnit = true && that.isSetDataUnit();
+    if (this_present_dataUnit || that_present_dataUnit) {
+      if (!(this_present_dataUnit && that_present_dataUnit))
         return false;
-      if (!this.data_unit.equals(that.data_unit))
+      if (!this.dataUnit.equals(that.dataUnit))
         return false;
     }
 
@@ -307,12 +307,12 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetData_unit()).compareTo(other.isSetData_unit());
+    lastComparison = Boolean.valueOf(isSetDataUnit()).compareTo(other.isSetDataUnit());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetData_unit()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.data_unit, other.data_unit);
+    if (isSetDataUnit()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.dataUnit, other.dataUnit);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -345,11 +345,11 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
     }
     first = false;
     if (!first) sb.append(", ");
-    sb.append("data_unit:");
-    if (this.data_unit == null) {
+    sb.append("dataUnit:");
+    if (this.dataUnit == null) {
       sb.append("null");
     } else {
-      sb.append(this.data_unit);
+      sb.append(this.dataUnit);
     }
     first = false;
     sb.append(")");
@@ -361,8 +361,8 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
     if (pedigree == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'pedigree' was not present! Struct: " + toString());
     }
-    if (data_unit == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'data_unit' was not present! Struct: " + toString());
+    if (dataUnit == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'dataUnit' was not present! Struct: " + toString());
     }
     // check for sub-struct validity
     if (pedigree != null) {
@@ -415,9 +415,9 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
             break;
           case 2: // DATA_UNIT
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.data_unit = new DataUnit();
-              struct.data_unit.read(iprot);
-              struct.setData_unitIsSet(true);
+              struct.dataUnit = new DataUnit();
+              struct.dataUnit.read(iprot);
+              struct.setDataUnitIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -442,9 +442,9 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
         struct.pedigree.write(oprot);
         oprot.writeFieldEnd();
       }
-      if (struct.data_unit != null) {
+      if (struct.dataUnit != null) {
         oprot.writeFieldBegin(DATA_UNIT_FIELD_DESC);
-        struct.data_unit.write(oprot);
+        struct.dataUnit.write(oprot);
         oprot.writeFieldEnd();
       }
       oprot.writeFieldStop();
@@ -465,7 +465,7 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
     public void write(org.apache.thrift.protocol.TProtocol prot, FrestoData struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
       struct.pedigree.write(oprot);
-      struct.data_unit.write(oprot);
+      struct.dataUnit.write(oprot);
     }
 
     @Override
@@ -474,9 +474,9 @@ public class FrestoData implements org.apache.thrift.TBase<FrestoData, FrestoDat
       struct.pedigree = new Pedigree();
       struct.pedigree.read(iprot);
       struct.setPedigreeIsSet(true);
-      struct.data_unit = new DataUnit();
-      struct.data_unit.read(iprot);
-      struct.setData_unitIsSet(true);
+      struct.dataUnit = new DataUnit();
+      struct.dataUnit.read(iprot);
+      struct.setDataUnitIsSet(true);
     }
   }
 

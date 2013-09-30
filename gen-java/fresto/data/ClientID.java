@@ -34,11 +34,11 @@ import org.slf4j.LoggerFactory;
 
 public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Fields> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("ClientID");
-  private static final org.apache.thrift.protocol.TField CLIENT_IP_FIELD_DESC = new org.apache.thrift.protocol.TField("client_ip", org.apache.thrift.protocol.TType.STRING, (short)1);
+  private static final org.apache.thrift.protocol.TField CLIENT_IP_FIELD_DESC = new org.apache.thrift.protocol.TField("clientIp", org.apache.thrift.protocol.TType.STRING, (short)1);
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    CLIENT_IP((short)1, "client_ip");
+    CLIENT_IP((short)1, "clientIp");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -97,7 +97,7 @@ public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Field
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.CLIENT_IP, new org.apache.thrift.meta_data.FieldMetaData("client_ip", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.CLIENT_IP, new org.apache.thrift.meta_data.FieldMetaData("clientIp", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(ClientID.class, metaDataMap);
@@ -118,9 +118,9 @@ public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Field
     return new ClientID(this);
   }
 
-  public static ClientID client_ip(String value) {
+  public static ClientID clientIp(String value) {
     ClientID x = new ClientID();
-    x.setClient_ip(value);
+    x.setClientIp(value);
     return x;
   }
 
@@ -132,7 +132,7 @@ public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Field
         if (value instanceof String) {
           break;
         }
-        throw new ClassCastException("Was expecting value of type String for field 'client_ip', but got " + value.getClass().getSimpleName());
+        throw new ClassCastException("Was expecting value of type String for field 'clientIp', but got " + value.getClass().getSimpleName());
       default:
         throw new IllegalArgumentException("Unknown field id " + setField);
     }
@@ -145,9 +145,9 @@ public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Field
       switch (setField) {
         case CLIENT_IP:
           if (field.type == CLIENT_IP_FIELD_DESC.type) {
-            String client_ip;
-            client_ip = iprot.readString();
-            return client_ip;
+            String clientIp;
+            clientIp = iprot.readString();
+            return clientIp;
           } else {
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
             return null;
@@ -165,8 +165,8 @@ public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Field
   protected void standardSchemeWriteValue(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
     switch (setField_) {
       case CLIENT_IP:
-        String client_ip = (String)value_;
-        oprot.writeString(client_ip);
+        String clientIp = (String)value_;
+        oprot.writeString(clientIp);
         return;
       default:
         throw new IllegalStateException("Cannot write union with unknown field " + setField_);
@@ -179,9 +179,9 @@ public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Field
     if (setField != null) {
       switch (setField) {
         case CLIENT_IP:
-          String client_ip;
-          client_ip = iprot.readString();
-          return client_ip;
+          String clientIp;
+          clientIp = iprot.readString();
+          return clientIp;
         default:
           throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
       }
@@ -194,8 +194,8 @@ public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Field
   protected void tupleSchemeWriteValue(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
     switch (setField_) {
       case CLIENT_IP:
-        String client_ip = (String)value_;
-        oprot.writeString(client_ip);
+        String clientIp = (String)value_;
+        oprot.writeString(clientIp);
         return;
       default:
         throw new IllegalStateException("Cannot write union with unknown field " + setField_);
@@ -227,21 +227,21 @@ public class ClientID extends org.apache.thrift.TUnion<ClientID, ClientID._Field
   }
 
 
-  public String getClient_ip() {
+  public String getClientIp() {
     if (getSetField() == _Fields.CLIENT_IP) {
       return (String)getFieldValue();
     } else {
-      throw new RuntimeException("Cannot get field 'client_ip' because union is currently set to " + getFieldDesc(getSetField()).name);
+      throw new RuntimeException("Cannot get field 'clientIp' because union is currently set to " + getFieldDesc(getSetField()).name);
     }
   }
 
-  public void setClient_ip(String value) {
+  public void setClientIp(String value) {
     if (value == null) throw new NullPointerException();
     setField_ = _Fields.CLIENT_IP;
     value_ = value;
   }
 
-  public boolean isSetClient_ip() {
+  public boolean isSetClientIp() {
     return setField_ == _Fields.CLIENT_IP;
   }
 

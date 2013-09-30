@@ -32,13 +32,25 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class OperationID extends org.apache.thrift.TUnion<OperationID, OperationID._Fields> {
+public class OperationID implements org.apache.thrift.TBase<OperationID, OperationID._Fields>, java.io.Serializable, Cloneable, Comparable<OperationID> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("OperationID");
-  private static final org.apache.thrift.protocol.TField OPERATION_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("operation_name", org.apache.thrift.protocol.TType.STRING, (short)1);
+
+  private static final org.apache.thrift.protocol.TField TYPE_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("typeName", org.apache.thrift.protocol.TType.STRING, (short)1);
+  private static final org.apache.thrift.protocol.TField OPERATION_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("operationName", org.apache.thrift.protocol.TType.STRING, (short)2);
+
+  private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
+  static {
+    schemes.put(StandardScheme.class, new OperationIDStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new OperationIDTupleSchemeFactory());
+  }
+
+  public String typeName; // required
+  public String operationName; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    OPERATION_NAME((short)1, "operation_name");
+    TYPE_NAME((short)1, "typeName"),
+    OPERATION_NAME((short)2, "operationName");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -53,7 +65,9 @@ public class OperationID extends org.apache.thrift.TUnion<OperationID, Operation
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // OPERATION_NAME
+        case 1: // TYPE_NAME
+          return TYPE_NAME;
+        case 2: // OPERATION_NAME
           return OPERATION_NAME;
         default:
           return null;
@@ -94,186 +108,257 @@ public class OperationID extends org.apache.thrift.TUnion<OperationID, Operation
     }
   }
 
+  // isset id assignments
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.OPERATION_NAME, new org.apache.thrift.meta_data.FieldMetaData("operation_name", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.TYPE_NAME, new org.apache.thrift.meta_data.FieldMetaData("typeName", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+    tmpMap.put(_Fields.OPERATION_NAME, new org.apache.thrift.meta_data.FieldMetaData("operationName", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(OperationID.class, metaDataMap);
   }
 
   public OperationID() {
-    super();
   }
 
-  public OperationID(_Fields setField, Object value) {
-    super(setField, value);
+  public OperationID(
+    String typeName,
+    String operationName)
+  {
+    this();
+    this.typeName = typeName;
+    this.operationName = operationName;
   }
 
+  /**
+   * Performs a deep copy on <i>other</i>.
+   */
   public OperationID(OperationID other) {
-    super(other);
+    if (other.isSetTypeName()) {
+      this.typeName = other.typeName;
+    }
+    if (other.isSetOperationName()) {
+      this.operationName = other.operationName;
+    }
   }
+
   public OperationID deepCopy() {
     return new OperationID(this);
   }
 
-  public static OperationID operation_name(String value) {
-    OperationID x = new OperationID();
-    x.setOperation_name(value);
-    return x;
+  @Override
+  public void clear() {
+    this.typeName = null;
+    this.operationName = null;
   }
 
+  public String getTypeName() {
+    return this.typeName;
+  }
 
-  @Override
-  protected void checkType(_Fields setField, Object value) throws ClassCastException {
-    switch (setField) {
-      case OPERATION_NAME:
-        if (value instanceof String) {
-          break;
-        }
-        throw new ClassCastException("Was expecting value of type String for field 'operation_name', but got " + value.getClass().getSimpleName());
-      default:
-        throw new IllegalArgumentException("Unknown field id " + setField);
+  public OperationID setTypeName(String typeName) {
+    this.typeName = typeName;
+    return this;
+  }
+
+  public void unsetTypeName() {
+    this.typeName = null;
+  }
+
+  /** Returns true if field typeName is set (has been assigned a value) and false otherwise */
+  public boolean isSetTypeName() {
+    return this.typeName != null;
+  }
+
+  public void setTypeNameIsSet(boolean value) {
+    if (!value) {
+      this.typeName = null;
     }
   }
 
-  @Override
-  protected Object standardSchemeReadValue(org.apache.thrift.protocol.TProtocol iprot, org.apache.thrift.protocol.TField field) throws org.apache.thrift.TException {
-    _Fields setField = _Fields.findByThriftId(field.id);
-    if (setField != null) {
-      switch (setField) {
-        case OPERATION_NAME:
-          if (field.type == OPERATION_NAME_FIELD_DESC.type) {
-            String operation_name;
-            operation_name = iprot.readString();
-            return operation_name;
-          } else {
-            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
-            return null;
-          }
-        default:
-          throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
+  public String getOperationName() {
+    return this.operationName;
+  }
+
+  public OperationID setOperationName(String operationName) {
+    this.operationName = operationName;
+    return this;
+  }
+
+  public void unsetOperationName() {
+    this.operationName = null;
+  }
+
+  /** Returns true if field operationName is set (has been assigned a value) and false otherwise */
+  public boolean isSetOperationName() {
+    return this.operationName != null;
+  }
+
+  public void setOperationNameIsSet(boolean value) {
+    if (!value) {
+      this.operationName = null;
+    }
+  }
+
+  public void setFieldValue(_Fields field, Object value) {
+    switch (field) {
+    case TYPE_NAME:
+      if (value == null) {
+        unsetTypeName();
+      } else {
+        setTypeName((String)value);
       }
-    } else {
-      org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
-      return null;
-    }
-  }
+      break;
 
-  @Override
-  protected void standardSchemeWriteValue(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
-    switch (setField_) {
-      case OPERATION_NAME:
-        String operation_name = (String)value_;
-        oprot.writeString(operation_name);
-        return;
-      default:
-        throw new IllegalStateException("Cannot write union with unknown field " + setField_);
-    }
-  }
-
-  @Override
-  protected Object tupleSchemeReadValue(org.apache.thrift.protocol.TProtocol iprot, short fieldID) throws org.apache.thrift.TException {
-    _Fields setField = _Fields.findByThriftId(fieldID);
-    if (setField != null) {
-      switch (setField) {
-        case OPERATION_NAME:
-          String operation_name;
-          operation_name = iprot.readString();
-          return operation_name;
-        default:
-          throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
+    case OPERATION_NAME:
+      if (value == null) {
+        unsetOperationName();
+      } else {
+        setOperationName((String)value);
       }
-    } else {
-      throw new TProtocolException("Couldn't find a field with field id " + fieldID);
+      break;
+
     }
   }
 
-  @Override
-  protected void tupleSchemeWriteValue(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
-    switch (setField_) {
-      case OPERATION_NAME:
-        String operation_name = (String)value_;
-        oprot.writeString(operation_name);
-        return;
-      default:
-        throw new IllegalStateException("Cannot write union with unknown field " + setField_);
+  public Object getFieldValue(_Fields field) {
+    switch (field) {
+    case TYPE_NAME:
+      return getTypeName();
+
+    case OPERATION_NAME:
+      return getOperationName();
+
     }
+    throw new IllegalStateException();
   }
 
-  @Override
-  protected org.apache.thrift.protocol.TField getFieldDesc(_Fields setField) {
-    switch (setField) {
-      case OPERATION_NAME:
-        return OPERATION_NAME_FIELD_DESC;
-      default:
-        throw new IllegalArgumentException("Unknown field id " + setField);
+  /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+  public boolean isSet(_Fields field) {
+    if (field == null) {
+      throw new IllegalArgumentException();
     }
+
+    switch (field) {
+    case TYPE_NAME:
+      return isSetTypeName();
+    case OPERATION_NAME:
+      return isSetOperationName();
+    }
+    throw new IllegalStateException();
   }
 
   @Override
-  protected org.apache.thrift.protocol.TStruct getStructDesc() {
-    return STRUCT_DESC;
+  public boolean equals(Object that) {
+    if (that == null)
+      return false;
+    if (that instanceof OperationID)
+      return this.equals((OperationID)that);
+    return false;
+  }
+
+  public boolean equals(OperationID that) {
+    if (that == null)
+      return false;
+
+    boolean this_present_typeName = true && this.isSetTypeName();
+    boolean that_present_typeName = true && that.isSetTypeName();
+    if (this_present_typeName || that_present_typeName) {
+      if (!(this_present_typeName && that_present_typeName))
+        return false;
+      if (!this.typeName.equals(that.typeName))
+        return false;
+    }
+
+    boolean this_present_operationName = true && this.isSetOperationName();
+    boolean that_present_operationName = true && that.isSetOperationName();
+    if (this_present_operationName || that_present_operationName) {
+      if (!(this_present_operationName && that_present_operationName))
+        return false;
+      if (!this.operationName.equals(that.operationName))
+        return false;
+    }
+
+    return true;
   }
 
   @Override
-  protected _Fields enumForId(short id) {
-    return _Fields.findByThriftIdOrThrow(id);
+  public int hashCode() {
+    return 0;
+  }
+
+  @Override
+  public int compareTo(OperationID other) {
+    if (!getClass().equals(other.getClass())) {
+      return getClass().getName().compareTo(other.getClass().getName());
+    }
+
+    int lastComparison = 0;
+
+    lastComparison = Boolean.valueOf(isSetTypeName()).compareTo(other.isSetTypeName());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetTypeName()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.typeName, other.typeName);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetOperationName()).compareTo(other.isSetOperationName());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetOperationName()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.operationName, other.operationName);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    return 0;
   }
 
   public _Fields fieldForId(int fieldId) {
     return _Fields.findByThriftId(fieldId);
   }
 
-
-  public String getOperation_name() {
-    if (getSetField() == _Fields.OPERATION_NAME) {
-      return (String)getFieldValue();
-    } else {
-      throw new RuntimeException("Cannot get field 'operation_name' because union is currently set to " + getFieldDesc(getSetField()).name);
-    }
+  public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+    schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
   }
 
-  public void setOperation_name(String value) {
-    if (value == null) throw new NullPointerException();
-    setField_ = _Fields.OPERATION_NAME;
-    value_ = value;
-  }
-
-  public boolean isSetOperation_name() {
-    return setField_ == _Fields.OPERATION_NAME;
-  }
-
-
-  public boolean equals(Object other) {
-    if (other instanceof OperationID) {
-      return equals((OperationID)other);
-    } else {
-      return false;
-    }
-  }
-
-  public boolean equals(OperationID other) {
-    return other != null && getSetField() == other.getSetField() && getFieldValue().equals(other.getFieldValue());
+  public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
   }
 
   @Override
-  public int compareTo(OperationID other) {
-    int lastComparison = org.apache.thrift.TBaseHelper.compareTo(getSetField(), other.getSetField());
-    if (lastComparison == 0) {
-      return org.apache.thrift.TBaseHelper.compareTo(getFieldValue(), other.getFieldValue());
+  public String toString() {
+    StringBuilder sb = new StringBuilder("OperationID(");
+    boolean first = true;
+
+    sb.append("typeName:");
+    if (this.typeName == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.typeName);
     }
-    return lastComparison;
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("operationName:");
+    if (this.operationName == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.operationName);
+    }
+    first = false;
+    sb.append(")");
+    return sb.toString();
   }
 
-
-  /**
-   * If you'd like this to perform more respectably, use the hashcode generator option.
-   */
-  @Override
-  public int hashCode() {
-    return 0;
+  public void validate() throws org.apache.thrift.TException {
+    // check for required fields
+    // check for sub-struct validity
   }
 
   private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
@@ -284,7 +369,6 @@ public class OperationID extends org.apache.thrift.TUnion<OperationID, Operation
     }
   }
 
-
   private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
     try {
       read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
@@ -293,5 +377,112 @@ public class OperationID extends org.apache.thrift.TUnion<OperationID, Operation
     }
   }
 
+  private static class OperationIDStandardSchemeFactory implements SchemeFactory {
+    public OperationIDStandardScheme getScheme() {
+      return new OperationIDStandardScheme();
+    }
+  }
+
+  private static class OperationIDStandardScheme extends StandardScheme<OperationID> {
+
+    public void read(org.apache.thrift.protocol.TProtocol iprot, OperationID struct) throws org.apache.thrift.TException {
+      org.apache.thrift.protocol.TField schemeField;
+      iprot.readStructBegin();
+      while (true)
+      {
+        schemeField = iprot.readFieldBegin();
+        if (schemeField.type == org.apache.thrift.protocol.TType.STOP) { 
+          break;
+        }
+        switch (schemeField.id) {
+          case 1: // TYPE_NAME
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.typeName = iprot.readString();
+              struct.setTypeNameIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 2: // OPERATION_NAME
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.operationName = iprot.readString();
+              struct.setOperationNameIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          default:
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+        }
+        iprot.readFieldEnd();
+      }
+      iprot.readStructEnd();
+
+      // check for required fields of primitive type, which can't be checked in the validate method
+      struct.validate();
+    }
+
+    public void write(org.apache.thrift.protocol.TProtocol oprot, OperationID struct) throws org.apache.thrift.TException {
+      struct.validate();
+
+      oprot.writeStructBegin(STRUCT_DESC);
+      if (struct.typeName != null) {
+        oprot.writeFieldBegin(TYPE_NAME_FIELD_DESC);
+        oprot.writeString(struct.typeName);
+        oprot.writeFieldEnd();
+      }
+      if (struct.operationName != null) {
+        oprot.writeFieldBegin(OPERATION_NAME_FIELD_DESC);
+        oprot.writeString(struct.operationName);
+        oprot.writeFieldEnd();
+      }
+      oprot.writeFieldStop();
+      oprot.writeStructEnd();
+    }
+
+  }
+
+  private static class OperationIDTupleSchemeFactory implements SchemeFactory {
+    public OperationIDTupleScheme getScheme() {
+      return new OperationIDTupleScheme();
+    }
+  }
+
+  private static class OperationIDTupleScheme extends TupleScheme<OperationID> {
+
+    @Override
+    public void write(org.apache.thrift.protocol.TProtocol prot, OperationID struct) throws org.apache.thrift.TException {
+      TTupleProtocol oprot = (TTupleProtocol) prot;
+      BitSet optionals = new BitSet();
+      if (struct.isSetTypeName()) {
+        optionals.set(0);
+      }
+      if (struct.isSetOperationName()) {
+        optionals.set(1);
+      }
+      oprot.writeBitSet(optionals, 2);
+      if (struct.isSetTypeName()) {
+        oprot.writeString(struct.typeName);
+      }
+      if (struct.isSetOperationName()) {
+        oprot.writeString(struct.operationName);
+      }
+    }
+
+    @Override
+    public void read(org.apache.thrift.protocol.TProtocol prot, OperationID struct) throws org.apache.thrift.TException {
+      TTupleProtocol iprot = (TTupleProtocol) prot;
+      BitSet incoming = iprot.readBitSet(2);
+      if (incoming.get(0)) {
+        struct.typeName = iprot.readString();
+        struct.setTypeNameIsSet(true);
+      }
+      if (incoming.get(1)) {
+        struct.operationName = iprot.readString();
+        struct.setOperationNameIsSet(true);
+      }
+    }
+  }
 
 }
+

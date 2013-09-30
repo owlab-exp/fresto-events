@@ -32,31 +32,37 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RequestPropertyValue implements org.apache.thrift.TBase<RequestPropertyValue, RequestPropertyValue._Fields>, java.io.Serializable, Cloneable, Comparable<RequestPropertyValue> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("RequestPropertyValue");
+public class RequestEdge implements org.apache.thrift.TBase<RequestEdge, RequestEdge._Fields>, java.io.Serializable, Cloneable, Comparable<RequestEdge> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("RequestEdge");
 
-  private static final org.apache.thrift.protocol.TField REFERRER_FIELD_DESC = new org.apache.thrift.protocol.TField("referrer", org.apache.thrift.protocol.TType.STRUCT, (short)1);
-  private static final org.apache.thrift.protocol.TField METHOD_FIELD_DESC = new org.apache.thrift.protocol.TField("method", org.apache.thrift.protocol.TType.STRING, (short)2);
-  private static final org.apache.thrift.protocol.TField QUERY_FIELD_DESC = new org.apache.thrift.protocol.TField("query", org.apache.thrift.protocol.TType.STRING, (short)3);
-  private static final org.apache.thrift.protocol.TField TIMESTAMP_FIELD_DESC = new org.apache.thrift.protocol.TField("timestamp", org.apache.thrift.protocol.TType.I64, (short)4);
+  private static final org.apache.thrift.protocol.TField CLIENT_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("clientId", org.apache.thrift.protocol.TType.STRUCT, (short)1);
+  private static final org.apache.thrift.protocol.TField RESOURCE_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("resourceId", org.apache.thrift.protocol.TType.STRUCT, (short)2);
+  private static final org.apache.thrift.protocol.TField REFERRER_FIELD_DESC = new org.apache.thrift.protocol.TField("referrer", org.apache.thrift.protocol.TType.STRING, (short)3);
+  private static final org.apache.thrift.protocol.TField METHOD_FIELD_DESC = new org.apache.thrift.protocol.TField("method", org.apache.thrift.protocol.TType.STRING, (short)4);
+  private static final org.apache.thrift.protocol.TField TIMESTAMP_FIELD_DESC = new org.apache.thrift.protocol.TField("timestamp", org.apache.thrift.protocol.TType.I64, (short)5);
+  private static final org.apache.thrift.protocol.TField UUID_FIELD_DESC = new org.apache.thrift.protocol.TField("uuid", org.apache.thrift.protocol.TType.STRING, (short)6);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
-    schemes.put(StandardScheme.class, new RequestPropertyValueStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new RequestPropertyValueTupleSchemeFactory());
+    schemes.put(StandardScheme.class, new RequestEdgeStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new RequestEdgeTupleSchemeFactory());
   }
 
-  public ReferrerID referrer; // required
+  public ClientID clientId; // required
+  public ResourceID resourceId; // required
+  public String referrer; // required
   public String method; // required
-  public String query; // required
   public long timestamp; // required
+  public String uuid; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    REFERRER((short)1, "referrer"),
-    METHOD((short)2, "method"),
-    QUERY((short)3, "query"),
-    TIMESTAMP((short)4, "timestamp");
+    CLIENT_ID((short)1, "clientId"),
+    RESOURCE_ID((short)2, "resourceId"),
+    REFERRER((short)3, "referrer"),
+    METHOD((short)4, "method"),
+    TIMESTAMP((short)5, "timestamp"),
+    UUID((short)6, "uuid");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -71,14 +77,18 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // REFERRER
+        case 1: // CLIENT_ID
+          return CLIENT_ID;
+        case 2: // RESOURCE_ID
+          return RESOURCE_ID;
+        case 3: // REFERRER
           return REFERRER;
-        case 2: // METHOD
+        case 4: // METHOD
           return METHOD;
-        case 3: // QUERY
-          return QUERY;
-        case 4: // TIMESTAMP
+        case 5: // TIMESTAMP
           return TIMESTAMP;
+        case 6: // UUID
+          return UUID;
         default:
           return null;
       }
@@ -124,70 +134,134 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+    tmpMap.put(_Fields.CLIENT_ID, new org.apache.thrift.meta_data.FieldMetaData("clientId", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ClientID.class)));
+    tmpMap.put(_Fields.RESOURCE_ID, new org.apache.thrift.meta_data.FieldMetaData("resourceId", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ResourceID.class)));
     tmpMap.put(_Fields.REFERRER, new org.apache.thrift.meta_data.FieldMetaData("referrer", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ReferrerID.class)));
-    tmpMap.put(_Fields.METHOD, new org.apache.thrift.meta_data.FieldMetaData("method", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.QUERY, new org.apache.thrift.meta_data.FieldMetaData("query", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.METHOD, new org.apache.thrift.meta_data.FieldMetaData("method", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.TIMESTAMP, new org.apache.thrift.meta_data.FieldMetaData("timestamp", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
+    tmpMap.put(_Fields.UUID, new org.apache.thrift.meta_data.FieldMetaData("uuid", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(RequestPropertyValue.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(RequestEdge.class, metaDataMap);
   }
 
-  public RequestPropertyValue() {
+  public RequestEdge() {
   }
 
-  public RequestPropertyValue(
-    ReferrerID referrer,
+  public RequestEdge(
+    ClientID clientId,
+    ResourceID resourceId,
+    String referrer,
     String method,
-    String query,
-    long timestamp)
+    long timestamp,
+    String uuid)
   {
     this();
+    this.clientId = clientId;
+    this.resourceId = resourceId;
     this.referrer = referrer;
     this.method = method;
-    this.query = query;
     this.timestamp = timestamp;
     setTimestampIsSet(true);
+    this.uuid = uuid;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public RequestPropertyValue(RequestPropertyValue other) {
+  public RequestEdge(RequestEdge other) {
     __isset_bitfield = other.__isset_bitfield;
+    if (other.isSetClientId()) {
+      this.clientId = new ClientID(other.clientId);
+    }
+    if (other.isSetResourceId()) {
+      this.resourceId = new ResourceID(other.resourceId);
+    }
     if (other.isSetReferrer()) {
-      this.referrer = new ReferrerID(other.referrer);
+      this.referrer = other.referrer;
     }
     if (other.isSetMethod()) {
       this.method = other.method;
     }
-    if (other.isSetQuery()) {
-      this.query = other.query;
-    }
     this.timestamp = other.timestamp;
+    if (other.isSetUuid()) {
+      this.uuid = other.uuid;
+    }
   }
 
-  public RequestPropertyValue deepCopy() {
-    return new RequestPropertyValue(this);
+  public RequestEdge deepCopy() {
+    return new RequestEdge(this);
   }
 
   @Override
   public void clear() {
+    this.clientId = null;
+    this.resourceId = null;
     this.referrer = null;
     this.method = null;
-    this.query = null;
     setTimestampIsSet(false);
     this.timestamp = 0;
+    this.uuid = null;
   }
 
-  public ReferrerID getReferrer() {
+  public ClientID getClientId() {
+    return this.clientId;
+  }
+
+  public RequestEdge setClientId(ClientID clientId) {
+    this.clientId = clientId;
+    return this;
+  }
+
+  public void unsetClientId() {
+    this.clientId = null;
+  }
+
+  /** Returns true if field clientId is set (has been assigned a value) and false otherwise */
+  public boolean isSetClientId() {
+    return this.clientId != null;
+  }
+
+  public void setClientIdIsSet(boolean value) {
+    if (!value) {
+      this.clientId = null;
+    }
+  }
+
+  public ResourceID getResourceId() {
+    return this.resourceId;
+  }
+
+  public RequestEdge setResourceId(ResourceID resourceId) {
+    this.resourceId = resourceId;
+    return this;
+  }
+
+  public void unsetResourceId() {
+    this.resourceId = null;
+  }
+
+  /** Returns true if field resourceId is set (has been assigned a value) and false otherwise */
+  public boolean isSetResourceId() {
+    return this.resourceId != null;
+  }
+
+  public void setResourceIdIsSet(boolean value) {
+    if (!value) {
+      this.resourceId = null;
+    }
+  }
+
+  public String getReferrer() {
     return this.referrer;
   }
 
-  public RequestPropertyValue setReferrer(ReferrerID referrer) {
+  public RequestEdge setReferrer(String referrer) {
     this.referrer = referrer;
     return this;
   }
@@ -211,7 +285,7 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
     return this.method;
   }
 
-  public RequestPropertyValue setMethod(String method) {
+  public RequestEdge setMethod(String method) {
     this.method = method;
     return this;
   }
@@ -231,35 +305,11 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
     }
   }
 
-  public String getQuery() {
-    return this.query;
-  }
-
-  public RequestPropertyValue setQuery(String query) {
-    this.query = query;
-    return this;
-  }
-
-  public void unsetQuery() {
-    this.query = null;
-  }
-
-  /** Returns true if field query is set (has been assigned a value) and false otherwise */
-  public boolean isSetQuery() {
-    return this.query != null;
-  }
-
-  public void setQueryIsSet(boolean value) {
-    if (!value) {
-      this.query = null;
-    }
-  }
-
   public long getTimestamp() {
     return this.timestamp;
   }
 
-  public RequestPropertyValue setTimestamp(long timestamp) {
+  public RequestEdge setTimestamp(long timestamp) {
     this.timestamp = timestamp;
     setTimestampIsSet(true);
     return this;
@@ -278,13 +328,53 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
     __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __TIMESTAMP_ISSET_ID, value);
   }
 
+  public String getUuid() {
+    return this.uuid;
+  }
+
+  public RequestEdge setUuid(String uuid) {
+    this.uuid = uuid;
+    return this;
+  }
+
+  public void unsetUuid() {
+    this.uuid = null;
+  }
+
+  /** Returns true if field uuid is set (has been assigned a value) and false otherwise */
+  public boolean isSetUuid() {
+    return this.uuid != null;
+  }
+
+  public void setUuidIsSet(boolean value) {
+    if (!value) {
+      this.uuid = null;
+    }
+  }
+
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
+    case CLIENT_ID:
+      if (value == null) {
+        unsetClientId();
+      } else {
+        setClientId((ClientID)value);
+      }
+      break;
+
+    case RESOURCE_ID:
+      if (value == null) {
+        unsetResourceId();
+      } else {
+        setResourceId((ResourceID)value);
+      }
+      break;
+
     case REFERRER:
       if (value == null) {
         unsetReferrer();
       } else {
-        setReferrer((ReferrerID)value);
+        setReferrer((String)value);
       }
       break;
 
@@ -296,14 +386,6 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
       }
       break;
 
-    case QUERY:
-      if (value == null) {
-        unsetQuery();
-      } else {
-        setQuery((String)value);
-      }
-      break;
-
     case TIMESTAMP:
       if (value == null) {
         unsetTimestamp();
@@ -312,22 +394,36 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
       }
       break;
 
+    case UUID:
+      if (value == null) {
+        unsetUuid();
+      } else {
+        setUuid((String)value);
+      }
+      break;
+
     }
   }
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
+    case CLIENT_ID:
+      return getClientId();
+
+    case RESOURCE_ID:
+      return getResourceId();
+
     case REFERRER:
       return getReferrer();
 
     case METHOD:
       return getMethod();
 
-    case QUERY:
-      return getQuery();
-
     case TIMESTAMP:
       return Long.valueOf(getTimestamp());
+
+    case UUID:
+      return getUuid();
 
     }
     throw new IllegalStateException();
@@ -340,14 +436,18 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
     }
 
     switch (field) {
+    case CLIENT_ID:
+      return isSetClientId();
+    case RESOURCE_ID:
+      return isSetResourceId();
     case REFERRER:
       return isSetReferrer();
     case METHOD:
       return isSetMethod();
-    case QUERY:
-      return isSetQuery();
     case TIMESTAMP:
       return isSetTimestamp();
+    case UUID:
+      return isSetUuid();
     }
     throw new IllegalStateException();
   }
@@ -356,14 +456,32 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof RequestPropertyValue)
-      return this.equals((RequestPropertyValue)that);
+    if (that instanceof RequestEdge)
+      return this.equals((RequestEdge)that);
     return false;
   }
 
-  public boolean equals(RequestPropertyValue that) {
+  public boolean equals(RequestEdge that) {
     if (that == null)
       return false;
+
+    boolean this_present_clientId = true && this.isSetClientId();
+    boolean that_present_clientId = true && that.isSetClientId();
+    if (this_present_clientId || that_present_clientId) {
+      if (!(this_present_clientId && that_present_clientId))
+        return false;
+      if (!this.clientId.equals(that.clientId))
+        return false;
+    }
+
+    boolean this_present_resourceId = true && this.isSetResourceId();
+    boolean that_present_resourceId = true && that.isSetResourceId();
+    if (this_present_resourceId || that_present_resourceId) {
+      if (!(this_present_resourceId && that_present_resourceId))
+        return false;
+      if (!this.resourceId.equals(that.resourceId))
+        return false;
+    }
 
     boolean this_present_referrer = true && this.isSetReferrer();
     boolean that_present_referrer = true && that.isSetReferrer();
@@ -383,21 +501,21 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
         return false;
     }
 
-    boolean this_present_query = true && this.isSetQuery();
-    boolean that_present_query = true && that.isSetQuery();
-    if (this_present_query || that_present_query) {
-      if (!(this_present_query && that_present_query))
-        return false;
-      if (!this.query.equals(that.query))
-        return false;
-    }
-
     boolean this_present_timestamp = true;
     boolean that_present_timestamp = true;
     if (this_present_timestamp || that_present_timestamp) {
       if (!(this_present_timestamp && that_present_timestamp))
         return false;
       if (this.timestamp != that.timestamp)
+        return false;
+    }
+
+    boolean this_present_uuid = true && this.isSetUuid();
+    boolean that_present_uuid = true && that.isSetUuid();
+    if (this_present_uuid || that_present_uuid) {
+      if (!(this_present_uuid && that_present_uuid))
+        return false;
+      if (!this.uuid.equals(that.uuid))
         return false;
     }
 
@@ -410,13 +528,33 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
   }
 
   @Override
-  public int compareTo(RequestPropertyValue other) {
+  public int compareTo(RequestEdge other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
 
+    lastComparison = Boolean.valueOf(isSetClientId()).compareTo(other.isSetClientId());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetClientId()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.clientId, other.clientId);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetResourceId()).compareTo(other.isSetResourceId());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetResourceId()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.resourceId, other.resourceId);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
     lastComparison = Boolean.valueOf(isSetReferrer()).compareTo(other.isSetReferrer());
     if (lastComparison != 0) {
       return lastComparison;
@@ -437,22 +575,22 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetQuery()).compareTo(other.isSetQuery());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetQuery()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.query, other.query);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
     lastComparison = Boolean.valueOf(isSetTimestamp()).compareTo(other.isSetTimestamp());
     if (lastComparison != 0) {
       return lastComparison;
     }
     if (isSetTimestamp()) {
       lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.timestamp, other.timestamp);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetUuid()).compareTo(other.isSetUuid());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetUuid()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.uuid, other.uuid);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -474,9 +612,25 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("RequestPropertyValue(");
+    StringBuilder sb = new StringBuilder("RequestEdge(");
     boolean first = true;
 
+    sb.append("clientId:");
+    if (this.clientId == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.clientId);
+    }
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("resourceId:");
+    if (this.resourceId == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.resourceId);
+    }
+    first = false;
+    if (!first) sb.append(", ");
     sb.append("referrer:");
     if (this.referrer == null) {
       sb.append("null");
@@ -493,16 +647,16 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
     }
     first = false;
     if (!first) sb.append(", ");
-    sb.append("query:");
-    if (this.query == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.query);
-    }
-    first = false;
-    if (!first) sb.append(", ");
     sb.append("timestamp:");
     sb.append(this.timestamp);
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("uuid:");
+    if (this.uuid == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.uuid);
+    }
     first = false;
     sb.append(")");
     return sb.toString();
@@ -510,6 +664,12 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
+    if (clientId == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'clientId' was not present! Struct: " + toString());
+    }
+    if (resourceId == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'resourceId' was not present! Struct: " + toString());
+    }
     // check for sub-struct validity
   }
 
@@ -531,15 +691,15 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
     }
   }
 
-  private static class RequestPropertyValueStandardSchemeFactory implements SchemeFactory {
-    public RequestPropertyValueStandardScheme getScheme() {
-      return new RequestPropertyValueStandardScheme();
+  private static class RequestEdgeStandardSchemeFactory implements SchemeFactory {
+    public RequestEdgeStandardScheme getScheme() {
+      return new RequestEdgeStandardScheme();
     }
   }
 
-  private static class RequestPropertyValueStandardScheme extends StandardScheme<RequestPropertyValue> {
+  private static class RequestEdgeStandardScheme extends StandardScheme<RequestEdge> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, RequestPropertyValue struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, RequestEdge struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -549,16 +709,33 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
           break;
         }
         switch (schemeField.id) {
-          case 1: // REFERRER
+          case 1: // CLIENT_ID
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.referrer = new ReferrerID();
-              struct.referrer.read(iprot);
+              struct.clientId = new ClientID();
+              struct.clientId.read(iprot);
+              struct.setClientIdIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 2: // RESOURCE_ID
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+              struct.resourceId = new ResourceID();
+              struct.resourceId.read(iprot);
+              struct.setResourceIdIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 3: // REFERRER
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.referrer = iprot.readString();
               struct.setReferrerIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 2: // METHOD
+          case 4: // METHOD
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.method = iprot.readString();
               struct.setMethodIsSet(true);
@@ -566,18 +743,18 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 3: // QUERY
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.query = iprot.readString();
-              struct.setQueryIsSet(true);
+          case 5: // TIMESTAMP
+            if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
+              struct.timestamp = iprot.readI64();
+              struct.setTimestampIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 4: // TIMESTAMP
-            if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
-              struct.timestamp = iprot.readI64();
-              struct.setTimestampIsSet(true);
+          case 6: // UUID
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.uuid = iprot.readString();
+              struct.setUuidIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -593,13 +770,23 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, RequestPropertyValue struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, RequestEdge struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
+      if (struct.clientId != null) {
+        oprot.writeFieldBegin(CLIENT_ID_FIELD_DESC);
+        struct.clientId.write(oprot);
+        oprot.writeFieldEnd();
+      }
+      if (struct.resourceId != null) {
+        oprot.writeFieldBegin(RESOURCE_ID_FIELD_DESC);
+        struct.resourceId.write(oprot);
+        oprot.writeFieldEnd();
+      }
       if (struct.referrer != null) {
         oprot.writeFieldBegin(REFERRER_FIELD_DESC);
-        struct.referrer.write(oprot);
+        oprot.writeString(struct.referrer);
         oprot.writeFieldEnd();
       }
       if (struct.method != null) {
@@ -607,31 +794,33 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
         oprot.writeString(struct.method);
         oprot.writeFieldEnd();
       }
-      if (struct.query != null) {
-        oprot.writeFieldBegin(QUERY_FIELD_DESC);
-        oprot.writeString(struct.query);
-        oprot.writeFieldEnd();
-      }
       oprot.writeFieldBegin(TIMESTAMP_FIELD_DESC);
       oprot.writeI64(struct.timestamp);
       oprot.writeFieldEnd();
+      if (struct.uuid != null) {
+        oprot.writeFieldBegin(UUID_FIELD_DESC);
+        oprot.writeString(struct.uuid);
+        oprot.writeFieldEnd();
+      }
       oprot.writeFieldStop();
       oprot.writeStructEnd();
     }
 
   }
 
-  private static class RequestPropertyValueTupleSchemeFactory implements SchemeFactory {
-    public RequestPropertyValueTupleScheme getScheme() {
-      return new RequestPropertyValueTupleScheme();
+  private static class RequestEdgeTupleSchemeFactory implements SchemeFactory {
+    public RequestEdgeTupleScheme getScheme() {
+      return new RequestEdgeTupleScheme();
     }
   }
 
-  private static class RequestPropertyValueTupleScheme extends TupleScheme<RequestPropertyValue> {
+  private static class RequestEdgeTupleScheme extends TupleScheme<RequestEdge> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, RequestPropertyValue struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, RequestEdge struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
+      struct.clientId.write(oprot);
+      struct.resourceId.write(oprot);
       BitSet optionals = new BitSet();
       if (struct.isSetReferrer()) {
         optionals.set(0);
@@ -639,34 +828,39 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
       if (struct.isSetMethod()) {
         optionals.set(1);
       }
-      if (struct.isSetQuery()) {
+      if (struct.isSetTimestamp()) {
         optionals.set(2);
       }
-      if (struct.isSetTimestamp()) {
+      if (struct.isSetUuid()) {
         optionals.set(3);
       }
       oprot.writeBitSet(optionals, 4);
       if (struct.isSetReferrer()) {
-        struct.referrer.write(oprot);
+        oprot.writeString(struct.referrer);
       }
       if (struct.isSetMethod()) {
         oprot.writeString(struct.method);
       }
-      if (struct.isSetQuery()) {
-        oprot.writeString(struct.query);
-      }
       if (struct.isSetTimestamp()) {
         oprot.writeI64(struct.timestamp);
+      }
+      if (struct.isSetUuid()) {
+        oprot.writeString(struct.uuid);
       }
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, RequestPropertyValue struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, RequestEdge struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
+      struct.clientId = new ClientID();
+      struct.clientId.read(iprot);
+      struct.setClientIdIsSet(true);
+      struct.resourceId = new ResourceID();
+      struct.resourceId.read(iprot);
+      struct.setResourceIdIsSet(true);
       BitSet incoming = iprot.readBitSet(4);
       if (incoming.get(0)) {
-        struct.referrer = new ReferrerID();
-        struct.referrer.read(iprot);
+        struct.referrer = iprot.readString();
         struct.setReferrerIsSet(true);
       }
       if (incoming.get(1)) {
@@ -674,12 +868,12 @@ public class RequestPropertyValue implements org.apache.thrift.TBase<RequestProp
         struct.setMethodIsSet(true);
       }
       if (incoming.get(2)) {
-        struct.query = iprot.readString();
-        struct.setQueryIsSet(true);
-      }
-      if (incoming.get(3)) {
         struct.timestamp = iprot.readI64();
         struct.setTimestampIsSet(true);
+      }
+      if (incoming.get(3)) {
+        struct.uuid = iprot.readString();
+        struct.setUuidIsSet(true);
       }
     }
   }
