@@ -37,7 +37,7 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
 
   private static final org.apache.thrift.protocol.TField RESOURCE_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("resourceId", org.apache.thrift.protocol.TType.STRUCT, (short)1);
   private static final org.apache.thrift.protocol.TField CLIENT_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("clientId", org.apache.thrift.protocol.TType.STRUCT, (short)2);
-  private static final org.apache.thrift.protocol.TField STATUS_CODE_FIELD_DESC = new org.apache.thrift.protocol.TField("statusCode", org.apache.thrift.protocol.TType.I32, (short)3);
+  private static final org.apache.thrift.protocol.TField HTTP_STATUS_FIELD_DESC = new org.apache.thrift.protocol.TField("httpStatus", org.apache.thrift.protocol.TType.I32, (short)3);
   private static final org.apache.thrift.protocol.TField ELAPSED_TIME_FIELD_DESC = new org.apache.thrift.protocol.TField("elapsedTime", org.apache.thrift.protocol.TType.I32, (short)4);
   private static final org.apache.thrift.protocol.TField TIMESTAMP_FIELD_DESC = new org.apache.thrift.protocol.TField("timestamp", org.apache.thrift.protocol.TType.I64, (short)5);
   private static final org.apache.thrift.protocol.TField UUID_FIELD_DESC = new org.apache.thrift.protocol.TField("uuid", org.apache.thrift.protocol.TType.STRING, (short)6);
@@ -50,7 +50,7 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
 
   public ResourceID resourceId; // required
   public ClientID clientId; // required
-  public int statusCode; // required
+  public int httpStatus; // required
   public int elapsedTime; // required
   public long timestamp; // required
   public String uuid; // required
@@ -59,7 +59,7 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
     RESOURCE_ID((short)1, "resourceId"),
     CLIENT_ID((short)2, "clientId"),
-    STATUS_CODE((short)3, "statusCode"),
+    HTTP_STATUS((short)3, "httpStatus"),
     ELAPSED_TIME((short)4, "elapsedTime"),
     TIMESTAMP((short)5, "timestamp"),
     UUID((short)6, "uuid");
@@ -81,8 +81,8 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
           return RESOURCE_ID;
         case 2: // CLIENT_ID
           return CLIENT_ID;
-        case 3: // STATUS_CODE
-          return STATUS_CODE;
+        case 3: // HTTP_STATUS
+          return HTTP_STATUS;
         case 4: // ELAPSED_TIME
           return ELAPSED_TIME;
         case 5: // TIMESTAMP
@@ -129,7 +129,7 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
   }
 
   // isset id assignments
-  private static final int __STATUSCODE_ISSET_ID = 0;
+  private static final int __HTTPSTATUS_ISSET_ID = 0;
   private static final int __ELAPSEDTIME_ISSET_ID = 1;
   private static final int __TIMESTAMP_ISSET_ID = 2;
   private byte __isset_bitfield = 0;
@@ -140,7 +140,7 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ResourceID.class)));
     tmpMap.put(_Fields.CLIENT_ID, new org.apache.thrift.meta_data.FieldMetaData("clientId", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ClientID.class)));
-    tmpMap.put(_Fields.STATUS_CODE, new org.apache.thrift.meta_data.FieldMetaData("statusCode", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.HTTP_STATUS, new org.apache.thrift.meta_data.FieldMetaData("httpStatus", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
     tmpMap.put(_Fields.ELAPSED_TIME, new org.apache.thrift.meta_data.FieldMetaData("elapsedTime", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
@@ -158,7 +158,7 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
   public ResponseEdge(
     ResourceID resourceId,
     ClientID clientId,
-    int statusCode,
+    int httpStatus,
     int elapsedTime,
     long timestamp,
     String uuid)
@@ -166,8 +166,8 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
     this();
     this.resourceId = resourceId;
     this.clientId = clientId;
-    this.statusCode = statusCode;
-    setStatusCodeIsSet(true);
+    this.httpStatus = httpStatus;
+    setHttpStatusIsSet(true);
     this.elapsedTime = elapsedTime;
     setElapsedTimeIsSet(true);
     this.timestamp = timestamp;
@@ -186,7 +186,7 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
     if (other.isSetClientId()) {
       this.clientId = new ClientID(other.clientId);
     }
-    this.statusCode = other.statusCode;
+    this.httpStatus = other.httpStatus;
     this.elapsedTime = other.elapsedTime;
     this.timestamp = other.timestamp;
     if (other.isSetUuid()) {
@@ -202,8 +202,8 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
   public void clear() {
     this.resourceId = null;
     this.clientId = null;
-    setStatusCodeIsSet(false);
-    this.statusCode = 0;
+    setHttpStatusIsSet(false);
+    this.httpStatus = 0;
     setElapsedTimeIsSet(false);
     this.elapsedTime = 0;
     setTimestampIsSet(false);
@@ -259,27 +259,27 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
     }
   }
 
-  public int getStatusCode() {
-    return this.statusCode;
+  public int getHttpStatus() {
+    return this.httpStatus;
   }
 
-  public ResponseEdge setStatusCode(int statusCode) {
-    this.statusCode = statusCode;
-    setStatusCodeIsSet(true);
+  public ResponseEdge setHttpStatus(int httpStatus) {
+    this.httpStatus = httpStatus;
+    setHttpStatusIsSet(true);
     return this;
   }
 
-  public void unsetStatusCode() {
-    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __STATUSCODE_ISSET_ID);
+  public void unsetHttpStatus() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __HTTPSTATUS_ISSET_ID);
   }
 
-  /** Returns true if field statusCode is set (has been assigned a value) and false otherwise */
-  public boolean isSetStatusCode() {
-    return EncodingUtils.testBit(__isset_bitfield, __STATUSCODE_ISSET_ID);
+  /** Returns true if field httpStatus is set (has been assigned a value) and false otherwise */
+  public boolean isSetHttpStatus() {
+    return EncodingUtils.testBit(__isset_bitfield, __HTTPSTATUS_ISSET_ID);
   }
 
-  public void setStatusCodeIsSet(boolean value) {
-    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __STATUSCODE_ISSET_ID, value);
+  public void setHttpStatusIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __HTTPSTATUS_ISSET_ID, value);
   }
 
   public int getElapsedTime() {
@@ -370,11 +370,11 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
       }
       break;
 
-    case STATUS_CODE:
+    case HTTP_STATUS:
       if (value == null) {
-        unsetStatusCode();
+        unsetHttpStatus();
       } else {
-        setStatusCode((Integer)value);
+        setHttpStatus((Integer)value);
       }
       break;
 
@@ -413,8 +413,8 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
     case CLIENT_ID:
       return getClientId();
 
-    case STATUS_CODE:
-      return Integer.valueOf(getStatusCode());
+    case HTTP_STATUS:
+      return Integer.valueOf(getHttpStatus());
 
     case ELAPSED_TIME:
       return Integer.valueOf(getElapsedTime());
@@ -440,8 +440,8 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
       return isSetResourceId();
     case CLIENT_ID:
       return isSetClientId();
-    case STATUS_CODE:
-      return isSetStatusCode();
+    case HTTP_STATUS:
+      return isSetHttpStatus();
     case ELAPSED_TIME:
       return isSetElapsedTime();
     case TIMESTAMP:
@@ -483,12 +483,12 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
         return false;
     }
 
-    boolean this_present_statusCode = true;
-    boolean that_present_statusCode = true;
-    if (this_present_statusCode || that_present_statusCode) {
-      if (!(this_present_statusCode && that_present_statusCode))
+    boolean this_present_httpStatus = true;
+    boolean that_present_httpStatus = true;
+    if (this_present_httpStatus || that_present_httpStatus) {
+      if (!(this_present_httpStatus && that_present_httpStatus))
         return false;
-      if (this.statusCode != that.statusCode)
+      if (this.httpStatus != that.httpStatus)
         return false;
     }
 
@@ -555,12 +555,12 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetStatusCode()).compareTo(other.isSetStatusCode());
+    lastComparison = Boolean.valueOf(isSetHttpStatus()).compareTo(other.isSetHttpStatus());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetStatusCode()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.statusCode, other.statusCode);
+    if (isSetHttpStatus()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.httpStatus, other.httpStatus);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -631,8 +631,8 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
     }
     first = false;
     if (!first) sb.append(", ");
-    sb.append("statusCode:");
-    sb.append(this.statusCode);
+    sb.append("httpStatus:");
+    sb.append(this.httpStatus);
     first = false;
     if (!first) sb.append(", ");
     sb.append("elapsedTime:");
@@ -724,10 +724,10 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 3: // STATUS_CODE
+          case 3: // HTTP_STATUS
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-              struct.statusCode = iprot.readI32();
-              struct.setStatusCodeIsSet(true);
+              struct.httpStatus = iprot.readI32();
+              struct.setHttpStatusIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -787,8 +787,8 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
         struct.clientId.write(oprot);
         oprot.writeFieldEnd();
       }
-      oprot.writeFieldBegin(STATUS_CODE_FIELD_DESC);
-      oprot.writeI32(struct.statusCode);
+      oprot.writeFieldBegin(HTTP_STATUS_FIELD_DESC);
+      oprot.writeI32(struct.httpStatus);
       oprot.writeFieldEnd();
       oprot.writeFieldBegin(ELAPSED_TIME_FIELD_DESC);
       oprot.writeI32(struct.elapsedTime);
@@ -824,12 +824,12 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
       oprot.writeI64(struct.timestamp);
       oprot.writeString(struct.uuid);
       BitSet optionals = new BitSet();
-      if (struct.isSetStatusCode()) {
+      if (struct.isSetHttpStatus()) {
         optionals.set(0);
       }
       oprot.writeBitSet(optionals, 1);
-      if (struct.isSetStatusCode()) {
-        oprot.writeI32(struct.statusCode);
+      if (struct.isSetHttpStatus()) {
+        oprot.writeI32(struct.httpStatus);
       }
     }
 
@@ -850,8 +850,8 @@ public class ResponseEdge implements org.apache.thrift.TBase<ResponseEdge, Respo
       struct.setUuidIsSet(true);
       BitSet incoming = iprot.readBitSet(1);
       if (incoming.get(0)) {
-        struct.statusCode = iprot.readI32();
-        struct.setStatusCodeIsSet(true);
+        struct.httpStatus = iprot.readI32();
+        struct.setHttpStatusIsSet(true);
       }
     }
   }

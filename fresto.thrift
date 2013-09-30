@@ -22,7 +22,7 @@ struct RequestEdge {
 struct ResponseEdge {
     1: required ResourceID resourceId;
     2: required ClientID clientId;
-    3: i32 statusCode;
+    3: i32 httpStatus;
     4: required i32 elapsedTime;
     5: required i64 timestamp;
     6: required string uuid;
@@ -51,10 +51,11 @@ struct EntryOperationCallEdge {
 struct EntryOperationReturnEdge {
     1: required OperationID OperationId;
     2: required ResourceID resourceId;
-    3: required i32 elapsedTime;
-    4: required i64 timestamp;
-    5: required string uuid;
-    6: i32 sequence;
+    3: i32 httpStatus;
+    4: required i32 elapsedTime;
+    5: required i64 timestamp;
+    6: required string uuid;
+    7: i32 sequence;
 }
 
 struct OperationCallEdge {
