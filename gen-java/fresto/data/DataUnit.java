@@ -38,8 +38,10 @@ public class DataUnit extends org.apache.thrift.TUnion<DataUnit, DataUnit._Field
   private static final org.apache.thrift.protocol.TField RESPONSE_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("responseEdge", org.apache.thrift.protocol.TType.STRUCT, (short)2);
   private static final org.apache.thrift.protocol.TField ENTRY_OPERATION_CALL_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("entryOperationCallEdge", org.apache.thrift.protocol.TType.STRUCT, (short)3);
   private static final org.apache.thrift.protocol.TField ENTRY_OPERATION_RETURN_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("entryOperationReturnEdge", org.apache.thrift.protocol.TType.STRUCT, (short)4);
-  private static final org.apache.thrift.protocol.TField OPERATION_CALL_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("OperationCallEdge", org.apache.thrift.protocol.TType.STRUCT, (short)5);
-  private static final org.apache.thrift.protocol.TField OPERATION_RETURN_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("OperationReturnEdge", org.apache.thrift.protocol.TType.STRUCT, (short)6);
+  private static final org.apache.thrift.protocol.TField OPERATION_CALL_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("operationCallEdge", org.apache.thrift.protocol.TType.STRUCT, (short)5);
+  private static final org.apache.thrift.protocol.TField OPERATION_RETURN_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("operationReturnEdge", org.apache.thrift.protocol.TType.STRUCT, (short)6);
+  private static final org.apache.thrift.protocol.TField SQL_CALL_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("sqlCallEdge", org.apache.thrift.protocol.TType.STRUCT, (short)7);
+  private static final org.apache.thrift.protocol.TField SQL_RETURN_EDGE_FIELD_DESC = new org.apache.thrift.protocol.TField("sqlReturnEdge", org.apache.thrift.protocol.TType.STRUCT, (short)8);
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -47,8 +49,10 @@ public class DataUnit extends org.apache.thrift.TUnion<DataUnit, DataUnit._Field
     RESPONSE_EDGE((short)2, "responseEdge"),
     ENTRY_OPERATION_CALL_EDGE((short)3, "entryOperationCallEdge"),
     ENTRY_OPERATION_RETURN_EDGE((short)4, "entryOperationReturnEdge"),
-    OPERATION_CALL_EDGE((short)5, "OperationCallEdge"),
-    OPERATION_RETURN_EDGE((short)6, "OperationReturnEdge");
+    OPERATION_CALL_EDGE((short)5, "operationCallEdge"),
+    OPERATION_RETURN_EDGE((short)6, "operationReturnEdge"),
+    SQL_CALL_EDGE((short)7, "sqlCallEdge"),
+    SQL_RETURN_EDGE((short)8, "sqlReturnEdge");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -75,6 +79,10 @@ public class DataUnit extends org.apache.thrift.TUnion<DataUnit, DataUnit._Field
           return OPERATION_CALL_EDGE;
         case 6: // OPERATION_RETURN_EDGE
           return OPERATION_RETURN_EDGE;
+        case 7: // SQL_CALL_EDGE
+          return SQL_CALL_EDGE;
+        case 8: // SQL_RETURN_EDGE
+          return SQL_RETURN_EDGE;
         default:
           return null;
       }
@@ -125,10 +133,14 @@ public class DataUnit extends org.apache.thrift.TUnion<DataUnit, DataUnit._Field
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, EntryOperationCallEdge.class)));
     tmpMap.put(_Fields.ENTRY_OPERATION_RETURN_EDGE, new org.apache.thrift.meta_data.FieldMetaData("entryOperationReturnEdge", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, EntryOperationReturnEdge.class)));
-    tmpMap.put(_Fields.OPERATION_CALL_EDGE, new org.apache.thrift.meta_data.FieldMetaData("OperationCallEdge", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.OPERATION_CALL_EDGE, new org.apache.thrift.meta_data.FieldMetaData("operationCallEdge", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, OperationCallEdge.class)));
-    tmpMap.put(_Fields.OPERATION_RETURN_EDGE, new org.apache.thrift.meta_data.FieldMetaData("OperationReturnEdge", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.OPERATION_RETURN_EDGE, new org.apache.thrift.meta_data.FieldMetaData("operationReturnEdge", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, OperationReturnEdge.class)));
+    tmpMap.put(_Fields.SQL_CALL_EDGE, new org.apache.thrift.meta_data.FieldMetaData("sqlCallEdge", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, SqlCallEdge.class)));
+    tmpMap.put(_Fields.SQL_RETURN_EDGE, new org.apache.thrift.meta_data.FieldMetaData("sqlReturnEdge", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, SqlReturnEdge.class)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(DataUnit.class, metaDataMap);
   }
@@ -172,15 +184,27 @@ public class DataUnit extends org.apache.thrift.TUnion<DataUnit, DataUnit._Field
     return x;
   }
 
-  public static DataUnit OperationCallEdge(OperationCallEdge value) {
+  public static DataUnit operationCallEdge(OperationCallEdge value) {
     DataUnit x = new DataUnit();
     x.setOperationCallEdge(value);
     return x;
   }
 
-  public static DataUnit OperationReturnEdge(OperationReturnEdge value) {
+  public static DataUnit operationReturnEdge(OperationReturnEdge value) {
     DataUnit x = new DataUnit();
     x.setOperationReturnEdge(value);
+    return x;
+  }
+
+  public static DataUnit sqlCallEdge(SqlCallEdge value) {
+    DataUnit x = new DataUnit();
+    x.setSqlCallEdge(value);
+    return x;
+  }
+
+  public static DataUnit sqlReturnEdge(SqlReturnEdge value) {
+    DataUnit x = new DataUnit();
+    x.setSqlReturnEdge(value);
     return x;
   }
 
@@ -212,12 +236,22 @@ public class DataUnit extends org.apache.thrift.TUnion<DataUnit, DataUnit._Field
         if (value instanceof OperationCallEdge) {
           break;
         }
-        throw new ClassCastException("Was expecting value of type OperationCallEdge for field 'OperationCallEdge', but got " + value.getClass().getSimpleName());
+        throw new ClassCastException("Was expecting value of type OperationCallEdge for field 'operationCallEdge', but got " + value.getClass().getSimpleName());
       case OPERATION_RETURN_EDGE:
         if (value instanceof OperationReturnEdge) {
           break;
         }
-        throw new ClassCastException("Was expecting value of type OperationReturnEdge for field 'OperationReturnEdge', but got " + value.getClass().getSimpleName());
+        throw new ClassCastException("Was expecting value of type OperationReturnEdge for field 'operationReturnEdge', but got " + value.getClass().getSimpleName());
+      case SQL_CALL_EDGE:
+        if (value instanceof SqlCallEdge) {
+          break;
+        }
+        throw new ClassCastException("Was expecting value of type SqlCallEdge for field 'sqlCallEdge', but got " + value.getClass().getSimpleName());
+      case SQL_RETURN_EDGE:
+        if (value instanceof SqlReturnEdge) {
+          break;
+        }
+        throw new ClassCastException("Was expecting value of type SqlReturnEdge for field 'sqlReturnEdge', but got " + value.getClass().getSimpleName());
       default:
         throw new IllegalArgumentException("Unknown field id " + setField);
     }
@@ -270,20 +304,40 @@ public class DataUnit extends org.apache.thrift.TUnion<DataUnit, DataUnit._Field
           }
         case OPERATION_CALL_EDGE:
           if (field.type == OPERATION_CALL_EDGE_FIELD_DESC.type) {
-            OperationCallEdge OperationCallEdge;
-            OperationCallEdge = new OperationCallEdge();
-            OperationCallEdge.read(iprot);
-            return OperationCallEdge;
+            OperationCallEdge operationCallEdge;
+            operationCallEdge = new OperationCallEdge();
+            operationCallEdge.read(iprot);
+            return operationCallEdge;
           } else {
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
             return null;
           }
         case OPERATION_RETURN_EDGE:
           if (field.type == OPERATION_RETURN_EDGE_FIELD_DESC.type) {
-            OperationReturnEdge OperationReturnEdge;
-            OperationReturnEdge = new OperationReturnEdge();
-            OperationReturnEdge.read(iprot);
-            return OperationReturnEdge;
+            OperationReturnEdge operationReturnEdge;
+            operationReturnEdge = new OperationReturnEdge();
+            operationReturnEdge.read(iprot);
+            return operationReturnEdge;
+          } else {
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
+            return null;
+          }
+        case SQL_CALL_EDGE:
+          if (field.type == SQL_CALL_EDGE_FIELD_DESC.type) {
+            SqlCallEdge sqlCallEdge;
+            sqlCallEdge = new SqlCallEdge();
+            sqlCallEdge.read(iprot);
+            return sqlCallEdge;
+          } else {
+            org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
+            return null;
+          }
+        case SQL_RETURN_EDGE:
+          if (field.type == SQL_RETURN_EDGE_FIELD_DESC.type) {
+            SqlReturnEdge sqlReturnEdge;
+            sqlReturnEdge = new SqlReturnEdge();
+            sqlReturnEdge.read(iprot);
+            return sqlReturnEdge;
           } else {
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
             return null;
@@ -317,12 +371,20 @@ public class DataUnit extends org.apache.thrift.TUnion<DataUnit, DataUnit._Field
         entryOperationReturnEdge.write(oprot);
         return;
       case OPERATION_CALL_EDGE:
-        OperationCallEdge OperationCallEdge = (OperationCallEdge)value_;
-        OperationCallEdge.write(oprot);
+        OperationCallEdge operationCallEdge = (OperationCallEdge)value_;
+        operationCallEdge.write(oprot);
         return;
       case OPERATION_RETURN_EDGE:
-        OperationReturnEdge OperationReturnEdge = (OperationReturnEdge)value_;
-        OperationReturnEdge.write(oprot);
+        OperationReturnEdge operationReturnEdge = (OperationReturnEdge)value_;
+        operationReturnEdge.write(oprot);
+        return;
+      case SQL_CALL_EDGE:
+        SqlCallEdge sqlCallEdge = (SqlCallEdge)value_;
+        sqlCallEdge.write(oprot);
+        return;
+      case SQL_RETURN_EDGE:
+        SqlReturnEdge sqlReturnEdge = (SqlReturnEdge)value_;
+        sqlReturnEdge.write(oprot);
         return;
       default:
         throw new IllegalStateException("Cannot write union with unknown field " + setField_);
@@ -355,15 +417,25 @@ public class DataUnit extends org.apache.thrift.TUnion<DataUnit, DataUnit._Field
           entryOperationReturnEdge.read(iprot);
           return entryOperationReturnEdge;
         case OPERATION_CALL_EDGE:
-          OperationCallEdge OperationCallEdge;
-          OperationCallEdge = new OperationCallEdge();
-          OperationCallEdge.read(iprot);
-          return OperationCallEdge;
+          OperationCallEdge operationCallEdge;
+          operationCallEdge = new OperationCallEdge();
+          operationCallEdge.read(iprot);
+          return operationCallEdge;
         case OPERATION_RETURN_EDGE:
-          OperationReturnEdge OperationReturnEdge;
-          OperationReturnEdge = new OperationReturnEdge();
-          OperationReturnEdge.read(iprot);
-          return OperationReturnEdge;
+          OperationReturnEdge operationReturnEdge;
+          operationReturnEdge = new OperationReturnEdge();
+          operationReturnEdge.read(iprot);
+          return operationReturnEdge;
+        case SQL_CALL_EDGE:
+          SqlCallEdge sqlCallEdge;
+          sqlCallEdge = new SqlCallEdge();
+          sqlCallEdge.read(iprot);
+          return sqlCallEdge;
+        case SQL_RETURN_EDGE:
+          SqlReturnEdge sqlReturnEdge;
+          sqlReturnEdge = new SqlReturnEdge();
+          sqlReturnEdge.read(iprot);
+          return sqlReturnEdge;
         default:
           throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
       }
@@ -392,12 +464,20 @@ public class DataUnit extends org.apache.thrift.TUnion<DataUnit, DataUnit._Field
         entryOperationReturnEdge.write(oprot);
         return;
       case OPERATION_CALL_EDGE:
-        OperationCallEdge OperationCallEdge = (OperationCallEdge)value_;
-        OperationCallEdge.write(oprot);
+        OperationCallEdge operationCallEdge = (OperationCallEdge)value_;
+        operationCallEdge.write(oprot);
         return;
       case OPERATION_RETURN_EDGE:
-        OperationReturnEdge OperationReturnEdge = (OperationReturnEdge)value_;
-        OperationReturnEdge.write(oprot);
+        OperationReturnEdge operationReturnEdge = (OperationReturnEdge)value_;
+        operationReturnEdge.write(oprot);
+        return;
+      case SQL_CALL_EDGE:
+        SqlCallEdge sqlCallEdge = (SqlCallEdge)value_;
+        sqlCallEdge.write(oprot);
+        return;
+      case SQL_RETURN_EDGE:
+        SqlReturnEdge sqlReturnEdge = (SqlReturnEdge)value_;
+        sqlReturnEdge.write(oprot);
         return;
       default:
         throw new IllegalStateException("Cannot write union with unknown field " + setField_);
@@ -419,6 +499,10 @@ public class DataUnit extends org.apache.thrift.TUnion<DataUnit, DataUnit._Field
         return OPERATION_CALL_EDGE_FIELD_DESC;
       case OPERATION_RETURN_EDGE:
         return OPERATION_RETURN_EDGE_FIELD_DESC;
+      case SQL_CALL_EDGE:
+        return SQL_CALL_EDGE_FIELD_DESC;
+      case SQL_RETURN_EDGE:
+        return SQL_RETURN_EDGE_FIELD_DESC;
       default:
         throw new IllegalArgumentException("Unknown field id " + setField);
     }
@@ -499,7 +583,7 @@ public class DataUnit extends org.apache.thrift.TUnion<DataUnit, DataUnit._Field
     if (getSetField() == _Fields.OPERATION_CALL_EDGE) {
       return (OperationCallEdge)getFieldValue();
     } else {
-      throw new RuntimeException("Cannot get field 'OperationCallEdge' because union is currently set to " + getFieldDesc(getSetField()).name);
+      throw new RuntimeException("Cannot get field 'operationCallEdge' because union is currently set to " + getFieldDesc(getSetField()).name);
     }
   }
 
@@ -513,13 +597,41 @@ public class DataUnit extends org.apache.thrift.TUnion<DataUnit, DataUnit._Field
     if (getSetField() == _Fields.OPERATION_RETURN_EDGE) {
       return (OperationReturnEdge)getFieldValue();
     } else {
-      throw new RuntimeException("Cannot get field 'OperationReturnEdge' because union is currently set to " + getFieldDesc(getSetField()).name);
+      throw new RuntimeException("Cannot get field 'operationReturnEdge' because union is currently set to " + getFieldDesc(getSetField()).name);
     }
   }
 
   public void setOperationReturnEdge(OperationReturnEdge value) {
     if (value == null) throw new NullPointerException();
     setField_ = _Fields.OPERATION_RETURN_EDGE;
+    value_ = value;
+  }
+
+  public SqlCallEdge getSqlCallEdge() {
+    if (getSetField() == _Fields.SQL_CALL_EDGE) {
+      return (SqlCallEdge)getFieldValue();
+    } else {
+      throw new RuntimeException("Cannot get field 'sqlCallEdge' because union is currently set to " + getFieldDesc(getSetField()).name);
+    }
+  }
+
+  public void setSqlCallEdge(SqlCallEdge value) {
+    if (value == null) throw new NullPointerException();
+    setField_ = _Fields.SQL_CALL_EDGE;
+    value_ = value;
+  }
+
+  public SqlReturnEdge getSqlReturnEdge() {
+    if (getSetField() == _Fields.SQL_RETURN_EDGE) {
+      return (SqlReturnEdge)getFieldValue();
+    } else {
+      throw new RuntimeException("Cannot get field 'sqlReturnEdge' because union is currently set to " + getFieldDesc(getSetField()).name);
+    }
+  }
+
+  public void setSqlReturnEdge(SqlReturnEdge value) {
+    if (value == null) throw new NullPointerException();
+    setField_ = _Fields.SQL_RETURN_EDGE;
     value_ = value;
   }
 
@@ -550,6 +662,16 @@ public class DataUnit extends org.apache.thrift.TUnion<DataUnit, DataUnit._Field
 
   public boolean isSetOperationReturnEdge() {
     return setField_ == _Fields.OPERATION_RETURN_EDGE;
+  }
+
+
+  public boolean isSetSqlCallEdge() {
+    return setField_ == _Fields.SQL_CALL_EDGE;
+  }
+
+
+  public boolean isSetSqlReturnEdge() {
+    return setField_ == _Fields.SQL_RETURN_EDGE;
   }
 
 

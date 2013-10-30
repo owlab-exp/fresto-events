@@ -35,12 +35,12 @@ import org.slf4j.LoggerFactory;
 public class OperationReturnEdge implements org.apache.thrift.TBase<OperationReturnEdge, OperationReturnEdge._Fields>, java.io.Serializable, Cloneable, Comparable<OperationReturnEdge> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("OperationReturnEdge");
 
-  private static final org.apache.thrift.protocol.TField THIS_OPERATION_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("thisOperationId", org.apache.thrift.protocol.TType.STRUCT, (short)1);
-  private static final org.apache.thrift.protocol.TField PARENT_OPERATION_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("parentOperationId", org.apache.thrift.protocol.TType.STRUCT, (short)2);
+  private static final org.apache.thrift.protocol.TField OPERATION_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("operationId", org.apache.thrift.protocol.TType.STRUCT, (short)1);
   private static final org.apache.thrift.protocol.TField TIMESTAMP_FIELD_DESC = new org.apache.thrift.protocol.TField("timestamp", org.apache.thrift.protocol.TType.I64, (short)3);
   private static final org.apache.thrift.protocol.TField ELAPSED_TIME_FIELD_DESC = new org.apache.thrift.protocol.TField("elapsedTime", org.apache.thrift.protocol.TType.I32, (short)4);
   private static final org.apache.thrift.protocol.TField UUID_FIELD_DESC = new org.apache.thrift.protocol.TField("uuid", org.apache.thrift.protocol.TType.STRING, (short)5);
   private static final org.apache.thrift.protocol.TField SEQUENCE_FIELD_DESC = new org.apache.thrift.protocol.TField("sequence", org.apache.thrift.protocol.TType.I32, (short)6);
+  private static final org.apache.thrift.protocol.TField DEPTH_FIELD_DESC = new org.apache.thrift.protocol.TField("depth", org.apache.thrift.protocol.TType.I32, (short)7);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -48,21 +48,21 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
     schemes.put(TupleScheme.class, new OperationReturnEdgeTupleSchemeFactory());
   }
 
-  public OperationID thisOperationId; // required
-  public OperationID parentOperationId; // required
+  public OperationID operationId; // required
   public long timestamp; // required
   public int elapsedTime; // required
   public String uuid; // required
   public int sequence; // required
+  public int depth; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    THIS_OPERATION_ID((short)1, "thisOperationId"),
-    PARENT_OPERATION_ID((short)2, "parentOperationId"),
+    OPERATION_ID((short)1, "operationId"),
     TIMESTAMP((short)3, "timestamp"),
     ELAPSED_TIME((short)4, "elapsedTime"),
     UUID((short)5, "uuid"),
-    SEQUENCE((short)6, "sequence");
+    SEQUENCE((short)6, "sequence"),
+    DEPTH((short)7, "depth");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -77,10 +77,8 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // THIS_OPERATION_ID
-          return THIS_OPERATION_ID;
-        case 2: // PARENT_OPERATION_ID
-          return PARENT_OPERATION_ID;
+        case 1: // OPERATION_ID
+          return OPERATION_ID;
         case 3: // TIMESTAMP
           return TIMESTAMP;
         case 4: // ELAPSED_TIME
@@ -89,6 +87,8 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
           return UUID;
         case 6: // SEQUENCE
           return SEQUENCE;
+        case 7: // DEPTH
+          return DEPTH;
         default:
           return null;
       }
@@ -132,13 +132,12 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
   private static final int __TIMESTAMP_ISSET_ID = 0;
   private static final int __ELAPSEDTIME_ISSET_ID = 1;
   private static final int __SEQUENCE_ISSET_ID = 2;
+  private static final int __DEPTH_ISSET_ID = 3;
   private byte __isset_bitfield = 0;
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.THIS_OPERATION_ID, new org.apache.thrift.meta_data.FieldMetaData("thisOperationId", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, OperationID.class)));
-    tmpMap.put(_Fields.PARENT_OPERATION_ID, new org.apache.thrift.meta_data.FieldMetaData("parentOperationId", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+    tmpMap.put(_Fields.OPERATION_ID, new org.apache.thrift.meta_data.FieldMetaData("operationId", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, OperationID.class)));
     tmpMap.put(_Fields.TIMESTAMP, new org.apache.thrift.meta_data.FieldMetaData("timestamp", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
@@ -148,6 +147,8 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.SEQUENCE, new org.apache.thrift.meta_data.FieldMetaData("sequence", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+    tmpMap.put(_Fields.DEPTH, new org.apache.thrift.meta_data.FieldMetaData("depth", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(OperationReturnEdge.class, metaDataMap);
   }
@@ -156,16 +157,15 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
   }
 
   public OperationReturnEdge(
-    OperationID thisOperationId,
-    OperationID parentOperationId,
+    OperationID operationId,
     long timestamp,
     int elapsedTime,
     String uuid,
-    int sequence)
+    int sequence,
+    int depth)
   {
     this();
-    this.thisOperationId = thisOperationId;
-    this.parentOperationId = parentOperationId;
+    this.operationId = operationId;
     this.timestamp = timestamp;
     setTimestampIsSet(true);
     this.elapsedTime = elapsedTime;
@@ -173,6 +173,8 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
     this.uuid = uuid;
     this.sequence = sequence;
     setSequenceIsSet(true);
+    this.depth = depth;
+    setDepthIsSet(true);
   }
 
   /**
@@ -180,11 +182,8 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
    */
   public OperationReturnEdge(OperationReturnEdge other) {
     __isset_bitfield = other.__isset_bitfield;
-    if (other.isSetThisOperationId()) {
-      this.thisOperationId = new OperationID(other.thisOperationId);
-    }
-    if (other.isSetParentOperationId()) {
-      this.parentOperationId = new OperationID(other.parentOperationId);
+    if (other.isSetOperationId()) {
+      this.operationId = new OperationID(other.operationId);
     }
     this.timestamp = other.timestamp;
     this.elapsedTime = other.elapsedTime;
@@ -192,6 +191,7 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
       this.uuid = other.uuid;
     }
     this.sequence = other.sequence;
+    this.depth = other.depth;
   }
 
   public OperationReturnEdge deepCopy() {
@@ -200,8 +200,7 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
 
   @Override
   public void clear() {
-    this.thisOperationId = null;
-    this.parentOperationId = null;
+    this.operationId = null;
     setTimestampIsSet(false);
     this.timestamp = 0;
     setElapsedTimeIsSet(false);
@@ -209,53 +208,31 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
     this.uuid = null;
     setSequenceIsSet(false);
     this.sequence = 0;
+    setDepthIsSet(false);
+    this.depth = 0;
   }
 
-  public OperationID getThisOperationId() {
-    return this.thisOperationId;
+  public OperationID getOperationId() {
+    return this.operationId;
   }
 
-  public OperationReturnEdge setThisOperationId(OperationID thisOperationId) {
-    this.thisOperationId = thisOperationId;
+  public OperationReturnEdge setOperationId(OperationID operationId) {
+    this.operationId = operationId;
     return this;
   }
 
-  public void unsetThisOperationId() {
-    this.thisOperationId = null;
+  public void unsetOperationId() {
+    this.operationId = null;
   }
 
-  /** Returns true if field thisOperationId is set (has been assigned a value) and false otherwise */
-  public boolean isSetThisOperationId() {
-    return this.thisOperationId != null;
+  /** Returns true if field operationId is set (has been assigned a value) and false otherwise */
+  public boolean isSetOperationId() {
+    return this.operationId != null;
   }
 
-  public void setThisOperationIdIsSet(boolean value) {
+  public void setOperationIdIsSet(boolean value) {
     if (!value) {
-      this.thisOperationId = null;
-    }
-  }
-
-  public OperationID getParentOperationId() {
-    return this.parentOperationId;
-  }
-
-  public OperationReturnEdge setParentOperationId(OperationID parentOperationId) {
-    this.parentOperationId = parentOperationId;
-    return this;
-  }
-
-  public void unsetParentOperationId() {
-    this.parentOperationId = null;
-  }
-
-  /** Returns true if field parentOperationId is set (has been assigned a value) and false otherwise */
-  public boolean isSetParentOperationId() {
-    return this.parentOperationId != null;
-  }
-
-  public void setParentOperationIdIsSet(boolean value) {
-    if (!value) {
-      this.parentOperationId = null;
+      this.operationId = null;
     }
   }
 
@@ -352,21 +329,36 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
     __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SEQUENCE_ISSET_ID, value);
   }
 
+  public int getDepth() {
+    return this.depth;
+  }
+
+  public OperationReturnEdge setDepth(int depth) {
+    this.depth = depth;
+    setDepthIsSet(true);
+    return this;
+  }
+
+  public void unsetDepth() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __DEPTH_ISSET_ID);
+  }
+
+  /** Returns true if field depth is set (has been assigned a value) and false otherwise */
+  public boolean isSetDepth() {
+    return EncodingUtils.testBit(__isset_bitfield, __DEPTH_ISSET_ID);
+  }
+
+  public void setDepthIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __DEPTH_ISSET_ID, value);
+  }
+
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case THIS_OPERATION_ID:
+    case OPERATION_ID:
       if (value == null) {
-        unsetThisOperationId();
+        unsetOperationId();
       } else {
-        setThisOperationId((OperationID)value);
-      }
-      break;
-
-    case PARENT_OPERATION_ID:
-      if (value == null) {
-        unsetParentOperationId();
-      } else {
-        setParentOperationId((OperationID)value);
+        setOperationId((OperationID)value);
       }
       break;
 
@@ -402,16 +394,21 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
       }
       break;
 
+    case DEPTH:
+      if (value == null) {
+        unsetDepth();
+      } else {
+        setDepth((Integer)value);
+      }
+      break;
+
     }
   }
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case THIS_OPERATION_ID:
-      return getThisOperationId();
-
-    case PARENT_OPERATION_ID:
-      return getParentOperationId();
+    case OPERATION_ID:
+      return getOperationId();
 
     case TIMESTAMP:
       return Long.valueOf(getTimestamp());
@@ -425,6 +422,9 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
     case SEQUENCE:
       return Integer.valueOf(getSequence());
 
+    case DEPTH:
+      return Integer.valueOf(getDepth());
+
     }
     throw new IllegalStateException();
   }
@@ -436,10 +436,8 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
     }
 
     switch (field) {
-    case THIS_OPERATION_ID:
-      return isSetThisOperationId();
-    case PARENT_OPERATION_ID:
-      return isSetParentOperationId();
+    case OPERATION_ID:
+      return isSetOperationId();
     case TIMESTAMP:
       return isSetTimestamp();
     case ELAPSED_TIME:
@@ -448,6 +446,8 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
       return isSetUuid();
     case SEQUENCE:
       return isSetSequence();
+    case DEPTH:
+      return isSetDepth();
     }
     throw new IllegalStateException();
   }
@@ -465,21 +465,12 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
     if (that == null)
       return false;
 
-    boolean this_present_thisOperationId = true && this.isSetThisOperationId();
-    boolean that_present_thisOperationId = true && that.isSetThisOperationId();
-    if (this_present_thisOperationId || that_present_thisOperationId) {
-      if (!(this_present_thisOperationId && that_present_thisOperationId))
+    boolean this_present_operationId = true && this.isSetOperationId();
+    boolean that_present_operationId = true && that.isSetOperationId();
+    if (this_present_operationId || that_present_operationId) {
+      if (!(this_present_operationId && that_present_operationId))
         return false;
-      if (!this.thisOperationId.equals(that.thisOperationId))
-        return false;
-    }
-
-    boolean this_present_parentOperationId = true && this.isSetParentOperationId();
-    boolean that_present_parentOperationId = true && that.isSetParentOperationId();
-    if (this_present_parentOperationId || that_present_parentOperationId) {
-      if (!(this_present_parentOperationId && that_present_parentOperationId))
-        return false;
-      if (!this.parentOperationId.equals(that.parentOperationId))
+      if (!this.operationId.equals(that.operationId))
         return false;
     }
 
@@ -519,6 +510,15 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
         return false;
     }
 
+    boolean this_present_depth = true;
+    boolean that_present_depth = true;
+    if (this_present_depth || that_present_depth) {
+      if (!(this_present_depth && that_present_depth))
+        return false;
+      if (this.depth != that.depth)
+        return false;
+    }
+
     return true;
   }
 
@@ -535,22 +535,12 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetThisOperationId()).compareTo(other.isSetThisOperationId());
+    lastComparison = Boolean.valueOf(isSetOperationId()).compareTo(other.isSetOperationId());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetThisOperationId()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.thisOperationId, other.thisOperationId);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetParentOperationId()).compareTo(other.isSetParentOperationId());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetParentOperationId()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.parentOperationId, other.parentOperationId);
+    if (isSetOperationId()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.operationId, other.operationId);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -595,6 +585,16 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
         return lastComparison;
       }
     }
+    lastComparison = Boolean.valueOf(isSetDepth()).compareTo(other.isSetDepth());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetDepth()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.depth, other.depth);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
     return 0;
   }
 
@@ -615,19 +615,11 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
     StringBuilder sb = new StringBuilder("OperationReturnEdge(");
     boolean first = true;
 
-    sb.append("thisOperationId:");
-    if (this.thisOperationId == null) {
+    sb.append("operationId:");
+    if (this.operationId == null) {
       sb.append("null");
     } else {
-      sb.append(this.thisOperationId);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("parentOperationId:");
-    if (this.parentOperationId == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.parentOperationId);
+      sb.append(this.operationId);
     }
     first = false;
     if (!first) sb.append(", ");
@@ -650,17 +642,18 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
     sb.append("sequence:");
     sb.append(this.sequence);
     first = false;
+    if (!first) sb.append(", ");
+    sb.append("depth:");
+    sb.append(this.depth);
+    first = false;
     sb.append(")");
     return sb.toString();
   }
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
-    if (thisOperationId == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'thisOperationId' was not present! Struct: " + toString());
-    }
-    if (parentOperationId == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'parentOperationId' was not present! Struct: " + toString());
+    if (operationId == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'operationId' was not present! Struct: " + toString());
     }
     // alas, we cannot check 'timestamp' because it's a primitive and you chose the non-beans generator.
     // alas, we cannot check 'elapsedTime' because it's a primitive and you chose the non-beans generator.
@@ -668,11 +661,8 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'uuid' was not present! Struct: " + toString());
     }
     // check for sub-struct validity
-    if (thisOperationId != null) {
-      thisOperationId.validate();
-    }
-    if (parentOperationId != null) {
-      parentOperationId.validate();
+    if (operationId != null) {
+      operationId.validate();
     }
   }
 
@@ -712,20 +702,11 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
           break;
         }
         switch (schemeField.id) {
-          case 1: // THIS_OPERATION_ID
+          case 1: // OPERATION_ID
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.thisOperationId = new OperationID();
-              struct.thisOperationId.read(iprot);
-              struct.setThisOperationIdIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 2: // PARENT_OPERATION_ID
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.parentOperationId = new OperationID();
-              struct.parentOperationId.read(iprot);
-              struct.setParentOperationIdIsSet(true);
+              struct.operationId = new OperationID();
+              struct.operationId.read(iprot);
+              struct.setOperationIdIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -762,6 +743,14 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
+          case 7: // DEPTH
+            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+              struct.depth = iprot.readI32();
+              struct.setDepthIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
           default:
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
         }
@@ -783,14 +772,9 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.thisOperationId != null) {
-        oprot.writeFieldBegin(THIS_OPERATION_ID_FIELD_DESC);
-        struct.thisOperationId.write(oprot);
-        oprot.writeFieldEnd();
-      }
-      if (struct.parentOperationId != null) {
-        oprot.writeFieldBegin(PARENT_OPERATION_ID_FIELD_DESC);
-        struct.parentOperationId.write(oprot);
+      if (struct.operationId != null) {
+        oprot.writeFieldBegin(OPERATION_ID_FIELD_DESC);
+        struct.operationId.write(oprot);
         oprot.writeFieldEnd();
       }
       oprot.writeFieldBegin(TIMESTAMP_FIELD_DESC);
@@ -806,6 +790,9 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
       }
       oprot.writeFieldBegin(SEQUENCE_FIELD_DESC);
       oprot.writeI32(struct.sequence);
+      oprot.writeFieldEnd();
+      oprot.writeFieldBegin(DEPTH_FIELD_DESC);
+      oprot.writeI32(struct.depth);
       oprot.writeFieldEnd();
       oprot.writeFieldStop();
       oprot.writeStructEnd();
@@ -824,8 +811,7 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
     @Override
     public void write(org.apache.thrift.protocol.TProtocol prot, OperationReturnEdge struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
-      struct.thisOperationId.write(oprot);
-      struct.parentOperationId.write(oprot);
+      struct.operationId.write(oprot);
       oprot.writeI64(struct.timestamp);
       oprot.writeI32(struct.elapsedTime);
       oprot.writeString(struct.uuid);
@@ -833,31 +819,38 @@ public class OperationReturnEdge implements org.apache.thrift.TBase<OperationRet
       if (struct.isSetSequence()) {
         optionals.set(0);
       }
-      oprot.writeBitSet(optionals, 1);
+      if (struct.isSetDepth()) {
+        optionals.set(1);
+      }
+      oprot.writeBitSet(optionals, 2);
       if (struct.isSetSequence()) {
         oprot.writeI32(struct.sequence);
+      }
+      if (struct.isSetDepth()) {
+        oprot.writeI32(struct.depth);
       }
     }
 
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, OperationReturnEdge struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      struct.thisOperationId = new OperationID();
-      struct.thisOperationId.read(iprot);
-      struct.setThisOperationIdIsSet(true);
-      struct.parentOperationId = new OperationID();
-      struct.parentOperationId.read(iprot);
-      struct.setParentOperationIdIsSet(true);
+      struct.operationId = new OperationID();
+      struct.operationId.read(iprot);
+      struct.setOperationIdIsSet(true);
       struct.timestamp = iprot.readI64();
       struct.setTimestampIsSet(true);
       struct.elapsedTime = iprot.readI32();
       struct.setElapsedTimeIsSet(true);
       struct.uuid = iprot.readString();
       struct.setUuidIsSet(true);
-      BitSet incoming = iprot.readBitSet(1);
+      BitSet incoming = iprot.readBitSet(2);
       if (incoming.get(0)) {
         struct.sequence = iprot.readI32();
         struct.setSequenceIsSet(true);
+      }
+      if (incoming.get(1)) {
+        struct.depth = iprot.readI32();
+        struct.setDepthIsSet(true);
       }
     }
   }

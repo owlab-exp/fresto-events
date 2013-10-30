@@ -43,6 +43,7 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
   private static final org.apache.thrift.protocol.TField TIMESTAMP_FIELD_DESC = new org.apache.thrift.protocol.TField("timestamp", org.apache.thrift.protocol.TType.I64, (short)6);
   private static final org.apache.thrift.protocol.TField UUID_FIELD_DESC = new org.apache.thrift.protocol.TField("uuid", org.apache.thrift.protocol.TType.STRING, (short)7);
   private static final org.apache.thrift.protocol.TField SEQUENCE_FIELD_DESC = new org.apache.thrift.protocol.TField("sequence", org.apache.thrift.protocol.TType.I32, (short)8);
+  private static final org.apache.thrift.protocol.TField DEPTH_FIELD_DESC = new org.apache.thrift.protocol.TField("depth", org.apache.thrift.protocol.TType.I32, (short)9);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -58,6 +59,7 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
   public long timestamp; // required
   public String uuid; // required
   public int sequence; // required
+  public int depth; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -68,7 +70,8 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
     ELAPSED_TIME((short)5, "elapsedTime"),
     TIMESTAMP((short)6, "timestamp"),
     UUID((short)7, "uuid"),
-    SEQUENCE((short)8, "sequence");
+    SEQUENCE((short)8, "sequence"),
+    DEPTH((short)9, "depth");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -99,6 +102,8 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
           return UUID;
         case 8: // SEQUENCE
           return SEQUENCE;
+        case 9: // DEPTH
+          return DEPTH;
         default:
           return null;
       }
@@ -143,6 +148,7 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
   private static final int __ELAPSEDTIME_ISSET_ID = 1;
   private static final int __TIMESTAMP_ISSET_ID = 2;
   private static final int __SEQUENCE_ISSET_ID = 3;
+  private static final int __DEPTH_ISSET_ID = 4;
   private byte __isset_bitfield = 0;
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
@@ -163,6 +169,8 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.SEQUENCE, new org.apache.thrift.meta_data.FieldMetaData("sequence", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+    tmpMap.put(_Fields.DEPTH, new org.apache.thrift.meta_data.FieldMetaData("depth", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(EntryOperationReturnEdge.class, metaDataMap);
   }
@@ -178,7 +186,8 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
     int elapsedTime,
     long timestamp,
     String uuid,
-    int sequence)
+    int sequence,
+    int depth)
   {
     this();
     this.operationId = operationId;
@@ -193,6 +202,8 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
     this.uuid = uuid;
     this.sequence = sequence;
     setSequenceIsSet(true);
+    this.depth = depth;
+    setDepthIsSet(true);
   }
 
   /**
@@ -216,6 +227,7 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
       this.uuid = other.uuid;
     }
     this.sequence = other.sequence;
+    this.depth = other.depth;
   }
 
   public EntryOperationReturnEdge deepCopy() {
@@ -236,6 +248,8 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
     this.uuid = null;
     setSequenceIsSet(false);
     this.sequence = 0;
+    setDepthIsSet(false);
+    this.depth = 0;
   }
 
   public OperationID getOperationId() {
@@ -426,6 +440,29 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
     __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SEQUENCE_ISSET_ID, value);
   }
 
+  public int getDepth() {
+    return this.depth;
+  }
+
+  public EntryOperationReturnEdge setDepth(int depth) {
+    this.depth = depth;
+    setDepthIsSet(true);
+    return this;
+  }
+
+  public void unsetDepth() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __DEPTH_ISSET_ID);
+  }
+
+  /** Returns true if field depth is set (has been assigned a value) and false otherwise */
+  public boolean isSetDepth() {
+    return EncodingUtils.testBit(__isset_bitfield, __DEPTH_ISSET_ID);
+  }
+
+  public void setDepthIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __DEPTH_ISSET_ID, value);
+  }
+
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
     case OPERATION_ID:
@@ -492,6 +529,14 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
       }
       break;
 
+    case DEPTH:
+      if (value == null) {
+        unsetDepth();
+      } else {
+        setDepth((Integer)value);
+      }
+      break;
+
     }
   }
 
@@ -521,6 +566,9 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
     case SEQUENCE:
       return Integer.valueOf(getSequence());
 
+    case DEPTH:
+      return Integer.valueOf(getDepth());
+
     }
     throw new IllegalStateException();
   }
@@ -548,6 +596,8 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
       return isSetUuid();
     case SEQUENCE:
       return isSetSequence();
+    case DEPTH:
+      return isSetDepth();
     }
     throw new IllegalStateException();
   }
@@ -634,6 +684,15 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
       if (!(this_present_sequence && that_present_sequence))
         return false;
       if (this.sequence != that.sequence)
+        return false;
+    }
+
+    boolean this_present_depth = true;
+    boolean that_present_depth = true;
+    if (this_present_depth || that_present_depth) {
+      if (!(this_present_depth && that_present_depth))
+        return false;
+      if (this.depth != that.depth)
         return false;
     }
 
@@ -733,6 +792,16 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
         return lastComparison;
       }
     }
+    lastComparison = Boolean.valueOf(isSetDepth()).compareTo(other.isSetDepth());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetDepth()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.depth, other.depth);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
     return 0;
   }
 
@@ -799,6 +868,10 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
     if (!first) sb.append(", ");
     sb.append("sequence:");
     sb.append(this.sequence);
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("depth:");
+    sb.append(this.depth);
     first = false;
     sb.append(")");
     return sb.toString();
@@ -925,6 +998,14 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
+          case 9: // DEPTH
+            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+              struct.depth = iprot.readI32();
+              struct.setDepthIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
           default:
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
         }
@@ -978,6 +1059,9 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
       oprot.writeFieldBegin(SEQUENCE_FIELD_DESC);
       oprot.writeI32(struct.sequence);
       oprot.writeFieldEnd();
+      oprot.writeFieldBegin(DEPTH_FIELD_DESC);
+      oprot.writeI32(struct.depth);
+      oprot.writeFieldEnd();
       oprot.writeFieldStop();
       oprot.writeStructEnd();
     }
@@ -1010,7 +1094,10 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
       if (struct.isSetSequence()) {
         optionals.set(2);
       }
-      oprot.writeBitSet(optionals, 3);
+      if (struct.isSetDepth()) {
+        optionals.set(3);
+      }
+      oprot.writeBitSet(optionals, 4);
       if (struct.isSetServletPath()) {
         oprot.writeString(struct.servletPath);
       }
@@ -1019,6 +1106,9 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
       }
       if (struct.isSetSequence()) {
         oprot.writeI32(struct.sequence);
+      }
+      if (struct.isSetDepth()) {
+        oprot.writeI32(struct.depth);
       }
     }
 
@@ -1037,7 +1127,7 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
       struct.setTimestampIsSet(true);
       struct.uuid = iprot.readString();
       struct.setUuidIsSet(true);
-      BitSet incoming = iprot.readBitSet(3);
+      BitSet incoming = iprot.readBitSet(4);
       if (incoming.get(0)) {
         struct.servletPath = iprot.readString();
         struct.setServletPathIsSet(true);
@@ -1049,6 +1139,10 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
       if (incoming.get(2)) {
         struct.sequence = iprot.readI32();
         struct.setSequenceIsSet(true);
+      }
+      if (incoming.get(3)) {
+        struct.depth = iprot.readI32();
+        struct.setDepthIsSet(true);
       }
     }
   }

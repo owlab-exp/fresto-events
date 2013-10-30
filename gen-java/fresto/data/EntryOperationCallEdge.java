@@ -36,7 +36,7 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("EntryOperationCallEdge");
 
   private static final org.apache.thrift.protocol.TField RESOURCE_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("resourceId", org.apache.thrift.protocol.TType.STRUCT, (short)1);
-  private static final org.apache.thrift.protocol.TField OPERATION_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("OperationId", org.apache.thrift.protocol.TType.STRUCT, (short)2);
+  private static final org.apache.thrift.protocol.TField OPERATION_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("operationId", org.apache.thrift.protocol.TType.STRUCT, (short)2);
   private static final org.apache.thrift.protocol.TField LOCAL_HOST_FIELD_DESC = new org.apache.thrift.protocol.TField("localHost", org.apache.thrift.protocol.TType.STRING, (short)3);
   private static final org.apache.thrift.protocol.TField LOCAL_PORT_FIELD_DESC = new org.apache.thrift.protocol.TField("localPort", org.apache.thrift.protocol.TType.I32, (short)4);
   private static final org.apache.thrift.protocol.TField CONTEXT_PATH_FIELD_DESC = new org.apache.thrift.protocol.TField("contextPath", org.apache.thrift.protocol.TType.STRING, (short)5);
@@ -45,6 +45,7 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
   private static final org.apache.thrift.protocol.TField TIMESTAMP_FIELD_DESC = new org.apache.thrift.protocol.TField("timestamp", org.apache.thrift.protocol.TType.I64, (short)8);
   private static final org.apache.thrift.protocol.TField UUID_FIELD_DESC = new org.apache.thrift.protocol.TField("uuid", org.apache.thrift.protocol.TType.STRING, (short)9);
   private static final org.apache.thrift.protocol.TField SEQUENCE_FIELD_DESC = new org.apache.thrift.protocol.TField("sequence", org.apache.thrift.protocol.TType.I32, (short)10);
+  private static final org.apache.thrift.protocol.TField DEPTH_FIELD_DESC = new org.apache.thrift.protocol.TField("depth", org.apache.thrift.protocol.TType.I32, (short)11);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -53,7 +54,7 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
   }
 
   public ResourceID resourceId; // required
-  public OperationID OperationId; // required
+  public OperationID operationId; // required
   public String localHost; // required
   public int localPort; // required
   public String contextPath; // required
@@ -62,11 +63,12 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
   public long timestamp; // required
   public String uuid; // required
   public int sequence; // required
+  public int depth; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
     RESOURCE_ID((short)1, "resourceId"),
-    OPERATION_ID((short)2, "OperationId"),
+    OPERATION_ID((short)2, "operationId"),
     LOCAL_HOST((short)3, "localHost"),
     LOCAL_PORT((short)4, "localPort"),
     CONTEXT_PATH((short)5, "contextPath"),
@@ -74,7 +76,8 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
     HTTP_METHOD((short)7, "httpMethod"),
     TIMESTAMP((short)8, "timestamp"),
     UUID((short)9, "uuid"),
-    SEQUENCE((short)10, "sequence");
+    SEQUENCE((short)10, "sequence"),
+    DEPTH((short)11, "depth");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -109,6 +112,8 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
           return UUID;
         case 10: // SEQUENCE
           return SEQUENCE;
+        case 11: // DEPTH
+          return DEPTH;
         default:
           return null;
       }
@@ -152,13 +157,14 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
   private static final int __LOCALPORT_ISSET_ID = 0;
   private static final int __TIMESTAMP_ISSET_ID = 1;
   private static final int __SEQUENCE_ISSET_ID = 2;
+  private static final int __DEPTH_ISSET_ID = 3;
   private byte __isset_bitfield = 0;
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
     tmpMap.put(_Fields.RESOURCE_ID, new org.apache.thrift.meta_data.FieldMetaData("resourceId", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ResourceID.class)));
-    tmpMap.put(_Fields.OPERATION_ID, new org.apache.thrift.meta_data.FieldMetaData("OperationId", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+    tmpMap.put(_Fields.OPERATION_ID, new org.apache.thrift.meta_data.FieldMetaData("operationId", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, OperationID.class)));
     tmpMap.put(_Fields.LOCAL_HOST, new org.apache.thrift.meta_data.FieldMetaData("localHost", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
@@ -176,6 +182,8 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.SEQUENCE, new org.apache.thrift.meta_data.FieldMetaData("sequence", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+    tmpMap.put(_Fields.DEPTH, new org.apache.thrift.meta_data.FieldMetaData("depth", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(EntryOperationCallEdge.class, metaDataMap);
   }
@@ -183,11 +191,13 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
   public EntryOperationCallEdge() {
     this.sequence = 0;
 
+    this.depth = 0;
+
   }
 
   public EntryOperationCallEdge(
     ResourceID resourceId,
-    OperationID OperationId,
+    OperationID operationId,
     String localHost,
     int localPort,
     String contextPath,
@@ -195,11 +205,12 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
     String httpMethod,
     long timestamp,
     String uuid,
-    int sequence)
+    int sequence,
+    int depth)
   {
     this();
     this.resourceId = resourceId;
-    this.OperationId = OperationId;
+    this.operationId = operationId;
     this.localHost = localHost;
     this.localPort = localPort;
     setLocalPortIsSet(true);
@@ -211,6 +222,8 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
     this.uuid = uuid;
     this.sequence = sequence;
     setSequenceIsSet(true);
+    this.depth = depth;
+    setDepthIsSet(true);
   }
 
   /**
@@ -222,7 +235,7 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
       this.resourceId = new ResourceID(other.resourceId);
     }
     if (other.isSetOperationId()) {
-      this.OperationId = new OperationID(other.OperationId);
+      this.operationId = new OperationID(other.operationId);
     }
     if (other.isSetLocalHost()) {
       this.localHost = other.localHost;
@@ -242,6 +255,7 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
       this.uuid = other.uuid;
     }
     this.sequence = other.sequence;
+    this.depth = other.depth;
   }
 
   public EntryOperationCallEdge deepCopy() {
@@ -251,7 +265,7 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
   @Override
   public void clear() {
     this.resourceId = null;
-    this.OperationId = null;
+    this.operationId = null;
     this.localHost = null;
     setLocalPortIsSet(false);
     this.localPort = 0;
@@ -262,6 +276,8 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
     this.timestamp = 0;
     this.uuid = null;
     this.sequence = 0;
+
+    this.depth = 0;
 
   }
 
@@ -290,26 +306,26 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
   }
 
   public OperationID getOperationId() {
-    return this.OperationId;
+    return this.operationId;
   }
 
-  public EntryOperationCallEdge setOperationId(OperationID OperationId) {
-    this.OperationId = OperationId;
+  public EntryOperationCallEdge setOperationId(OperationID operationId) {
+    this.operationId = operationId;
     return this;
   }
 
   public void unsetOperationId() {
-    this.OperationId = null;
+    this.operationId = null;
   }
 
-  /** Returns true if field OperationId is set (has been assigned a value) and false otherwise */
+  /** Returns true if field operationId is set (has been assigned a value) and false otherwise */
   public boolean isSetOperationId() {
-    return this.OperationId != null;
+    return this.operationId != null;
   }
 
   public void setOperationIdIsSet(boolean value) {
     if (!value) {
-      this.OperationId = null;
+      this.operationId = null;
     }
   }
 
@@ -502,6 +518,29 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
     __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SEQUENCE_ISSET_ID, value);
   }
 
+  public int getDepth() {
+    return this.depth;
+  }
+
+  public EntryOperationCallEdge setDepth(int depth) {
+    this.depth = depth;
+    setDepthIsSet(true);
+    return this;
+  }
+
+  public void unsetDepth() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __DEPTH_ISSET_ID);
+  }
+
+  /** Returns true if field depth is set (has been assigned a value) and false otherwise */
+  public boolean isSetDepth() {
+    return EncodingUtils.testBit(__isset_bitfield, __DEPTH_ISSET_ID);
+  }
+
+  public void setDepthIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __DEPTH_ISSET_ID, value);
+  }
+
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
     case RESOURCE_ID:
@@ -584,6 +623,14 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
       }
       break;
 
+    case DEPTH:
+      if (value == null) {
+        unsetDepth();
+      } else {
+        setDepth((Integer)value);
+      }
+      break;
+
     }
   }
 
@@ -619,6 +666,9 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
     case SEQUENCE:
       return Integer.valueOf(getSequence());
 
+    case DEPTH:
+      return Integer.valueOf(getDepth());
+
     }
     throw new IllegalStateException();
   }
@@ -650,6 +700,8 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
       return isSetUuid();
     case SEQUENCE:
       return isSetSequence();
+    case DEPTH:
+      return isSetDepth();
     }
     throw new IllegalStateException();
   }
@@ -676,12 +728,12 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
         return false;
     }
 
-    boolean this_present_OperationId = true && this.isSetOperationId();
-    boolean that_present_OperationId = true && that.isSetOperationId();
-    if (this_present_OperationId || that_present_OperationId) {
-      if (!(this_present_OperationId && that_present_OperationId))
+    boolean this_present_operationId = true && this.isSetOperationId();
+    boolean that_present_operationId = true && that.isSetOperationId();
+    if (this_present_operationId || that_present_operationId) {
+      if (!(this_present_operationId && that_present_operationId))
         return false;
-      if (!this.OperationId.equals(that.OperationId))
+      if (!this.operationId.equals(that.operationId))
         return false;
     }
 
@@ -757,6 +809,15 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
         return false;
     }
 
+    boolean this_present_depth = true;
+    boolean that_present_depth = true;
+    if (this_present_depth || that_present_depth) {
+      if (!(this_present_depth && that_present_depth))
+        return false;
+      if (this.depth != that.depth)
+        return false;
+    }
+
     return true;
   }
 
@@ -788,7 +849,7 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
       return lastComparison;
     }
     if (isSetOperationId()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.OperationId, other.OperationId);
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.operationId, other.operationId);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -873,6 +934,16 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
         return lastComparison;
       }
     }
+    lastComparison = Boolean.valueOf(isSetDepth()).compareTo(other.isSetDepth());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetDepth()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.depth, other.depth);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
     return 0;
   }
 
@@ -901,11 +972,11 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
     }
     first = false;
     if (!first) sb.append(", ");
-    sb.append("OperationId:");
-    if (this.OperationId == null) {
+    sb.append("operationId:");
+    if (this.operationId == null) {
       sb.append("null");
     } else {
-      sb.append(this.OperationId);
+      sb.append(this.operationId);
     }
     first = false;
     if (!first) sb.append(", ");
@@ -960,6 +1031,10 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
     sb.append("sequence:");
     sb.append(this.sequence);
     first = false;
+    if (!first) sb.append(", ");
+    sb.append("depth:");
+    sb.append(this.depth);
+    first = false;
     sb.append(")");
     return sb.toString();
   }
@@ -969,16 +1044,16 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
     if (resourceId == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'resourceId' was not present! Struct: " + toString());
     }
-    if (OperationId == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'OperationId' was not present! Struct: " + toString());
+    if (operationId == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'operationId' was not present! Struct: " + toString());
     }
     // alas, we cannot check 'timestamp' because it's a primitive and you chose the non-beans generator.
     if (uuid == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'uuid' was not present! Struct: " + toString());
     }
     // check for sub-struct validity
-    if (OperationId != null) {
-      OperationId.validate();
+    if (operationId != null) {
+      operationId.validate();
     }
   }
 
@@ -1029,8 +1104,8 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
             break;
           case 2: // OPERATION_ID
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.OperationId = new OperationID();
-              struct.OperationId.read(iprot);
+              struct.operationId = new OperationID();
+              struct.operationId.read(iprot);
               struct.setOperationIdIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
@@ -1100,6 +1175,14 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
+          case 11: // DEPTH
+            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+              struct.depth = iprot.readI32();
+              struct.setDepthIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
           default:
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
         }
@@ -1123,9 +1206,9 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
         struct.resourceId.write(oprot);
         oprot.writeFieldEnd();
       }
-      if (struct.OperationId != null) {
+      if (struct.operationId != null) {
         oprot.writeFieldBegin(OPERATION_ID_FIELD_DESC);
-        struct.OperationId.write(oprot);
+        struct.operationId.write(oprot);
         oprot.writeFieldEnd();
       }
       if (struct.localHost != null) {
@@ -1162,6 +1245,9 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
       oprot.writeFieldBegin(SEQUENCE_FIELD_DESC);
       oprot.writeI32(struct.sequence);
       oprot.writeFieldEnd();
+      oprot.writeFieldBegin(DEPTH_FIELD_DESC);
+      oprot.writeI32(struct.depth);
+      oprot.writeFieldEnd();
       oprot.writeFieldStop();
       oprot.writeStructEnd();
     }
@@ -1180,7 +1266,7 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
     public void write(org.apache.thrift.protocol.TProtocol prot, EntryOperationCallEdge struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
       struct.resourceId.write(oprot);
-      struct.OperationId.write(oprot);
+      struct.operationId.write(oprot);
       oprot.writeI64(struct.timestamp);
       oprot.writeString(struct.uuid);
       BitSet optionals = new BitSet();
@@ -1202,7 +1288,10 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
       if (struct.isSetSequence()) {
         optionals.set(5);
       }
-      oprot.writeBitSet(optionals, 6);
+      if (struct.isSetDepth()) {
+        optionals.set(6);
+      }
+      oprot.writeBitSet(optionals, 7);
       if (struct.isSetLocalHost()) {
         oprot.writeString(struct.localHost);
       }
@@ -1221,6 +1310,9 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
       if (struct.isSetSequence()) {
         oprot.writeI32(struct.sequence);
       }
+      if (struct.isSetDepth()) {
+        oprot.writeI32(struct.depth);
+      }
     }
 
     @Override
@@ -1229,14 +1321,14 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
       struct.resourceId = new ResourceID();
       struct.resourceId.read(iprot);
       struct.setResourceIdIsSet(true);
-      struct.OperationId = new OperationID();
-      struct.OperationId.read(iprot);
+      struct.operationId = new OperationID();
+      struct.operationId.read(iprot);
       struct.setOperationIdIsSet(true);
       struct.timestamp = iprot.readI64();
       struct.setTimestampIsSet(true);
       struct.uuid = iprot.readString();
       struct.setUuidIsSet(true);
-      BitSet incoming = iprot.readBitSet(6);
+      BitSet incoming = iprot.readBitSet(7);
       if (incoming.get(0)) {
         struct.localHost = iprot.readString();
         struct.setLocalHostIsSet(true);
@@ -1260,6 +1352,10 @@ public class EntryOperationCallEdge implements org.apache.thrift.TBase<EntryOper
       if (incoming.get(5)) {
         struct.sequence = iprot.readI32();
         struct.setSequenceIsSet(true);
+      }
+      if (incoming.get(6)) {
+        struct.depth = iprot.readI32();
+        struct.setDepthIsSet(true);
       }
     }
   }
